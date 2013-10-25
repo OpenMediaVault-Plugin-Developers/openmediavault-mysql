@@ -1,0 +1,13 @@
+Alias /sqlbuddy /usr/share/sqlbuddy
+
+<Directory /usr/share/sqlbuddy>
+    Options FollowSymLinks
+    <FilesMatch \.php$>
+        FcgidWrapper /var/www/openmediavault/php-fcgi .php
+        SetHandler fcgid-script
+        Options +ExecCGI
+    </FilesMatch>
+    Order Allow,Deny
+    Allow from All
+    AllowOverride None
+</Directory>
