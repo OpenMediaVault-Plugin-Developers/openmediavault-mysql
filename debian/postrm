@@ -1,0 +1,36 @@
+#!/bin/sh
+
+set -e
+
+. /etc/default/openmediavault
+. /usr/share/openmediavault/scripts/helper-functions
+
+OMV_MYSQL_CONF=/etc/mysql/conf.d/openmediavault-mysql.cnf
+SQL_MANAGEMENT_SITE_CONF_NAME=openmediavault-mysql-management-site
+SQL_MANAGEMENT_SITE_ENABLED_CONF=/etc/apache2/sites-available/${SQL_MANAGEMENT_SITE_CONF_NAME}
+
+case "$1" in
+    purge)
+        omv_config_delete "//services/mysql"
+
+        if [ -e ${OMV_MYSQL_CONF} ]; then
+            /bin/rm -f ${OMV_MYSQL_CONF}
+        fi
+    ;;
+    remove)
+        if [ -e ${SQL_MANAGEMENT_SITE_ENABLED_CONF} ]; then
+            a2dissite ${SQL_MANAGEMENT_SITE_CONF_NAME}
+            /etc/init.d/apache2 reload
+        fi
+    ;;
+    upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
+    ;;
+    *)
+        echo "postrm called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+#DEBHELPER#
+
+exit 0

@@ -1,0 +1,62 @@
+#!/bin/sh
+#
+# Copyright (C) 2010-2012 Ian Moore <imooreyahoo@gmail.com>
+# Copyright (C)      2013 OpenMediaVault Plugin Developers
+#
+# This file is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# any later version.
+#
+# This file is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this file. If not, see <http://www.gnu.org/licenses/>.
+
+set -e
+
+. /etc/default/openmediavault
+. /usr/share/openmediavault/scripts/helper-functions
+
+
+MYSQL_CONFIG="/etc/mysql/conf.d/openmediavault-mysql.cnf";
+MYSQL_INIT="isc-mysql-server"
+SQL_MANAGEMENT_SITE_CONF_NAME=openmediavault-mysql-management-site
+SQL_MANAGEMENT_SITE_ENABLED_CONF=/etc/apache2/sites-available/${SQL_MANAGEMENT_SITE_CONF_NAME}
+
+# Enable/disable service
+if [ "$(omv_config_get "//services/mysql/enable")" != "1" ]; then
+    if [ -e ${SQL_MANAGEMENT_SITE_ENABLED_CONF} ]; then
+        a2dissite ${SQL_MANAGEMENT_SITE_CONF_NAME}
+    fi
+fi
+
+# Create mysql config file
+cat <<EOF > ${MYSQL_CONFIG}
+# Configuration for openmediavault-mysql
+
+[mysqld]
+EOF
+
+xmlstarlet sel -t -m "//services/mysql" \
+    -i "enable-networking != 1" -o "skip-networking" -n -b \
+    -i "port != ''" -v "concat('port = ', port)" -n -b \
+    -i "bindaddress != ''" -v "concat('bind-address = ', bindaddress)" -n -b \
+    -i "data-root != ''" -v "concat('datadir = ', data-root)" -n -b \
+    -i "string-length(extraoptions) > 0" -v "extraoptions" -n -b \
+${OMV_CONFIG_FILE} | xmlstarlet unesc >> ${MYSQL_CONFIG}
+
+if [ "$(omv_config_get "//services/mysql/enable-management-site")" != "1" ]; then
+    if [ -e ${SQL_MANAGEMENT_SITE_ENABLED_CONF} ]; then
+        a2dissite ${SQL_MANAGEMENT_SITE_CONF_NAME}
+    fi
+else
+    if [ ! -e ${SQL_MANAGEMENT_SITE_ENABLED_CONF} ]; then
+        if [ "$(omv_config_get "//services/mysql/enable")" = "1" ]; then
+            a2ensite ${SQL_MANAGEMENT_SITE_CONF_NAME}
+        fi
+    fi
+fi
