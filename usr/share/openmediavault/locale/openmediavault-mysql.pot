@@ -1,0 +1,100 @@
+# openmediavault-mysql
+# Copyright (C) 2013
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: openmediavault-mysql\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-10-28 09:10-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Bind address"
+msgstr "Bind address"
+
+msgid "Change MySQL root password"
+msgstr "Change MySQL root password"
+
+msgid "Confirm new password"
+msgstr "Confirm new password"
+
+msgid "Current password"
+msgstr "Current password"
+
+msgid "Data"
+msgstr "Data"
+
+msgid "Enable"
+msgstr "Enable"
+
+msgid "Enable networking"
+msgstr "Enable networking"
+
+msgid "Enable SQL management site"
+msgstr "Enable SQL management site"
+
+msgid "Extra options"
+msgstr "Extra options"
+
+msgid "Extra options for [mysqld] section of MySQL configuration."
+msgstr "Extra options for [mysqld] section of MySQL configuration."
+
+msgid "Force password reset"
+msgstr "Force password reset"
+
+msgid "For more advanced usage try <a href='http://www.mysql.com/products/workbench/'>MySQL Workbench</a>"
+msgstr "For more advanced usage try <a href='http://www.mysql.com/products/workbench/'>MySQL Workbench</a>"
+
+msgid "Generate"
+msgstr "Generate"
+
+msgid "Generate password"
+msgstr "Generate password"
+
+msgid "IP address to listen on. Use 0.0.0.0 for all host IPs."
+msgstr "IP address to listen on. Use 0.0.0.0 for all host IPs."
+
+msgid "Launch management site"
+msgstr "Launch management site"
+
+msgid "MySQL"
+msgstr "MySQL"
+
+msgid "New password"
+msgstr "New password"
+
+msgid "Port"
+msgstr "Port"
+
+msgid "Port to listen on."
+msgstr "Port to listen on."
+
+msgid "Select a volume ..."
+msgstr "Select a volume ..."
+
+msgid "Settings"
+msgstr "Settings"
+
+msgid "SQL data root"
+msgstr "SQL data root"
+
+msgid "SQL data volume"
+msgstr "SQL data volume"
+
+msgid "SQL management site"
+msgstr "SQL management site"
+
+msgid "This will cause a restart of MySQL and should only be required in rare cases."
+msgstr "This will cause a restart of MySQL and should only be required in rare cases."
+
+msgid "Warning: If Your MySQL data volume is set to use a non-data volume it may result in loss of data in the event of a disk failure. It is recommmended that you change this before using MySQL. Once databases exist, you will be unable to choose the location of MySQL data through this interface."
+msgstr "Warning: If Your MySQL data volume is set to use a non-data volume it may result in loss of data in the event of a disk failure. It is recommmended that you change this before using MySQL. Once databases exist, you will be unable to choose the location of MySQL data through this interface."
+
