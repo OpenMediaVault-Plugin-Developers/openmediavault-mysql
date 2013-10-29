@@ -1,3 +1,10 @@
+openmediavault-mysql (0.5.1) stable; urgency=low
+
+  * Changed password reset method
+  * root password no longer stored in OMV config file
+
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.prg>  Tue, 29 Oct 2013 13:12:10 -0500
+
 openmediavault-mysql (0.5) stable; urgency=low
 
   * Initial release for OMV 0.5

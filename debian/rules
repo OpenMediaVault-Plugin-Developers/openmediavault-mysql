@@ -22,7 +22,6 @@ endif
 	dh_installdirs
 	dh_install
 	chmod +x $(CURDIR)/debian/openmediavault-mysql/usr/share/openmediavault/mkconf/mysql
-	chmod +x $(CURDIR)/debian/openmediavault-mysql/usr/share/openmediavault/mkconf/mysql-password
 
 binary-indep: install omv_clean_scm
 	dh_testdir
