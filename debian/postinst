@@ -15,7 +15,6 @@ configure)
         object="${object}<extraoptions></extraoptions>"
         object="${object}<port>3306</port>"
 		object="${object}<bindaddress>127.0.0.1</bindaddress>"
-		object="${object}<password></password>"
 		object="${object}<data-root></data-root>"
 		object="${object}<mntentref></mntentref>"
         omv_config_add_element "/config/services" "mysql" "${object}" true

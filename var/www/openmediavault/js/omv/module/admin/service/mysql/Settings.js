@@ -58,23 +58,20 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
             properties : [
                 "enabled"
             ]
-        }]
+        },{
+			name: [
+				"resetpwd"
+			],
+			conditions: [
+				{ name: "enable", value: false }
+			],
+			properties: "disabled"
+		}]
     }],
 
     rpcService   : "MySql",
     rpcGetMethod : "getSettings",
     rpcSetMethod : "setSettings",
-
-    initComponent : function() {
-        var me = this;
-
-        me.on('load', function () {
-            var noPasswordWarning = me.down('#no-password-warning');
-            me.nopasswordwarning ? noPasswordWarning.show() : noPasswordWarning.hide();
-        });
-
-        me.callParent(arguments);
-    },
 
     getFormItems : function() {
         var me = this;
@@ -173,7 +170,7 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                 }),
                 plugins    : [{
                     ptype : "fieldinfo",
-                    text  : _("Warning: If Your MySQL data volume is set to use a non-data volume it may result in loss of data in the event of a disk failure. It is recommmended that you change this before using MySQL. Once databases exist, you will be unable to choose the location of MySQL data through this interface.")
+                    text  : _("Warning: If Your MySQL data volume is set to use a non-data volume it may result in loss of data in the event of a disk failure. It is recommmended that you change this before using MySQL.")
                 }]
             },{
                 xtype      : "textfield",
@@ -184,75 +181,37 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
             }]
         },{
             xtype    : "fieldset",
-            title    : _("Change MySQL root password"),
+            title    : _("Reset MySQL root password"),
             defaults : {
                 labelSeparator : ""
             },
             items : [{
+				xtype: "button",
+				name: "resetpwd",
+				text: _("Reset Password"),
+				scope: this,
+				handler: function() {
+					// Execute RPC.
+                    var r = confirm("Are you sure you want to reset the root password?");
+                    
+                    if (r === true) {
+                        OMV.Rpc.request({
+                            scope: this,
+                            callback: function(id, success, response) {
+                                this.doReload();
+                            },
+                            relayErrors: false,
+                            rpcData: {
+                                service: "MySql",
+                                method: "resetPassword"
+                            }
+                        });
+                    }
+				}
+            },{
                 border : false,
-                itemId : "no-password-warning",
-                html   : "<p>Warning: Either the MySQL root password is not set, or it is not known to OpenMediaVault.</p>"
-            },{
-                xtype      : "passwordfield",
-                name       : "password-current",
-                fieldLabel : _("Current password"),
-                allowBlank : true,
-                plugins    : [{
-                    ptype : "fieldinfo",
-                    text  : _("If you have just installed this plugin and had not previously used MySQL, you should leave Current password blank and use the New password fields to set the MySQL root password.<br />"
-                            + "If you have an existing MySQL installation simply tell OpenMediaVault what the current root password is by entering it in the Current password field.")
-                }]
-            },{
-                xtype      : "passwordfield",
-                name       : "password",
-                fieldLabel : _("New password"),
-                allowBlank : true,
-                validator  : function() {
-                    var password        = me.findField("password");
-                    var passwordConfirm = me.findField("password-confirm");
-
-                    return password.value === passwordConfirm.value;
-                }
-            },{
-                xtype       : "passwordfield",
-                name        : "password-confirm",
-                fieldLabel  : _("Confirm new password"),
-                submitValue : false,
-                allowBlank  : true,
-                validator   : function() {
-                    var password        = me.findField("password");
-                    var passwordConfirm = me.findField("password-confirm");
-
-                    return password.value === passwordConfirm.value;
-                }
-            },{
-                xtype          : "button",
-                fieldLabel     : _("Generate password"),
-                text           : _("Generate"),
-                name           : "generate-password",
-                handler        : function() {
-                    var passwordFields = ['password', 'password-confirm'];
-                    var newPassword = me.generatePassword();
-
-                    Ext.each(passwordFields, function(p) {
-                        var field = me.findField(p);
-                        if (field) {
-                            field.setValue(newPassword);
-                            if (field.inputEl.dom.type === "password")
-                                field.onTriggerClick();
-                        }
-                    });
-                }
-            },{
-                xtype      : "checkbox",
-                name       : "force-password-reset",
-                fieldLabel : _("Force password reset"),
-                value      : false,
-                plugins    : [{
-                    ptype : "fieldinfo",
-                    text  : _("This will cause a restart of MySQL and should only be required in rare cases.")
-                }]
-            }]
+                html   : _("<br />Password will reset to:  openmediavault<br /><br />To change the password, use the management site and change root user on host localhost.<br /><br />")
+			}]
         },{
             xtype    : "fieldset",
             title    : _("SQL management site"),
@@ -278,18 +237,6 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                 }
             }]
         }];
-    },
-
-    generatePassword : function() {
-        var pwchars = "abcdefhjmnpqrstuvwxyz23456789ABCDEFGHJKLMNPQRSTUVWYXZ";
-        var passwordlength = 16;
-        var password = '';
-
-        for (i = 0; i < passwordlength; i++) {
-            password += pwchars.charAt(Math.floor( Math.random() * pwchars.length));
-        }
-
-        return password;
     }
 });
 

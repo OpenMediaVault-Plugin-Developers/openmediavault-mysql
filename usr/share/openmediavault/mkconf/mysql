@@ -23,7 +23,6 @@ set -e
 
 
 MYSQL_CONFIG="/etc/mysql/conf.d/openmediavault-mysql.cnf";
-MYSQL_INIT="isc-mysql-server"
 SQL_MANAGEMENT_SITE_CONF_NAME=openmediavault-mysql-management-site
 SQL_MANAGEMENT_SITE_ENABLED_CONF=/etc/apache2/sites-available/${SQL_MANAGEMENT_SITE_CONF_NAME}
 
@@ -59,4 +58,14 @@ else
             a2ensite ${SQL_MANAGEMENT_SITE_CONF_NAME}
         fi
     fi
+fi
+
+# move database
+MYSQL_HOME="$(getent passwd mysql | cut -d: -f6)"
+DB_FOLDER="$(omv_config_get "//services/mysql/data-root")"
+
+if [ "${MYSQL_HOME}" != "${DB_FOLDER}" ]; then
+    /etc/init.d/mysql stop
+    /usr/sbin/usermod -m -d "${DB_FOLDER}" mysql
+    /etc/init.d/mysql start
 fi
