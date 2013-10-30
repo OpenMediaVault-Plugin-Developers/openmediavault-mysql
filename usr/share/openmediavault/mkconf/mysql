@@ -53,12 +53,14 @@ if [ "$(omv_config_get "//services/mysql/enable-management-site")" != "1" ]; the
         a2dissite ${SQL_MANAGEMENT_SITE_CONF_NAME}
     fi
 else
-    if [ ! -e ${SQL_MANAGEMENT_SITE_ENABLED_CONF} ]; then
+    if [ -e ${SQL_MANAGEMENT_SITE_ENABLED_CONF} ]; then
         if [ "$(omv_config_get "//services/mysql/enable")" = "1" ]; then
             a2ensite ${SQL_MANAGEMENT_SITE_CONF_NAME}
         fi
     fi
 fi
+
+/etc/init.d/apache2 reload
 
 # move database
 MYSQL_HOME="$(getent passwd mysql | cut -d: -f6)"
