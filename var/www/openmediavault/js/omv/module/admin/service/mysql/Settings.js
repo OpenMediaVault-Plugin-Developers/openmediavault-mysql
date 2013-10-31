@@ -59,13 +59,16 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                 "enabled"
             ]
         },{
-			name: [
+			name : [
 				"resetpwd"
 			],
-			conditions: [
-				{ name: "enable", value: false }
-			],
-			properties: "disabled"
+			conditions : [{
+                name  : "enable",
+                value : false 
+            }],
+			properties: [
+                "disabled"
+            ]
 		}]
     }],
 
@@ -186,24 +189,24 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                 labelSeparator : ""
             },
             items : [{
-				xtype: "button",
-				name: "resetpwd",
-				text: _("Reset Password"),
-				scope: this,
-				handler: function() {
+				xtype   : "button",
+				name    : "resetpwd",
+				text    : _("Reset Password"),
+				scope   : this,
+				handler : function() {
 					// Execute RPC.
-                    var r = confirm("Are you sure you want to reset the root password?");
+                    var r = confirm( _("Are you sure you want to reset the root password?") );
                     
                     if (r === true) {
                         OMV.Rpc.request({
-                            scope: this,
-                            callback: function(id, success, response) {
+                            scope    : this,
+                            callback : function(id, success, response) {
                                 this.doReload();
                             },
-                            relayErrors: false,
-                            rpcData: {
-                                service: "MySql",
-                                method: "resetPassword"
+                            relayErrors : false,
+                            rpcData : {
+                                service : "MySql",
+                                method  : "resetPassword"
                             }
                         });
                     }
