@@ -7,7 +7,7 @@ set -e
 
 OMV_MYSQL_CONF=/etc/mysql/conf.d/openmediavault-mysql.cnf
 SQL_MANAGEMENT_SITE_CONF_NAME=openmediavault-mysql-management-site
-SQL_MANAGEMENT_SITE_ENABLED_CONF=/etc/apache2/sites-available/${SQL_MANAGEMENT_SITE_CONF_NAME}
+SQL_MANAGEMENT_SITE_ENABLED_CONF=/etc/apache2/sites-enabled/${SQL_MANAGEMENT_SITE_CONF_NAME}
 
 case "$1" in
     purge)
