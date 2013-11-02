@@ -21,6 +21,7 @@
 // require("js/omv/data/Store.js")
 // require("js/omv/data/Model.js")
 // require("js/omv/form/plugin/LinkedFields.js")
+// require("js/omv/window/MessageBox.js")
 
 Ext.define("OMV.module.admin.service.mysql.Settings", {
     extend : "OMV.workspace.form.Panel",
@@ -64,7 +65,7 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
 			],
 			conditions : [{
                 name  : "enable",
-                value : false 
+                value : false
             }],
 			properties: [
                 "disabled"
@@ -194,22 +195,32 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
 				text    : _("Reset Password"),
 				scope   : this,
 				handler : function() {
-					// Execute RPC.
-                    var r = confirm( _("Are you sure you want to reset the root password?") );
-                    
-                    if (r === true) {
-                        OMV.Rpc.request({
-                            scope    : this,
-                            callback : function(id, success, response) {
-                                this.doReload();
-                            },
-                            relayErrors : false,
-                            rpcData : {
-                                service : "MySql",
-                                method  : "resetPassword"
-                            }
-                        });
-                    }
+					OMV.MessageBox.show({
+					    title   : _("Confirmation"),
+					    msg     : _("Are you sure you want to reset the root password?"),
+					    buttons : Ext.Msg.YESNO,
+					    fn      : function(answer) {
+					        if (answer !== "yes")
+					           return;
+
+                            OMV.MessageBox.wait(_("Resetting MySQL root password."));
+
+					        OMV.Rpc.request({
+                                scope       : me,
+                                relayErrors : false,
+                                rpcData     : {
+                                    service : "MySql",
+                                    method  : "resetPassword"
+                                },
+                                success : function(id, success, response) {
+                                    me.doReload();
+                                    OMV.MessageBox.hide();
+                                }
+                            });
+					    },
+					    scope : me,
+					    icon  : Ext.Msg.QUESTION
+				    });
 				}
             },{
                 border : false,
