@@ -203,7 +203,7 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
 					        if (answer !== "yes")
 					           return;
 
-                            OMV.MessageBox.wait(_("Resetting MySQL root password."));
+                            OMV.MessageBox.wait(null, _("Resetting MySQL root password."));
 
 					        OMV.Rpc.request({
                                 scope       : me,
