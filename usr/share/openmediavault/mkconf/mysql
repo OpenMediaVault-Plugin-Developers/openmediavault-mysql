@@ -24,7 +24,7 @@ set -e
 
 MYSQL_CONFIG="/etc/mysql/conf.d/openmediavault-mysql.cnf";
 SQL_MANAGEMENT_SITE_CONF_NAME=openmediavault-mysql-management-site
-SQL_MANAGEMENT_SITE_ENABLED_CONF=/etc/apache2/sites-available/${SQL_MANAGEMENT_SITE_CONF_NAME}
+SQL_MANAGEMENT_SITE_ENABLED_CONF=/etc/apache2/sites-enabled/${SQL_MANAGEMENT_SITE_CONF_NAME}
 
 # Enable/disable service
 if [ "$(omv_config_get "//services/mysql/enable")" != "1" ]; then
@@ -53,7 +53,7 @@ if [ "$(omv_config_get "//services/mysql/enable-management-site")" != "1" ]; the
         a2dissite ${SQL_MANAGEMENT_SITE_CONF_NAME}
     fi
 else
-    if [ -e ${SQL_MANAGEMENT_SITE_ENABLED_CONF} ]; then
+    if [ ! -e ${SQL_MANAGEMENT_SITE_ENABLED_CONF} ]; then
         if [ "$(omv_config_get "//services/mysql/enable")" = "1" ]; then
             a2ensite ${SQL_MANAGEMENT_SITE_CONF_NAME}
         fi
