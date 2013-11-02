@@ -18,12 +18,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-require_once("openmediavault/object.inc");
-require_once("openmediavault/config.inc");
-require_once("openmediavault/error.inc");
-require_once("openmediavault/util.inc");
-require_once("openmediavault/rpcservice.inc");
-require_once("openmediavault/notify.inc");
+require_once "openmediavault/object.inc";
+require_once "openmediavault/config.inc";
+require_once "openmediavault/error.inc";
+require_once "openmediavault/util.inc";
+require_once "openmediavault/rpcservice.inc";
+require_once "openmediavault/notify.inc";
 
 class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
 {
@@ -133,23 +133,23 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
 
     public function resetPassword($params, $context) {
         global $xmlConfig;
-        
+
         // Validate the RPC caller context.
         $this->validateMethodContext($context, array( "role" => OMV_ROLE_ADMINISTRATOR ));
-        
+
         $xpath = "//services/mysql";
         $object = $xmlConfig->get($xpath);
         if(is_null($object)) {
             throw new OMVException(OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED, $xpath);
         }
-        
+
         if(FALSE === boolval($object['enable']))
             return;
 
         $cmd = "sudo /usr/local/bin/mysql-password 2>&1";
         if(0 !== $this->exec($cmd, $output)) {
             throw new OMVException(OMVErrorMsg::E_EXEC_FAILED, $cmd, implode("\n", $output));
-        }       
+        }
     }
 }
 
