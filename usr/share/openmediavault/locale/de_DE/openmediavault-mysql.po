@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-28 09:10-0500\n"
-"PO-Revision-Date: 2013-10-28 18:48+0000\n"
+"POT-Creation-Date: 2013-10-31 06:26-0500\n"
+"PO-Revision-Date: 2013-11-03 16:31+0000\n"
 "Last-Translator: davidh2k <davidh1990@gmx.de>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/openmediavault-mysql/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -18,17 +18,17 @@ msgstr ""
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+msgid "Are you sure you want to reset the root password?"
+msgstr "Bist Du dir sicher dass Du das root Passwort zurücksetzen möchtest?"
+
 msgid "Bind address"
 msgstr "An Adresse binden"
 
-msgid "Change MySQL root password"
-msgstr "Ändern des MySQL root Passwortes"
-
-msgid "Confirm new password"
-msgstr "Neues Passwort bestätigen"
-
-msgid "Current password"
-msgstr "Aktuelles Passwort"
+msgid ""
+"<br />Password will reset to:  openmediavault<br /><br />To change the "
+"password, use the management site and change root user on host localhost.<br"
+" /><br />"
+msgstr "<br />Passwort wird zurückgesetzt auf: openmediavault<br /><br /> Um dieses Passwort zu ändern, verwende die Management Seite und ändere den root benutzer auf dem Host localhost.<br /><br />"
 
 msgid "Data"
 msgstr "Daten"
@@ -48,19 +48,10 @@ msgstr "Extra Optionen"
 msgid "Extra options for [mysqld] section of MySQL configuration."
 msgstr "Extra Optionen für die [mysqld] Sektion der MySQL Konfiguration."
 
-msgid "Force password reset"
-msgstr "Passwort zurücksetzen erzwingen."
-
 msgid ""
 "For more advanced usage try <a "
 "href='http://www.mysql.com/products/workbench/'>MySQL Workbench</a>"
 msgstr "Für erweitete Nutzung, siehe <a href='http://www.mysql.com/products/workbench/'>MySQL Workbench</a>"
-
-msgid "Generate"
-msgstr "Generieren"
-
-msgid "Generate password"
-msgstr "Passwort generieren"
 
 msgid "IP address to listen on. Use 0.0.0.0 for all host IPs."
 msgstr "IP Adresse auf welcher gelauscht werden soll. Benutze 0.0.0.0 für alle Host IPs."
@@ -71,14 +62,17 @@ msgstr "Öffne die Managment Seite"
 msgid "MySQL"
 msgstr "MySQL"
 
-msgid "New password"
-msgstr "Neues Passwort"
-
 msgid "Port"
 msgstr "Port"
 
 msgid "Port to listen on."
 msgstr "Port auf welchem gelauscht werden soll."
+
+msgid "Reset MySQL root password"
+msgstr "MySQL root Passwort zurücksetzen"
+
+msgid "Reset Password"
+msgstr "Passwort zurücksetzen"
 
 msgid "Select a volume ..."
 msgstr "Datenträger auswählen..."
@@ -96,13 +90,7 @@ msgid "SQL management site"
 msgstr "SQL Management Seite"
 
 msgid ""
-"This will cause a restart of MySQL and should only be required in rare "
-"cases."
-msgstr "Dieses verursacht einen neustart von MySQL und sollte nur in seltenen Fällen erforderlich sein."
-
-msgid ""
 "Warning: If Your MySQL data volume is set to use a non-data volume it may "
 "result in loss of data in the event of a disk failure. It is recommmended "
-"that you change this before using MySQL. Once databases exist, you will be "
-"unable to choose the location of MySQL data through this interface."
+"that you change this before using MySQL."
 msgstr "Warnung: Wenn dein MySQL Datenspeicher sich auf dem Systemlaufwerk befindet, würde dies in einem Datenverlust im Falle eines Festplattenausfalls resultieren. Es wird empfohlen dass du dies änderst bevor du MySQL nutzt. Sobald die erste Datenbank existiert, ist es nicht mehr möglich den Speicherort der MySQL Daten über dieses Interface zu ändern."
