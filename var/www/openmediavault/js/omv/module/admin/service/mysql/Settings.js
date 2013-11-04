@@ -60,18 +60,40 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                 "enabled"
             ]
         },{
-			name : [
-				"resetpwd"
-			],
-			conditions : [{
+            name : [
+                "resetpwd"
+            ],
+            conditions : [{
                 name  : "enable",
                 value : false
             }],
-			properties: [
+            properties: [
                 "disabled"
             ]
-		}]
+        }]
     }],
+
+    initComponent : function () {
+        var me = this;
+
+        me.on('load', function () {
+            var checked = me.findField('enable').checked;
+            var showtab = me.findField('showtab').checked;
+            var parent = me.up('tabpanel');
+
+            if (!parent)
+                return;
+
+            var managementPanel = parent.down('panel[title=' + _("Management") + ']');
+
+            if (managementPanel) {
+                checked ? managementPanel.enable() : managementPanel.disable();
+                showtab ? managementPanel.tab.show() : managementPanel.tab.hide();
+            }
+        });
+
+        me.callParent(arguments);
+    },
 
     rpcService   : "MySql",
     rpcGetMethod : "getSettings",
@@ -190,22 +212,22 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                 labelSeparator : ""
             },
             items : [{
-				xtype   : "button",
-				name    : "resetpwd",
-				text    : _("Reset Password"),
-				scope   : this,
-				handler : function() {
-					OMV.MessageBox.show({
-					    title   : _("Confirmation"),
-					    msg     : _("Are you sure you want to reset the root password?"),
-					    buttons : Ext.Msg.YESNO,
-					    fn      : function(answer) {
-					        if (answer !== "yes")
-					           return;
+                xtype   : "button",
+                name    : "resetpwd",
+                text    : _("Reset Password"),
+                scope   : this,
+                handler : function() {
+                    OMV.MessageBox.show({
+                        title   : _("Confirmation"),
+                        msg     : _("Are you sure you want to reset the root password?"),
+                        buttons : Ext.Msg.YESNO,
+                        fn      : function(answer) {
+                            if (answer !== "yes")
+                               return;
 
                             OMV.MessageBox.wait(null, _("Resetting MySQL root password."));
 
-					        OMV.Rpc.request({
+                            OMV.Rpc.request({
                                 scope       : me,
                                 relayErrors : false,
                                 rpcData     : {
@@ -217,15 +239,15 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                                     OMV.MessageBox.hide();
                                 }
                             });
-					    },
-					    scope : me,
-					    icon  : Ext.Msg.QUESTION
-				    });
-				}
+                        },
+                        scope : me,
+                        icon  : Ext.Msg.QUESTION
+                    });
+                }
             },{
                 border : false,
                 html   : _("<br />Password will reset to:  openmediavault<br /><br />To change the password, use the management site and change root user on host localhost.<br /><br />")
-			}]
+            }]
         },{
             xtype    : "fieldset",
             title    : _("SQL management site"),
@@ -240,6 +262,15 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                 plugins    : [{
                     ptype : "fieldinfo",
                     text  : _("For more advanced usage try <a href='http://www.mysql.com/products/workbench/'>MySQL Workbench</a>")
+                }]
+            },{
+                xtype: "checkbox",
+                name: "showtab",
+                fieldLabel: _("Enable"),
+                checked: false,
+                plugins    : [{
+                    ptype : "fieldinfo",
+                    text  : _("Show tab containing Management frame")
                 }]
             },{
                 xtype      : "button",

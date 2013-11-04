@@ -70,6 +70,7 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
         $object['port']                   = intval($object['port']);
         $object['enable-networking']      = boolval($object['enable-networking']);
         $object['enable-management-site'] = boolval($object['enable-management-site']);
+        $object['showtab']                = boolval($object['showtab']);
 
         return $object;
     }
@@ -97,7 +98,8 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
                 "extraoptions"           : { "type" : "string" },
                 "mntentref"              : { "type" : "string" },
                 "data-root"              : { "type" : "string" },
-                "enable-management-site" : { "type" : "boolean" }
+                "enable-management-site" : { "type" : "boolean" },
+                "showtab"                : { "type" : "boolean" }
             }
         }');
 
@@ -120,6 +122,7 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
             "bindaddress"       => $params['bindaddress'],
             "mntentref"         => $params['mntentref'],
             "data-root"         => $params['data-root'],
+            "showtab"           => array_boolval($params, 'showtab'),
         );
 
         // Set configuration object
@@ -156,3 +159,5 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
 // Register the RPC service.
 $rpcServiceMgr = &OMVRpcServiceMgr::getInstance();
 $rpcServiceMgr->registerService(new OMVRpcServiceMySQL());
+
+?>
