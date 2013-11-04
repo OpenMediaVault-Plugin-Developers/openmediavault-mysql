@@ -7,5 +7,5 @@ Standards-Version: 3.9.3
 
 Package: openmediavault-mysql
 Architecture: all
-Depends: openmediavault (>= 0.5.14), mysql-server, php5-mysql, dbconfig-common ${misc:Depends}
+Depends: openmediavault (>= 0.5.14), mysql-server, dbconfig-common ${misc:Depends}
 Description: MySQL plugin for OpenMediaVault.

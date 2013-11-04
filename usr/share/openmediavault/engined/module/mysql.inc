@@ -30,6 +30,11 @@ class OMVModuleMySQL extends OMVModuleServiceAbstract implements OMVINotifyListe
     {
         return '//services/mysql';
     }
+    
+    private function getInitScriptName()
+    {
+        return 'mysql';
+    }
 
 	/**
 	 * Get the module name.
@@ -51,11 +56,11 @@ class OMVModuleMySQL extends OMVModuleServiceAbstract implements OMVINotifyListe
         if (is_null($object))
             throw new OMVException(OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED, $this->getXPath());
 
-        $initd = new OMVSysVInitScript("mysql");
+        $initd = new OMVSysVInitScript($this->getInitScriptName());
 
         return array(
-            "name" => $this->getName(),
-            "title" => gettext("MySQL"),
+            "name"    => $this->getName(),
+            "title"   => gettext("MySQL"),
             "enabled" => boolval($object['enable']),
             "running" => ($initd->status() == 0)
         );
@@ -93,7 +98,7 @@ class OMVModuleMySQL extends OMVModuleServiceAbstract implements OMVINotifyListe
             throw new OMVException(OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED, $this->getXPath());
 
         if (boolval($object['enable']) === true) {
-            $initd = new OMVSysVInitScript("mysql", true);
+            $initd = new OMVSysVInitScript($this->getInitScriptName(), true);
             $initd->exec();
         }
     }
@@ -111,7 +116,7 @@ class OMVModuleMySQL extends OMVModuleServiceAbstract implements OMVINotifyListe
             throw new OMVException(OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED, $this->getXPath());
 
         if (boolval($object['enable']) === false) {
-            $initd = new OMVSysVInitScript("mysql", false);
+            $initd = new OMVSysVInitScript($this->getInitScriptName(), false);
             $initd->exec();
         }
     }
