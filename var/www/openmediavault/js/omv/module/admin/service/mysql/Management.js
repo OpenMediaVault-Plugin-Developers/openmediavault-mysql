@@ -32,7 +32,7 @@ Ext.define("OMV.module.admin.service.mysql.Management", {
 OMV.WorkspaceManager.registerPanel({
     id        : "management",
     path      : "/service/mysql",
-    text      : _("Web Client"),
+    text      : _("Management"),
     position  : 20,
     className : "OMV.module.admin.service.mysql.Management"
 });
