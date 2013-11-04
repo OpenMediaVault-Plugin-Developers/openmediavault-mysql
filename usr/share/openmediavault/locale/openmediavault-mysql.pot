@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-31 06:26-0500\n"
+"POT-Creation-Date: 2013-11-04 08:25-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,6 +25,9 @@ msgstr "Bind address"
 
 msgid "<br />Password will reset to:  openmediavault<br /><br />To change the password, use the management site and change root user on host localhost.<br /><br />"
 msgstr "<br />Password will reset to:  openmediavault<br /><br />To change the password, use the management site and change root user on host localhost.<br /><br />"
+
+msgid "Confirmation"
+msgstr "Confirmation"
 
 msgid "Data"
 msgstr "Data"
@@ -53,6 +56,9 @@ msgstr "IP address to listen on. Use 0.0.0.0 for all host IPs."
 msgid "Launch management site"
 msgstr "Launch management site"
 
+msgid "Management"
+msgstr "Management"
+
 msgid "MySQL"
 msgstr "MySQL"
 
@@ -68,11 +74,17 @@ msgstr "Reset MySQL root password"
 msgid "Reset Password"
 msgstr "Reset Password"
 
+msgid "Resetting MySQL root password."
+msgstr "Resetting MySQL root password."
+
 msgid "Select a volume ..."
 msgstr "Select a volume ..."
 
 msgid "Settings"
 msgstr "Settings"
+
+msgid "Show tab containing Management frame"
+msgstr "Show tab containing Management frame"
 
 msgid "SQL data root"
 msgstr "SQL data root"
