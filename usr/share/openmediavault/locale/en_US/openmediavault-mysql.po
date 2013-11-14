@@ -3,7 +3,6 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Cyryl Sochacki <cyrylsochacki@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
@@ -11,222 +10,222 @@ msgstr ""
 "POT-Creation-Date: 2013-11-14 11:17-0600\n"
 "PO-Revision-Date: 2013-11-14 17:19+0000\n"
 "Last-Translator: ryecoaaron <aaron27@ryecoinc.com>\n"
-"Language-Team: Polish (Poland) (http://www.transifex.com/projects/p/openmediavault-mysql/language/pl_PL/)\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl_PL\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: en_US\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "Are you sure you want to"
-msgstr ""
+msgstr "Are you sure you want to"
 
 msgid ""
 "Are you sure you want to drop the '%s' table? This will delete the table and"
 " all data inside of it. The following query will be run:"
-msgstr ""
+msgstr "Are you sure you want to drop the '%s' table? This will delete the table and all data inside of it. The following query will be run:"
 
 msgid ""
 "Are you sure you want to drop the database '%s'? This will delete the "
 "database, the tables inside the database, and all data inside of the tables."
 " The following query will be run:"
-msgstr ""
+msgstr "Are you sure you want to drop the database '%s'? This will delete the database, the tables inside the database, and all data inside of the tables. The following query will be run:"
 
 msgid ""
 "Are you sure you want to empty the '%s' table? This will delete all the data"
 " inside of it. The following query will be run:"
-msgstr ""
+msgstr "Are you sure you want to empty the '%s' table? This will delete all the data inside of it. The following query will be run:"
 
 msgid "Are you sure you want to reset the root password?"
-msgstr "Czy napewno chcesz zresetować hasło root-a?"
+msgstr "Are you sure you want to reset the root password?"
 
 msgid "Bind address"
-msgstr "Adres powiązany"
+msgstr "Bind address"
 
 msgid "Browse"
-msgstr ""
+msgstr "Browse"
 
 msgid "Cancel"
-msgstr ""
+msgstr "Cancel"
 
 msgid "Confirm"
-msgstr ""
+msgstr "Confirm"
 
 msgid "Confirmation"
-msgstr ""
+msgstr "Confirmation"
 
 msgid "Data"
 msgstr "Data"
 
 msgid "Enable"
-msgstr "Włączone"
+msgstr "Enable"
 
 msgid "Enable SQL management site"
-msgstr "Włącz zstronę zarządzania SQL"
+msgstr "Enable SQL management site"
 
 msgid "Enable networking"
-msgstr "Włącz sieci"
+msgstr "Enable networking"
 
 msgid "Error"
-msgstr ""
+msgstr "Error"
 
 msgid "Export"
-msgstr ""
+msgstr "Export"
 
 msgid "Extra options"
-msgstr "Dodatkowe opcje"
+msgstr "Extra options"
 
 msgid "Extra options for [mysqld] section of MySQL configuration."
-msgstr "Dodatkowe opcje  [mysqld] dla sekcji Konfiguracja MySQL."
+msgstr "Extra options for [mysqld] section of MySQL configuration."
 
 msgid "For more advanced usage try"
-msgstr ""
+msgstr "For more advanced usage try"
 
 msgid "Full Text"
-msgstr ""
+msgstr "Full Text"
 
 msgid "Home"
-msgstr ""
+msgstr "Home"
 
 msgid "IP address to listen on. Use 0.0.0.0 for all host IPs."
-msgstr "Adres IP nasłuchiwania. Dla wszystkich hostów IP, należy użyć 0.0.0.0."
+msgstr "IP address to listen on. Use 0.0.0.0 for all host IPs."
 
 msgid "Import"
-msgstr ""
+msgstr "Import"
 
 msgid "Insert"
-msgstr ""
+msgstr "Insert"
 
 msgid "Launch management site"
-msgstr "Uruchom stronę zarządzania"
+msgstr "Launch management site"
 
 msgid "Loading..."
-msgstr ""
+msgstr "Loading..."
 
 msgid "Management"
-msgstr ""
+msgstr "Management"
 
 msgid "MySQL"
 msgstr "MySQL"
 
 msgid "MySQL Workbench"
-msgstr ""
+msgstr "MySQL Workbench"
 
 msgid "New field"
-msgstr ""
+msgstr "New field"
 
 msgid "Okay"
-msgstr ""
+msgstr "Okay"
 
 msgid "Overview"
-msgstr ""
+msgstr "Overview"
 
 msgid "Password will reset to:"
-msgstr ""
+msgstr "Password will reset to:"
 
 msgid "Port"
 msgstr "Port"
 
 msgid "Port to listen on."
-msgstr "Port nasłuchu."
+msgstr "Port to listen on."
 
 msgid "Query"
-msgstr ""
+msgstr "Query"
 
 msgid "Redirecting..."
-msgstr ""
+msgstr "Redirecting..."
 
 msgid "Reset MySQL root password"
-msgstr "Reset hasła root-a MySQL"
+msgstr "Reset MySQL root password"
 
 msgid "Reset Password"
-msgstr "Resetuj hasło"
+msgstr "Reset Password"
 
 msgid "Resetting MySQL root password."
-msgstr ""
+msgstr "Resetting MySQL root password."
 
 msgid "SQL data root"
-msgstr "Główny katalog danych SQL"
+msgstr "SQL data root"
 
 msgid "SQL data volume"
-msgstr "Katalog SQL"
+msgstr "SQL data volume"
 
 msgid "SQL management site"
-msgstr "Strona zarządzania SQL"
+msgstr "SQL management site"
 
 msgid "Select a volume ..."
-msgstr "Wybierz dysk ..."
+msgstr "Select a volume ..."
 
 msgid "Settings"
-msgstr "Ustawienia"
+msgstr "Settings"
 
 msgid "Show tab containing Management frame"
-msgstr ""
+msgstr "Show tab containing Management frame"
 
 msgid "Structure"
-msgstr ""
+msgstr "Structure"
 
 msgid "Successfully saved changes."
-msgstr ""
+msgstr "Successfully saved changes."
 
 msgid "The following queries will be run:"
-msgstr ""
+msgstr "The following queries will be run:"
 
 msgid "The following query will be run:"
-msgstr ""
+msgstr "The following query will be run:"
 
 msgid "There was an error receiving data from the server."
-msgstr ""
+msgstr "There was an error receiving data from the server."
 
 msgid ""
 "To change the password, use the management site and change root user on host"
 " localhost."
-msgstr ""
+msgstr "To change the password, use the management site and change root user on host localhost."
 
 msgid "Users"
-msgstr ""
+msgstr "Users"
 
 msgid ""
 "Warning: If Your MySQL data volume is set to use a non-data volume it may "
 "result in loss of data in the event of a disk failure. It is recommmended "
 "that you change this before using MySQL."
-msgstr "Ostrzeżenie: Jeśli dane MySQL są ustawione do używania woluminu bez danych. Może to spowodować utratę danych w przypadku awarii dysku. Jest to polecane aby zmienić to przed użyciem MySQL. Gdy istnieją bazy danych, można wybrać lokalizację danych MySQL przez ten interfejs."
+msgstr "Warning: If Your MySQL data volume is set to use a non-data volume it may result in loss of data in the event of a disk failure. It is recommmended that you change this before using MySQL."
 
 msgid "Your changes were saved to the database."
-msgstr ""
+msgstr "Your changes were saved to the database."
 
 msgid "delete these columns"
-msgstr ""
+msgstr "delete these columns"
 
 msgid "delete these indexes"
-msgstr ""
+msgstr "delete these indexes"
 
 msgid "delete these rows"
-msgstr ""
+msgstr "delete these rows"
 
 msgid "delete these users"
-msgstr ""
+msgstr "delete these users"
 
 msgid "delete this column"
-msgstr ""
+msgstr "delete this column"
 
 msgid "delete this index"
-msgstr ""
+msgstr "delete this index"
 
 msgid "delete this row"
-msgstr ""
+msgstr "delete this row"
 
 msgid "delete this user"
-msgstr ""
+msgstr "delete this user"
 
 msgid "drop these tables"
-msgstr ""
+msgstr "drop these tables"
 
 msgid "drop this table"
-msgstr ""
+msgstr "drop this table"
 
 msgid "empty these tables"
-msgstr ""
+msgstr "empty these tables"
 
 msgid "empty this table"
-msgstr ""
+msgstr "empty this table"

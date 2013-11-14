@@ -246,7 +246,9 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                 }
             },{
                 border : false,
-                html   : _("<br />Password will reset to:  openmediavault<br /><br />To change the password, use the management site and change root user on host localhost.<br /><br />")
+                html   : "<br />" + 
+                         _("Password will reset to:") + "  openmediavault" + "<br /><br />" +
+                         _("To change the password, use the management site and change root user on host localhost.") + "<br /><br />"
             }]
         },{
             xtype    : "fieldset",
@@ -261,7 +263,7 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                 checked    : false,
                 plugins    : [{
                     ptype : "fieldinfo",
-                    text  : _("For more advanced usage try <a href='http://www.mysql.com/products/workbench/'>MySQL Workbench</a>")
+                    text  : _("For more advanced usage try") + "<a href='http://www.mysql.com/products/workbench/'>" + _("MySQL Workbench") + "</a>"
                 }]
             },{
                 xtype: "checkbox",

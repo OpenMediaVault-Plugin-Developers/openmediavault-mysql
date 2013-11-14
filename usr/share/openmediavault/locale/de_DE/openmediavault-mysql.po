@@ -1,5 +1,5 @@
-# openmediavault-mysql
-# Copyright (C) 2013
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-31 06:26-0500\n"
-"PO-Revision-Date: 2013-11-03 16:31+0000\n"
-"Last-Translator: davidh2k <davidh1990@gmx.de>\n"
+"POT-Creation-Date: 2013-11-14 11:17-0600\n"
+"PO-Revision-Date: 2013-11-14 17:19+0000\n"
+"Last-Translator: ryecoaaron <aaron27@ryecoinc.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/openmediavault-mysql/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,17 +18,42 @@ msgstr ""
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+msgid "Are you sure you want to"
+msgstr ""
+
+msgid ""
+"Are you sure you want to drop the '%s' table? This will delete the table and"
+" all data inside of it. The following query will be run:"
+msgstr ""
+
+msgid ""
+"Are you sure you want to drop the database '%s'? This will delete the "
+"database, the tables inside the database, and all data inside of the tables."
+" The following query will be run:"
+msgstr ""
+
+msgid ""
+"Are you sure you want to empty the '%s' table? This will delete all the data"
+" inside of it. The following query will be run:"
+msgstr ""
+
 msgid "Are you sure you want to reset the root password?"
 msgstr "Bist Du dir sicher dass Du das root Passwort zurücksetzen möchtest?"
 
 msgid "Bind address"
 msgstr "An Adresse binden"
 
-msgid ""
-"<br />Password will reset to:  openmediavault<br /><br />To change the "
-"password, use the management site and change root user on host localhost.<br"
-" /><br />"
-msgstr "<br />Passwort wird zurückgesetzt auf: openmediavault<br /><br /> Um dieses Passwort zu ändern, verwende die Management Seite und ändere den root benutzer auf dem Host localhost.<br /><br />"
+msgid "Browse"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Confirm"
+msgstr ""
+
+msgid "Confirmation"
+msgstr ""
 
 msgid "Data"
 msgstr "Daten"
@@ -36,11 +61,17 @@ msgstr "Daten"
 msgid "Enable"
 msgstr "Aktivieren"
 
+msgid "Enable SQL management site"
+msgstr "SQL Management Seite aktivieren"
+
 msgid "Enable networking"
 msgstr "Netzwerk aktivieren"
 
-msgid "Enable SQL management site"
-msgstr "SQL Management Seite aktivieren"
+msgid "Error"
+msgstr ""
+
+msgid "Export"
+msgstr ""
 
 msgid "Extra options"
 msgstr "Extra Optionen"
@@ -48,19 +79,50 @@ msgstr "Extra Optionen"
 msgid "Extra options for [mysqld] section of MySQL configuration."
 msgstr "Extra Optionen für die [mysqld] Sektion der MySQL Konfiguration."
 
-msgid ""
-"For more advanced usage try <a "
-"href='http://www.mysql.com/products/workbench/'>MySQL Workbench</a>"
-msgstr "Für erweitete Nutzung, siehe <a href='http://www.mysql.com/products/workbench/'>MySQL Workbench</a>"
+msgid "For more advanced usage try"
+msgstr ""
+
+msgid "Full Text"
+msgstr ""
+
+msgid "Home"
+msgstr ""
 
 msgid "IP address to listen on. Use 0.0.0.0 for all host IPs."
 msgstr "IP Adresse auf welcher gelauscht werden soll. Benutze 0.0.0.0 für alle Host IPs."
 
+msgid "Import"
+msgstr ""
+
+msgid "Insert"
+msgstr ""
+
 msgid "Launch management site"
 msgstr "Öffne die Managment Seite"
 
+msgid "Loading..."
+msgstr ""
+
+msgid "Management"
+msgstr ""
+
 msgid "MySQL"
 msgstr "MySQL"
+
+msgid "MySQL Workbench"
+msgstr ""
+
+msgid "New field"
+msgstr ""
+
+msgid "Okay"
+msgstr ""
+
+msgid "Overview"
+msgstr ""
+
+msgid "Password will reset to:"
+msgstr ""
 
 msgid "Port"
 msgstr "Port"
@@ -68,17 +130,20 @@ msgstr "Port"
 msgid "Port to listen on."
 msgstr "Port auf welchem gelauscht werden soll."
 
+msgid "Query"
+msgstr ""
+
+msgid "Redirecting..."
+msgstr ""
+
 msgid "Reset MySQL root password"
 msgstr "MySQL root Passwort zurücksetzen"
 
 msgid "Reset Password"
 msgstr "Passwort zurücksetzen"
 
-msgid "Select a volume ..."
-msgstr "Datenträger auswählen..."
-
-msgid "Settings"
-msgstr "Einstellungen"
+msgid "Resetting MySQL root password."
+msgstr ""
 
 msgid "SQL data root"
 msgstr "SQL Daten Wurzelverzeichnis"
@@ -89,8 +154,79 @@ msgstr "SQL Daten Festplatte"
 msgid "SQL management site"
 msgstr "SQL Management Seite"
 
+msgid "Select a volume ..."
+msgstr "Datenträger auswählen..."
+
+msgid "Settings"
+msgstr "Einstellungen"
+
+msgid "Show tab containing Management frame"
+msgstr ""
+
+msgid "Structure"
+msgstr ""
+
+msgid "Successfully saved changes."
+msgstr ""
+
+msgid "The following queries will be run:"
+msgstr ""
+
+msgid "The following query will be run:"
+msgstr ""
+
+msgid "There was an error receiving data from the server."
+msgstr ""
+
+msgid ""
+"To change the password, use the management site and change root user on host"
+" localhost."
+msgstr ""
+
+msgid "Users"
+msgstr ""
+
 msgid ""
 "Warning: If Your MySQL data volume is set to use a non-data volume it may "
 "result in loss of data in the event of a disk failure. It is recommmended "
 "that you change this before using MySQL."
 msgstr "Warnung: Wenn dein MySQL Datenspeicher sich auf dem Systemlaufwerk befindet, würde dies in einem Datenverlust im Falle eines Festplattenausfalls resultieren. Es wird empfohlen dass du dies änderst bevor du MySQL nutzt. Sobald die erste Datenbank existiert, ist es nicht mehr möglich den Speicherort der MySQL Daten über dieses Interface zu ändern."
+
+msgid "Your changes were saved to the database."
+msgstr ""
+
+msgid "delete these columns"
+msgstr ""
+
+msgid "delete these indexes"
+msgstr ""
+
+msgid "delete these rows"
+msgstr ""
+
+msgid "delete these users"
+msgstr ""
+
+msgid "delete this column"
+msgstr ""
+
+msgid "delete this index"
+msgstr ""
+
+msgid "delete this row"
+msgstr ""
+
+msgid "delete this user"
+msgstr ""
+
+msgid "drop these tables"
+msgstr ""
+
+msgid "drop this table"
+msgstr ""
+
+msgid "empty these tables"
+msgstr ""
+
+msgid "empty this table"
+msgstr ""
