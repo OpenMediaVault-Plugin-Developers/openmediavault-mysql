@@ -1,3 +1,9 @@
+openmediavault-mysql (0.5.9) stable; urgency=low
+
+  * Add more locales
+
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Thu, 14 Nov 2013 11:23:27 -0500
+
 openmediavault-mysql (0.5.8) stable; urgency=low
 
   * Add french locale

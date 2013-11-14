@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Cyryl Sochacki <cyrylsochacki@gmail.com>, 2013
+# zubr139 <zubr139@ukr.net>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
@@ -11,12 +11,12 @@ msgstr ""
 "POT-Creation-Date: 2013-11-14 11:17-0600\n"
 "PO-Revision-Date: 2013-11-14 17:19+0000\n"
 "Last-Translator: ryecoaaron <aaron27@ryecoinc.com>\n"
-"Language-Team: Polish (Poland) (http://www.transifex.com/projects/p/openmediavault-mysql/language/pl_PL/)\n"
+"Language-Team: Ukrainian (http://www.transifex.com/projects/p/openmediavault-mysql/language/uk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl_PL\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: uk\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 msgid "Are you sure you want to"
 msgstr ""
@@ -38,10 +38,10 @@ msgid ""
 msgstr ""
 
 msgid "Are you sure you want to reset the root password?"
-msgstr "Czy napewno chcesz zresetować hasło root-a?"
+msgstr "Ви впевнені, що хочете скинути пароль адміністратора?"
 
 msgid "Bind address"
-msgstr "Adres powiązany"
+msgstr "Прив'язування адрес"
 
 msgid "Browse"
 msgstr ""
@@ -56,16 +56,16 @@ msgid "Confirmation"
 msgstr ""
 
 msgid "Data"
-msgstr "Data"
+msgstr "Дані"
 
 msgid "Enable"
-msgstr "Włączone"
+msgstr "Увімкнути"
 
 msgid "Enable SQL management site"
-msgstr "Włącz zstronę zarządzania SQL"
+msgstr "Увімкнути SQL керування сайтом"
 
 msgid "Enable networking"
-msgstr "Włącz sieci"
+msgstr "Увімкнути мережу"
 
 msgid "Error"
 msgstr ""
@@ -74,10 +74,10 @@ msgid "Export"
 msgstr ""
 
 msgid "Extra options"
-msgstr "Dodatkowe opcje"
+msgstr "Додаткові опції"
 
 msgid "Extra options for [mysqld] section of MySQL configuration."
-msgstr "Dodatkowe opcje  [mysqld] dla sekcji Konfiguracja MySQL."
+msgstr "Додаткові опції для [mysqld] файлу конфігурації MySQL."
 
 msgid "For more advanced usage try"
 msgstr ""
@@ -89,7 +89,7 @@ msgid "Home"
 msgstr ""
 
 msgid "IP address to listen on. Use 0.0.0.0 for all host IPs."
-msgstr "Adres IP nasłuchiwania. Dla wszystkich hostów IP, należy użyć 0.0.0.0."
+msgstr "IP адреса для прослуховування. Використовуйте 0.0.0.0 для всіх хостів IPs."
 
 msgid "Import"
 msgstr ""
@@ -98,7 +98,7 @@ msgid "Insert"
 msgstr ""
 
 msgid "Launch management site"
-msgstr "Uruchom stronę zarządzania"
+msgstr "Запустити керування сайтом"
 
 msgid "Loading..."
 msgstr ""
@@ -125,10 +125,10 @@ msgid "Password will reset to:"
 msgstr ""
 
 msgid "Port"
-msgstr "Port"
+msgstr "Порт"
 
 msgid "Port to listen on."
-msgstr "Port nasłuchu."
+msgstr "Порт для прослуховування."
 
 msgid "Query"
 msgstr ""
@@ -137,28 +137,28 @@ msgid "Redirecting..."
 msgstr ""
 
 msgid "Reset MySQL root password"
-msgstr "Reset hasła root-a MySQL"
+msgstr "Скинути пароль суперкористувача MySQL"
 
 msgid "Reset Password"
-msgstr "Resetuj hasło"
+msgstr "Скинути пароль"
 
 msgid "Resetting MySQL root password."
 msgstr ""
 
 msgid "SQL data root"
-msgstr "Główny katalog danych SQL"
+msgstr "SQL дані root"
 
 msgid "SQL data volume"
-msgstr "Katalog SQL"
+msgstr "Обсяг даних SQL"
 
 msgid "SQL management site"
-msgstr "Strona zarządzania SQL"
+msgstr "SQL керування сайтом"
 
 msgid "Select a volume ..."
-msgstr "Wybierz dysk ..."
+msgstr "Вибрати том ..."
 
 msgid "Settings"
-msgstr "Ustawienia"
+msgstr "Налаштування"
 
 msgid "Show tab containing Management frame"
 msgstr ""
@@ -190,7 +190,7 @@ msgid ""
 "Warning: If Your MySQL data volume is set to use a non-data volume it may "
 "result in loss of data in the event of a disk failure. It is recommmended "
 "that you change this before using MySQL."
-msgstr "Ostrzeżenie: Jeśli dane MySQL są ustawione do używania woluminu bez danych. Może to spowodować utratę danych w przypadku awarii dysku. Jest to polecane aby zmienić to przed użyciem MySQL. Gdy istnieją bazy danych, można wybrać lokalizację danych MySQL przez ten interfejs."
+msgstr "Увага: Якщо Ваш MySQL том даних налаштовано на використання як не-том даних це може призвести до втрати даних у разі збою диска. Рекомендується змінити це перед використанням MySQL."
 
 msgid "Your changes were saved to the database."
 msgstr ""
