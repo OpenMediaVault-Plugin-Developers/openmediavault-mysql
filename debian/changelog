@@ -1,3 +1,10 @@
+openmediavault-mysql (0.5.10) stable; urgency=low
+
+  * Update locales
+  * Add php5-mysql dependency back since sqlbuddy uses it
+
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Mon, 18 Nov 2013 06:03:27 -0500
+
 openmediavault-mysql (0.5.9) stable; urgency=low
 
   * Add more locales
