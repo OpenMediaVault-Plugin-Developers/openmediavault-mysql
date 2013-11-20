@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-14 11:17-0600\n"
-"PO-Revision-Date: 2013-11-14 17:19+0000\n"
+"POT-Creation-Date: 2013-11-20 10:38-0600\n"
+"PO-Revision-Date: 2013-11-20 16:39+0000\n"
 "Last-Translator: ryecoaaron <aaron27@ryecoinc.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -60,9 +60,6 @@ msgstr "Data"
 msgid "Enable"
 msgstr "Enable"
 
-msgid "Enable SQL management site"
-msgstr "Enable SQL management site"
-
 msgid "Enable networking"
 msgstr "Enable networking"
 
@@ -78,8 +75,8 @@ msgstr "Extra options"
 msgid "Extra options for [mysqld] section of MySQL configuration."
 msgstr "Extra options for [mysqld] section of MySQL configuration."
 
-msgid "For more advanced usage try"
-msgstr "For more advanced usage try"
+msgid "For more advanced usage try: "
+msgstr "For more advanced usage try: "
 
 msgid "Full Text"
 msgstr "Full Text"
@@ -153,14 +150,17 @@ msgstr "SQL data volume"
 msgid "SQL management site"
 msgstr "SQL management site"
 
+msgid "SQL management site."
+msgstr "SQL management site."
+
 msgid "Select a volume ..."
 msgstr "Select a volume ..."
 
 msgid "Settings"
 msgstr "Settings"
 
-msgid "Show tab containing Management frame"
-msgstr "Show tab containing Management frame"
+msgid "Show tab containing Management frame."
+msgstr "Show tab containing Management frame."
 
 msgid "Structure"
 msgstr "Structure"

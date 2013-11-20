@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-14 11:17-0600\n"
-"PO-Revision-Date: 2013-11-14 17:19+0000\n"
+"POT-Creation-Date: 2013-11-20 10:38-0600\n"
+"PO-Revision-Date: 2013-11-20 16:39+0000\n"
 "Last-Translator: ryecoaaron <aaron27@ryecoinc.com>\n"
 "Language-Team: Danish (http://www.transifex.com/projects/p/openmediavault-mysql/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -61,9 +61,6 @@ msgstr "Data"
 msgid "Enable"
 msgstr "Aktiver"
 
-msgid "Enable SQL management site"
-msgstr "Aktiver SQL håndterings side"
-
 msgid "Enable networking"
 msgstr "Aktiver netværk"
 
@@ -79,7 +76,7 @@ msgstr "Ekstra valgmuligheder"
 msgid "Extra options for [mysqld] section of MySQL configuration."
 msgstr "Ekstra valgmuligheder for [mysqld] sektionen af MySQL konfiguration."
 
-msgid "For more advanced usage try"
+msgid "For more advanced usage try: "
 msgstr ""
 
 msgid "Full Text"
@@ -154,13 +151,16 @@ msgstr "SQL data drev"
 msgid "SQL management site"
 msgstr "SQL håndterings side"
 
+msgid "SQL management site."
+msgstr ""
+
 msgid "Select a volume ..."
 msgstr "Vælg et drev ..."
 
 msgid "Settings"
 msgstr "Indstillinger"
 
-msgid "Show tab containing Management frame"
+msgid "Show tab containing Management frame."
 msgstr ""
 
 msgid "Structure"
