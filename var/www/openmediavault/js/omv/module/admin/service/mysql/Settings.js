@@ -259,21 +259,19 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
             items : [{
                 xtype      : "checkbox",
                 name       : "enable-management-site",
-                fieldLabel : _("Enable SQL management site"),
+                fieldLabel : _("Enable"),
+                boxLabel: _("SQL management site."),
                 checked    : false,
                 plugins    : [{
                     ptype : "fieldinfo",
-                    text  : _("For more advanced usage try") + "<a href='http://www.mysql.com/products/workbench/'>" + _("MySQL Workbench") + "</a>"
+                    text  : _("For more advanced usage try: ") + "<a href='http://www.mysql.com/products/workbench/'>" + _("MySQL Workbench") + "</a>"
                 }]
             },{
                 xtype: "checkbox",
                 name: "showtab",
                 fieldLabel: _("Enable"),
-                checked: false,
-                plugins    : [{
-                    ptype : "fieldinfo",
-                    text  : _("Show tab containing Management frame")
-                }]
+                boxLabel: _("Show tab containing Management frame."),
+                checked: false
             },{
                 xtype      : "button",
                 name       : "launch-management-site",
@@ -282,6 +280,9 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                 handler    : function() {
                     window.open("/sqlbuddy/");
                 }
+            },{
+                border: false,
+                html: "<br />"                
             }]
         }];
     }
