@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-14 11:17-0600\n"
-"PO-Revision-Date: 2013-11-18 07:07+0000\n"
-"Last-Translator: артур Мудрых <arturmon82@gmail.com>\n"
+"POT-Creation-Date: 2013-11-20 10:38-0600\n"
+"PO-Revision-Date: 2013-11-20 16:39+0000\n"
+"Last-Translator: ryecoaaron <aaron27@ryecoinc.com>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/openmediavault-mysql/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -62,9 +62,6 @@ msgstr "Данные"
 msgid "Enable"
 msgstr "Включить"
 
-msgid "Enable SQL management site"
-msgstr "Включить сайт управления SQL"
-
 msgid "Enable networking"
 msgstr "Включение сети"
 
@@ -80,7 +77,7 @@ msgstr "Расширенные опции"
 msgid "Extra options for [mysqld] section of MySQL configuration."
 msgstr "Дополнительные опции для [mysqld] раздел конфигурации MySQL."
 
-msgid "For more advanced usage try"
+msgid "For more advanced usage try: "
 msgstr ""
 
 msgid "Full Text"
@@ -155,13 +152,16 @@ msgstr "Объем данных SQL"
 msgid "SQL management site"
 msgstr "SQL сайт управления"
 
+msgid "SQL management site."
+msgstr ""
+
 msgid "Select a volume ..."
 msgstr "Выбрать том ..."
 
 msgid "Settings"
 msgstr "Настройки"
 
-msgid "Show tab containing Management frame"
+msgid "Show tab containing Management frame."
 msgstr ""
 
 msgid "Structure"
