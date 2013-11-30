@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-11-20 10:38-0600\n"
-"PO-Revision-Date: 2013-11-20 16:39+0000\n"
-"Last-Translator: ryecoaaron <aaron27@ryecoinc.com>\n"
+"PO-Revision-Date: 2013-11-28 18:17+0000\n"
+"Last-Translator: SpaceBrain <spacebrain.damage@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/openmediavault-mysql/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 msgid "Are you sure you want to"
-msgstr ""
+msgstr "Êtes-vous sûr de vouloir"
 
 msgid ""
 "Are you sure you want to drop the '%s' table? This will delete the table and"
@@ -44,16 +44,16 @@ msgid "Bind address"
 msgstr ""
 
 msgid "Browse"
-msgstr ""
+msgstr "Parcourir"
 
 msgid "Cancel"
-msgstr ""
+msgstr "Annuler"
 
 msgid "Confirm"
-msgstr ""
+msgstr "Confirmer"
 
 msgid "Confirmation"
-msgstr ""
+msgstr "Confirmation"
 
 msgid "Data"
 msgstr "Données"
@@ -65,10 +65,10 @@ msgid "Enable networking"
 msgstr "Activer la mise en réseau"
 
 msgid "Error"
-msgstr ""
+msgstr "Erreur"
 
 msgid "Export"
-msgstr ""
+msgstr "Exporter"
 
 msgid "Extra options"
 msgstr "Options supplémentaires"
@@ -83,22 +83,22 @@ msgid "Full Text"
 msgstr ""
 
 msgid "Home"
-msgstr ""
+msgstr "Accueil"
 
 msgid "IP address to listen on. Use 0.0.0.0 for all host IPs."
 msgstr "Adresse IP d'écoute. Utilisez 0.0.0.0 pour écouter sur toutes les adresses IPs de l'hôte."
 
 msgid "Import"
-msgstr ""
+msgstr "Importer"
 
 msgid "Insert"
-msgstr ""
+msgstr "Insérer"
 
 msgid "Launch management site"
 msgstr "Lancer le site de gestion"
 
 msgid "Loading..."
-msgstr ""
+msgstr "Chargement..."
 
 msgid "Management"
 msgstr ""
@@ -131,7 +131,7 @@ msgid "Query"
 msgstr ""
 
 msgid "Redirecting..."
-msgstr ""
+msgstr "Redirection..."
 
 msgid "Reset MySQL root password"
 msgstr "Réinitialiser le mot de passe root de MySQL"
@@ -184,7 +184,7 @@ msgid ""
 msgstr ""
 
 msgid "Users"
-msgstr ""
+msgstr "Utilisateurs"
 
 msgid ""
 "Warning: If Your MySQL data volume is set to use a non-data volume it may "

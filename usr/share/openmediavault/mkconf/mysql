@@ -68,6 +68,18 @@ DB_FOLDER="$(omv_config_get "//services/mysql/data-root")"
 
 if [ "${MYSQL_HOME}" != "${DB_FOLDER}" ]; then
     /etc/init.d/mysql stop
-    /usr/sbin/usermod -m -d "${DB_FOLDER}" mysql
+
+    if [ ! -d "${DB_FOLDER}" ]; then
+        mkdir -p "${DB_FOLDER}"
+    fi
+
+    chown -R mysql:mysql "${DB_FOLDER}"
+    chmod 0700 "${DB_FOLDER}"
+
+    /usr/sbin/usermod -d "${DB_FOLDER}" mysql
+
+    cp -rfp "${MYSQL_HOME}/*" "${DB_FOLDER}"
+    rm -rf "${MYSQL_HOME}"
+
     /etc/init.d/mysql start
 fi
