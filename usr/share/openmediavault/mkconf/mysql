@@ -73,13 +73,11 @@ if [ "${MYSQL_HOME}" != "${DB_FOLDER}" ]; then
         mkdir -p "${DB_FOLDER}"
     fi
 
-    chown -R mysql:mysql "${DB_FOLDER}"
-    chmod 0700 "${DB_FOLDER}"
+    chown mysql:mysql "${DB_FOLDER}"
+
+    cp -rfp ${MYSQL_HOME}/* ${DB_FOLDER}/
+    rm -rf ${MYSQL_HOME}
 
     /usr/sbin/usermod -d "${DB_FOLDER}" mysql
-
-    cp -rfp "${MYSQL_HOME}/*" "${DB_FOLDER}"
-    rm -rf "${MYSQL_HOME}"
-
     /etc/init.d/mysql start
 fi
