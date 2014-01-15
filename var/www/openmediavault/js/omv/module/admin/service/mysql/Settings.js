@@ -279,10 +279,8 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                 disabled   : true,
                 handler    : function() {
                     window.open("/sqlbuddy/");
-                }
-            },{
-                border: false,
-                html: "</p>"                
+                },
+                margin : "0 0 5 0"
             }]
         }];
     }
