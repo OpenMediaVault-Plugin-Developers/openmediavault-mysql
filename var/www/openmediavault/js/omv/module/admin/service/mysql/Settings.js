@@ -282,7 +282,7 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                 }
             },{
                 border: false,
-                html: "<br />"                
+                html: "</p>"                
             }]
         }];
     }
