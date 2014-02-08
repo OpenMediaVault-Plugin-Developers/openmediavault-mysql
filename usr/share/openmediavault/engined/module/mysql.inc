@@ -2,7 +2,7 @@
 
 /**
  * Copyright (C) 2010-2012 Ian Moore <imooreyahoo@gmail.com>
- * Copyright (C)      2013 OpenMediaVault Plugin Developers
+ * Copyright (C) 2013-2014 OpenMediaVault Plugin Developers
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,16 +24,12 @@ require_once "openmediavault/error.inc";
 require_once "openmediavault/util.inc";
 require_once "openmediavault/initscript.inc";
 
-class OMVModuleMySQL extends OMVModuleServiceAbstract implements OMVINotifyListener, OMVIModuleServiceStatus {
+class OMVModuleMySQL extends OMVModuleServiceAbstract 
+    implements OMVINotifyListener, OMVIModuleServiceStatus {
 
     private function getXPath()
     {
-        return '//services/mysql';
-    }
-    
-    private function getInitScriptName()
-    {
-        return 'mysql';
+        return "//services/mysql";
     }
 
 	/**
@@ -56,13 +52,13 @@ class OMVModuleMySQL extends OMVModuleServiceAbstract implements OMVINotifyListe
         if (is_null($object))
             throw new OMVException(OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED, $this->getXPath());
 
-        $initd = new OMVSysVInitScript($this->getInitScriptName());
+        $initd = new OMVSysVInitScript($this->getName());
 
         return array(
             "name"    => $this->getName(),
             "title"   => gettext("MySQL"),
-            "enabled" => boolval($object['enable']),
-            "running" => ($initd->status() == 0)
+            "enabled" => boolval($object["enable"]),
+            "running" => $initd->status() == 0
         );
     }
 
@@ -71,14 +67,7 @@ class OMVModuleMySQL extends OMVModuleServiceAbstract implements OMVINotifyListe
 	 */
 	public function applyConfig()
 	{
-	    global $xmlConfig;
-
-        $config = $xmlConfig->get($this->getXPath());
-
-        if (is_null($config))
-            throw new OMVException(OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED, $this->getXPath());
-
-        $cmd = "sudo omv-mkconf mysql 2>&1";
+        $cmd = sprintf("sudo omv-mkconf %s 2>&1", $this->getName());
 
         if (0 !== $this->exec($cmd, $output))
             throw new OMVException(OMVErrorMsg::E_EXEC_FAILED,
@@ -97,10 +86,11 @@ class OMVModuleMySQL extends OMVModuleServiceAbstract implements OMVINotifyListe
         if (is_null($object))
             throw new OMVException(OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED, $this->getXPath());
 
-        if (boolval($object['enable']) === true) {
-            $initd = new OMVSysVInitScript($this->getInitScriptName(), true);
-            $initd->exec();
-        }
+        if (!boolval($object["enable"]))
+            return;
+        
+        $initd = new OMVSysVInitScript($this->getName(), true);
+        $initd->exec();
     }
 
     /**
@@ -108,17 +98,8 @@ class OMVModuleMySQL extends OMVModuleServiceAbstract implements OMVINotifyListe
      */
     public function stopService()
     {
-        global $xmlConfig;
-
-        $object = $xmlConfig->get($this->getXPath());
-
-        if (is_null($object))
-            throw new OMVException(OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED, $this->getXPath());
-
-        if (boolval($object['enable']) === false) {
-            $initd = new OMVSysVInitScript($this->getInitScriptName(), false);
-            $initd->exec();
-        }
+        $initd = new OMVSysVInitScript($this->getName());
+        $initd->exec();
     }
 
 	/**
