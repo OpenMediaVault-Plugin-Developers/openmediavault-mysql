@@ -1,6 +1,6 @@
 /**
  * Copyright (C) 2010-2012 Ian Moore <imooreyahoo@gmail.com>
- * Copyright (C)      2013 OpenMediaVault Plugin Developers
+ * Copyright (C) 2013-2014 OpenMediaVault Plugin Developers
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -76,15 +76,15 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
     initComponent : function () {
         var me = this;
 
-        me.on('load', function () {
-            var checked = me.findField('enable').checked;
-            var showtab = me.findField('showtab').checked;
-            var parent = me.up('tabpanel');
+        me.on("load", function () {
+            var checked = me.findField("enable").checked;
+            var showtab = me.findField("showtab").checked;
+            var parent = me.up("tabpanel");
 
             if (!parent)
                 return;
 
-            var managementPanel = parent.down('panel[title=' + _("Management") + ']');
+            var managementPanel = parent.down("panel[title=" + _("Management") + "]");
 
             if (managementPanel) {
                 checked ? managementPanel.enable() : managementPanel.disable();

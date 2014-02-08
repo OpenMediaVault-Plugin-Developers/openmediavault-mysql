@@ -2,7 +2,7 @@
 
 /**
  * Copyright (C) 2010-2012 Ian Moore <imooreyahoo@gmail.com>
- * Copyright (C)      2013 OpenMediaVault Plugin Developers
+ * Copyright (C) 2013-2014 OpenMediaVault Plugin Developers
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -34,14 +34,14 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
 
     public function getName()
     {
-        return 'MySQL';
+        return "MySQL";
     }
 
     public function initialize()
     {
-        $this->registerMethod('getSettings');
-        $this->registerMethod('setSettings');
-        $this->registerMethod('resetPassword');
+        $this->registerMethod("getSettings");
+        $this->registerMethod("setSettings");
+        $this->registerMethod("resetPassword");
     }
 
     /**
@@ -66,11 +66,11 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
         $initd = new OMVSysVInitScript("mysql");
 
         // Modify result data
-        $object['enable']                 = ($initd->status() == 0);
-        $object['port']                   = intval($object['port']);
-        $object['enable-networking']      = boolval($object['enable-networking']);
-        $object['enable-management-site'] = boolval($object['enable-management-site']);
-        $object['showtab']                = boolval($object['showtab']);
+        $object["enable"]                 = ($initd->status() == 0);
+        $object["port"]                   = intval($object["port"]);
+        $object["enable-networking"]      = boolval($object["enable-networking"]);
+        $object["enable-management-site"] = boolval($object["enable-management-site"]);
+        $object["showtab"]                = boolval($object["showtab"]);
 
         return $object;
     }
@@ -103,26 +103,26 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
             }
         }');
 
-        $xpath = sprintf("//system/fstab/mntent[uuid='%s']", $params['mntentref']);
+        $xpath = sprintf("//system/fstab/mntent[uuid='%s']", $params["mntentref"]);
         $deviceDir = $xmlConfig->get($xpath);
-        $deviceDir = $deviceDir['dir'];
+        $deviceDir = $deviceDir["dir"];
 
         $dataRoot = "{$deviceDir}/mysql-data";
-        $params['data-root'] = $dataRoot;
+        $params["data-root"] = $dataRoot;
 
         // Prepare configuration data
         $object = array(
-            "enable"            => array_boolval($params, 'enable'),
-            "enable-networking" => array_boolval($params, 'enable-networking'),
+            "enable"            => array_boolval($params, "enable"),
+            "enable-networking" => array_boolval($params, "enable-networking"),
             "enable-management-site" => (
-                array_boolval($params, 'enable-management-site') && array_boolval($params, 'enable')
+                array_boolval($params, "enable-management-site") && array_boolval($params, "enable")
             ),
-            "extraoptions"      => (!empty($params['extraoptions']) ? $params['extraoptions'] : ''),
-            "port"              => intval($params['port']),
-            "bindaddress"       => $params['bindaddress'],
-            "mntentref"         => $params['mntentref'],
-            "data-root"         => $params['data-root'],
-            "showtab"           => array_boolval($params, 'showtab'),
+            "extraoptions"      => (!empty($params["extraoptions"]) ? $params["extraoptions"] : ""),
+            "port"              => intval($params["port"]),
+            "bindaddress"       => $params["bindaddress"],
+            "mntentref"         => $params["mntentref"],
+            "data-root"         => $params["data-root"],
+            "showtab"           => array_boolval($params, "showtab"),
         );
 
         // Set configuration object
@@ -140,13 +140,12 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
         // Validate the RPC caller context.
         $this->validateMethodContext($context, array( "role" => OMV_ROLE_ADMINISTRATOR ));
 
-        $xpath = "//services/mysql";
-        $object = $xmlConfig->get($xpath);
+        $object = $xmlConfig->get($this->getXPath());
         if(is_null($object)) {
-            throw new OMVException(OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED, $xpath);
+            throw new OMVException(OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED, $this->getXPath());
         }
 
-        if(FALSE === boolval($object['enable']))
+        if(FALSE === boolval($object["enable"]))
             return;
 
         $cmd = "sudo /usr/local/bin/mysql-password 2>&1";
