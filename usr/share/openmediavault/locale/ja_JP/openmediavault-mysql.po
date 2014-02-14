@@ -1,0 +1,231 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: openmediavault-mysql\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-11-20 10:38-0600\n"
+"PO-Revision-Date: 2014-02-04 00:58+0000\n"
+"Last-Translator: kansuke <kansuke4649@gmail.com>\n"
+"Language-Team: Japanese (Japan) (http://www.transifex.com/projects/p/openmediavault-mysql/language/ja_JP/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja_JP\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Are you sure you want to"
+msgstr "本当に次の処理を行ってもよろしいですか："
+
+msgid ""
+"Are you sure you want to drop the '%s' table? This will delete the table and"
+" all data inside of it. The following query will be run:"
+msgstr "'%s' テーブルを削除してもよろしいですか？ テーブルとその中のすべてのデータが削除されます。 次のクエリが実行されます："
+
+msgid ""
+"Are you sure you want to drop the database '%s'? This will delete the "
+"database, the tables inside the database, and all data inside of the tables."
+" The following query will be run:"
+msgstr "'%s' データベースを削除しますか？データベース、データベース内のテーブル、テーブル内のすべてのデータが削除されます。次のクエリが実行されます："
+
+msgid ""
+"Are you sure you want to empty the '%s' table? This will delete all the data"
+" inside of it. The following query will be run:"
+msgstr "'%s' テーブルを空にしてもよろしいですか？ テーブル内のすべてのデータが削除されます。次のクエリが実行されます："
+
+msgid "Are you sure you want to reset the root password?"
+msgstr "rootのパスワードをリセットしてもよろしいですか？"
+
+msgid "Bind address"
+msgstr "バインドアドレス"
+
+msgid "Browse"
+msgstr "ブラウズ"
+
+msgid "Cancel"
+msgstr "キャンセル"
+
+msgid "Confirm"
+msgstr "確認"
+
+msgid "Confirmation"
+msgstr "確認"
+
+msgid "Data"
+msgstr "データ"
+
+msgid "Enable"
+msgstr "有効"
+
+msgid "Enable networking"
+msgstr "ネットワークを有効にする"
+
+msgid "Error"
+msgstr "エラー"
+
+msgid "Export"
+msgstr "エクスポート"
+
+msgid "Extra options"
+msgstr "その他のオプション"
+
+msgid "Extra options for [mysqld] section of MySQL configuration."
+msgstr "MySQLの設定内の[mysqld]セクションに関する追加のオプション。"
+
+msgid "For more advanced usage try: "
+msgstr "より高度な使用方法については次を行ってください："
+
+msgid "Full Text"
+msgstr "全文"
+
+msgid "Home"
+msgstr "ホーム"
+
+msgid "IP address to listen on. Use 0.0.0.0 for all host IPs."
+msgstr "接続を許可するIPアドレスを設定します。すべてのホストIPから受け付ける場合は0.0.0.0を指定します。"
+
+msgid "Import"
+msgstr "インポート"
+
+msgid "Insert"
+msgstr "インサート"
+
+msgid "Launch management site"
+msgstr "管理サイトの起動"
+
+msgid "Loading..."
+msgstr "読み込み中..."
+
+msgid "Management"
+msgstr "管理"
+
+msgid "MySQL"
+msgstr "MySQL"
+
+msgid "MySQL Workbench"
+msgstr "MySQL Workbench"
+
+msgid "New field"
+msgstr "新しいフィールド"
+
+msgid "Okay"
+msgstr "はい"
+
+msgid "Overview"
+msgstr "概要"
+
+msgid "Password will reset to:"
+msgstr "パスワードはリセットされました："
+
+msgid "Port"
+msgstr "ポート"
+
+msgid "Port to listen on."
+msgstr "待ち受けポート。"
+
+msgid "Query"
+msgstr "クエリ"
+
+msgid "Redirecting..."
+msgstr "リダイレクト..."
+
+msgid "Reset MySQL root password"
+msgstr "MySQL rootパスワードのリセット"
+
+msgid "Reset Password"
+msgstr "パスワードのリセット"
+
+msgid "Resetting MySQL root password."
+msgstr "MySQL rootパスワードをリセットしました。"
+
+msgid "SQL data root"
+msgstr "SQL dataのルート"
+
+msgid "SQL data volume"
+msgstr "SQL dataのボリューム"
+
+msgid "SQL management site"
+msgstr "SQL管理サイト"
+
+msgid "SQL management site."
+msgstr "SQL管理サイト。"
+
+msgid "Select a volume ..."
+msgstr "ボリュームを選択 ..."
+
+msgid "Settings"
+msgstr "設定"
+
+msgid "Show tab containing Management frame."
+msgstr "管理フレームを含むタブを表示します。"
+
+msgid "Structure"
+msgstr "構造"
+
+msgid "Successfully saved changes."
+msgstr "正常に変更が保存されました。"
+
+msgid "The following queries will be run:"
+msgstr "次のクエリが実行されます："
+
+msgid "The following query will be run:"
+msgstr "次のクエリが実行されます："
+
+msgid "There was an error receiving data from the server."
+msgstr "サーバーからデータを受信中にエラーが発生しました。"
+
+msgid ""
+"To change the password, use the management site and change root user on host"
+" localhost."
+msgstr "パスワードを変更するには、管理サイトを使用し、ローカルホストのrootユーザーでアクセスします。"
+
+msgid "Users"
+msgstr "ユーザー"
+
+msgid ""
+"Warning: If Your MySQL data volume is set to use a non-data volume it may "
+"result in loss of data in the event of a disk failure. It is recommmended "
+"that you change this before using MySQL."
+msgstr "警告：あなたのMySQLのデータボリュームが非データボリュームを使用するように設定されている場合、ディスク障害が発生した場合にデータの損失をもたらし得ます。MySQLを使用する前に、これを変更することをお勧めします。"
+
+msgid "Your changes were saved to the database."
+msgstr "変更内容はデータベースに保存されました。"
+
+msgid "delete these columns"
+msgstr "これらのカラムを削除"
+
+msgid "delete these indexes"
+msgstr "これらのインデックスを削除"
+
+msgid "delete these rows"
+msgstr "これらの行を削除"
+
+msgid "delete these users"
+msgstr "これらのユーザーを削除"
+
+msgid "delete this column"
+msgstr "このカラムを削除"
+
+msgid "delete this index"
+msgstr "このインデックスを削除"
+
+msgid "delete this row"
+msgstr "この行を削除"
+
+msgid "delete this user"
+msgstr "このユーザーを削除"
+
+msgid "drop these tables"
+msgstr "これらのテーブルを削除"
+
+msgid "drop this table"
+msgstr "このテーブルを削除"
+
+msgid "empty these tables"
+msgstr "これらのテーブルを空に"
+
+msgid "empty this table"
+msgstr "このテーブルを空に"

@@ -3,230 +3,230 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Stefan Thrane Overby <stoverby@gmail.com>, 2013
+# zdeno <mcharvat@zdeno.net>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-11-20 10:38-0600\n"
-"PO-Revision-Date: 2013-12-23 08:16+0000\n"
-"Last-Translator: Stefan Thrane Overby <stoverby@gmail.com>\n"
-"Language-Team: Danish (http://www.transifex.com/projects/p/openmediavault-mysql/language/da/)\n"
+"PO-Revision-Date: 2013-12-13 16:29+0000\n"
+"Last-Translator: zdeno <mcharvat@zdeno.net>\n"
+"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/openmediavault-mysql/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: da\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: cs_CZ\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 msgid "Are you sure you want to"
-msgstr "Er du sikker på du vil"
+msgstr "Opravdu chcete"
 
 msgid ""
 "Are you sure you want to drop the '%s' table? This will delete the table and"
 " all data inside of it. The following query will be run:"
-msgstr "Er du sikker på, at du vil skippe '%s' tabellen? Dette vil slette tabellen og alle data inde i den. Den følgende forsørgelse vil blive kørt:"
+msgstr "Opravdu chcete smazat tabulku '%s'? Tato operace smaže tabulku a všechna její data. Bude spuštěn následující dotaz:"
 
 msgid ""
 "Are you sure you want to drop the database '%s'? This will delete the "
 "database, the tables inside the database, and all data inside of the tables."
 " The following query will be run:"
-msgstr "Er du sikker at, du vil skippe databasen '%s'? Dette vil slette databasen, tabellerne i databasen, og alle data inde i tabellerne. Den følgende forsørgelse vil blive kørt:"
+msgstr "Opravdu chcete smazat databázi '%s'? Tato operace smaže databázi, všechny její tabulky a data která obsahují. Bude spuštěn následující dotaz:"
 
 msgid ""
 "Are you sure you want to empty the '%s' table? This will delete all the data"
 " inside of it. The following query will be run:"
-msgstr "Er du sikker på, at du vil tømme '%s' tabellen? Dette vil slette alle data, der er inde i den. Den følgende forsørgelse vil blive kørt:"
+msgstr "Opravdu chcete vyprázdnit tabulku '%s'? Tato operace vymaže všechna její data. Bude spuštěn následující dotaz:"
 
 msgid "Are you sure you want to reset the root password?"
-msgstr "Er du sikker på, at du vil nulstille rod adgangskoden?"
+msgstr "Opravdu chcete obnovit heslo uživatele root ?"
 
 msgid "Bind address"
-msgstr "Bind adresse"
+msgstr "Bind address"
 
 msgid "Browse"
-msgstr "Gennemse"
+msgstr "Procházet"
 
 msgid "Cancel"
-msgstr "Annuller"
+msgstr "Zrušit"
 
 msgid "Confirm"
-msgstr "Bekræft"
+msgstr "Potvrdit"
 
 msgid "Confirmation"
-msgstr "Bekræftelse"
+msgstr "Potvrzení"
 
 msgid "Data"
-msgstr "Data"
+msgstr "Úložiště"
 
 msgid "Enable"
-msgstr "Aktiver"
+msgstr "Zapnout"
 
 msgid "Enable networking"
-msgstr "Aktiver netværk"
+msgstr "Povolit síťová nastavení"
 
 msgid "Error"
-msgstr "Fejl"
+msgstr "Chyba"
 
 msgid "Export"
-msgstr "Eksporter"
+msgstr "Export"
 
 msgid "Extra options"
-msgstr "Ekstra valgmuligheder"
+msgstr "Další nastavení"
 
 msgid "Extra options for [mysqld] section of MySQL configuration."
-msgstr "Ekstra valgmuligheder for [mysqld] sektionen af MySQL konfiguration."
+msgstr "Další nastavení pro [mysqld] sekci v konfiguraci MySQL"
 
 msgid "For more advanced usage try: "
-msgstr "For mere avanceret brug så prøv:"
+msgstr "Pro pokročilejší použití zkuste:"
 
 msgid "Full Text"
-msgstr "Hele Teksten"
+msgstr "Full Text"
 
 msgid "Home"
-msgstr "Hjem"
+msgstr "Domů"
 
 msgid "IP address to listen on. Use 0.0.0.0 for all host IPs."
-msgstr "IP adresse, der skal lyttes på. Brug 0.0.0.0 til alle værts IPer."
+msgstr "IP adresa na které databáze naslouchá. Pro všechny IP adresy použíjte 0.0.0.0"
 
 msgid "Import"
-msgstr "Importer"
+msgstr "Import"
 
 msgid "Insert"
-msgstr "Indsæt"
+msgstr "Vložit"
 
 msgid "Launch management site"
-msgstr "Start håndterings side"
+msgstr "Zobrazit stránku se správou databáze"
 
 msgid "Loading..."
-msgstr "Indlæser..."
+msgstr "Načítání..."
 
 msgid "Management"
-msgstr "Håndtering"
+msgstr "Správa"
 
 msgid "MySQL"
 msgstr "MySQL"
 
 msgid "MySQL Workbench"
-msgstr "MySQL Arbejdsbord"
+msgstr "MySQL Workbench"
 
 msgid "New field"
-msgstr "Ny felt"
+msgstr "Nové pole"
 
 msgid "Okay"
-msgstr "Okay"
+msgstr "OK"
 
 msgid "Overview"
-msgstr "Oversigt"
+msgstr "Přehled"
 
 msgid "Password will reset to:"
-msgstr "Adgangskode vil blive nulstillet til: "
+msgstr "Heslo bude obnoveno na:"
 
 msgid "Port"
 msgstr "Port"
 
 msgid "Port to listen on."
-msgstr "Port, der skal lyttes på."
+msgstr "Port na kterém databáze naslouchá"
 
 msgid "Query"
-msgstr "Forespørgsel"
+msgstr "Dotaz"
 
 msgid "Redirecting..."
-msgstr "Omdirigering..."
+msgstr "Přesměrování..."
 
 msgid "Reset MySQL root password"
-msgstr "Nulstil MySQL rod adgangskode"
+msgstr "Obnova hesla uživatele root"
 
 msgid "Reset Password"
-msgstr "Nulstil Adgangskode"
+msgstr "Resetovat heslo"
 
 msgid "Resetting MySQL root password."
-msgstr "Nulstiller MySQL rod adgangskode"
+msgstr "Obnova MySQL root hesla"
 
 msgid "SQL data root"
-msgstr "SQL data rod"
+msgstr "Adresář"
 
 msgid "SQL data volume"
-msgstr "SQL data drev"
+msgstr "Svazek"
 
 msgid "SQL management site"
-msgstr "SQL håndterings side"
+msgstr "Stránka se správou SQL"
 
 msgid "SQL management site."
-msgstr "SQL håndterings side"
+msgstr "Stránka se správou SQL"
 
 msgid "Select a volume ..."
-msgstr "Vælg et drev ..."
+msgstr "Vyberte svazek ..."
 
 msgid "Settings"
-msgstr "Indstillinger"
+msgstr "Nastavení"
 
 msgid "Show tab containing Management frame."
-msgstr "Vis fane indeholdende Håndterings ramme."
+msgstr "Zobrazit záložku obsahující stránku se správou"
 
 msgid "Structure"
-msgstr "Struktur"
+msgstr "Struktura"
 
 msgid "Successfully saved changes."
-msgstr "Ændringer gemt med succes."
+msgstr "Změny byly úspěšně uloženy."
 
 msgid "The following queries will be run:"
-msgstr "De følgende forespørgsler vil blive kørt:"
+msgstr "Budou spuštěny následující dotazy:"
 
 msgid "The following query will be run:"
-msgstr "Den følgende forespørgsel vil blive kørt:"
+msgstr "Bude spuštěn následující dotaz:"
 
 msgid "There was an error receiving data from the server."
-msgstr "Der skete en fejl i indlæsning af data fra serveren."
+msgstr "Došlo k chybě při komunikaci se serverem."
 
 msgid ""
 "To change the password, use the management site and change root user on host"
 " localhost."
-msgstr "For at ændre adgangskoden, så brug håndterings siden og ændr rod bruger på værts lokalvært."
+msgstr "Ke změně hesla použijte stránku pro správu a změňte účet root uživatele na localhostu."
 
 msgid "Users"
-msgstr "Brugere"
+msgstr "Uživatelé"
 
 msgid ""
 "Warning: If Your MySQL data volume is set to use a non-data volume it may "
 "result in loss of data in the event of a disk failure. It is recommmended "
 "that you change this before using MySQL."
-msgstr "Advarsel: Dit MySQL data drev er indstillet til at bruge et ikke-data drev. Dette kan resultere i tab af data i tilfælde af en disk fejl. Det anbefales, at du ændrer dette, før du bruger MySQL."
+msgstr "Upozornění: Pokud Vámi vybraný svazek pro MySQL data není určeny pro data, v případě selhání disku může dojít ke ztrátě dat. Doporučuje se nastavit tento svazek před použitím MySQL. "
 
 msgid "Your changes were saved to the database."
-msgstr "Dine ændringer blev gemt i databasen."
+msgstr "Vaše změny byly uloženy do databáze"
 
 msgid "delete these columns"
-msgstr "slet disse kolonner"
+msgstr "Smazat vybrané sloupce"
 
 msgid "delete these indexes"
-msgstr "slet disse indekser"
+msgstr "Smazat vybrané indexy"
 
 msgid "delete these rows"
-msgstr "slet disse rækker"
+msgstr "Smazat vybrané řádky"
 
 msgid "delete these users"
-msgstr "slet disse brugere"
+msgstr "Smazat vybrané uživatele"
 
 msgid "delete this column"
-msgstr "slet denne kolonne"
+msgstr "Smazat vybraný sloupec"
 
 msgid "delete this index"
-msgstr "slet denne indeks"
+msgstr "Smazat vybraný index"
 
 msgid "delete this row"
-msgstr "slet denne række"
+msgstr "Smazat vybraný řádek"
 
 msgid "delete this user"
-msgstr "slet denne bruger"
+msgstr "Smazat vybraného uživatele"
 
 msgid "drop these tables"
-msgstr "skip disse tabeller"
+msgstr "Smazat vybrané tabulky"
 
 msgid "drop this table"
-msgstr "skip denne tabel"
+msgstr "Smazat tabulku"
 
 msgid "empty these tables"
-msgstr "tøm disse tabeller"
+msgstr "Vyprázdnit tabulky"
 
 msgid "empty this table"
-msgstr "tøm denne tabel"
+msgstr "Vyprázdnit tabulku"

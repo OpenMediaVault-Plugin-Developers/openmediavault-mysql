@@ -1,0 +1,232 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# dezi121 <by@songming.me>, 2013-2014
+msgid ""
+msgstr ""
+"Project-Id-Version: openmediavault-mysql\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-11-20 10:38-0600\n"
+"PO-Revision-Date: 2014-01-09 15:45+0000\n"
+"Last-Translator: dezi121 <by@songming.me>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/openmediavault-mysql/language/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Are you sure you want to"
+msgstr "确定要"
+
+msgid ""
+"Are you sure you want to drop the '%s' table? This will delete the table and"
+" all data inside of it. The following query will be run:"
+msgstr ""
+
+msgid ""
+"Are you sure you want to drop the database '%s'? This will delete the "
+"database, the tables inside the database, and all data inside of the tables."
+" The following query will be run:"
+msgstr ""
+
+msgid ""
+"Are you sure you want to empty the '%s' table? This will delete all the data"
+" inside of it. The following query will be run:"
+msgstr ""
+
+msgid "Are you sure you want to reset the root password?"
+msgstr "确定要重设 root 账户密码吗？"
+
+msgid "Bind address"
+msgstr "绑定地址"
+
+msgid "Browse"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Confirm"
+msgstr ""
+
+msgid "Confirmation"
+msgstr ""
+
+msgid "Data"
+msgstr "数据"
+
+msgid "Enable"
+msgstr "启用"
+
+msgid "Enable networking"
+msgstr "启用网络"
+
+msgid "Error"
+msgstr ""
+
+msgid "Export"
+msgstr ""
+
+msgid "Extra options"
+msgstr "扩展选项"
+
+msgid "Extra options for [mysqld] section of MySQL configuration."
+msgstr "MySQL配置的 [mysqld] 扩展选项"
+
+msgid "For more advanced usage try: "
+msgstr "更多高级用法见："
+
+msgid "Full Text"
+msgstr ""
+
+msgid "Home"
+msgstr ""
+
+msgid "IP address to listen on. Use 0.0.0.0 for all host IPs."
+msgstr "地址监听 IP 地址，用 0.0.0.0 表示所有 IP。"
+
+msgid "Import"
+msgstr ""
+
+msgid "Insert"
+msgstr ""
+
+msgid "Launch management site"
+msgstr "运行管理后台"
+
+msgid "Loading..."
+msgstr ""
+
+msgid "Management"
+msgstr "管理"
+
+msgid "MySQL"
+msgstr "MySQL"
+
+msgid "MySQL Workbench"
+msgstr ""
+
+msgid "New field"
+msgstr ""
+
+msgid "Okay"
+msgstr ""
+
+msgid "Overview"
+msgstr ""
+
+msgid "Password will reset to:"
+msgstr "密码将重置为："
+
+msgid "Port"
+msgstr "端口"
+
+msgid "Port to listen on."
+msgstr "监听端口。"
+
+msgid "Query"
+msgstr ""
+
+msgid "Redirecting..."
+msgstr ""
+
+msgid "Reset MySQL root password"
+msgstr "重设 MySQL root 账户密码"
+
+msgid "Reset Password"
+msgstr "重设密码"
+
+msgid "Resetting MySQL root password."
+msgstr "重置  MySQL root 密码中。"
+
+msgid "SQL data root"
+msgstr "SQL 数据根目录"
+
+msgid "SQL data volume"
+msgstr "SQL 数据卷"
+
+msgid "SQL management site"
+msgstr "SQL 管理后台"
+
+msgid "SQL management site."
+msgstr "SQL 管理后台。"
+
+msgid "Select a volume ..."
+msgstr "选择卷 ..."
+
+msgid "Settings"
+msgstr "设置"
+
+msgid "Show tab containing Management frame."
+msgstr "在标签页显示管理后台。"
+
+msgid "Structure"
+msgstr ""
+
+msgid "Successfully saved changes."
+msgstr ""
+
+msgid "The following queries will be run:"
+msgstr ""
+
+msgid "The following query will be run:"
+msgstr ""
+
+msgid "There was an error receiving data from the server."
+msgstr ""
+
+msgid ""
+"To change the password, use the management site and change root user on host"
+" localhost."
+msgstr "如果要修改这个密码，在管理后台修改localhost root 用户。"
+
+msgid "Users"
+msgstr ""
+
+msgid ""
+"Warning: If Your MySQL data volume is set to use a non-data volume it may "
+"result in loss of data in the event of a disk failure. It is recommmended "
+"that you change this before using MySQL."
+msgstr "警告：如果你 MySQL 数据卷使用了非数据盘，那么可能有丢失数据的风险，建议在使用 MySQL 前更改保存位置。"
+
+msgid "Your changes were saved to the database."
+msgstr ""
+
+msgid "delete these columns"
+msgstr ""
+
+msgid "delete these indexes"
+msgstr ""
+
+msgid "delete these rows"
+msgstr ""
+
+msgid "delete these users"
+msgstr ""
+
+msgid "delete this column"
+msgstr ""
+
+msgid "delete this index"
+msgstr ""
+
+msgid "delete this row"
+msgstr ""
+
+msgid "delete this user"
+msgstr ""
+
+msgid "drop these tables"
+msgstr ""
+
+msgid "drop this table"
+msgstr ""
+
+msgid "empty these tables"
+msgstr ""
+
+msgid "empty this table"
+msgstr ""
