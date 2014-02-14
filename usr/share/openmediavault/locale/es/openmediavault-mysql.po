@@ -1,0 +1,232 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Raul Fernandez Garcia <raulfg3@gmail.com>, 2014
+msgid ""
+msgstr ""
+"Project-Id-Version: openmediavault-mysql\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-11-20 10:38-0600\n"
+"PO-Revision-Date: 2014-01-25 19:53+0000\n"
+"Last-Translator: Raul Fernandez Garcia <raulfg3@gmail.com>\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/openmediavault-mysql/language/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Are you sure you want to"
+msgstr "¿Esta seguro que desea "
+
+msgid ""
+"Are you sure you want to drop the '%s' table? This will delete the table and"
+" all data inside of it. The following query will be run:"
+msgstr "¿Esta seguro de que desea borrar la tabla '%s' ? Esto borrara la tabla y todos los datos que contiene. La siguiente query será ejecutada:"
+
+msgid ""
+"Are you sure you want to drop the database '%s'? This will delete the "
+"database, the tables inside the database, and all data inside of the tables."
+" The following query will be run:"
+msgstr "¿Esta seguro de que desea borrar la Base de datos '%s' ? Esto borrara la BBDD y todas las tablas que contiene y los datos de las tablas. La siguiente query será ejecutada:"
+
+msgid ""
+"Are you sure you want to empty the '%s' table? This will delete all the data"
+" inside of it. The following query will be run:"
+msgstr "¿Esta seguro de que desea vaciar la tabla '%s'? Esto borrará todos los datos que contiene. Se ejecutará la siguiente consulta:"
+
+msgid "Are you sure you want to reset the root password?"
+msgstr "¿Está seguro que desea resetear la contraseña de root?"
+
+msgid "Bind address"
+msgstr "Dirección de escucha"
+
+msgid "Browse"
+msgstr "Navegar"
+
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgid "Confirm"
+msgstr "Confirmar"
+
+msgid "Confirmation"
+msgstr "Confirmación"
+
+msgid "Data"
+msgstr "Datos"
+
+msgid "Enable"
+msgstr "Habilitar"
+
+msgid "Enable networking"
+msgstr "Habilitar Red"
+
+msgid "Error"
+msgstr "Error"
+
+msgid "Export"
+msgstr "Exportar"
+
+msgid "Extra options"
+msgstr "Opciones extra"
+
+msgid "Extra options for [mysqld] section of MySQL configuration."
+msgstr "Opciones extra para la sección [mysqld] del archivo de configuración de MySQL."
+
+msgid "For more advanced usage try: "
+msgstr "Para un uso avanzado, probar:"
+
+msgid "Full Text"
+msgstr "Texto"
+
+msgid "Home"
+msgstr "Home"
+
+msgid "IP address to listen on. Use 0.0.0.0 for all host IPs."
+msgstr "Dirección IP de escucha. Use 0.0.0.0 para escuchar todos los host posibles"
+
+msgid "Import"
+msgstr "Importar"
+
+msgid "Insert"
+msgstr "Insertar"
+
+msgid "Launch management site"
+msgstr "Lanzar la administración del sitio"
+
+msgid "Loading..."
+msgstr "Cargando..."
+
+msgid "Management"
+msgstr "Administración"
+
+msgid "MySQL"
+msgstr "MySQL"
+
+msgid "MySQL Workbench"
+msgstr "MySQL Workbench"
+
+msgid "New field"
+msgstr "Nuevo campo"
+
+msgid "Okay"
+msgstr "Correcto"
+
+msgid "Overview"
+msgstr "visión de conjunto"
+
+msgid "Password will reset to:"
+msgstr "La contraseña se cambiará a:"
+
+msgid "Port"
+msgstr "Puerto"
+
+msgid "Port to listen on."
+msgstr "Puerto de escucha"
+
+msgid "Query"
+msgstr "Consulta"
+
+msgid "Redirecting..."
+msgstr "Redireccionando ..."
+
+msgid "Reset MySQL root password"
+msgstr "Resetear la contraseña de root de MySQL"
+
+msgid "Reset Password"
+msgstr "Resetear contraseña"
+
+msgid "Resetting MySQL root password."
+msgstr "Reseteando la contraseña de root de MySQL."
+
+msgid "SQL data root"
+msgstr "Raíz de datos SQL"
+
+msgid "SQL data volume"
+msgstr "Volumen de datos SQL"
+
+msgid "SQL management site"
+msgstr "Sitio de administración SQL"
+
+msgid "SQL management site."
+msgstr "Sitio de administración SQL."
+
+msgid "Select a volume ..."
+msgstr "Seleccionar un Volumen ..."
+
+msgid "Settings"
+msgstr "Opciones"
+
+msgid "Show tab containing Management frame."
+msgstr "Mostrar la pestaña que contiene la web de Administración."
+
+msgid "Structure"
+msgstr "Estructura"
+
+msgid "Successfully saved changes."
+msgstr "Cambios realizados satisfactoriamente."
+
+msgid "The following queries will be run:"
+msgstr "Se ejecutarán las siguientes consultas:"
+
+msgid "The following query will be run:"
+msgstr "Se ejecutará la siguiente consulta:"
+
+msgid "There was an error receiving data from the server."
+msgstr "Hubo un error al recibir datos del servidor."
+
+msgid ""
+"To change the password, use the management site and change root user on host"
+" localhost."
+msgstr "Para cambiar la contraseña, use el sitio de administración y cambie el usuario de root en el host local."
+
+msgid "Users"
+msgstr "Usuarios"
+
+msgid ""
+"Warning: If Your MySQL data volume is set to use a non-data volume it may "
+"result in loss of data in the event of a disk failure. It is recommmended "
+"that you change this before using MySQL."
+msgstr "Atención: Si su volumen de datos MySQL se configura para usar un volumen que no sea de datos, puede ocurrir una perdida de datos en caso de fallo del disco. Es recomendable cambiar esto antes de usar MySQL"
+
+msgid "Your changes were saved to the database."
+msgstr "Sus cambios serán salvados a la Base de datos."
+
+msgid "delete these columns"
+msgstr "Borrar estas columnas"
+
+msgid "delete these indexes"
+msgstr "Borrar estos indices"
+
+msgid "delete these rows"
+msgstr "Borrar estas filas"
+
+msgid "delete these users"
+msgstr "Borrar estos usuarios"
+
+msgid "delete this column"
+msgstr "Borrar esta columna"
+
+msgid "delete this index"
+msgstr "Borrar este indice"
+
+msgid "delete this row"
+msgstr "Borrar esta fila"
+
+msgid "delete this user"
+msgstr "Borrar este usuario"
+
+msgid "drop these tables"
+msgstr "descartar estas tablas"
+
+msgid "drop this table"
+msgstr "descartar esta tabla"
+
+msgid "empty these tables"
+msgstr "Vaciar estas tablas"
+
+msgid "empty this table"
+msgstr "Vaciar esta tabla"

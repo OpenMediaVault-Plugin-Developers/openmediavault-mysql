@@ -3,230 +3,231 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Stefan Thrane Overby <stoverby@gmail.com>, 2013
+# Damtux <sun_lion@live.com>, 2013
+# polxmod <paolo.velati@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-11-20 10:38-0600\n"
-"PO-Revision-Date: 2013-12-23 08:16+0000\n"
-"Last-Translator: Stefan Thrane Overby <stoverby@gmail.com>\n"
-"Language-Team: Danish (http://www.transifex.com/projects/p/openmediavault-mysql/language/da/)\n"
+"PO-Revision-Date: 2014-01-13 01:19+0000\n"
+"Last-Translator: polxmod <paolo.velati@gmail.com>\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/openmediavault-mysql/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: da\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "Are you sure you want to"
-msgstr "Er du sikker på du vil"
+msgstr ""
 
 msgid ""
 "Are you sure you want to drop the '%s' table? This will delete the table and"
 " all data inside of it. The following query will be run:"
-msgstr "Er du sikker på, at du vil skippe '%s' tabellen? Dette vil slette tabellen og alle data inde i den. Den følgende forsørgelse vil blive kørt:"
+msgstr ""
 
 msgid ""
 "Are you sure you want to drop the database '%s'? This will delete the "
 "database, the tables inside the database, and all data inside of the tables."
 " The following query will be run:"
-msgstr "Er du sikker at, du vil skippe databasen '%s'? Dette vil slette databasen, tabellerne i databasen, og alle data inde i tabellerne. Den følgende forsørgelse vil blive kørt:"
+msgstr ""
 
 msgid ""
 "Are you sure you want to empty the '%s' table? This will delete all the data"
 " inside of it. The following query will be run:"
-msgstr "Er du sikker på, at du vil tømme '%s' tabellen? Dette vil slette alle data, der er inde i den. Den følgende forsørgelse vil blive kørt:"
+msgstr ""
 
 msgid "Are you sure you want to reset the root password?"
-msgstr "Er du sikker på, at du vil nulstille rod adgangskoden?"
+msgstr ""
 
 msgid "Bind address"
-msgstr "Bind adresse"
+msgstr ""
 
 msgid "Browse"
-msgstr "Gennemse"
+msgstr ""
 
 msgid "Cancel"
-msgstr "Annuller"
+msgstr "Annulla"
 
 msgid "Confirm"
-msgstr "Bekræft"
+msgstr "Conferma"
 
 msgid "Confirmation"
-msgstr "Bekræftelse"
+msgstr ""
 
 msgid "Data"
-msgstr "Data"
+msgstr ""
 
 msgid "Enable"
-msgstr "Aktiver"
+msgstr "Abilita"
 
 msgid "Enable networking"
-msgstr "Aktiver netværk"
+msgstr ""
 
 msgid "Error"
-msgstr "Fejl"
+msgstr "Errore"
 
 msgid "Export"
-msgstr "Eksporter"
+msgstr "Esporta"
 
 msgid "Extra options"
-msgstr "Ekstra valgmuligheder"
+msgstr "Opzioni extra"
 
 msgid "Extra options for [mysqld] section of MySQL configuration."
-msgstr "Ekstra valgmuligheder for [mysqld] sektionen af MySQL konfiguration."
+msgstr ""
 
 msgid "For more advanced usage try: "
-msgstr "For mere avanceret brug så prøv:"
+msgstr "Per un utilizzo più avanzato prova:"
 
 msgid "Full Text"
-msgstr "Hele Teksten"
+msgstr ""
 
 msgid "Home"
-msgstr "Hjem"
+msgstr ""
 
 msgid "IP address to listen on. Use 0.0.0.0 for all host IPs."
-msgstr "IP adresse, der skal lyttes på. Brug 0.0.0.0 til alle værts IPer."
+msgstr ""
 
 msgid "Import"
-msgstr "Importer"
+msgstr "Importa"
 
 msgid "Insert"
-msgstr "Indsæt"
+msgstr ""
 
 msgid "Launch management site"
-msgstr "Start håndterings side"
+msgstr ""
 
 msgid "Loading..."
-msgstr "Indlæser..."
+msgstr "Caricamento..."
 
 msgid "Management"
-msgstr "Håndtering"
+msgstr ""
 
 msgid "MySQL"
 msgstr "MySQL"
 
 msgid "MySQL Workbench"
-msgstr "MySQL Arbejdsbord"
+msgstr ""
 
 msgid "New field"
-msgstr "Ny felt"
+msgstr "Nuovo campo"
 
 msgid "Okay"
 msgstr "Okay"
 
 msgid "Overview"
-msgstr "Oversigt"
+msgstr ""
 
 msgid "Password will reset to:"
-msgstr "Adgangskode vil blive nulstillet til: "
+msgstr ""
 
 msgid "Port"
-msgstr "Port"
+msgstr "Porta"
 
 msgid "Port to listen on."
-msgstr "Port, der skal lyttes på."
+msgstr ""
 
 msgid "Query"
-msgstr "Forespørgsel"
+msgstr ""
 
 msgid "Redirecting..."
-msgstr "Omdirigering..."
+msgstr ""
 
 msgid "Reset MySQL root password"
-msgstr "Nulstil MySQL rod adgangskode"
+msgstr ""
 
 msgid "Reset Password"
-msgstr "Nulstil Adgangskode"
+msgstr ""
 
 msgid "Resetting MySQL root password."
-msgstr "Nulstiller MySQL rod adgangskode"
+msgstr ""
 
 msgid "SQL data root"
-msgstr "SQL data rod"
+msgstr ""
 
 msgid "SQL data volume"
-msgstr "SQL data drev"
+msgstr ""
 
 msgid "SQL management site"
-msgstr "SQL håndterings side"
+msgstr ""
 
 msgid "SQL management site."
-msgstr "SQL håndterings side"
+msgstr ""
 
 msgid "Select a volume ..."
-msgstr "Vælg et drev ..."
+msgstr "Seleziona un volume ..."
 
 msgid "Settings"
-msgstr "Indstillinger"
+msgstr "Impostazioni"
 
 msgid "Show tab containing Management frame."
-msgstr "Vis fane indeholdende Håndterings ramme."
+msgstr ""
 
 msgid "Structure"
-msgstr "Struktur"
+msgstr ""
 
 msgid "Successfully saved changes."
-msgstr "Ændringer gemt med succes."
+msgstr "Modifiche salvate con successo."
 
 msgid "The following queries will be run:"
-msgstr "De følgende forespørgsler vil blive kørt:"
+msgstr ""
 
 msgid "The following query will be run:"
-msgstr "Den følgende forespørgsel vil blive kørt:"
+msgstr ""
 
 msgid "There was an error receiving data from the server."
-msgstr "Der skete en fejl i indlæsning af data fra serveren."
+msgstr ""
 
 msgid ""
 "To change the password, use the management site and change root user on host"
 " localhost."
-msgstr "For at ændre adgangskoden, så brug håndterings siden og ændr rod bruger på værts lokalvært."
+msgstr ""
 
 msgid "Users"
-msgstr "Brugere"
+msgstr "Utenti"
 
 msgid ""
 "Warning: If Your MySQL data volume is set to use a non-data volume it may "
 "result in loss of data in the event of a disk failure. It is recommmended "
 "that you change this before using MySQL."
-msgstr "Advarsel: Dit MySQL data drev er indstillet til at bruge et ikke-data drev. Dette kan resultere i tab af data i tilfælde af en disk fejl. Det anbefales, at du ændrer dette, før du bruger MySQL."
+msgstr ""
 
 msgid "Your changes were saved to the database."
-msgstr "Dine ændringer blev gemt i databasen."
+msgstr ""
 
 msgid "delete these columns"
-msgstr "slet disse kolonner"
+msgstr "elimina queste colonne"
 
 msgid "delete these indexes"
-msgstr "slet disse indekser"
+msgstr "elimina questi indici"
 
 msgid "delete these rows"
-msgstr "slet disse rækker"
+msgstr "elimina queste righe"
 
 msgid "delete these users"
-msgstr "slet disse brugere"
+msgstr "elimina questi utenti"
 
 msgid "delete this column"
-msgstr "slet denne kolonne"
+msgstr "elimina questa colonna"
 
 msgid "delete this index"
-msgstr "slet denne indeks"
+msgstr "elimina questo indice"
 
 msgid "delete this row"
-msgstr "slet denne række"
+msgstr "elimina questa riga"
 
 msgid "delete this user"
-msgstr "slet denne bruger"
+msgstr "elimina questo utente"
 
 msgid "drop these tables"
-msgstr "skip disse tabeller"
+msgstr ""
 
 msgid "drop this table"
-msgstr "skip denne tabel"
+msgstr ""
 
 msgid "empty these tables"
-msgstr "tøm disse tabeller"
+msgstr ""
 
 msgid "empty this table"
-msgstr "tøm denne tabel"
+msgstr ""
