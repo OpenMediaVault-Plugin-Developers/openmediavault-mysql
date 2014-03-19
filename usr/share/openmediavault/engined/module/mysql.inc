@@ -24,7 +24,7 @@ require_once "openmediavault/error.inc";
 require_once "openmediavault/util.inc";
 require_once "openmediavault/initscript.inc";
 
-class OMVModuleMySQL extends OMVModuleServiceAbstract 
+class OMVModuleMySQL extends OMVModuleServiceAbstract
     implements OMVINotifyListener, OMVIModuleServiceStatus {
 
     private function getXPath()
@@ -67,7 +67,7 @@ class OMVModuleMySQL extends OMVModuleServiceAbstract
 	 */
 	public function applyConfig()
 	{
-        $cmd = sprintf("sudo omv-mkconf %s 2>&1", $this->getName());
+        $cmd = sprintf("omv-mkconf %s 2>&1", $this->getName());
 
         if (0 !== $this->exec($cmd, $output))
             throw new OMVException(OMVErrorMsg::E_EXEC_FAILED,
@@ -88,7 +88,7 @@ class OMVModuleMySQL extends OMVModuleServiceAbstract
 
         if (!boolval($object["enable"]))
             return;
-        
+
         $initd = new OMVSysVInitScript($this->getName(), true);
         $initd->exec();
     }

@@ -66,7 +66,7 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
         $initd = new OMVSysVInitScript("mysql");
 
         // Modify result data
-        $object["enable"]                 = ($initd->status() == 0);
+        $object["enable"]                 = intval($object["enable"]);
         $object["port"]                   = intval($object["port"]);
         $object["enable-networking"]      = boolval($object["enable-networking"]);
         $object["enable-management-site"] = boolval($object["enable-management-site"]);
@@ -141,17 +141,15 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
         $this->validateMethodContext($context, array( "role" => OMV_ROLE_ADMINISTRATOR ));
 
         $object = $xmlConfig->get($this->getXPath());
-        if(is_null($object)) {
+        if(is_null($object))
             throw new OMVException(OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED, $this->getXPath());
-        }
 
         if(FALSE === boolval($object["enable"]))
             return;
 
         $cmd = "sudo /usr/local/bin/mysql-password 2>&1";
-        if(0 !== $this->exec($cmd, $output)) {
+        if(0 !== $this->exec($cmd, $output))
             throw new OMVException(OMVErrorMsg::E_EXEC_FAILED, $cmd, implode("\n", $output));
-        }
     }
 }
 
