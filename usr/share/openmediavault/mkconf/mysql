@@ -21,8 +21,8 @@ set -e
 . /etc/default/openmediavault
 . /usr/share/openmediavault/scripts/helper-functions
 
-
-MYSQL_CONFIG="/etc/mysql/conf.d/openmediavault-mysql.cnf";
+MY_CONFIG="/etc/mysql/my.conf"
+MYSQL_CONFIG="/etc/mysql/conf.d/openmediavault-mysql.cnf"
 SQL_MANAGEMENT_SITE_CONF_NAME=openmediavault-mysql-management-site
 SQL_MANAGEMENT_SITE_ENABLED_CONF=/etc/apache2/sites-enabled/${SQL_MANAGEMENT_SITE_CONF_NAME}
 
@@ -31,6 +31,22 @@ if [ "$(omv_config_get "//services/mysql/enable")" != "1" ]; then
     if [ -e ${SQL_MANAGEMENT_SITE_ENABLED_CONF} ]; then
         a2dissite ${SQL_MANAGEMENT_SITE_CONF_NAME}
     fi
+    exit 0
+fi
+
+# Get current database location
+if [ -e "${MYSQL_CONFIG}" ]; then
+    MYSQL_HOME="$(cat ${MYSQL_CONFIG} | grep datadir | sed 's/datadir\s\+=\s\+//g')"
+else
+    # if not openmediavault mysql config, use standard mysql config file
+    if [ -e "${MY_CONFIG}" ]; then
+        MYSQL_HOME="$(cat ${MY_CONFIG} | grep datadir | sed 's/datadir\s\+=\s\+//g')"
+    fi
+fi
+
+# Check for mysql database files
+if [ ! -e "${MYSQL_HOME}/ibdata1" ]; then
+    exit 0
 fi
 
 # Create mysql config file
@@ -62,8 +78,6 @@ fi
 
 /etc/init.d/apache2 reload
 
-# move database
-MYSQL_HOME="$(getent passwd mysql | cut -d: -f6)"
 DB_FOLDER="$(omv_config_get "//services/mysql/data-root")"
 
 if [ "${MYSQL_HOME}" != "${DB_FOLDER}" ]; then
@@ -78,6 +92,5 @@ if [ "${MYSQL_HOME}" != "${DB_FOLDER}" ]; then
     cp -rfp ${MYSQL_HOME}/* ${DB_FOLDER}/
     rm -rf ${MYSQL_HOME}
 
-    /usr/sbin/usermod -d "${DB_FOLDER}" mysql
     /etc/init.d/mysql start
 fi

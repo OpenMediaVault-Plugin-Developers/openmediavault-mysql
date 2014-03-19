@@ -1,3 +1,10 @@
+openmediavault-mysql (1.0.1) stable; urgency=medium
+
+  * Fix database files move since the database directory is no longer the user's home directory
+  * Update locales
+
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Wed, 19 Mar 2014 12:58:27 -0500
+
 openmediavault-mysql (1.0.0) stable; urgency=medium
 
   * OMV 1.0 compatibility
