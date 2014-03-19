@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# SpaceBrain <spacebrain.damage@gmail.com>, 2013
+# SpaceBrain <spacebrain.damage@gmail.com>, 2013-2014
 msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-11-20 10:38-0600\n"
-"PO-Revision-Date: 2013-11-28 18:17+0000\n"
+"PO-Revision-Date: 2014-03-07 04:05+0000\n"
 "Last-Translator: SpaceBrain <spacebrain.damage@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/openmediavault-mysql/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -38,10 +38,10 @@ msgid ""
 msgstr ""
 
 msgid "Are you sure you want to reset the root password?"
-msgstr ""
+msgstr "Êtes-vous sûr de vouloir réinitialiser le mot de passe root ? "
 
 msgid "Bind address"
-msgstr ""
+msgstr "Adresse liée"
 
 msgid "Browse"
 msgstr "Parcourir"
@@ -101,13 +101,13 @@ msgid "Loading..."
 msgstr "Chargement..."
 
 msgid "Management"
-msgstr ""
+msgstr "Gestion"
 
 msgid "MySQL"
 msgstr "MySQL"
 
 msgid "MySQL Workbench"
-msgstr ""
+msgstr "Workbench MySQL"
 
 msgid "New field"
 msgstr ""
