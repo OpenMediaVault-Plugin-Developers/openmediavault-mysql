@@ -4,14 +4,14 @@
 # 
 # Translators:
 # Damtux <sun_lion@live.com>, 2013
-# polxmod <paolo.velati@gmail.com>, 2014
+# Paolo Velati <paolo.velati@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-11-20 10:38-0600\n"
-"PO-Revision-Date: 2014-01-13 01:19+0000\n"
-"Last-Translator: polxmod <paolo.velati@gmail.com>\n"
+"PO-Revision-Date: 2014-03-16 18:05+0000\n"
+"Last-Translator: Paolo Velati <paolo.velati@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/openmediavault-mysql/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,32 +20,32 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "Are you sure you want to"
-msgstr ""
+msgstr "Sei sicuro di voler"
 
 msgid ""
 "Are you sure you want to drop the '%s' table? This will delete the table and"
 " all data inside of it. The following query will be run:"
-msgstr ""
+msgstr "Sei sicuro di voler eliminare la tabella '%s'? Ciò eliminerà la tabella e tutti i dati all'interno di esso. La seguente query verrà eseguita:"
 
 msgid ""
 "Are you sure you want to drop the database '%s'? This will delete the "
 "database, the tables inside the database, and all data inside of the tables."
 " The following query will be run:"
-msgstr ""
+msgstr "Sei sicuro di voler eliminare il database '%s'? Ciò eliminerà il database, le tabelle all'interno del database, e tutti i dati all'interno delle tabelle. La seguente query verrà eseguita:"
 
 msgid ""
 "Are you sure you want to empty the '%s' table? This will delete all the data"
 " inside of it. The following query will be run:"
-msgstr ""
+msgstr "Sei sicuro di voler svuotare la tabella '%s'? Ciò eliminerà tutti i dati all'interno di essa. La seguente query verrà eseguita:"
 
 msgid "Are you sure you want to reset the root password?"
-msgstr ""
+msgstr "Sei sicuro di voler ripristinare la password di root?"
 
 msgid "Bind address"
-msgstr ""
+msgstr "Associa indirizzo"
 
 msgid "Browse"
-msgstr ""
+msgstr "Naviga"
 
 msgid "Cancel"
 msgstr "Annulla"
@@ -54,16 +54,16 @@ msgid "Confirm"
 msgstr "Conferma"
 
 msgid "Confirmation"
-msgstr ""
+msgstr "Conferma"
 
 msgid "Data"
-msgstr ""
+msgstr "Data"
 
 msgid "Enable"
 msgstr "Abilita"
 
 msgid "Enable networking"
-msgstr ""
+msgstr "Abilita rete"
 
 msgid "Error"
 msgstr "Errore"
@@ -75,40 +75,40 @@ msgid "Extra options"
 msgstr "Opzioni extra"
 
 msgid "Extra options for [mysqld] section of MySQL configuration."
-msgstr ""
+msgstr "Opzioni extra per la sezione [mysqld] della configurazione MySQL."
 
 msgid "For more advanced usage try: "
 msgstr "Per un utilizzo più avanzato prova:"
 
 msgid "Full Text"
-msgstr ""
+msgstr "Testo completo"
 
 msgid "Home"
-msgstr ""
+msgstr "Home"
 
 msgid "IP address to listen on. Use 0.0.0.0 for all host IPs."
-msgstr ""
+msgstr "Indirizzo IP da mettere in ascolto. Utilizza 0.0.0.0 per tutti gli IP."
 
 msgid "Import"
 msgstr "Importa"
 
 msgid "Insert"
-msgstr ""
+msgstr "Inserisci"
 
 msgid "Launch management site"
-msgstr ""
+msgstr "Avvia sito di gestione"
 
 msgid "Loading..."
 msgstr "Caricamento..."
 
 msgid "Management"
-msgstr ""
+msgstr "Gestione"
 
 msgid "MySQL"
 msgstr "MySQL"
 
 msgid "MySQL Workbench"
-msgstr ""
+msgstr "MySQL Workbench"
 
 msgid "New field"
 msgstr "Nuovo campo"
@@ -117,43 +117,43 @@ msgid "Okay"
 msgstr "Okay"
 
 msgid "Overview"
-msgstr ""
+msgstr "Panoramica"
 
 msgid "Password will reset to:"
-msgstr ""
+msgstr "La password verrà ripristinata in:"
 
 msgid "Port"
 msgstr "Porta"
 
 msgid "Port to listen on."
-msgstr ""
+msgstr "Porta in ascolto."
 
 msgid "Query"
-msgstr ""
+msgstr "Query"
 
 msgid "Redirecting..."
-msgstr ""
+msgstr "Reindirizzamento..."
 
 msgid "Reset MySQL root password"
-msgstr ""
+msgstr "Ripristina password root MySQL."
 
 msgid "Reset Password"
-msgstr ""
+msgstr "Ripristina Password"
 
 msgid "Resetting MySQL root password."
-msgstr ""
+msgstr "Ripristino in corso della password root MySQL."
 
 msgid "SQL data root"
-msgstr ""
+msgstr "Radice data SQL"
 
 msgid "SQL data volume"
-msgstr ""
+msgstr "Volume data SQL"
 
 msgid "SQL management site"
-msgstr ""
+msgstr "Sito per la gestione SQL"
 
 msgid "SQL management site."
-msgstr ""
+msgstr "Sito per la gestione SQL."
 
 msgid "Select a volume ..."
 msgstr "Seleziona un volume ..."
@@ -162,27 +162,27 @@ msgid "Settings"
 msgstr "Impostazioni"
 
 msgid "Show tab containing Management frame."
-msgstr ""
+msgstr "Mostra scheda contenente frame di gestione."
 
 msgid "Structure"
-msgstr ""
+msgstr "Struttura"
 
 msgid "Successfully saved changes."
 msgstr "Modifiche salvate con successo."
 
 msgid "The following queries will be run:"
-msgstr ""
+msgstr "Saranno eseguite le seguenti query:"
 
 msgid "The following query will be run:"
-msgstr ""
+msgstr "Sarà eseguita la seguente query:"
 
 msgid "There was an error receiving data from the server."
-msgstr ""
+msgstr "C'è stato un errore durante la ricezione dei dati dal server."
 
 msgid ""
 "To change the password, use the management site and change root user on host"
 " localhost."
-msgstr ""
+msgstr "Per modificare la password, utilizza il sito di gestione e cambia l'utente root sull'host localhost."
 
 msgid "Users"
 msgstr "Utenti"
@@ -191,10 +191,10 @@ msgid ""
 "Warning: If Your MySQL data volume is set to use a non-data volume it may "
 "result in loss of data in the event of a disk failure. It is recommmended "
 "that you change this before using MySQL."
-msgstr ""
+msgstr "Attenzione: se il vostro volume dati MySQL è impostato per utilizzare un volume non di dati, potrebbero verificarsi perdite di dati in caso di guasto di un disco. Si racommmanda che venga modificato prima di utilizzare MySQL."
 
 msgid "Your changes were saved to the database."
-msgstr ""
+msgstr "I cambiamenti sono stati salvati nel database."
 
 msgid "delete these columns"
 msgstr "elimina queste colonne"
@@ -221,13 +221,13 @@ msgid "delete this user"
 msgstr "elimina questo utente"
 
 msgid "drop these tables"
-msgstr ""
+msgstr "elimina queste tabelle"
 
 msgid "drop this table"
-msgstr ""
+msgstr "elimina questa tabella"
 
 msgid "empty these tables"
-msgstr ""
+msgstr "svuota queste tabelle"
 
 msgid "empty this table"
-msgstr ""
+msgstr "svuota questa tabella"
