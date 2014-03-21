@@ -1,7 +1,6 @@
 openmediavault-mysql (1.0.3) stable; urgency=medium
 
   * Minor fixes
-  * Update locales
 
  -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Fri, 21 Mar 2014 11:18:27 -0500
 
