@@ -20,19 +20,18 @@ case "$1" in
             object="${object}<showtab>0</showtab>"
             omv_config_add_element "/config/services" "mysql" "${object}" true
         fi
-    
+
         omv_install_fixperms
+        omv-mkconf mysql
     ;;
-    
+
     abort-upgrade|abort-remove|abort-deconfigure)
     ;;
-    
+
     *)
         echo "postinst called with unknown argument" >&2
         exit 1
     ;;
 esac
-
-#DEBHELPER#
 
 exit 0
