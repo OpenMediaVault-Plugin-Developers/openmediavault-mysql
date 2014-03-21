@@ -42,12 +42,14 @@ else
     if [ -e "${MY_CONFIG}" ]; then
         MYSQL_HOME="$(cat ${MY_CONFIG} | grep datadir | sed 's/datadir\s\+=\s\+//g')"
     else
+        echo "Unable to get current database location"
         exit 2
     fi
 fi
 
 # Check for mysql database files
 if [ ! -e "${MYSQL_HOME}/ibdata1" ]; then
+    echo "Unable to find database files"
     exit 3
 fi
 
@@ -76,7 +78,7 @@ else
     fi
 fi
 
-/etc/init.d/apache2 reload
+service apache2 reload
 
 DB_FOLDER="$(omv_config_get "//services/mysql/data-root")"
 
