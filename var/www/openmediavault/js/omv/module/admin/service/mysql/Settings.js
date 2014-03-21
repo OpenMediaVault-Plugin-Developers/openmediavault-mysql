@@ -243,12 +243,14 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                         scope : me,
                         icon  : Ext.Msg.QUESTION
                     });
-                }
+                },
+                margin : "5 0 0 0"
             },{
                 border : false,
-                html   : "<br />" + 
-                         _("Password will reset to:") + "  openmediavault" + "<br /><br />" +
-                         _("To change the password, use the management site and change root user on host localhost.") + "<br /><br />"
+                html   : "<ul>" + 
+                         "<li>" + _("Password will reset to:") + "  openmediavault" + "</li>" +
+                         "<li>" + _("To change the password, use the management site and change root user on host localhost.") + "</li>" +
+                         "</ul>"
             }]
         },{
             xtype    : "fieldset",
@@ -280,7 +282,7 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                 handler    : function() {
                     window.open("/sqlbuddy/");
                 },
-                margin : "0 0 5 0"
+                margin : "0 0 8 0"
             }]
         }];
     }
