@@ -1,3 +1,10 @@
+openmediavault-mysql (1.0.4) stable; urgency=medium
+
+  * Check for database directory
+  * Fix config file permissions
+
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Sat, 22 Mar 2014 08:45:27 -0500
+
 openmediavault-mysql (1.0.3) stable; urgency=medium
 
   * Minor fixes
