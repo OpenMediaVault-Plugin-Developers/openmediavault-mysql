@@ -5,6 +5,8 @@ set -e
 . /etc/default/openmediavault
 . /usr/share/openmediavault/scripts/helper-functions
 
+MYSQL_DB_DIR="/var/lib/mysql"
+
 case "$1" in
     configure)
         if ! omv_config_exists "/config/services/mysql"; then
@@ -19,6 +21,11 @@ case "$1" in
             object="${object}<mntentref></mntentref>"
             object="${object}<showtab>0</showtab>"
             omv_config_add_element "/config/services" "mysql" "${object}" true
+        fi
+
+        if [ ! -d "${MYSQL_DB_DIR}" ]; then
+            mkdir -p "${MYSQL_DB_DIR}"
+            chown mysql:mysql "${MYSQL_DB_DIR}"
         fi
 
         omv_install_fixperms

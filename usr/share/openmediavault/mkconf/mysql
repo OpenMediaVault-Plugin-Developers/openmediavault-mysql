@@ -68,6 +68,8 @@ xmlstarlet sel -t -m "//services/mysql" \
     -i "string-length(extraoptions) > 0" -v "extraoptions" -n -b \
 ${OMV_CONFIG_FILE} | xmlstarlet unesc >> ${MYSQL_CONFIG}
 
+chmod 644 ${MYSQL_CONFIG}
+
 if [ "$(omv_config_get "//services/mysql/enable-management-site")" != "1" ]; then
     if [ -e "${SQL_MANAGEMENT_SITE_ENABLED_CONF}" ]; then
         a2dissite ${SQL_MANAGEMENT_SITE_CONF_NAME}
