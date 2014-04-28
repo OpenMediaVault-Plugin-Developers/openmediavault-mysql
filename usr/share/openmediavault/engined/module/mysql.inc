@@ -25,20 +25,25 @@ require_once "openmediavault/util.inc";
 require_once "openmediavault/initscript.inc";
 
 class OMVModuleMySQL extends OMVModuleServiceAbstract
-    implements OMVINotifyListener, OMVIModuleServiceStatus {
+    implements OMVINotifyListener, OMVIModuleServiceStatus
+{
+    private function getEventMessagePath()
+    {
+        return "org.openmediavault.services.mysql";
+    }
 
     private function getXPath()
     {
         return "//services/mysql";
     }
 
-	/**
-	 * Get the module name.
-	 */
-	public function getName()
-	{
-		return "mysql";
-	}
+    /**
+     * Get the module name.
+     */
+    public function getName()
+    {
+        return "mysql";
+    }
 
     /**
      * Get the module status
@@ -62,11 +67,11 @@ class OMVModuleMySQL extends OMVModuleServiceAbstract
         );
     }
 
-	/**
-	 * Create and update the configuration
-	 */
-	public function applyConfig()
-	{
+    /**
+     * Create and update the configuration
+     */
+    public function applyConfig()
+    {
         $cmd = sprintf("omv-mkconf %s 2>&1", $this->getName());
 
         if (0 !== $this->exec($cmd, $output))
@@ -102,15 +107,22 @@ class OMVModuleMySQL extends OMVModuleServiceAbstract
         $initd->exec();
     }
 
-	/**
-	 * Bind listeners.
-	 */
-	public function bindListeners(OMVNotifyDispatcher $dispatcher) {
-	    $dispatcher->addListener(
+    /**
+     * Bind listeners.
+     */
+    public function bindListeners(OMVNotifyDispatcher $dispatcher) {
+        $moduleMgr = &OMVModuleMgr::getInstance();
+
+        $dispatcher->addListener(
             OMV_NOTIFY_MODIFY,
-            "org.openmediavault.services.mysql",
+            $this->getEventMessagePath(),
             array($this, "setDirty"));
-	}
+
+        $dispatcher->addListener(
+            OMV_NOTIFY_MODIFY,
+            $this->getEventMessagePath(),
+            array($moduleMgr->getModule("webserver"), "setDirty"));
+    }
 }
 
 // Register module
