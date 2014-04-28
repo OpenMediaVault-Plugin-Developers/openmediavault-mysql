@@ -1,4 +1,3 @@
-etc/apache2/sites-available/*   etc/apache2/sites-available
 usr/share/openmediavault/*      usr/share/openmediavault
 usr/local/bin/*                 usr/local/bin
 var/www/openmediavault/*        var/www/openmediavault
