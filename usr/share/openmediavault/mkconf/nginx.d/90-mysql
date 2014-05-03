@@ -36,11 +36,11 @@ location /sqlbuddy/ {
     alias /usr/share/sqlbuddy/;
     index index.php;
     location ~ \.php$ {
-    	fastcgi_split_path_info ^(.+\.php)(/.+)$;
-    	fastcgi_pass unix:/var/run/php5-fpm-openmediavault-webgui.sock;
-    	fastcgi_index index.php;
-    	include fastcgi_params;
-	}
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass unix:/var/run/php5-fpm-openmediavault-webgui.sock;
+        fastcgi_index index.php;
+        include fastcgi_params;
+    }
 }
 EOF
 
