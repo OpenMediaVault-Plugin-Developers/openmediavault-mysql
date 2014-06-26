@@ -32,7 +32,7 @@ if [ "$(omv_config_get "//services/mysql/enable-management-site")" != "1" ]; the
 fi
 
 cat <<EOF > "${SQL_MANAGEMENT_SITE_CONF}"
-location /mywebsql/ {
+location /mysql/ {
     alias /usr/share/mywebsql/;
     index index.php;
     location ~ \.php$ {
@@ -41,25 +41,25 @@ location /mywebsql/ {
         fastcgi_index index.php;
         include fastcgi_params;
     }
-    location = /mywebsql/favicon.ico {
+    location = /mysql/favicon.ico {
         log_not_found off;
         access_log off;
     }
-    location = /mywebsql/robots.txt {
+    location = /mysql/robots.txt {
         allow all;
         log_not_found off;
         access_log off;
     }
-    location /mywebsql/ {
-        try_files \$uri \$uri/ /mywebsql/index.php?\$args;
+    location /mysql/ {
+        try_files \$uri \$uri/ /mysql/index.php?\$args;
     }
-    location ~ /mywebsql/\. {
+    location ~ /mysql/\. {
         deny all;
     }
-    location ~* /mywebsql/(?:config)/.*\.php$ {
+    location ~* /mysql/(?:config)/.*\.php$ {
         deny all;
     }
-    location ~* /mywebsql/\.(js|css|png|jpg|jpeg|gif|ico)$ {
+    location ~* /mysql/\.(js|css|png|jpg|jpeg|gif|ico)$ {
         expires max;
         log_not_found off;
     }
