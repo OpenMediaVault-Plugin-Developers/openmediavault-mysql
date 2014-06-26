@@ -24,7 +24,7 @@ Ext.define("OMV.module.admin.service.mysql.Management", {
     initComponent : function() {
         var me = this;
 
-        me.html = "<iframe src='/sqlbuddy/' width='100%' height='100%' />";
+        me.html = "<iframe src='/mywebsql/' width='100%' height='100%' />";
         me.callParent(arguments);
     }
 });

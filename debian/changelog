@@ -1,3 +1,10 @@
+openmediavault-mysql (1.0.5) UNRELEASED; urgency=low
+
+  * Replace sqlbuddy with mywebsql
+  * Update locales
+
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Thu, 26 Jun 2014 06:45:12 -0500
+
 openmediavault-mysql (1.0.4.1) stable; urgency=low
 
   * Conform to OMV 0.6.0.6 trigger standards
