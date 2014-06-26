@@ -8,7 +8,7 @@ Homepage: http://omv-extras.org/
 
 Package: openmediavault-mysql
 Architecture: all
-Depends: openmediavault (>= 0.6.0.10), mysql-server,
+Depends: openmediavault (>= 0.6.0.10), mysql-server, mywebsql,
  php5-mysqlnd | php5-mysqli | php5-mysql,
  dbconfig-common ${misc:Depends}
 Description: MySQL plugin for OpenMediaVault

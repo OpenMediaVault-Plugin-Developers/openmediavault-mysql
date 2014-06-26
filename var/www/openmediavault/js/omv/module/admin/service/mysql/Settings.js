@@ -280,7 +280,7 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                 text       : _("Launch management site"),
                 disabled   : true,
                 handler    : function() {
-                    window.open("/sqlbuddy/");
+                    window.open("/mywebsql/");
                 },
                 margin : "0 0 8 0"
             }]

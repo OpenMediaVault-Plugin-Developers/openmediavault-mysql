@@ -13,11 +13,6 @@ install:
 	dh_testdir
 	dh_testroot
 	dh_prep
-ifneq ($(shell [ -d sqlbuddy ]; printf $$?), 0)
-	wget https://github.com/calvinlough/sqlbuddy/raw/gh-pages/sqlbuddy.zip -O sqlbuddy.zip
-	unzip sqlbuddy.zip
-	/bin/rm -f sqlbuddy.zip
-endif
 	dh_installdirs
 	dh_install
 	chmod +x $(CURDIR)/debian/openmediavault-${PLUGIN_NAME}/usr/share/openmediavault/mkconf/${PLUGIN_NAME}
