@@ -18,14 +18,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-require_once "openmediavault/module.inc";
 require_once "openmediavault/config.inc";
 require_once "openmediavault/error.inc";
-require_once "openmediavault/util.inc";
 require_once "openmediavault/initscript.inc";
+require_once "openmediavault/module.inc";
+require_once "openmediavault/util.inc";
 
-class OMVModuleMySQL extends OMVModuleServiceAbstract
-    implements OMVINotifyListener, OMVIModuleServiceStatus
+class OMVModuleMySQL extends OMVModuleServiceAbstract implements
+    OMVINotifyListener,
+    OMVIModuleServiceStatus
 {
     private function getEventMessagePath()
     {
@@ -54,8 +55,9 @@ class OMVModuleMySQL extends OMVModuleServiceAbstract
 
         $object = $xmlConfig->get($this->getXPath());
 
-        if (is_null($object))
+        if (is_null($object)) {
             throw new OMVException(OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED, $this->getXPath());
+        }
 
         $initd = new OMVSysVInitScript($this->getName());
 
@@ -74,9 +76,9 @@ class OMVModuleMySQL extends OMVModuleServiceAbstract
     {
         $cmd = sprintf("omv-mkconf %s 2>&1", $this->getName());
 
-        if (0 !== $this->exec($cmd, $output))
-            throw new OMVException(OMVErrorMsg::E_EXEC_FAILED,
-                $cmd, implode("\n", $output));
+        if (0 !== $this->exec($cmd, $output)) {
+            throw new OMVException(OMVErrorMsg::E_EXEC_FAILED, $cmd, implode("\n", $output));
+        }
     }
 
     /**
@@ -88,11 +90,13 @@ class OMVModuleMySQL extends OMVModuleServiceAbstract
 
         $object = $xmlConfig->get($this->getXPath());
 
-        if (is_null($object))
+        if (is_null($object)) {
             throw new OMVException(OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED, $this->getXPath());
+        }
 
-        if (!boolval($object["enable"]))
+        if (!boolval($object["enable"])) {
             return;
+        }
 
         $initd = new OMVSysVInitScript($this->getName(), true);
         $initd->exec();
@@ -110,18 +114,21 @@ class OMVModuleMySQL extends OMVModuleServiceAbstract
     /**
      * Bind listeners.
      */
-    public function bindListeners(OMVNotifyDispatcher $dispatcher) {
+    public function bindListeners(OMVNotifyDispatcher $dispatcher)
+    {
         $moduleMgr = &OMVModuleMgr::getInstance();
 
         $dispatcher->addListener(
             OMV_NOTIFY_MODIFY,
             $this->getEventMessagePath(),
-            array($this, "setDirty"));
+            array($this, "setDirty")
+        );
 
         $dispatcher->addListener(
             OMV_NOTIFY_MODIFY,
             $this->getEventMessagePath(),
-            array($moduleMgr->getModule("webserver"), "setDirty"));
+            array($moduleMgr->getModule("webserver"), "setDirty")
+        );
     }
 }
 

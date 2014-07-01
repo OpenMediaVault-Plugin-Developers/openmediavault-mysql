@@ -18,12 +18,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-require_once "openmediavault/object.inc";
 require_once "openmediavault/config.inc";
 require_once "openmediavault/error.inc";
-require_once "openmediavault/util.inc";
-require_once "openmediavault/rpcservice.inc";
 require_once "openmediavault/notify.inc";
+require_once "openmediavault/object.inc";
+require_once "openmediavault/rpcservice.inc";
+require_once "openmediavault/util.inc";
 
 class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
 {
@@ -47,7 +47,7 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
     /**
      * Get main settings
      */
-    function getSettings($params, $context)
+    public function getSettings($params, $context)
     {
         global $xmlConfig;
 
@@ -58,9 +58,9 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
 
         // Get configuration object
         $object = $xmlConfig->get($this->getXPath());
-        if (is_null($object))
-            throw new OMVException(OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED,
-                $this->getXPath());
+        if (is_null($object)) {
+            throw new OMVException(OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED, $this->getXPath());
+        }
 
         // Get actual mysql status
         $initd = new OMVSysVInitScript("mysql");
@@ -78,7 +78,7 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
     /**
      * Set main settings
      */
-    function setSettings($params, $context)
+    public function setSettings($params, $context)
     {
         global $xmlConfig;
 
@@ -88,20 +88,23 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
         ));
 
         // Validate the parameters of the RPC service method.
-        $this->validateMethodParams($params, '{
-            "type"       : "object",
-            "properties" : {
-                "enable"                 : { "type" : "boolean" },
-                "enable-networking"      : { "type" : "boolean" },
-                "port"                   : { "type" : "integer" },
-                "bindaddress"            : { "type" : "string" },
-                "extraoptions"           : { "type" : "string" },
-                "mntentref"              : { "type" : "string" },
-                "data-root"              : { "type" : "string" },
-                "enable-management-site" : { "type" : "boolean" },
-                "showtab"                : { "type" : "boolean" }
-            }
-        }');
+        $this->validateMethodParams(
+            $params,
+            '{
+                "type"       : "object",
+                "properties" : {
+                    "enable"                 : { "type" : "boolean" },
+                    "enable-networking"      : { "type" : "boolean" },
+                    "port"                   : { "type" : "integer" },
+                    "bindaddress"            : { "type" : "string" },
+                    "extraoptions"           : { "type" : "string" },
+                    "mntentref"              : { "type" : "string" },
+                    "data-root"              : { "type" : "string" },
+                    "enable-management-site" : { "type" : "boolean" },
+                    "showtab"                : { "type" : "boolean" }
+                }
+            }'
+        );
 
         $xpath = sprintf("//system/fstab/mntent[uuid='%s']", $params["mntentref"]);
         $deviceDir = $xmlConfig->get($xpath);
@@ -126,30 +129,35 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
         );
 
         // Set configuration object
-        if (false === $xmlConfig->replace($this->getXPath(), $object))
+        if (false === $xmlConfig->replace($this->getXPath(), $object)) {
             throw new OMVException(OMVErrorMsg::E_CONFIG_SET_OBJECT_FAILED, $this->getXPath());
+        }
 
         // Notify configuration changes
         $dispatcher = &OMVNotifyDispatcher::getInstance();
         $dispatcher->notify(OMV_NOTIFY_MODIFY, "org.openmediavault.services.mysql", $object);
     }
 
-    public function resetPassword($params, $context) {
+    public function resetPassword($params, $context)
+    {
         global $xmlConfig;
 
         // Validate the RPC caller context.
         $this->validateMethodContext($context, array( "role" => OMV_ROLE_ADMINISTRATOR ));
 
         $object = $xmlConfig->get($this->getXPath());
-        if(is_null($object))
+        if (is_null($object)) {
             throw new OMVException(OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED, $this->getXPath());
+        }
 
-        if(FALSE === boolval($object["enable"]))
+        if (!boolval($object["enable"])) {
             return;
+        }
 
         $cmd = "sudo /usr/local/bin/mysql-password 2>&1";
-        if(0 !== $this->exec($cmd, $output))
+        if (0 !== $this->exec($cmd, $output)) {
             throw new OMVException(OMVErrorMsg::E_EXEC_FAILED, $cmd, implode("\n", $output));
+        }
     }
 }
 
