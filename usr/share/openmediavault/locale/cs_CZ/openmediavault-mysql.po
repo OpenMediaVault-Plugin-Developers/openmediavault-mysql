@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# zdeno <mcharvat@zdeno.net>, 2013
+# Michal Charvát <mcharvat@zdeno.net>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-20 10:38-0600\n"
-"PO-Revision-Date: 2013-12-13 16:29+0000\n"
-"Last-Translator: zdeno <mcharvat@zdeno.net>\n"
+"POT-Creation-Date: 2014-07-05 12:33-0500\n"
+"PO-Revision-Date: 2014-07-05 17:35+0000\n"
+"Last-Translator: Aaron Murray <aaron27@ryecoinc.com>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/openmediavault-mysql/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,39 +18,11 @@ msgstr ""
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-msgid "Are you sure you want to"
-msgstr "Opravdu chcete"
-
-msgid ""
-"Are you sure you want to drop the '%s' table? This will delete the table and"
-" all data inside of it. The following query will be run:"
-msgstr "Opravdu chcete smazat tabulku '%s'? Tato operace smaže tabulku a všechna její data. Bude spuštěn následující dotaz:"
-
-msgid ""
-"Are you sure you want to drop the database '%s'? This will delete the "
-"database, the tables inside the database, and all data inside of the tables."
-" The following query will be run:"
-msgstr "Opravdu chcete smazat databázi '%s'? Tato operace smaže databázi, všechny její tabulky a data která obsahují. Bude spuštěn následující dotaz:"
-
-msgid ""
-"Are you sure you want to empty the '%s' table? This will delete all the data"
-" inside of it. The following query will be run:"
-msgstr "Opravdu chcete vyprázdnit tabulku '%s'? Tato operace vymaže všechna její data. Bude spuštěn následující dotaz:"
-
 msgid "Are you sure you want to reset the root password?"
 msgstr "Opravdu chcete obnovit heslo uživatele root ?"
 
 msgid "Bind address"
 msgstr "Bind address"
-
-msgid "Browse"
-msgstr "Procházet"
-
-msgid "Cancel"
-msgstr "Zrušit"
-
-msgid "Confirm"
-msgstr "Potvrdit"
 
 msgid "Confirmation"
 msgstr "Potvrzení"
@@ -64,12 +36,6 @@ msgstr "Zapnout"
 msgid "Enable networking"
 msgstr "Povolit síťová nastavení"
 
-msgid "Error"
-msgstr "Chyba"
-
-msgid "Export"
-msgstr "Export"
-
 msgid "Extra options"
 msgstr "Další nastavení"
 
@@ -79,26 +45,11 @@ msgstr "Další nastavení pro [mysqld] sekci v konfiguraci MySQL"
 msgid "For more advanced usage try: "
 msgstr "Pro pokročilejší použití zkuste:"
 
-msgid "Full Text"
-msgstr "Full Text"
-
-msgid "Home"
-msgstr "Domů"
-
 msgid "IP address to listen on. Use 0.0.0.0 for all host IPs."
 msgstr "IP adresa na které databáze naslouchá. Pro všechny IP adresy použíjte 0.0.0.0"
 
-msgid "Import"
-msgstr "Import"
-
-msgid "Insert"
-msgstr "Vložit"
-
 msgid "Launch management site"
 msgstr "Zobrazit stránku se správou databáze"
-
-msgid "Loading..."
-msgstr "Načítání..."
 
 msgid "Management"
 msgstr "Správa"
@@ -109,15 +60,6 @@ msgstr "MySQL"
 msgid "MySQL Workbench"
 msgstr "MySQL Workbench"
 
-msgid "New field"
-msgstr "Nové pole"
-
-msgid "Okay"
-msgstr "OK"
-
-msgid "Overview"
-msgstr "Přehled"
-
 msgid "Password will reset to:"
 msgstr "Heslo bude obnoveno na:"
 
@@ -126,12 +68,6 @@ msgstr "Port"
 
 msgid "Port to listen on."
 msgstr "Port na kterém databáze naslouchá"
-
-msgid "Query"
-msgstr "Dotaz"
-
-msgid "Redirecting..."
-msgstr "Přesměrování..."
 
 msgid "Reset MySQL root password"
 msgstr "Obnova hesla uživatele root"
@@ -163,70 +99,13 @@ msgstr "Nastavení"
 msgid "Show tab containing Management frame."
 msgstr "Zobrazit záložku obsahující stránku se správou"
 
-msgid "Structure"
-msgstr "Struktura"
-
-msgid "Successfully saved changes."
-msgstr "Změny byly úspěšně uloženy."
-
-msgid "The following queries will be run:"
-msgstr "Budou spuštěny následující dotazy:"
-
-msgid "The following query will be run:"
-msgstr "Bude spuštěn následující dotaz:"
-
-msgid "There was an error receiving data from the server."
-msgstr "Došlo k chybě při komunikaci se serverem."
-
 msgid ""
 "To change the password, use the management site and change root user on host"
 " localhost."
 msgstr "Ke změně hesla použijte stránku pro správu a změňte účet root uživatele na localhostu."
-
-msgid "Users"
-msgstr "Uživatelé"
 
 msgid ""
 "Warning: If Your MySQL data volume is set to use a non-data volume it may "
 "result in loss of data in the event of a disk failure. It is recommmended "
 "that you change this before using MySQL."
 msgstr "Upozornění: Pokud Vámi vybraný svazek pro MySQL data není určeny pro data, v případě selhání disku může dojít ke ztrátě dat. Doporučuje se nastavit tento svazek před použitím MySQL. "
-
-msgid "Your changes were saved to the database."
-msgstr "Vaše změny byly uloženy do databáze"
-
-msgid "delete these columns"
-msgstr "Smazat vybrané sloupce"
-
-msgid "delete these indexes"
-msgstr "Smazat vybrané indexy"
-
-msgid "delete these rows"
-msgstr "Smazat vybrané řádky"
-
-msgid "delete these users"
-msgstr "Smazat vybrané uživatele"
-
-msgid "delete this column"
-msgstr "Smazat vybraný sloupec"
-
-msgid "delete this index"
-msgstr "Smazat vybraný index"
-
-msgid "delete this row"
-msgstr "Smazat vybraný řádek"
-
-msgid "delete this user"
-msgstr "Smazat vybraného uživatele"
-
-msgid "drop these tables"
-msgstr "Smazat vybrané tabulky"
-
-msgid "drop this table"
-msgstr "Smazat tabulku"
-
-msgid "empty these tables"
-msgstr "Vyprázdnit tabulky"
-
-msgid "empty this table"
-msgstr "Vyprázdnit tabulku"

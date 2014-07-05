@@ -1,3 +1,10 @@
+openmediavault-mysql (1.0.5.2) stable; urgency=low
+
+  * Use separate fpm pool to eliminate mywebsql logout issues
+  * Update locales
+
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Sat, 05 Jul 2014 12:33:41 -0500
+
 openmediavault-mysql (1.0.5.1) stable; urgency=low
 
   * Replace sqlbuddy with mywebsql

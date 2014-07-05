@@ -7,49 +7,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-20 10:38-0600\n"
-"PO-Revision-Date: 2013-11-20 16:39+0000\n"
-"Last-Translator: ryecoaaron <aaron27@ryecoinc.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2014-07-05 12:33-0500\n"
+"PO-Revision-Date: 2014-07-05 17:35+0000\n"
+"Last-Translator: Aaron Murray <aaron27@ryecoinc.com>\n"
+"Language-Team: English (United States) (http://www.transifex.com/projects/p/openmediavault-mysql/language/en_US/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: en_US\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Are you sure you want to"
-msgstr "Are you sure you want to"
-
-msgid ""
-"Are you sure you want to drop the '%s' table? This will delete the table and"
-" all data inside of it. The following query will be run:"
-msgstr "Are you sure you want to drop the '%s' table? This will delete the table and all data inside of it. The following query will be run:"
-
-msgid ""
-"Are you sure you want to drop the database '%s'? This will delete the "
-"database, the tables inside the database, and all data inside of the tables."
-" The following query will be run:"
-msgstr "Are you sure you want to drop the database '%s'? This will delete the database, the tables inside the database, and all data inside of the tables. The following query will be run:"
-
-msgid ""
-"Are you sure you want to empty the '%s' table? This will delete all the data"
-" inside of it. The following query will be run:"
-msgstr "Are you sure you want to empty the '%s' table? This will delete all the data inside of it. The following query will be run:"
-
 msgid "Are you sure you want to reset the root password?"
 msgstr "Are you sure you want to reset the root password?"
 
 msgid "Bind address"
 msgstr "Bind address"
-
-msgid "Browse"
-msgstr "Browse"
-
-msgid "Cancel"
-msgstr "Cancel"
-
-msgid "Confirm"
-msgstr "Confirm"
 
 msgid "Confirmation"
 msgstr "Confirmation"
@@ -63,12 +35,6 @@ msgstr "Enable"
 msgid "Enable networking"
 msgstr "Enable networking"
 
-msgid "Error"
-msgstr "Error"
-
-msgid "Export"
-msgstr "Export"
-
 msgid "Extra options"
 msgstr "Extra options"
 
@@ -78,26 +44,11 @@ msgstr "Extra options for [mysqld] section of MySQL configuration."
 msgid "For more advanced usage try: "
 msgstr "For more advanced usage try: "
 
-msgid "Full Text"
-msgstr "Full Text"
-
-msgid "Home"
-msgstr "Home"
-
 msgid "IP address to listen on. Use 0.0.0.0 for all host IPs."
 msgstr "IP address to listen on. Use 0.0.0.0 for all host IPs."
 
-msgid "Import"
-msgstr "Import"
-
-msgid "Insert"
-msgstr "Insert"
-
 msgid "Launch management site"
 msgstr "Launch management site"
-
-msgid "Loading..."
-msgstr "Loading..."
 
 msgid "Management"
 msgstr "Management"
@@ -108,15 +59,6 @@ msgstr "MySQL"
 msgid "MySQL Workbench"
 msgstr "MySQL Workbench"
 
-msgid "New field"
-msgstr "New field"
-
-msgid "Okay"
-msgstr "Okay"
-
-msgid "Overview"
-msgstr "Overview"
-
 msgid "Password will reset to:"
 msgstr "Password will reset to:"
 
@@ -125,12 +67,6 @@ msgstr "Port"
 
 msgid "Port to listen on."
 msgstr "Port to listen on."
-
-msgid "Query"
-msgstr "Query"
-
-msgid "Redirecting..."
-msgstr "Redirecting..."
 
 msgid "Reset MySQL root password"
 msgstr "Reset MySQL root password"
@@ -162,70 +98,13 @@ msgstr "Settings"
 msgid "Show tab containing Management frame."
 msgstr "Show tab containing Management frame."
 
-msgid "Structure"
-msgstr "Structure"
-
-msgid "Successfully saved changes."
-msgstr "Successfully saved changes."
-
-msgid "The following queries will be run:"
-msgstr "The following queries will be run:"
-
-msgid "The following query will be run:"
-msgstr "The following query will be run:"
-
-msgid "There was an error receiving data from the server."
-msgstr "There was an error receiving data from the server."
-
 msgid ""
 "To change the password, use the management site and change root user on host"
 " localhost."
 msgstr "To change the password, use the management site and change root user on host localhost."
-
-msgid "Users"
-msgstr "Users"
 
 msgid ""
 "Warning: If Your MySQL data volume is set to use a non-data volume it may "
 "result in loss of data in the event of a disk failure. It is recommmended "
 "that you change this before using MySQL."
 msgstr "Warning: If Your MySQL data volume is set to use a non-data volume it may result in loss of data in the event of a disk failure. It is recommmended that you change this before using MySQL."
-
-msgid "Your changes were saved to the database."
-msgstr "Your changes were saved to the database."
-
-msgid "delete these columns"
-msgstr "delete these columns"
-
-msgid "delete these indexes"
-msgstr "delete these indexes"
-
-msgid "delete these rows"
-msgstr "delete these rows"
-
-msgid "delete these users"
-msgstr "delete these users"
-
-msgid "delete this column"
-msgstr "delete this column"
-
-msgid "delete this index"
-msgstr "delete this index"
-
-msgid "delete this row"
-msgstr "delete this row"
-
-msgid "delete this user"
-msgstr "delete this user"
-
-msgid "drop these tables"
-msgstr "drop these tables"
-
-msgid "drop this table"
-msgstr "drop this table"
-
-msgid "empty these tables"
-msgstr "empty these tables"
-
-msgid "empty this table"
-msgstr "empty this table"
