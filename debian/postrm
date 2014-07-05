@@ -7,6 +7,7 @@ set -e
 
 OMV_MYSQL_CONF="/etc/mysql/conf.d/openmediavault-mysql.cnf"
 SQL_MANAGEMENT_SITE_CONF="/etc/nginx/openmediavault-webgui.d/openmediavault-mysql-management-site.conf"
+SQL_MANAGEMENT_POOL_CONF="/etc/php5/fpm/pool.d/openmediavault-mysql-management-site.conf"
 
 case "$1" in
     purge)
@@ -20,6 +21,10 @@ case "$1" in
     remove)
         if [ -e "${SQL_MANAGEMENT_SITE_CONF}" ]; then
             rm ${SQL_MANAGEMENT_SITE_CONF}
+        fi
+
+        if [ -e "${SQL_MANAGEMENT_POOL_CONF}" ]; then
+            rm ${SQL_MANAGEMENT_POOL_CONF}
         fi
 
         service nginx reload
