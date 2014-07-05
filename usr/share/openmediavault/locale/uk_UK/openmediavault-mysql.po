@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# zubr139 <zubr139@ukr.net>, 2013
+# zubr139, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-20 10:38-0600\n"
-"PO-Revision-Date: 2013-11-25 19:39+0000\n"
-"Last-Translator: zubr139 <zubr139@ukr.net>\n"
+"POT-Creation-Date: 2014-07-05 12:33-0500\n"
+"PO-Revision-Date: 2014-07-05 17:35+0000\n"
+"Last-Translator: Aaron Murray <aaron27@ryecoinc.com>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/projects/p/openmediavault-mysql/language/uk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,39 +18,11 @@ msgstr ""
 "Language: uk\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-msgid "Are you sure you want to"
-msgstr "Ви впевнені, що бажаєте цього"
-
-msgid ""
-"Are you sure you want to drop the '%s' table? This will delete the table and"
-" all data inside of it. The following query will be run:"
-msgstr "Ви впевнені, що бажаєте видалити '%s' таблицю? Це призведе до вилучення таблиці зі всіма даними. Наступний запит буде виконуватись:"
-
-msgid ""
-"Are you sure you want to drop the database '%s'? This will delete the "
-"database, the tables inside the database, and all data inside of the tables."
-" The following query will be run:"
-msgstr "Ви впевнені, що бажаєте видалити базу даних '%s'? Це призведе до вилучення бази даних, таблиці в базі даних, і всіх даних всередині таблиць. Наступний запит буде виконуватись:"
-
-msgid ""
-"Are you sure you want to empty the '%s' table? This will delete all the data"
-" inside of it. The following query will be run:"
-msgstr "Ви впевнені, що бажаєте очистити '%s' таблицю? Це призведе до вилучення всіх даних всередині неї. Наступний запит буде виконуватись:"
-
 msgid "Are you sure you want to reset the root password?"
 msgstr "Ви впевнені, що хочете скинути пароль адміністратора?"
 
 msgid "Bind address"
 msgstr "Прив'язування адрес"
-
-msgid "Browse"
-msgstr "Переглянути"
-
-msgid "Cancel"
-msgstr "Скасувати"
-
-msgid "Confirm"
-msgstr "Підтвердити"
 
 msgid "Confirmation"
 msgstr "Підтвердження"
@@ -64,12 +36,6 @@ msgstr "Увімкнути"
 msgid "Enable networking"
 msgstr "Увімкнути мережу"
 
-msgid "Error"
-msgstr "Помилка"
-
-msgid "Export"
-msgstr "Експорт"
-
 msgid "Extra options"
 msgstr "Додаткові опції"
 
@@ -79,26 +45,11 @@ msgstr "Додаткові опції для [mysqld] файлу конфігу�
 msgid "For more advanced usage try: "
 msgstr "Для досвдчених користувачів:"
 
-msgid "Full Text"
-msgstr "Весь текст"
-
-msgid "Home"
-msgstr "Головна"
-
 msgid "IP address to listen on. Use 0.0.0.0 for all host IPs."
 msgstr "IP адреса для прослуховування. Використовуйте 0.0.0.0 для всіх хостів IPs."
 
-msgid "Import"
-msgstr "Імпорт"
-
-msgid "Insert"
-msgstr "Вставити"
-
 msgid "Launch management site"
 msgstr "Запустити керування сайтом"
-
-msgid "Loading..."
-msgstr "Завантаження..."
 
 msgid "Management"
 msgstr "Керування"
@@ -109,15 +60,6 @@ msgstr "MySQL"
 msgid "MySQL Workbench"
 msgstr "MySQL Workbench"
 
-msgid "New field"
-msgstr "Нове поле"
-
-msgid "Okay"
-msgstr "Гаразд"
-
-msgid "Overview"
-msgstr "Огляд"
-
 msgid "Password will reset to:"
 msgstr "Пароль буде скинуто на:"
 
@@ -126,12 +68,6 @@ msgstr "Порт"
 
 msgid "Port to listen on."
 msgstr "Порт для прослуховування."
-
-msgid "Query"
-msgstr "Запит"
-
-msgid "Redirecting..."
-msgstr "Переадресація..."
 
 msgid "Reset MySQL root password"
 msgstr "Скинути пароль суперкористувача MySQL"
@@ -163,70 +99,13 @@ msgstr "Налаштування"
 msgid "Show tab containing Management frame."
 msgstr "Показати вкладку, яка містить менеджер керування"
 
-msgid "Structure"
-msgstr "Структура"
-
-msgid "Successfully saved changes."
-msgstr "Успішно збережені зміни."
-
-msgid "The following queries will be run:"
-msgstr "Наступні запити будуть виконуватися:"
-
-msgid "The following query will be run:"
-msgstr "Наступний запит буде виконуватися:"
-
-msgid "There was an error receiving data from the server."
-msgstr "Була помилка прийому даних з сервера."
-
 msgid ""
 "To change the password, use the management site and change root user on host"
 " localhost."
 msgstr ""
-
-msgid "Users"
-msgstr "Користувачі"
 
 msgid ""
 "Warning: If Your MySQL data volume is set to use a non-data volume it may "
 "result in loss of data in the event of a disk failure. It is recommmended "
 "that you change this before using MySQL."
 msgstr "Увага: Якщо Ваш MySQL том даних налаштовано на використання як не-том даних це може призвести до втрати даних у разі збою диска. Рекомендується змінити це перед використанням MySQL."
-
-msgid "Your changes were saved to the database."
-msgstr "Ваші зміни були збережені в базі даних."
-
-msgid "delete these columns"
-msgstr "видалити ці стовпці"
-
-msgid "delete these indexes"
-msgstr "видаляти ці індекси"
-
-msgid "delete these rows"
-msgstr "видалити ці рядки"
-
-msgid "delete these users"
-msgstr "видалити цих користувачів"
-
-msgid "delete this column"
-msgstr "видалити цей стовпець"
-
-msgid "delete this index"
-msgstr "видалити цей індекс"
-
-msgid "delete this row"
-msgstr "видалити цей рядок"
-
-msgid "delete this user"
-msgstr "видалити цього користувача"
-
-msgid "drop these tables"
-msgstr ""
-
-msgid "drop this table"
-msgstr ""
-
-msgid "empty these tables"
-msgstr "Очистити ці таблиці"
-
-msgid "empty this table"
-msgstr "Очистити цю таблицю"
