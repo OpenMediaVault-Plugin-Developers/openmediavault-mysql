@@ -40,8 +40,8 @@ listen.owner = www-data
 listen.group = www-data
 listen.mode = 0600
 
-user = openmediavault
-group = openmediavault
+user = www-data
+group = www-data
 
 pm = dynamic
 pm.max_children = 5
