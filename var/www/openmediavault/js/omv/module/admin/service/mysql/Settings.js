@@ -47,7 +47,8 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
             ]
         },{
             name : [
-                "launch-management-site"
+                "launch-management-site",
+                "showtab"
             ],
             conditions : [{
                 name  : "enable-management-site",
@@ -247,7 +248,7 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                 margin : "5 0 0 0"
             },{
                 border : false,
-                html   : "<ul>" + 
+                html   : "<ul>" +
                          "<li>" + _("Password will reset to:") + "  openmediavault" + "</li>" +
                          "<li>" + _("To change the password, use the management site and change root user on host localhost.") + "</li>" +
                          "</ul>"
