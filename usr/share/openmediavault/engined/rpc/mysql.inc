@@ -101,7 +101,7 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
                     "mntentref"              : { "type" : "string" },
                     "data-root"              : { "type" : "string" },
                     "enable-management-site" : { "type" : "boolean" },
-                    "showtab"                : { "type" : "boolean" }
+                    "showtab"                : { "type" : "boolean", "optional" : true }
                 }
             }'
         );
