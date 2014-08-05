@@ -69,7 +69,7 @@ chmod 644 ${MYSQL_CONFIG}
 DB_FOLDER="$(omv_config_get "//services/mysql/data-root")"
 
 if [ "${MYSQL_HOME}" != "${DB_FOLDER}" ]; then
-    service mysql stop
+    invoke-rc.d mysql stop
 
     if [ ! -d "${DB_FOLDER}" ]; then
         mkdir -p "${DB_FOLDER}"
@@ -80,5 +80,5 @@ if [ "${MYSQL_HOME}" != "${DB_FOLDER}" ]; then
     cp -rfp ${MYSQL_HOME}/* ${DB_FOLDER}/
     rm -rf ${MYSQL_HOME}
 
-    service mysql start
+    invoke-rc.d mysql start
 fi
