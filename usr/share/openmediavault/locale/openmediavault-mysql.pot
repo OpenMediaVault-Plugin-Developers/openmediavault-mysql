@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-05 12:33-0500\n"
+"POT-Creation-Date: 2014-08-31 12:30-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -59,7 +59,10 @@ msgstr ""
 msgid "MySQL Workbench"
 msgstr ""
 
-msgid "Password will reset to:"
+msgid "MySQL root Password"
+msgstr ""
+
+msgid "MySQL root password will be reset to this password."
 msgstr ""
 
 msgid "Port"
@@ -96,9 +99,6 @@ msgid "Settings"
 msgstr ""
 
 msgid "Show tab containing Management frame."
-msgstr ""
-
-msgid "To change the password, use the management site and change root user on host localhost."
 msgstr ""
 
 msgid "Warning: If Your MySQL data volume is set to use a non-data volume it may result in loss of data in the event of a disk failure. It is recommmended that you change this before using MySQL."
