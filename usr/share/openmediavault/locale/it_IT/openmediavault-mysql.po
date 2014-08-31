@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Damiano, 2013
+# Damtux, 2013
 # Paolo Velati <paolo.velati@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-05 12:33-0500\n"
-"PO-Revision-Date: 2014-07-05 17:35+0000\n"
+"POT-Creation-Date: 2014-08-31 12:30-0500\n"
+"PO-Revision-Date: 2014-08-31 17:31+0000\n"
 "Last-Translator: Aaron Murray <aaron27@ryecoinc.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/openmediavault-mysql/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -61,8 +61,11 @@ msgstr "MySQL"
 msgid "MySQL Workbench"
 msgstr "MySQL Workbench"
 
-msgid "Password will reset to:"
-msgstr "La password verrà ripristinata in:"
+msgid "MySQL root Password"
+msgstr ""
+
+msgid "MySQL root password will be reset to this password."
+msgstr ""
 
 msgid "Port"
 msgstr "Porta"
@@ -99,11 +102,6 @@ msgstr "Impostazioni"
 
 msgid "Show tab containing Management frame."
 msgstr "Mostra scheda contenente frame di gestione."
-
-msgid ""
-"To change the password, use the management site and change root user on host"
-" localhost."
-msgstr "Per modificare la password, utilizza il sito di gestione e cambia l'utente root sull'host localhost."
 
 msgid ""
 "Warning: If Your MySQL data volume is set to use a non-data volume it may "

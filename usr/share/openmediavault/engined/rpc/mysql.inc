@@ -143,20 +143,34 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
         global $xmlConfig;
 
         // Validate the RPC caller context.
-        $this->validateMethodContext($context, array( "role" => OMV_ROLE_ADMINISTRATOR ));
+        $this->validateMethodContext(
+            $context,
+            array( "role" => OMV_ROLE_ADMINISTRATOR )
+        );
 
-        $object = $xmlConfig->get($this->getXPath());
-        if (is_null($object)) {
-            throw new OMVException(OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED, $this->getXPath());
-        }
+        // Validate the parameters of the RPC service method.
+        $this->validateMethodParams(
+            $params,
+            '{
+                "type"       : "object",
+                "properties" : {
+                    "root_pass" : { "type" : "string" }
+                }
+            }'
+        );
 
-        if (!boolval($object["enable"])) {
-            return;
-        }
+        //create password file
+        $file = "/tmp/.openmediavault-mysql-reset-pwd";
+        file_put_contents($file, $params['root_pass']);
 
         $cmd = "sudo /usr/local/bin/mysql-password 2>&1";
-        if (0 !== $this->exec($cmd, $output)) {
-            throw new OMVException(OMVErrorMsg::E_EXEC_FAILED, $cmd, implode("\n", $output));
+        if (0 !== $this->exec($cmd, $output))
+        {
+            throw new OMVException(
+                OMVErrorMsg::E_EXEC_FAILED,
+                $cmd,
+                implode("\n", $output)
+            );
         }
     }
 }

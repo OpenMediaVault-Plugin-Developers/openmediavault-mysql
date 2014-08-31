@@ -213,6 +213,16 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                 labelSeparator : ""
             },
             items : [{
+                xtype       : "passwordfield",
+                name        : "root_pass",
+                fieldLabel  : _("MySQL root Password"),
+                allowBlank  : true,
+                submitValue : false,
+                plugins     : [{
+                    ptype : "fieldinfo",
+                    text  : _("MySQL root password will be reset to this password.")
+                }]
+            },{
                 xtype   : "button",
                 name    : "resetpwd",
                 text    : _("Reset Password"),
@@ -233,7 +243,10 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                                 relayErrors : false,
                                 rpcData     : {
                                     service : "MySql",
-                                    method  : "resetPassword"
+                                    method  : "resetPassword",
+                                    params  : {
+                                        root_pass : me.getForm().findField("root_pass").getValue()
+                                    }
                                 },
                                 success : function(id, success, response) {
                                     me.doReload();
@@ -246,12 +259,6 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                     });
                 },
                 margin : "5 0 0 0"
-            },{
-                border : false,
-                html   : "<ul>" +
-                         "<li>" + _("Password will reset to:") + "  openmediavault" + "</li>" +
-                         "<li>" + _("To change the password, use the management site and change root user on host localhost.") + "</li>" +
-                         "</ul>"
             }]
         },{
             xtype    : "fieldset",
