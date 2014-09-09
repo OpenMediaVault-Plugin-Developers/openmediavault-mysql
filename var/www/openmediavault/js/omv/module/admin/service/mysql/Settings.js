@@ -75,12 +75,10 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
     }],
 
     initComponent : function () {
-        var me = this;
-
-        me.on("load", function () {
-            var checked = me.findField("enable").checked;
-            var showtab = me.findField("showtab").checked;
-            var parent = me.up("tabpanel");
+        this.on("load", function () {
+            var checked = this.findField("enable").checked;
+            var showtab = this.findField("showtab").checked;
+            var parent = this.up("tabpanel");
 
             if (!parent)
                 return;
@@ -88,12 +86,21 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
             var managementPanel = parent.down("panel[title=" + _("Management") + "]");
 
             if (managementPanel) {
-                checked ? managementPanel.enable() : managementPanel.disable();
-                showtab ? managementPanel.tab.show() : managementPanel.tab.hide();
-            }
-        });
+                if (checked) {
+                    managementPanel.enable();
+                } else {
+                    managementPanel.disable();
+                }
 
-        me.callParent(arguments);
+                if (showtab) {
+                    managementPanel.tab.show();
+                } else {
+                    managementPanel.tab.hide();
+                }
+            }
+        }, this);
+
+        this.callParent(arguments);
     },
 
     rpcService   : "MySql",
@@ -101,8 +108,6 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
     rpcSetMethod : "setSettings",
 
     getFormItems : function() {
-        var me = this;
-
         return [{
             xtype    : "fieldset",
             title    : "General settings",
@@ -215,13 +220,9 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
             items : [{
                 xtype       : "passwordfield",
                 name        : "root_pass",
-                fieldLabel  : _("MySQL root Password"),
+                fieldLabel  : _("Password"),
                 allowBlank  : true,
-                submitValue : false,
-                plugins     : [{
-                    ptype : "fieldinfo",
-                    text  : _("MySQL root password will be reset to this password.")
-                }]
+                submitValue : false
             },{
                 xtype   : "button",
                 name    : "resetpwd",
@@ -239,27 +240,26 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                             OMV.MessageBox.wait(null, _("Resetting MySQL root password."));
 
                             OMV.Rpc.request({
-                                scope       : me,
+                                scope       : this,
                                 relayErrors : false,
                                 rpcData     : {
                                     service : "MySql",
                                     method  : "resetPassword",
                                     params  : {
-                                        root_pass : me.getForm().findField("root_pass").getValue()
+                                        root_pass : this.getForm().findField("root_pass").getValue()
                                     }
                                 },
                                 success : function(id, success, response) {
-                                    me.doReload();
+                                    this.doReload();
                                     OMV.MessageBox.hide();
-                                    me.getForm().findField("root_pass").setValue("");
                                 }
                             });
                         },
-                        scope : me,
-                        icon  : Ext.Msg.QUESTION
+                        icon  : Ext.Msg.QUESTION,
+                        scope : this
                     });
                 },
-                margin : "5 0 8 0"
+                margin : "0 0 5 0"
             }]
         },{
             xtype    : "fieldset",
@@ -271,27 +271,19 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                 xtype      : "checkbox",
                 name       : "enable-management-site",
                 fieldLabel : _("Enable"),
-                boxLabel: _("SQL management site."),
+                boxLabel   : _("SQL management site."),
                 checked    : false,
                 plugins    : [{
                     ptype : "fieldinfo",
-                    text  : _("For more advanced usage try: ") + "<a href='http://www.mysql.com/products/workbench/'>" + _("MySQL Workbench") + "</a>"
+                    text  : _("The SQL web interface can be accessed <a href='/mysql/' target='_blank'>here</a>.") + " " +
+                            _("For more advanced usage try: ") + "<a href='http://www.mysql.com/products/workbench/'>" + _("MySQL Workbench") + "</a>"
                 }]
             },{
-                xtype: "checkbox",
-                name: "showtab",
-                fieldLabel: _("Enable"),
-                boxLabel: _("Show tab containing Management frame."),
-                checked: false
-            },{
-                xtype      : "button",
-                name       : "launch-management-site",
-                text       : _("Launch management site"),
-                disabled   : true,
-                handler    : function() {
-                    window.open("/mysql/");
-                },
-                margin : "0 0 8 0"
+                xtype      : "checkbox",
+                name       : "showtab",
+                fieldLabel : _("Enable"),
+                boxLabel   : _("Show tab containing Management frame."),
+                checked    : false
             }]
         }];
     }
