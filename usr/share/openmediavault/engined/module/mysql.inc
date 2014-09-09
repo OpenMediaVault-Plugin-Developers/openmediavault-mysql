@@ -47,7 +47,7 @@ class OMVModuleMySQL extends OMVModuleServiceAbstract implements
     }
 
     /**
-     * Get the module status
+     * Get the module status.
      */
     public function getStatus()
     {
@@ -56,7 +56,10 @@ class OMVModuleMySQL extends OMVModuleServiceAbstract implements
         $object = $xmlConfig->get($this->getXPath());
 
         if (is_null($object)) {
-            throw new OMVException(OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED, $this->getXPath());
+            throw new OMVException(
+                OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED,
+                $this->getXPath()
+            );
         }
 
         $initd = new OMVSysVInitScript($this->getName());
@@ -70,19 +73,23 @@ class OMVModuleMySQL extends OMVModuleServiceAbstract implements
     }
 
     /**
-     * Create and update the configuration
+     * Create and update the configuration.
      */
     public function applyConfig()
     {
         $cmd = sprintf("omv-mkconf %s 2>&1", $this->getName());
 
         if (0 !== $this->exec($cmd, $output)) {
-            throw new OMVException(OMVErrorMsg::E_EXEC_FAILED, $cmd, implode("\n", $output));
+            throw new OMVException(
+                OMVErrorMsg::E_EXEC_FAILED,
+                $cmd,
+                implode("\n", $output)
+            );
         }
     }
 
     /**
-     * Start the managed service
+     * Start the managed service.
      */
     public function startService()
     {
@@ -91,7 +98,10 @@ class OMVModuleMySQL extends OMVModuleServiceAbstract implements
         $object = $xmlConfig->get($this->getXPath());
 
         if (is_null($object)) {
-            throw new OMVException(OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED, $this->getXPath());
+            throw new OMVException(
+                OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED,
+                $this->getXPath()
+            );
         }
 
         if (!boolval($object["enable"])) {
@@ -103,7 +113,7 @@ class OMVModuleMySQL extends OMVModuleServiceAbstract implements
     }
 
     /**
-     * Stop the managed service
+     * Stop the managed service.
      */
     public function stopService()
     {
