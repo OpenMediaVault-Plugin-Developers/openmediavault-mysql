@@ -75,7 +75,7 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
     }],
 
     initComponent : function () {
-        this.on("load", function () {
+        this.on("load", function() {
             var checked = this.findField("enable").checked;
             var showtab = this.findField("showtab").checked;
             var parent = this.up("tabpanel");
