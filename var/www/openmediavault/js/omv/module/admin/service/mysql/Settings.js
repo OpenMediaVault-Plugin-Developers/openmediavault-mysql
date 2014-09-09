@@ -251,6 +251,7 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                                 success : function(id, success, response) {
                                     me.doReload();
                                     OMV.MessageBox.hide();
+                                    me.getForm().findField("root_pass").setValue("");
                                 }
                             });
                         },
@@ -258,7 +259,7 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                         icon  : Ext.Msg.QUESTION
                     });
                 },
-                margin : "5 0 0 0"
+                margin : "5 0 8 0"
             }]
         },{
             xtype    : "fieldset",
