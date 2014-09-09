@@ -27,6 +27,11 @@ require_once "openmediavault/util.inc";
 
 class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
 {
+    private function getEventMessagePath()
+    {
+        return "org.openmediavault.services.mysql";
+    }
+
     private function getXPath()
     {
         return "//services/mysql";
@@ -45,7 +50,7 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
     }
 
     /**
-     * Get main settings
+     * Get main settings.
      */
     public function getSettings($params, $context)
     {
@@ -58,8 +63,12 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
 
         // Get configuration object
         $object = $xmlConfig->get($this->getXPath());
+
         if (is_null($object)) {
-            throw new OMVException(OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED, $this->getXPath());
+            throw new OMVException(
+                OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED,
+                $this->getXPath()
+            );
         }
 
         // Get actual mysql status
@@ -76,7 +85,7 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
     }
 
     /**
-     * Set main settings
+     * Set main settings.
      */
     public function setSettings($params, $context)
     {
@@ -106,7 +115,10 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
             }'
         );
 
-        $xpath = sprintf("//system/fstab/mntent[uuid='%s']", $params["mntentref"]);
+        $xpath = sprintf(
+            "//system/fstab/mntent[uuid='%s']",
+            $params["mntentref"]
+        );
         $deviceDir = $xmlConfig->get($xpath);
         $deviceDir = $deviceDir["dir"];
 
@@ -118,9 +130,11 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
             "enable"            => array_boolval($params, "enable"),
             "enable-networking" => array_boolval($params, "enable-networking"),
             "enable-management-site" => (
-                array_boolval($params, "enable-management-site") && array_boolval($params, "enable")
+                array_boolval($params, "enable-management-site") &&
+                array_boolval($params, "enable")
             ),
-            "extraoptions"      => (!empty($params["extraoptions"]) ? $params["extraoptions"] : ""),
+            "extraoptions"      => (!empty($params["extraoptions"]) ?
+                $params["extraoptions"] : ""),
             "port"              => intval($params["port"]),
             "bindaddress"       => $params["bindaddress"],
             "mntentref"         => $params["mntentref"],
@@ -130,23 +144,32 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
 
         // Set configuration object
         if (false === $xmlConfig->replace($this->getXPath(), $object)) {
-            throw new OMVException(OMVErrorMsg::E_CONFIG_SET_OBJECT_FAILED, $this->getXPath());
+            throw new OMVException(
+                OMVErrorMsg::E_CONFIG_SET_OBJECT_FAILED,
+                $this->getXPath()
+            );
         }
 
         // Notify configuration changes
         $dispatcher = &OMVNotifyDispatcher::getInstance();
-        $dispatcher->notify(OMV_NOTIFY_MODIFY, "org.openmediavault.services.mysql", $object);
+        $dispatcher->notify(
+            OMV_NOTIFY_MODIFY,
+            $this->getEventMessagePath(),
+            $object
+        );
     }
 
+    /**
+     * Reset root password.
+     */
     public function resetPassword($params, $context)
     {
         global $xmlConfig;
 
         // Validate the RPC caller context.
-        $this->validateMethodContext(
-            $context,
-            array( "role" => OMV_ROLE_ADMINISTRATOR )
-        );
+        $this->validateMethodContext($context, array(
+            "role" => OMV_ROLE_ADMINISTRATOR
+        ));
 
         // Validate the parameters of the RPC service method.
         $this->validateMethodParams(
@@ -159,13 +182,13 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
             }'
         );
 
-        //create password file
+        // Create password file
         $file = "/tmp/.openmediavault-mysql-reset-pwd";
-        file_put_contents($file, $params['root_pass']);
+        file_put_contents($file, $params["root_pass"]);
 
         $cmd = "sudo /usr/local/bin/mysql-password 2>&1";
-        if (0 !== $this->exec($cmd, $output))
-        {
+
+        if (0 !== $this->exec($cmd, $output)) {
             throw new OMVException(
                 OMVErrorMsg::E_EXEC_FAILED,
                 $cmd,
