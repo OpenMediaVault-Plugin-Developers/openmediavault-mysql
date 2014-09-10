@@ -7,6 +7,24 @@ set -e
 
 MYSQL_DB_DIR="/var/lib/mysql"
 
+data_drive_to_shared_folder()
+{
+    name="MySqlData"
+    comment="MySQL data location"
+    mntentref=$(omv_config_get "//services/mysql/mntentref")
+    reldirpath="mysql-data"
+
+    # Prepare JSON data.
+    json="{ \"uuid\": \"undefined\", \"name\": \"${name}\", \"comment\": \"${comment}\", \"mntentref\": \"${mntentref}\", \"reldirpath\": \"${reldirpath}\" }"
+
+    # Call omv-rcp and create the shared folder and then filter out the
+    # uuid of the new shared folder.
+    uuid=$(omv-rpc ShareMgmt set "${json}" | grep -Po '(?<="uuid":")[^"]*')
+
+    # Add the shared folder to the plugin config.
+    omv_config_add_element "/config/services/mysql" "data.sharedfolderref" $uuid
+}
+
 case "$1" in
     configure)
         if ! omv_config_exists "/config/services/mysql"; then
@@ -26,6 +44,10 @@ case "$1" in
             mkdir -p "${MYSQL_DB_DIR}"
             chown mysql:mysql "${MYSQL_DB_DIR}"
         fi
+
+        if dpkg --compare-versions "$2" lt-nl "1.0.7"; then
+			data_drive_to_shared_folder
+		fi
 
         omv_install_fixperms
         omv-mkconf mysql
