@@ -259,7 +259,7 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                         scope : this
                     });
                 },
-                margin : "0 0 5 0"
+                margin : "5 0 8 0"
             }]
         },{
             xtype    : "fieldset",
