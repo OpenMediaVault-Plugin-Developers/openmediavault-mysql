@@ -13,12 +13,11 @@ case "$1" in
             echo "Initial configuration."
             object="<enable>0</enable>"
             object="${object}<enable-networking>1</enable-networking>"
-            object="${object}<enable-management-site>0</enable-management-site>"
-            object="${object}<extraoptions></extraoptions>"
             object="${object}<port>3306</port>"
             object="${object}<bindaddress>127.0.0.1</bindaddress>"
-            object="${object}<data-root></data-root>"
-            object="${object}<mntentref></mntentref>"
+            object="${object}<data.sharedfolderref></data.sharedfolderref>"
+            object="${object}<extraoptions></extraoptions>"
+            object="${object}<enable-management-site>0</enable-management-site>"
             object="${object}<showtab>0</showtab>"
             omv_config_add_element "/config/services" "mysql" "${object}" true
         fi

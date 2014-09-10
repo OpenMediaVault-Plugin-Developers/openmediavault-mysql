@@ -151,6 +151,14 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                     text  : _("IP address to listen on. Use 0.0.0.0 for all host IPs.")
                 }]
             },{
+                xtype      : "sharedfoldercombo",
+                name       : "data.sharedfolderref",
+                fieldLabel : _("Data directory"),
+                plugins    : [{
+                    ptype : "fieldinfo",
+                    text  : _("The location where MySQL stores its data.")
+                }]
+            },{
                 xtype      : "textarea",
                 name       : "extraoptions",
                 fieldLabel : _("Extra options"),
@@ -159,57 +167,6 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                     ptype : "fieldinfo",
                     text  : _("Extra options for [mysqld] section of MySQL configuration.")
                 }]
-            }]
-        },{
-            xtype    : "fieldset",
-            title    : _("Data"),
-            defaults : {
-                labelSeparator : ""
-            },
-            items : [{
-                xtype         : "combo",
-                name          : "mntentref",
-                fieldLabel    : _("SQL data volume"),
-                emptyText     : _("Select a volume ..."),
-                allowBlank    : false,
-                allowNone     : false,
-                editable      : false,
-                triggerAction : "all",
-                displayField  : "description",
-                valueField    : "uuid",
-                store         : Ext.create("OMV.data.Store", {
-                    autoLoad : true,
-                    model    : OMV.data.Model.createImplicit({
-                        idProperty : "uuid",
-                        fields     : [
-                            { name : "uuid", type : "string" },
-                            { name : "devicefile", type : "string" },
-                            { name : "description", type : "string" }
-                        ]
-                    }),
-                    proxy : {
-                        type : "rpc",
-                        rpcData : {
-                            service : "ShareMgmt",
-                            method  : "getCandidates"
-                        },
-                        appendSortParams : false
-                    },
-                    sorters : [{
-                        direction : "ASC",
-                        property  : "devicefile"
-                    }]
-                }),
-                plugins    : [{
-                    ptype : "fieldinfo",
-                    text  : _("Warning: If Your MySQL data volume is set to use a non-data volume it may result in loss of data in the event of a disk failure. It is recommmended that you change this before using MySQL.")
-                }]
-            },{
-                xtype      : "textfield",
-                name       : "data-root",
-                fieldLabel : _("SQL data root"),
-                allowNone  : true,
-                readOnly   : true
             }]
         },{
             xtype    : "fieldset",
