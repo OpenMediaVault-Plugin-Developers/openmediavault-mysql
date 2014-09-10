@@ -34,7 +34,7 @@ fi
 if [ -e "${MYSQL_CONFIG}" ]; then
     MYSQL_HOME="$(cat ${MYSQL_CONFIG} | grep datadir | sed 's/datadir\s\+=\s\+//g')"
 else
-    # if not openmediavault mysql config, use standard mysql config file
+    # If not openmediavault mysql config, use standard mysql config file
     if [ -e "${MY_CONFIG}" ]; then
         MYSQL_HOME="$(cat ${MY_CONFIG} | grep datadir | sed 's/datadir\s\+=\s\+//g')"
     else
@@ -43,13 +43,17 @@ else
     fi
 fi
 
-# Check for mysql database files
+# Check for MySQL database files
 if [ ! -e "${MYSQL_HOME}/ibdata1" ]; then
     echo "Unable to find database files"
     exit 3
 fi
 
-# Create mysql config file
+# Get data location
+DATA_DIRECTORY_REF=$(omv_config_get "//services/mysql/data.sharedfolderref")
+DB_FOLDER="$(omv_get_sharedfolder_path "${DATA_DIRECTORY_REF}")"
+
+# Create MySQL config file
 cat <<EOF > ${MYSQL_CONFIG}
 # Configuration for openmediavault-mysql
 
@@ -60,13 +64,11 @@ xmlstarlet sel -t -m "//services/mysql" \
     -i "enable-networking != 1" -o "skip-networking" -n -b \
     -i "port != ''" -v "concat('port = ', port)" -n -b \
     -i "bindaddress != ''" -v "concat('bind-address = ', bindaddress)" -n -b \
-    -i "data-root != ''" -v "concat('datadir = ', data-root)" -n -b \
+    -o "${DB_FOLDER}" -n -b \
     -i "string-length(extraoptions) > 0" -v "extraoptions" -n -b \
 ${OMV_CONFIG_FILE} | xmlstarlet unesc >> ${MYSQL_CONFIG}
 
 chmod 644 ${MYSQL_CONFIG}
-
-DB_FOLDER="$(omv_config_get "//services/mysql/data-root")"
 
 if [ "${MYSQL_HOME}" != "${DB_FOLDER}" ]; then
     invoke-rc.d mysql stop

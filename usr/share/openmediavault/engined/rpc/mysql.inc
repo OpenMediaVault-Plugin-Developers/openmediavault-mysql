@@ -75,9 +75,10 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
         $initd = new OMVSysVInitScript("mysql");
 
         // Modify result data
-        $object["enable"]                 = intval($object["enable"]);
-        $object["port"]                   = intval($object["port"]);
-        $object["enable-networking"]      = boolval($object["enable-networking"]);
+        $object["enable"]            = intval($object["enable"]);
+        $object["port"]              = intval($object["port"]);
+        $object["enable-networking"] = boolval($object["enable-networking"]);
+
         $object["enable-management-site"] = boolval($object["enable-management-site"]);
         $object["showtab"]                = boolval($object["showtab"]);
 
@@ -102,44 +103,33 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
             '{
                 "type"       : "object",
                 "properties" : {
-                    "enable"                 : { "type" : "boolean" },
-                    "enable-networking"      : { "type" : "boolean" },
-                    "port"                   : { "type" : "integer" },
-                    "bindaddress"            : { "type" : "string" },
-                    "extraoptions"           : { "type" : "string" },
-                    "mntentref"              : { "type" : "string" },
-                    "data-root"              : { "type" : "string" },
+                    "enable"               : { "type" : "boolean" },
+                    "enable-networking"    : { "type" : "boolean" },
+                    "port"                 : { "type" : "integer" },
+                    "bindaddress"          : { "type" : "string" },
+                    "data.sharedfolderref" : {' . $GLOBALS["OMV_JSONSCHEMA_UUID"] . '},
+                    "extraoptions"         : { "type" : "string" },
+
                     "enable-management-site" : { "type" : "boolean" },
                     "showtab"                : { "type" : "boolean", "optional" : true }
                 }
             }'
         );
 
-        $xpath = sprintf(
-            "//system/fstab/mntent[uuid='%s']",
-            $params["mntentref"]
-        );
-        $deviceDir = $xmlConfig->get($xpath);
-        $deviceDir = $deviceDir["dir"];
-
-        $dataRoot = "{$deviceDir}/mysql-data";
-        $params["data-root"] = $dataRoot;
-
         // Prepare configuration data
         $object = array(
-            "enable"            => array_boolval($params, "enable"),
-            "enable-networking" => array_boolval($params, "enable-networking"),
+            "enable"               => array_boolval($params, "enable"),
+            "enable-networking"    => array_boolval($params, "enable-networking"),
+            "port"                 => intval($params["port"]),
+            "bindaddress"          => $params["bindaddress"],
+            "data.sharedfolderref" => $params["data.sharedfolderref"],
+            "extraoptions"         => trim($params["extraoptions"]),
+
             "enable-management-site" => (
                 array_boolval($params, "enable-management-site") &&
                 array_boolval($params, "enable")
             ),
-            "extraoptions"      => (!empty($params["extraoptions"]) ?
-                $params["extraoptions"] : ""),
-            "port"              => intval($params["port"]),
-            "bindaddress"       => $params["bindaddress"],
-            "mntentref"         => $params["mntentref"],
-            "data-root"         => $params["data-root"],
-            "showtab"           => array_boolval($params, "showtab"),
+            "showtab" => array_boolval($params, "showtab"),
         );
 
         // Set configuration object
