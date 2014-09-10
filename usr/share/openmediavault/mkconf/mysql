@@ -64,7 +64,7 @@ xmlstarlet sel -t -m "//services/mysql" \
     -i "enable-networking != 1" -o "skip-networking" -n -b \
     -i "port != ''" -v "concat('port = ', port)" -n -b \
     -i "bindaddress != ''" -v "concat('bind-address = ', bindaddress)" -n -b \
-    -o "${DB_FOLDER}" -n -b \
+    -o "datadir = ${DB_FOLDER}" -n -b \
     -i "string-length(extraoptions) > 0" -v "extraoptions" -n -b \
 ${OMV_CONFIG_FILE} | xmlstarlet unesc >> ${MYSQL_CONFIG}
 
