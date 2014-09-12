@@ -50,13 +50,13 @@ case "$1" in
         if ! omv_config_exists "${SERVICE_XPATH}"; then
             omv_config_add_element "/config/services" "${SERVICE_XPATH_NAME}"
             omv_config_add_element "${SERVICE_XPATH}" "enable" "0"
-            omv_config_add_element "${SERVICE_XPATH}" "enable-networking" "1"
+            omv_config_add_element "${SERVICE_XPATH}" "enable_networking" "1"
             omv_config_add_element "${SERVICE_XPATH}" "port" "3306"
-            omv_config_add_element "${SERVICE_XPATH}" "bindaddress" "127.0.0.1"
+            omv_config_add_element "${SERVICE_XPATH}" "bind_address" "127.0.0.1"
             omv_config_add_element "${SERVICE_XPATH}" "data.sharedfolderref"
-            omv_config_add_element "${SERVICE_XPATH}" "extraoptions" "127.0.0.1"
-            omv_config_add_element "${SERVICE_XPATH}" "enable-management-site" "0"
-            omv_config_add_element "${SERVICE_XPATH}" "showtab" "0"
+            omv_config_add_element "${SERVICE_XPATH}" "extra_options" "127.0.0.1"
+            omv_config_add_element "${SERVICE_XPATH}" "enable_management_site" "0"
+            omv_config_add_element "${SERVICE_XPATH}" "show_tab" "0"
         fi
 
         if dpkg --compare-versions "${2}" lt-nl "1.0.7"; then
@@ -75,8 +75,6 @@ case "$1" in
             mkdir -p "${MYSQL_DB_DIR}"
             chown mysql:mysql "${MYSQL_DB_DIR}"
         fi
-
-        omv-mkconf mysql
 
         # Activate package triggers. These triggers are only set during the
         # package installation.
