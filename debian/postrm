@@ -28,6 +28,7 @@ case "$1" in
         fi
 
         invoke-rc.d nginx reload
+        invoke-rc.d php5-fpm reload
     ;;
 
     upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
