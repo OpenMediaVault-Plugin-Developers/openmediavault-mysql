@@ -160,7 +160,7 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                 }]
             },{
                 xtype      : "textarea",
-                name       : "extraoptions",
+                name       : "extra_options",
                 fieldLabel : _("Extra options"),
                 allowBlank : true,
                 plugins    : [{
