@@ -107,7 +107,7 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
                     "enable_networking"    : { "type" : "boolean" },
                     "port"                 : { "type" : "integer" },
                     "bind_address"         : { "type" : "string" },
-                    "data.sharedfolderref" : {' . $GLOBALS["OMV_JSONSCHEMA_UUID"] . '},
+                    "data.sharedfolderref" : {' . $GLOBALS["OMV_JSONSCHEMA_UUID_NONE"] . '},
                     "extra_options"        : { "type" : "string" },
 
                     "enable_management_site" : { "type" : "boolean" },
@@ -131,6 +131,13 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
             ),
             "show_tab" => array_boolval($params, "show_tab"),
         );
+
+        if ($object["enable"] && empty($object["data.sharedfolderref"])) {
+            throw new OMVException(
+                OMVErrorMsg::E_CONFIG_OBJECT_INVALID,
+                "No data directory set when the plugin is enabled."
+            );
+        }
 
         // Set configuration object
         if (false === $xmlConfig->replace($this->getXPath(), $object)) {
