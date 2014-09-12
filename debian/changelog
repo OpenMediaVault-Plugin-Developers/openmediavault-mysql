@@ -1,8 +1,9 @@
-openmediavault-mysql (1.0.8) UNRELEASED; urgency=low
+openmediavault-mysql (1.0.8) stable; urgency=low
 
   * Misc changes
+  * Listen for modified shared folders
 
- -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Fri, 12 Sep 2014 19:35:08 +0200
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Sat, 13 Sep 2014 00:58:22 +0200
 
 openmediavault-mysql (1.0.7) stable; urgency=low
 
