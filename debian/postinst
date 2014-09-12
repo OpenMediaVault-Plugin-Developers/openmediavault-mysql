@@ -75,12 +75,6 @@ case "$1" in
             rename_config "showtab" "show_tab"
         fi
 
-        # TODO: Do we really need this?
-        if [ ! -d "${MYSQL_DB_DIR}" ]; then
-            mkdir -p "${MYSQL_DB_DIR}"
-            chown mysql:mysql "${MYSQL_DB_DIR}"
-        fi
-
         # Activate package triggers. These triggers are only set during the
         # package installation.
         dpkg-trigger update-fixperms
