@@ -33,6 +33,11 @@ class OMVModuleMySQL extends OMVModuleServiceAbstract implements
         return "org.openmediavault.services.mysql";
     }
 
+    private function getSharedFolderEventMessagePath()
+    {
+        return "org.openmediavault.system.shares.sharedfolder";
+    }
+
     private function getXPath()
     {
         return "//services/mysql";
@@ -144,6 +149,12 @@ class OMVModuleMySQL extends OMVModuleServiceAbstract implements
             OMV_NOTIFY_MODIFY,
             $this->getEventMessagePath(),
             array($moduleMgr->getModule("webserver"), "setDirty")
+        );
+
+        $dispatcher->addListener(
+            OMV_NOTIFY_MODIFY,
+            $this->getSharedFolderEventMessagePath(),
+            array($this, "setDirty")
         );
     }
 }
