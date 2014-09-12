@@ -50,8 +50,8 @@ if [ ! -e "${MYSQL_HOME}/ibdata1" ]; then
 fi
 
 # Get data location
-DATA_DIRECTORY_REF=$(omv_config_get "//services/mysql/data.sharedfolderref")
-DB_FOLDER="$(omv_get_sharedfolder_path "${DATA_DIRECTORY_REF}")"
+data_sharedfolderref=$(omv_config_get "//services/mysql/data.sharedfolderref")
+data_directory="$(omv_get_sharedfolder_path "${data_directory}")"
 
 # Create MySQL config file
 cat <<EOF > ${MYSQL_CONFIG}
@@ -64,22 +64,18 @@ xmlstarlet sel -t -m "//services/mysql" \
     -i "enable_networking != 1" -o "skip-networking" -n -b \
     -i "port != ''" -v "concat('port = ', port)" -n -b \
     -i "bind_address != ''" -v "concat('bind-address = ', bind_address)" -n -b \
-    -o "datadir = ${DB_FOLDER}" -n -b \
+    -o "datadir = ${data_directory}" -n -b \
     -i "string-length(extra_options) > 0" -v "extra_options" -n -b \
 ${OMV_CONFIG_FILE} | xmlstarlet unesc >> ${MYSQL_CONFIG}
 
 chmod 644 ${MYSQL_CONFIG}
 
-if [ "${MYSQL_HOME}" != "${DB_FOLDER}" ]; then
+if [ "${MYSQL_HOME}" != "${data_directory}" ]; then
     invoke-rc.d mysql stop
 
-    if [ ! -d "${DB_FOLDER}" ]; then
-        mkdir -p "${DB_FOLDER}"
-    fi
+    chown mysql:mysql "${data_directory}"
 
-    chown mysql:mysql "${DB_FOLDER}"
-
-    cp -rfp ${MYSQL_HOME}/* ${DB_FOLDER}/
+    cp -rfp ${MYSQL_HOME}/* ${data_directory}/
     rm -rf ${MYSQL_HOME}
 
     invoke-rc.d mysql start
