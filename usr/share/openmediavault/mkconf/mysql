@@ -61,11 +61,11 @@ cat <<EOF > ${MYSQL_CONFIG}
 EOF
 
 xmlstarlet sel -t -m "//services/mysql" \
-    -i "enable-networking != 1" -o "skip-networking" -n -b \
+    -i "enable_networking != 1" -o "skip-networking" -n -b \
     -i "port != ''" -v "concat('port = ', port)" -n -b \
-    -i "bindaddress != ''" -v "concat('bind-address = ', bindaddress)" -n -b \
+    -i "bind_address != ''" -v "concat('bind-address = ', bind_address)" -n -b \
     -o "datadir = ${DB_FOLDER}" -n -b \
-    -i "string-length(extraoptions) > 0" -v "extraoptions" -n -b \
+    -i "string-length(extra_options) > 0" -v "extra_options" -n -b \
 ${OMV_CONFIG_FILE} | xmlstarlet unesc >> ${MYSQL_CONFIG}
 
 chmod 644 ${MYSQL_CONFIG}

@@ -9,10 +9,10 @@ MYSQL_DB_DIR="/var/lib/mysql"
 
 data_drive_to_shared_folder()
 {
-    name="MySqlData"
-    comment="MySQL data location"
-    mntentref=$(omv_config_get "//services/mysql/mntentref")
-    reldirpath="mysql-data"
+    local name="MySqlData"
+    local comment="MySQL data location"
+    local mntentref=$(omv_config_get "//services/mysql/mntentref")
+    local reldirpath="mysql-data"
 
     if [ -z "${mntentref}" ]; then
         omv_config_add_element "/config/services/mysql" "data.sharedfolderref"
@@ -21,14 +21,24 @@ data_drive_to_shared_folder()
     fi
 
     # Prepare JSON data.
-    json="{ \"uuid\": \"undefined\", \"name\": \"${name}\", \"comment\": \"${comment}\", \"mntentref\": \"${mntentref}\", \"reldirpath\": \"${reldirpath}\" }"
+    local json="{ \"uuid\": \"undefined\", \"name\": \"${name}\", \"comment\": \"${comment}\", \"mntentref\": \"${mntentref}\", \"reldirpath\": \"${reldirpath}\" }"
 
     # Call omv-rcp and create the shared folder and then filter out the
     # uuid of the new shared folder.
-    uuid=$(omv-rpc ShareMgmt set "${json}" | grep -Po '(?<="uuid":")[^"]*')
+    local uuid=$(omv-rpc ShareMgmt set "${json}" | grep -Po '(?<="uuid":")[^"]*')
 
     # Add the shared folder to the plugin config.
     omv_config_add_element "/config/services/mysql" "data.sharedfolderref" $uuid
+}
+
+rename_config()
+{
+    local base_xpath="/config/services/mysql"
+
+    if ! omv_config_exists "${base_xpath}/${1}"; then
+        local value=$(omv_config_get "${base_xpath}/${1}")
+        omv_config_add_element "${base_xpath}" "${2}" "${value}"
+    fi
 }
 
 case "$1" in
@@ -46,11 +56,19 @@ case "$1" in
             omv_config_add_element "${SERVICE_XPATH}" "data.sharedfolderref"
             omv_config_add_element "${SERVICE_XPATH}" "extraoptions" "127.0.0.1"
             omv_config_add_element "${SERVICE_XPATH}" "enable-management-site" "0"
-            omv_config_add_element "${SERVICE_XPATH}" "show_tab" "0"
+            omv_config_add_element "${SERVICE_XPATH}" "showtab" "0"
         fi
 
         if dpkg --compare-versions "${2}" lt-nl "1.0.7"; then
             data_drive_to_shared_folder
+        fi
+
+        if dpkg --compare-versions "${2}" lt-nl "1.0.8"; then
+            rename_config "enable-networking" "enable_networking"
+            rename_config "bindaddress" "bind_address"
+            rename_config "extraoptions" "extra_options"
+            rename_config "enable-management-site" "enable_management_site"
+            rename_config "showtab" "show_tab"
         fi
 
         if [ ! -d "${MYSQL_DB_DIR}" ]; then

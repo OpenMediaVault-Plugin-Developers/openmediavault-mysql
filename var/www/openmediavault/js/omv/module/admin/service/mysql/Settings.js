@@ -35,10 +35,10 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
         correlations : [{
             name : [
                 "port",
-                "bindaddress"
+                "bind_address"
             ],
             conditions : [{
-                name  : "enable-networking",
+                name  : "enable_networking",
                 value : false
             }],
             properties : [
@@ -47,11 +47,10 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
             ]
         },{
             name : [
-                "launch-management-site",
-                "showtab"
+                "show_tab"
             ],
             conditions : [{
-                name  : "enable-management-site",
+                name  : "enable_management_site",
                 value : true
             },{
                 name  : "enable",
@@ -62,7 +61,7 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
             ]
         },{
             name : [
-                "resetpwd"
+                "reset_password"
             ],
             conditions : [{
                 name  : "enable",
@@ -77,7 +76,7 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
     initComponent : function () {
         this.on("load", function() {
             var checked = this.findField("enable").checked;
-            var showtab = this.findField("showtab").checked;
+            var show_tab = this.findField("show_tab").checked;
             var parent = this.up("tabpanel");
 
             if (!parent)
@@ -92,7 +91,7 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                     managementPanel.disable();
                 }
 
-                if (showtab) {
+                if (show_tab) {
                     managementPanel.tab.show();
                 } else {
                     managementPanel.tab.hide();
@@ -121,7 +120,7 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                 checked    : false
             },{
                 xtype      : "checkbox",
-                name       : "enable-networking",
+                name       : "enable_networking",
                 fieldLabel : _("Enable networking"),
                 checked    : false
             },{
@@ -141,7 +140,7 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                 }]
             },{
                 xtype      : "textfield",
-                name       : "bindaddress",
+                name       : "bind_address",
                 fieldLabel : _("Bind address"),
                 vtype      : "IPv4Net",
                 allowBlank : false,
@@ -176,46 +175,16 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
             },
             items : [{
                 xtype       : "passwordfield",
-                name        : "root_pass",
+                name        : "root_password",
                 fieldLabel  : _("Password"),
                 allowBlank  : true,
                 submitValue : false
             },{
                 xtype   : "button",
-                name    : "resetpwd",
+                name    : "reset_password",
                 text    : _("Reset Password"),
                 scope   : this,
-                handler : function() {
-                    OMV.MessageBox.show({
-                        title   : _("Confirmation"),
-                        msg     : _("Are you sure you want to reset the root password?"),
-                        buttons : Ext.Msg.YESNO,
-                        fn      : function(answer) {
-                            if (answer !== "yes")
-                               return;
-
-                            OMV.MessageBox.wait(null, _("Resetting MySQL root password."));
-
-                            OMV.Rpc.request({
-                                scope       : this,
-                                relayErrors : false,
-                                rpcData     : {
-                                    service : "MySql",
-                                    method  : "resetPassword",
-                                    params  : {
-                                        root_pass : this.getForm().findField("root_pass").getValue()
-                                    }
-                                },
-                                success : function(id, success, response) {
-                                    this.doReload();
-                                    OMV.MessageBox.hide();
-                                }
-                            });
-                        },
-                        icon  : Ext.Msg.QUESTION,
-                        scope : this
-                    });
-                },
+                handler : this.resetPassword,
                 margin : "5 0 8 0"
             }]
         },{
@@ -226,7 +195,7 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
             },
             items : [{
                 xtype      : "checkbox",
-                name       : "enable-management-site",
+                name       : "enable_management_site",
                 fieldLabel : _("Enable"),
                 boxLabel   : _("SQL management site."),
                 checked    : false,
@@ -237,12 +206,47 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                 }]
             },{
                 xtype      : "checkbox",
-                name       : "showtab",
+                name       : "show_tab",
                 fieldLabel : _("Enable"),
                 boxLabel   : _("Show tab containing Management frame."),
                 checked    : false
             }]
         }];
+    },
+
+    doResetPassword : function() {
+        OMV.MessageBox.show({
+            title   : _("Confirmation"),
+            msg     : _("Are you sure you want to reset the root password?"),
+            buttons : Ext.Msg.YESNO,
+            fn      : function(answer) {
+                if (answer !== "yes") {
+                    return;
+                }
+
+                var rootPassword = this.getForm().findField("root_password").getValue();
+
+                OMV.MessageBox.wait(null, _("Resetting MySQL root password."));
+
+                OMV.Rpc.request({
+                    scope       : this,
+                    relayErrors : false,
+                    rpcData     : {
+                        service : "MySql",
+                        method  : "resetPassword",
+                        params  : {
+                            root_password : rootPassword
+                        }
+                    },
+                    success : function(id, success, response) {
+                        this.doReload();
+                        OMV.MessageBox.hide();
+                    }
+                });
+            },
+            icon  : Ext.Msg.QUESTION,
+            scope : this
+        });
     }
 });
 

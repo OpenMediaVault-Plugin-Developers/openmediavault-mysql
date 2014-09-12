@@ -77,10 +77,10 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
         // Modify result data
         $object["enable"]            = intval($object["enable"]);
         $object["port"]              = intval($object["port"]);
-        $object["enable-networking"] = boolval($object["enable-networking"]);
+        $object["enable_networking"] = boolval($object["enable_networking"]);
 
-        $object["enable-management-site"] = boolval($object["enable-management-site"]);
-        $object["showtab"]                = boolval($object["showtab"]);
+        $object["enable_management_site"] = boolval($object["enable_management_site"]);
+        $object["show_tab"]                = boolval($object["show_tab"]);
 
         return $object;
     }
@@ -104,14 +104,14 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
                 "type"       : "object",
                 "properties" : {
                     "enable"               : { "type" : "boolean" },
-                    "enable-networking"    : { "type" : "boolean" },
+                    "enable_networking"    : { "type" : "boolean" },
                     "port"                 : { "type" : "integer" },
-                    "bindaddress"          : { "type" : "string" },
+                    "bind_address"         : { "type" : "string" },
                     "data.sharedfolderref" : {' . $GLOBALS["OMV_JSONSCHEMA_UUID"] . '},
-                    "extraoptions"         : { "type" : "string" },
+                    "extra_options"        : { "type" : "string" },
 
-                    "enable-management-site" : { "type" : "boolean" },
-                    "showtab"                : { "type" : "boolean", "optional" : true }
+                    "enable_management_site" : { "type" : "boolean" },
+                    "show_tab"               : { "type" : "boolean", "optional" : true }
                 }
             }'
         );
@@ -119,17 +119,17 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
         // Prepare configuration data
         $object = array(
             "enable"               => array_boolval($params, "enable"),
-            "enable-networking"    => array_boolval($params, "enable-networking"),
+            "enable_networking"    => array_boolval($params, "enable_networking"),
             "port"                 => intval($params["port"]),
-            "bindaddress"          => $params["bindaddress"],
+            "bind_address"         => $params["bind_address"],
             "data.sharedfolderref" => $params["data.sharedfolderref"],
-            "extraoptions"         => trim($params["extraoptions"]),
+            "extra_options"        => trim($params["extra_options"]),
 
-            "enable-management-site" => (
-                array_boolval($params, "enable-management-site") &&
+            "enable_management_site" => (
+                array_boolval($params, "enable_management_site") &&
                 array_boolval($params, "enable")
             ),
-            "showtab" => array_boolval($params, "showtab"),
+            "show_tab" => array_boolval($params, "show_tab"),
         );
 
         // Set configuration object
@@ -167,14 +167,14 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
             '{
                 "type"       : "object",
                 "properties" : {
-                    "root_pass" : { "type" : "string" }
+                    "root_password" : { "type" : "string" }
                 }
             }'
         );
 
         // Create password file
         $file = "/tmp/.openmediavault-mysql-reset-pwd";
-        file_put_contents($file, $params["root_pass"]);
+        file_put_contents($file, $params["root_password"]);
 
         $cmd = "sudo /usr/local/bin/mysql-password 2>&1";
 
