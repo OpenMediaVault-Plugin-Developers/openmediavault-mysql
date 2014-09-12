@@ -155,7 +155,8 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                 fieldLabel : _("Data directory"),
                 plugins    : [{
                     ptype : "fieldinfo",
-                    text  : _("The location where MySQL stores its data.")
+                    text  : _("The location where MySQL stores its data.") + " " +
+                            _("It should be noted that the shared folder should be empty when applying the configuration and should not be altered with additional files. The reason for this is that the plugin will copy all files to the shared folder and remove them from the old data location.")
                 }]
             },{
                 xtype      : "textarea",

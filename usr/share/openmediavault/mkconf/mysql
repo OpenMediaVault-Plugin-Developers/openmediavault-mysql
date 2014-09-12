@@ -30,13 +30,15 @@ if [ "$(omv_config_get "//services/mysql/enable")" != "1" ]; then
     exit 0
 fi
 
+current_data_directory=""
+
 # Get current database location
 if [ -e "${MYSQL_CONFIG}" ]; then
-    MYSQL_HOME="$(cat ${MYSQL_CONFIG} | grep datadir | sed 's/datadir\s\+=\s\+//g')"
+    current_data_directory="$(cat ${MYSQL_CONFIG} | grep datadir | sed 's/datadir\s\+=\s\+//g')"
 else
     # If not openmediavault mysql config, use standard mysql config file
     if [ -e "${MY_CONFIG}" ]; then
-        MYSQL_HOME="$(cat ${MY_CONFIG} | grep datadir | sed 's/datadir\s\+=\s\+//g')"
+        current_data_directory="$(cat ${MY_CONFIG} | grep datadir | sed 's/datadir\s\+=\s\+//g')"
     else
         echo "Unable to get current database location"
         exit 2
@@ -44,7 +46,7 @@ else
 fi
 
 # Check for MySQL database files
-if [ ! -e "${MYSQL_HOME}/ibdata1" ]; then
+if [ ! -e "${current_data_directory}/ibdata1" ]; then
     echo "Unable to find database files"
     exit 3
 fi
@@ -70,13 +72,16 @@ ${OMV_CONFIG_FILE} | xmlstarlet unesc >> ${MYSQL_CONFIG}
 
 chmod 644 ${MYSQL_CONFIG}
 
-if [ "${MYSQL_HOME}" != "${data_directory}" ]; then
+if [ "${current_data_directory}" != "${data_directory}" ]; then
     invoke-rc.d mysql stop
 
+    # Take ownership of the shared folder.
     chown mysql:mysql "${data_directory}"
 
-    cp -rfp ${MYSQL_HOME}/* ${data_directory}/
-    rm -rf ${MYSQL_HOME}
+    # Copy current data to the new directory and remove all files from the
+    # old.
+    cp -rfp ${current_data_directory}/* ${data_directory}/
+    rm -rf ${current_data_directory}/*
 
     invoke-rc.d mysql start
 fi
