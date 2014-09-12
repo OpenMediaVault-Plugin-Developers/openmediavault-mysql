@@ -1,3 +1,9 @@
+openmediavault-mysql (1.0.8) UNRELEASED; urgency=low
+
+  * Misc changes
+
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Fri, 12 Sep 2014 19:35:08 +0200
+
 openmediavault-mysql (1.0.7) stable; urgency=low
 
   * Use shared folder to store MySQL data 
