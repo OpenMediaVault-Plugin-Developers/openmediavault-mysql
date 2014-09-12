@@ -34,6 +34,18 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
         ptype        : "linkedfields",
         correlations : [{
             name : [
+                "data.sharedfolderref"
+            ],
+            conditions : [{
+                name  : "enable",
+                value : true
+            }],
+            properties : [
+                "!allowBlank",
+                "!allowNone"
+            ]
+        },{
+            name : [
                 "port",
                 "bind_address"
             ],
@@ -153,6 +165,8 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                 xtype      : "sharedfoldercombo",
                 name       : "data.sharedfolderref",
                 fieldLabel : _("Data directory"),
+                allowBlank : true,
+                allowNone  : true,
                 plugins    : [{
                     ptype : "fieldinfo",
                     text  : _("The location where MySQL stores its data.") + " " +
