@@ -14,6 +14,12 @@ data_drive_to_shared_folder()
     mntentref=$(omv_config_get "//services/mysql/mntentref")
     reldirpath="mysql-data"
 
+    if [ -z "${mntentref}" ]; then
+        omv_config_add_element "/config/services/mysql" "data.sharedfolderref"
+
+        return 0
+    fi
+
     # Prepare JSON data.
     json="{ \"uuid\": \"undefined\", \"name\": \"${name}\", \"comment\": \"${comment}\", \"mntentref\": \"${mntentref}\", \"reldirpath\": \"${reldirpath}\" }"
 
@@ -27,17 +33,24 @@ data_drive_to_shared_folder()
 
 case "$1" in
     configure)
-        if ! omv_config_exists "/config/services/mysql"; then
-            echo "Initial configuration."
-            object="<enable>0</enable>"
-            object="${object}<enable-networking>1</enable-networking>"
-            object="${object}<port>3306</port>"
-            object="${object}<bindaddress>127.0.0.1</bindaddress>"
-            object="${object}<data.sharedfolderref></data.sharedfolderref>"
-            object="${object}<extraoptions></extraoptions>"
-            object="${object}<enable-management-site>0</enable-management-site>"
-            object="${object}<showtab>0</showtab>"
-            omv_config_add_element "/config/services" "mysql" "${object}" true
+        SERVICE_XPATH_NAME="mysql"
+        SERVICE_XPATH="/config/services/${SERVICE_XPATH_NAME}"
+
+        # Add the default configuration
+        if ! omv_config_exists "${SERVICE_XPATH}"; then
+            omv_config_add_element "/config/services" "${SERVICE_XPATH_NAME}"
+            omv_config_add_element "${SERVICE_XPATH}" "enable" "0"
+            omv_config_add_element "${SERVICE_XPATH}" "enable-networking" "1"
+            omv_config_add_element "${SERVICE_XPATH}" "port" "3306"
+            omv_config_add_element "${SERVICE_XPATH}" "bindaddress" "127.0.0.1"
+            omv_config_add_element "${SERVICE_XPATH}" "data.sharedfolderref"
+            omv_config_add_element "${SERVICE_XPATH}" "extraoptions" "127.0.0.1"
+            omv_config_add_element "${SERVICE_XPATH}" "enable-management-site" "0"
+            omv_config_add_element "${SERVICE_XPATH}" "show_tab" "0"
+        fi
+
+        if dpkg --compare-versions "${2}" lt-nl "1.0.7"; then
+            data_drive_to_shared_folder
         fi
 
         if [ ! -d "${MYSQL_DB_DIR}" ]; then
@@ -45,11 +58,6 @@ case "$1" in
             chown mysql:mysql "${MYSQL_DB_DIR}"
         fi
 
-        if dpkg --compare-versions "$2" lt-nl "1.0.7"; then
-			data_drive_to_shared_folder
-		fi
-
-        omv_install_fixperms
         omv-mkconf mysql
 
         # Activate package triggers. These triggers are only set during the
