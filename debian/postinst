@@ -35,7 +35,7 @@ rename_config()
 {
     local base_xpath="/config/services/mysql"
 
-    if ! omv_config_exists "${base_xpath}/${1}"; then
+    if omv_config_exists "${base_xpath}/${1}"; then
         local value=$(omv_config_get "${base_xpath}/${1}")
         omv_config_add_element "${base_xpath}" "${2}" "${value}"
     fi
