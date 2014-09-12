@@ -14,6 +14,9 @@ data_drive_to_shared_folder()
     local mntentref=$(omv_config_get "//services/mysql/mntentref")
     local reldirpath="mysql-data"
 
+    # Delete old config option
+    omv_config_delete "//services/mysql/mntentref"
+
     if [ -z "${mntentref}" ]; then
         omv_config_add_element "/config/services/mysql" "data.sharedfolderref"
 
@@ -38,6 +41,7 @@ rename_config()
     if omv_config_exists "${base_xpath}/${1}"; then
         local value=$(omv_config_get "${base_xpath}/${1}")
         omv_config_add_element "${base_xpath}" "${2}" "${value}"
+        omv_config_delete "${base_xpath}/${1}"
     fi
 }
 
