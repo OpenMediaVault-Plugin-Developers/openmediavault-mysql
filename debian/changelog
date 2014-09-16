@@ -1,6 +1,8 @@
 openmediavault-mysql (1.0.9) stable; urgency=low
 
-  * Bug fixes
+  * Update locales
+  * Fix typo when enabling web interface
+  * Fix bug causing Reset Password not to work
 
  -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Tue, 16 Sep 2014 06:24:31 -0500
 
