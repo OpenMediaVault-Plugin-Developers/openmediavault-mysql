@@ -28,7 +28,7 @@ OMV_MYSQL_PLUGIN_XPATH="//services/mysql"
 detect_database_files()
 {
     if [ ! -d "${1}" ]; then
-        echo "Directory ${1} don't exist."
+        echo "Directory ${1} doesn't exist."
 
         return 1
     fi
@@ -75,7 +75,11 @@ fi
 
 # Check if any database files exists in the current data directory.
 if ! detect_database_files "${current_data_directory}" ; then
-    exit 3
+    if ! detect_database_files "${data_directory}" ; then
+        exit 3
+    else
+        current_data_directory=${data_directory}
+    fi
 fi
 
 # Generate the MySQL configuration.
