@@ -1,3 +1,9 @@
+openmediavault-mysql (1.0.9) UNRELEASED; urgency=low
+
+  * Bug fixes
+
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Tue, 16 Sep 2014 06:18:40 -0500
+
 openmediavault-mysql (1.0.8) stable; urgency=low
 
   * Misc changes
