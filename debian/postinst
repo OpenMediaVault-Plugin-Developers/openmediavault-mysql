@@ -56,7 +56,7 @@ case "$1" in
             omv_config_add_element "${SERVICE_XPATH}" "port" "3306"
             omv_config_add_element "${SERVICE_XPATH}" "bind_address" "127.0.0.1"
             omv_config_add_element "${SERVICE_XPATH}" "data.sharedfolderref"
-            omv_config_add_element "${SERVICE_XPATH}" "extra_options" "127.0.0.1"
+            omv_config_add_element "${SERVICE_XPATH}" "extra_options" ""
             omv_config_add_element "${SERVICE_XPATH}" "enable_management_site" "0"
             omv_config_add_element "${SERVICE_XPATH}" "show_tab" "0"
         fi

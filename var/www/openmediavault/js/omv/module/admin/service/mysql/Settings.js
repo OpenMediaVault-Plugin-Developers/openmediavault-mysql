@@ -199,8 +199,8 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                 name    : "reset_password",
                 text    : _("Reset Password"),
                 scope   : this,
-                handler : this.resetPassword,
-                margin : "5 0 8 0"
+                handler : Ext.Function.bind(this.doResetPassword, this, [ this ]),
+                margin  : "5 0 8 0"
             }]
         },{
             xtype    : "fieldset",

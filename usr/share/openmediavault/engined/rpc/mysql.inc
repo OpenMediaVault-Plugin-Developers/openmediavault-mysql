@@ -80,7 +80,7 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
         $object["enable_networking"] = boolval($object["enable_networking"]);
 
         $object["enable_management_site"] = boolval($object["enable_management_site"]);
-        $object["show_tab"]                = boolval($object["show_tab"]);
+        $object["show_tab"]               = boolval($object["show_tab"]);
 
         return $object;
     }
