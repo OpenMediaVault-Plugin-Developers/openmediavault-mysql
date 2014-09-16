@@ -27,7 +27,7 @@ if [ -e "${SQL_MANAGEMENT_SITE_CONF}" ]; then
     rm ${SQL_MANAGEMENT_SITE_CONF}
 fi
 
-if [ "$(omv_config_get "//services/mysql/enable-management-site")" != "1" ]; then
+if [ "$(omv_config_get "//services/mysql/enable_management_site")" != "1" ]; then
     exit 0
 fi
 
