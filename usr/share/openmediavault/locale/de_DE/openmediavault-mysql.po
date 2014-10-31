@@ -4,13 +4,14 @@
 # 
 # Translators:
 # David Hönel <davidh1990@gmx.de>, 2013
+# Ettore Atalan <atalanttore@googlemail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-09-14 07:54-0500\n"
-"PO-Revision-Date: 2014-09-14 12:56+0000\n"
-"Last-Translator: Aaron Murray <aaron27@ryecoinc.com>\n"
+"PO-Revision-Date: 2014-09-28 11:45+0000\n"
+"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/openmediavault-mysql/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,7 +29,7 @@ msgid "Confirmation"
 msgstr "Bestätigung"
 
 msgid "Data directory"
-msgstr ""
+msgstr "Datenverzeichnis"
 
 msgid "Enable"
 msgstr "Aktivieren"
@@ -65,7 +66,7 @@ msgid "MySQL Workbench"
 msgstr "MySQL Workbench"
 
 msgid "Password"
-msgstr ""
+msgstr "Passwort"
 
 msgid "Port"
 msgstr "Port"
@@ -86,7 +87,7 @@ msgid "SQL management site"
 msgstr "SQL Management Seite"
 
 msgid "SQL management site."
-msgstr ""
+msgstr "SQL-Verwaltungsseite."
 
 msgid "Settings"
 msgstr "Einstellungen"
