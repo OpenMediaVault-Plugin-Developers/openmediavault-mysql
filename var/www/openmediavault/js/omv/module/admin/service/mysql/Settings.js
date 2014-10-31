@@ -131,7 +131,7 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
         items.push({
             id       : me.getId() + "-management",
             xtype    : "button",
-            text     : _("Launch management site"),
+            text     : _("Launch Management Site"),
             icon     : "images/mysql.png",
             iconCls  : Ext.baseCSSPrefix + "btn-icon-16x16",
             disabled : true,
