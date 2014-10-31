@@ -1,3 +1,10 @@
+openmediavault-mysql (1.0.11) stable; urgency=low
+
+  * Add management web interface button to toolbar
+  * Update locales
+
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Fri, 31 Oct 2014 16:08:34 -0500
+
 openmediavault-mysql (1.0.10) stable; urgency=low
 
   * Fix database find when reinstalling plugin
