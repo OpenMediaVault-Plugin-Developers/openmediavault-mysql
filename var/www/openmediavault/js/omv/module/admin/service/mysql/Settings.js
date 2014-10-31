@@ -82,6 +82,13 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
             properties: [
                 "disabled"
             ]
+        },{
+            conditions  : [
+                { name : "enable", value : true }
+            ],
+            properties : function(valid, field) {
+                this.setButtonDisabled("management", !valid);
+            }
         }]
     }],
 
@@ -117,6 +124,24 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
     rpcService   : "MySql",
     rpcGetMethod : "getSettings",
     rpcSetMethod : "setSettings",
+
+    getButtonItems : function() {
+        var me = this;
+        var items = me.callParent(arguments);
+        items.push({
+            id       : me.getId() + "-management",
+            xtype    : "button",
+            text     : _("Launch management site"),
+            icon     : "images/mysql.png",
+            iconCls  : Ext.baseCSSPrefix + "btn-icon-16x16",
+            disabled : true,
+            scope    : me,
+            handler  : function() {
+                window.open("/mysql/", "_blank");
+            }
+        });
+        return items;
+    },
 
     getFormItems : function() {
         return [{
