@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-09-14 07:54-0500\n"
-"PO-Revision-Date: 2014-09-28 11:45+0000\n"
+"PO-Revision-Date: 2014-11-15 01:15+0000\n"
 "Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/openmediavault-mysql/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "Are you sure you want to reset the root password?"
-msgstr "Bist Du dir sicher dass Du das root Passwort zurücksetzen möchtest?"
+msgstr "Sind Sie sicher, dass Sie das root-Passwort zurücksetzen möchten?"
 
 msgid "Bind address"
 msgstr "An Adresse binden"
@@ -38,16 +38,16 @@ msgid "Enable networking"
 msgstr "Netzwerk aktivieren"
 
 msgid "Extra options"
-msgstr "Extra Optionen"
+msgstr "Zusätzliche Optionen"
 
 msgid "Extra options for [mysqld] section of MySQL configuration."
-msgstr "Extra Optionen für die [mysqld] Sektion der MySQL Konfiguration."
+msgstr "Zusätzliche Optionen für die [mysqld] Sektion der MySQL-Konfiguration."
 
 msgid "For more advanced usage try: "
 msgstr ""
 
 msgid "IP address to listen on. Use 0.0.0.0 for all host IPs."
-msgstr "IP Adresse auf welcher gelauscht werden soll. Benutze 0.0.0.0 für alle Host IPs."
+msgstr "IP-Adresse, auf welcher gelauscht werden soll. Benutze 0.0.0.0 für alle Host IPs."
 
 msgid ""
 "It should be noted that the shared folder should be empty when applying the "
@@ -72,19 +72,19 @@ msgid "Port"
 msgstr "Port"
 
 msgid "Port to listen on."
-msgstr "Port auf welchem gelauscht werden soll."
+msgstr "Port, auf welchem gelauscht werden soll."
 
 msgid "Reset MySQL root password"
-msgstr "MySQL root Passwort zurücksetzen"
+msgstr "MySQL root-Passwort zurücksetzen"
 
 msgid "Reset Password"
 msgstr "Passwort zurücksetzen"
 
 msgid "Resetting MySQL root password."
-msgstr "MySQL root Passwort zurücksetzen."
+msgstr "MySQL root-Passwort wird zurückgesetzt."
 
 msgid "SQL management site"
-msgstr "SQL Management Seite"
+msgstr "SQL-Verwaltungsseite"
 
 msgid "SQL management site."
 msgstr "SQL-Verwaltungsseite."

@@ -3,61 +3,60 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Michal Charvát <mcharvat@zdeno.net>, 2013
-# Michal Charvát <mcharvat@zdeno.net>, 2014
+# Raul Fernandez Garcia <raulfg3@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-09-14 07:54-0500\n"
-"PO-Revision-Date: 2014-11-14 19:49+0000\n"
-"Last-Translator: Aaron Murray <aaron27@ryecoinc.com>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/openmediavault-mysql/language/cs_CZ/)\n"
+"PO-Revision-Date: 2014-11-16 22:01+0000\n"
+"Last-Translator: Raul Fernandez Garcia <raulfg3@gmail.com>\n"
+"Language-Team: Spanish (Spain) (http://www.transifex.com/projects/p/openmediavault-mysql/language/es_ES/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: cs_CZ\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"Language: es_ES\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "Are you sure you want to reset the root password?"
-msgstr "Opravdu chcete obnovit heslo uživatele root ?"
+msgstr "¿Está seguro que desea resetear la contraseña de root?"
 
 msgid "Bind address"
-msgstr "Bind address"
+msgstr "Dirección de escucha"
 
 msgid "Confirmation"
-msgstr "Potvrzení"
+msgstr "Confirmación"
 
 msgid "Data directory"
-msgstr "Adresář s daty"
+msgstr "Archivo de datos"
 
 msgid "Enable"
-msgstr "Zapnout"
+msgstr "Habilitar"
 
 msgid "Enable networking"
-msgstr "Povolit síťová nastavení"
+msgstr "Habilitar Red"
 
 msgid "Extra options"
-msgstr "Další nastavení"
+msgstr "Opciones extra"
 
 msgid "Extra options for [mysqld] section of MySQL configuration."
-msgstr "Další nastavení pro [mysqld] sekci v konfiguraci MySQL"
+msgstr "Opciones extra para la sección [mysqld] del archivo de configuración de MySQL."
 
 msgid "For more advanced usage try: "
-msgstr "Pro pokročilejší použití zkuste:"
+msgstr "Para un uso avanzado, probar:"
 
 msgid "IP address to listen on. Use 0.0.0.0 for all host IPs."
-msgstr "IP adresa na které databáze naslouchá. Pro všechny IP adresy použíjte 0.0.0.0"
+msgstr "Dirección IP de escucha. Use 0.0.0.0 para escuchar todos los host posibles"
 
 msgid ""
 "It should be noted that the shared folder should be empty when applying the "
 "configuration and should not be altered with additional files. The reason "
 "for this is that the plugin will copy all files to the shared folder and "
 "remove them from the old data location."
-msgstr ""
+msgstr "La carpeta compartida debe estar vacia cuando se aplique la configuración y no puede ser alterada posteriormente con archivos adicionales. La razón para ello es que este plugin copirá todos los archivos a la carpeta compartida y los borrará de la anterior ubicación."
 
 msgid "Management"
-msgstr "Správa"
+msgstr "Administración"
 
 msgid "MySQL"
 msgstr "MySQL"
@@ -66,39 +65,39 @@ msgid "MySQL Workbench"
 msgstr "MySQL Workbench"
 
 msgid "Password"
-msgstr "Heslo"
+msgstr "Contraseña"
 
 msgid "Port"
-msgstr "Port"
+msgstr "Puerto"
 
 msgid "Port to listen on."
-msgstr "Port na kterém databáze naslouchá"
+msgstr "Puerto de escucha"
 
 msgid "Reset MySQL root password"
-msgstr "Obnova hesla uživatele root"
+msgstr "Resetear la contraseña de root de MySQL"
 
 msgid "Reset Password"
-msgstr "Resetovat heslo"
+msgstr "Resetear contraseña"
 
 msgid "Resetting MySQL root password."
-msgstr "Obnova MySQL root hesla"
+msgstr "Reseteando la contraseña de root de MySQL."
 
 msgid "SQL management site"
-msgstr "Stránka se správou SQL"
+msgstr "Sitio de administración SQL"
 
 msgid "SQL management site."
-msgstr "Stránka se správou SQL"
+msgstr "Sitio de administración SQL."
 
 msgid "Settings"
-msgstr "Nastavení"
+msgstr "Opciones"
 
 msgid "Show tab containing Management frame."
-msgstr "Zobrazit záložku obsahující stránku se správou"
+msgstr "Mostrar la pestaña que contiene la web de Administración."
 
 msgid ""
 "The SQL web interface can be accessed <a href='/mysql/' "
 "target='_blank'>here</a>."
-msgstr ""
+msgstr "La interfaz SQL puede ser accedida <a href='/mysql/' target='_blank'>aqui</a>."
 
 msgid "The location where MySQL stores its data."
-msgstr "Cesta kam MySQL ukládá data"
+msgstr "La ubicación donde MySQL almacena sus propios datos."
