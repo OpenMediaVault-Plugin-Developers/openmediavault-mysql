@@ -1,3 +1,10 @@
+openmediavault-mysql (1.0.12) stable; urgency=low
+
+  * Enable management button when plugin enabled and web management
+    enabled
+
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Tue, 18 Nov 2014 07:39:04 -0600
+
 openmediavault-mysql (1.0.11) stable; urgency=low
 
   * Add management web interface button to toolbar

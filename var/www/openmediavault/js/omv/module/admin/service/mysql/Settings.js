@@ -84,7 +84,8 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
             ]
         },{
             conditions  : [
-                { name : "enable", value : true }
+                { name : "enable", value : true },
+                { name : "enable_management_site", value : true }
             ],
             properties : function(valid, field) {
                 this.setButtonDisabled("management", !valid);
