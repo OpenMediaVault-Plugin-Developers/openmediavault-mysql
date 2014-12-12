@@ -1,3 +1,10 @@
+openmediavault-mysql (1.0.13) stable; urgency=low
+
+  * Add custom debian/control field XB-Plugin-Section
+  * Update locales
+
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Fri, 12 Dec 2014 05:54:47 -0600
+
 openmediavault-mysql (1.0.12) stable; urgency=low
 
   * Enable management button when plugin enabled and web management
