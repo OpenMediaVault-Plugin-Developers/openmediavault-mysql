@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# kochin <kochinc@outlook.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-09-14 07:54-0500\n"
-"PO-Revision-Date: 2014-11-14 19:49+0000\n"
-"Last-Translator: Aaron Murray <aaron27@ryecoinc.com>\n"
+"PO-Revision-Date: 2014-11-21 17:44+0000\n"
+"Last-Translator: kochin <kochinc@outlook.com>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/projects/p/openmediavault-mysql/language/zh_TW/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,85 +19,85 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "Are you sure you want to reset the root password?"
-msgstr ""
+msgstr "您確定要重設 root 密碼嗎？"
 
 msgid "Bind address"
-msgstr ""
+msgstr "綁定地址"
 
 msgid "Confirmation"
-msgstr ""
+msgstr "確認"
 
 msgid "Data directory"
-msgstr ""
+msgstr "資料目錄"
 
 msgid "Enable"
-msgstr ""
+msgstr "啟用"
 
 msgid "Enable networking"
-msgstr ""
+msgstr "啟用網路連結"
 
 msgid "Extra options"
-msgstr ""
+msgstr "額外選項"
 
 msgid "Extra options for [mysqld] section of MySQL configuration."
-msgstr ""
+msgstr "MySQL 設置中 [mysqld] 分節的額外選項。"
 
 msgid "For more advanced usage try: "
-msgstr ""
+msgstr "要做更進階的使用，請試試："
 
 msgid "IP address to listen on. Use 0.0.0.0 for all host IPs."
-msgstr ""
+msgstr "要監聽的 IP 地址。使用 0.0.0.0 表示主機所有的 IPs。"
 
 msgid ""
 "It should be noted that the shared folder should be empty when applying the "
 "configuration and should not be altered with additional files. The reason "
 "for this is that the plugin will copy all files to the shared folder and "
 "remove them from the old data location."
-msgstr ""
+msgstr "請注意：當套用設置時，該共享檔案夾應該是空白的，並且不應該有額外的檔案來改變它。原因是此插件將把所有的檔案複製到該共享檔案夾，並將它們從舊的資料位置中移除。"
 
 msgid "Management"
-msgstr ""
+msgstr "管理"
 
 msgid "MySQL"
-msgstr ""
+msgstr "MySQL"
 
 msgid "MySQL Workbench"
-msgstr ""
+msgstr "MySQL Workbench"
 
 msgid "Password"
-msgstr ""
+msgstr "密碼"
 
 msgid "Port"
-msgstr ""
+msgstr "通訊埠"
 
 msgid "Port to listen on."
-msgstr ""
+msgstr "要監聽的通訊埠。"
 
 msgid "Reset MySQL root password"
-msgstr ""
+msgstr "重設 MySQL root 密碼"
 
 msgid "Reset Password"
-msgstr ""
+msgstr "重設密碼"
 
 msgid "Resetting MySQL root password."
-msgstr ""
+msgstr "重新設定 MySQL 的 root 密碼。"
 
 msgid "SQL management site"
-msgstr ""
+msgstr "SQL 管理網站"
 
 msgid "SQL management site."
-msgstr ""
+msgstr "SQL 管理網站。"
 
 msgid "Settings"
-msgstr ""
+msgstr "設定"
 
 msgid "Show tab containing Management frame."
-msgstr ""
+msgstr "顯示分頁 管理 瀏覽框"
 
 msgid ""
 "The SQL web interface can be accessed <a href='/mysql/' "
 "target='_blank'>here</a>."
-msgstr ""
+msgstr "SQL 網站介面可在 <a href='/mysql/' target='_blank'>這裡</a> 存取。"
 
 msgid "The location where MySQL stores its data."
-msgstr ""
+msgstr "MySQL 儲存資料的位置。"
