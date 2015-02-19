@@ -1,19 +1,18 @@
 Source: openmediavault-mysql
 Section: net
-XB-Plugin-Section: network
 Priority: optional
 Maintainer: OpenMediaVault Plugin Developers <plugins@omv-extras.org>
-Build-Depends: debhelper (>= 9.0.0)
-Standards-Version: 3.9.3
-Homepage: http://omv-extras.org/
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.6
+XB-Plugin-Section: network
 
 Package: openmediavault-mysql
 Architecture: all
-Depends: openmediavault (>= 0.6.0.10), mysql-server, mywebsql,
- php5-mysqlnd | php5-mysqli | php5-mysql,
- dbconfig-common ${misc:Depends}
-Description: MySQL plugin for OpenMediaVault
+Depends: openmediavault (>= 1.0),
+         dbconfig-common,
+         mysql-server,
+         mywebsql,
+         ${misc:Depends}
+Description: MySQL plugin for OpenMediaVault.
  MySQL is an open source database server. The plugin allows you to
  specify a share for databases and reset the MySQL root password.
- sqlbuddy is provided for database management (database, table, and
- user creation/editing). Queries can also be run for data mining.

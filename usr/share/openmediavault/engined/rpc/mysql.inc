@@ -183,7 +183,7 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
         $file = "/tmp/.openmediavault-mysql-reset-pwd";
         file_put_contents($file, $params["root_password"]);
 
-        $cmd = "sudo /usr/local/bin/mysql-password 2>&1";
+        $cmd = "/usr/sbin/mysql-password 2>&1";
 
         if (0 !== $this->exec($cmd, $output)) {
             throw new OMVException(
