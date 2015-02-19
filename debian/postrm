@@ -14,7 +14,7 @@ case "$1" in
         omv_config_delete "//services/mysql"
 
         if [ -e "${OMV_MYSQL_CONF}" ]; then
-            /bin/rm -f "${OMV_MYSQL_CONF}"
+            rm -f "${OMV_MYSQL_CONF}"
         fi
     ;;
 
