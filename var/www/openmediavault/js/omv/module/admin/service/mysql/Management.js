@@ -21,6 +21,8 @@
 Ext.define("OMV.module.admin.service.mysql.Management", {
     extend : "OMV.workspace.panel.Panel",
 
+    disabled: true,
+
     initComponent : function() {
         this.html = "<iframe src='/mysql/' width='100%' height='100%' />";
         this.callParent(arguments);
