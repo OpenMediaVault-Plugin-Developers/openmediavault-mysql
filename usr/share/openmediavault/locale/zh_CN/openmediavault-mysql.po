@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-14 07:54-0500\n"
-"PO-Revision-Date: 2014-11-14 19:49+0000\n"
+"POT-Creation-Date: 2015-02-26 06:32-0600\n"
+"PO-Revision-Date: 2015-02-26 12:35+0000\n"
 "Last-Translator: Aaron Murray <aaron27@ryecoinc.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/openmediavault-mysql/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -25,11 +25,17 @@ msgstr "确定要重设 root 账户密码吗？"
 msgid "Bind address"
 msgstr "绑定地址"
 
+msgid "Check this box if database is stored on ZFS filesystem."
+msgstr ""
+
 msgid "Confirmation"
 msgstr "确认"
 
 msgid "Data directory"
 msgstr "数据目录"
+
+msgid "Disable AIO"
+msgstr ""
 
 msgid "Enable"
 msgstr "启用"
@@ -55,6 +61,9 @@ msgid ""
 "for this is that the plugin will copy all files to the shared folder and "
 "remove them from the old data location."
 msgstr "注意该目录最好使用空文件夹来配置，以避免数据迁移时出错，因为应用设置后插件会拷贝旧数据目录中的文件到该目录，并且删除旧数据目录。"
+
+msgid "Launch Management Site"
+msgstr ""
 
 msgid "Management"
 msgstr "管理"

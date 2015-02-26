@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-14 07:54-0500\n"
+"POT-Creation-Date: 2015-02-26 06:32-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,10 +23,16 @@ msgstr ""
 msgid "Bind address"
 msgstr ""
 
+msgid "Check this box if database is stored on ZFS filesystem."
+msgstr ""
+
 msgid "Confirmation"
 msgstr ""
 
 msgid "Data directory"
+msgstr ""
+
+msgid "Disable AIO"
 msgstr ""
 
 msgid "Enable"
@@ -48,6 +54,9 @@ msgid "IP address to listen on. Use 0.0.0.0 for all host IPs."
 msgstr ""
 
 msgid "It should be noted that the shared folder should be empty when applying the configuration and should not be altered with additional files. The reason for this is that the plugin will copy all files to the shared folder and remove them from the old data location."
+msgstr ""
+
+msgid "Launch Management Site"
 msgstr ""
 
 msgid "Management"
