@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Damtux, 2013
-# Paolo Velati <paolo.velati@gmail.com>, 2014
+# luigif <luigif@gmail.com>, 2015
+# Paolo Velati <paolo.velati@gmail.com>, 2014-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-14 07:54-0500\n"
-"PO-Revision-Date: 2014-11-14 19:49+0000\n"
+"POT-Creation-Date: 2015-02-26 06:32-0600\n"
+"PO-Revision-Date: 2015-02-26 12:35+0000\n"
 "Last-Translator: Aaron Murray <aaron27@ryecoinc.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/openmediavault-mysql/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -25,10 +26,16 @@ msgstr "Sei sicuro di voler ripristinare la password di root?"
 msgid "Bind address"
 msgstr "Associa indirizzo"
 
+msgid "Check this box if database is stored on ZFS filesystem."
+msgstr ""
+
 msgid "Confirmation"
 msgstr "Conferma"
 
 msgid "Data directory"
+msgstr "Directory dati"
+
+msgid "Disable AIO"
 msgstr ""
 
 msgid "Enable"
@@ -54,6 +61,9 @@ msgid ""
 "configuration and should not be altered with additional files. The reason "
 "for this is that the plugin will copy all files to the shared folder and "
 "remove them from the old data location."
+msgstr "VI preghiamo di fare in modo che la cartella condivisa sia vuota quando si applica la configurazione e non vengano aggiunti altri files. Il plugin copierà tutti i filers nella cartella condivisa e li cancellerà dalla cartella di origine. "
+
+msgid "Launch Management Site"
 msgstr ""
 
 msgid "Management"
@@ -66,7 +76,7 @@ msgid "MySQL Workbench"
 msgstr "MySQL Workbench"
 
 msgid "Password"
-msgstr ""
+msgstr "Password"
 
 msgid "Port"
 msgstr "Porta"
@@ -98,7 +108,7 @@ msgstr "Mostra scheda contenente frame di gestione."
 msgid ""
 "The SQL web interface can be accessed <a href='/mysql/' "
 "target='_blank'>here</a>."
-msgstr ""
+msgstr "Si può accedere all'interfaccia web SQL da <a href='/mysql/' target='_blank'>qui</a>."
 
 msgid "The location where MySQL stores its data."
-msgstr ""
+msgstr "La posizione dove MySQL salva i propri dati."

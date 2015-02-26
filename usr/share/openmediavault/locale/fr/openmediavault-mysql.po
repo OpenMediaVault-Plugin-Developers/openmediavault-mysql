@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-14 07:54-0500\n"
-"PO-Revision-Date: 2014-09-14 12:56+0000\n"
+"POT-Creation-Date: 2015-02-26 06:32-0600\n"
+"PO-Revision-Date: 2015-02-26 12:35+0000\n"
 "Last-Translator: Aaron Murray <aaron27@ryecoinc.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/openmediavault-mysql/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -24,10 +24,16 @@ msgstr "Êtes-vous sûr de vouloir réinitialiser le mot de passe root ? "
 msgid "Bind address"
 msgstr "Adresse liée"
 
+msgid "Check this box if database is stored on ZFS filesystem."
+msgstr ""
+
 msgid "Confirmation"
 msgstr "Confirmation"
 
 msgid "Data directory"
+msgstr ""
+
+msgid "Disable AIO"
 msgstr ""
 
 msgid "Enable"
@@ -53,6 +59,9 @@ msgid ""
 "configuration and should not be altered with additional files. The reason "
 "for this is that the plugin will copy all files to the shared folder and "
 "remove them from the old data location."
+msgstr ""
+
+msgid "Launch Management Site"
 msgstr ""
 
 msgid "Management"

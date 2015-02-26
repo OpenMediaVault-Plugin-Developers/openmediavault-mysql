@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-14 07:54-0500\n"
-"PO-Revision-Date: 2014-11-14 19:49+0000\n"
+"POT-Creation-Date: 2015-02-26 06:32-0600\n"
+"PO-Revision-Date: 2015-02-26 12:35+0000\n"
 "Last-Translator: Aaron Murray <aaron27@ryecoinc.com>\n"
 "Language-Team: Japanese (Japan) (http://www.transifex.com/projects/p/openmediavault-mysql/language/ja_JP/)\n"
 "MIME-Version: 1.0\n"
@@ -24,11 +24,17 @@ msgstr "rootのパスワードをリセットしてもよろしいですか？"
 msgid "Bind address"
 msgstr "バインドアドレス"
 
+msgid "Check this box if database is stored on ZFS filesystem."
+msgstr ""
+
 msgid "Confirmation"
 msgstr "確認"
 
 msgid "Data directory"
 msgstr "データディレクトリ"
+
+msgid "Disable AIO"
+msgstr ""
 
 msgid "Enable"
 msgstr "有効"
@@ -54,6 +60,9 @@ msgid ""
 "for this is that the plugin will copy all files to the shared folder and "
 "remove them from the old data location."
 msgstr "コンフィギュレーションを適用し、追加ファイルを変更してはいけない時に、共有フォルダが空でなければならないことに注意してください。その理由は、プラグインがすべてのファイルを共有フォルダにコピーし、古いデータ格納場所からそれらを削除するためです。"
+
+msgid "Launch Management Site"
+msgstr ""
 
 msgid "Management"
 msgstr "管理"

@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# kochin <kochinc@outlook.com>, 2014
+# kochin <kochinc@outlook.com>, 2014-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-14 07:54-0500\n"
-"PO-Revision-Date: 2014-11-21 17:44+0000\n"
-"Last-Translator: kochin <kochinc@outlook.com>\n"
+"POT-Creation-Date: 2015-02-26 06:32-0600\n"
+"PO-Revision-Date: 2015-02-26 12:35+0000\n"
+"Last-Translator: Aaron Murray <aaron27@ryecoinc.com>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/projects/p/openmediavault-mysql/language/zh_TW/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,11 +24,17 @@ msgstr "您確定要重設 root 密碼嗎？"
 msgid "Bind address"
 msgstr "綁定地址"
 
+msgid "Check this box if database is stored on ZFS filesystem."
+msgstr ""
+
 msgid "Confirmation"
 msgstr "確認"
 
 msgid "Data directory"
 msgstr "資料目錄"
+
+msgid "Disable AIO"
+msgstr ""
 
 msgid "Enable"
 msgstr "啟用"
@@ -55,6 +61,9 @@ msgid ""
 "remove them from the old data location."
 msgstr "請注意：當套用設置時，該共享檔案夾應該是空白的，並且不應該有額外的檔案來改變它。原因是此插件將把所有的檔案複製到該共享檔案夾，並將它們從舊的資料位置中移除。"
 
+msgid "Launch Management Site"
+msgstr ""
+
 msgid "Management"
 msgstr "管理"
 
@@ -80,7 +89,7 @@ msgid "Reset Password"
 msgstr "重設密碼"
 
 msgid "Resetting MySQL root password."
-msgstr "重新設定 MySQL 的 root 密碼。"
+msgstr "重新設定 MySQL 的 root 密碼中。"
 
 msgid "SQL management site"
 msgstr "SQL 管理網站"
@@ -92,7 +101,7 @@ msgid "Settings"
 msgstr "設定"
 
 msgid "Show tab containing Management frame."
-msgstr "顯示分頁 管理 瀏覽框"
+msgstr "顯示含有 管理 瀏覽框的分頁"
 
 msgid ""
 "The SQL web interface can be accessed <a href='/mysql/' "
