@@ -73,6 +73,10 @@ case "$1" in
             rename_config "showtab" "show_tab"
         fi
 
+        if ! omv_config_exists "${SERVICE_XPATH}/disable_aio"; then
+            omv_config_add_element "${SERVICE_XPATH}" "disable_aio" "0"
+        fi
+
         # Activate package triggers. These triggers are only set during the
         # package installation.
         dpkg-trigger update-fixperms

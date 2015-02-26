@@ -78,6 +78,7 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
         $object["enable"]            = intval($object["enable"]);
         $object["port"]              = intval($object["port"]);
         $object["enable_networking"] = boolval($object["enable_networking"]);
+        $object["disable_aio"]       = boolval($object["disable_aio"]);
 
         $object["enable_management_site"] = boolval($object["enable_management_site"]);
         $object["show_tab"]               = boolval($object["show_tab"]);
@@ -108,6 +109,7 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
                     "port"                 : { "type" : "integer" },
                     "bind_address"         : { "type" : "string" },
                     "data.sharedfolderref" : {' . $GLOBALS["OMV_JSONSCHEMA_UUID_NONE"] . '},
+                    "disable_aio"          : { "type" : "boolean" },
                     "extra_options"        : { "type" : "string" },
 
                     "enable_management_site" : { "type" : "boolean" },
@@ -123,6 +125,7 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
             "port"                 => intval($params["port"]),
             "bind_address"         => $params["bind_address"],
             "data.sharedfolderref" => $params["data.sharedfolderref"],
+            "disable_aio"          => array_boolval($params, "disable_aio"),
             "extra_options"        => trim($params["extra_options"]),
 
             "enable_management_site" => (

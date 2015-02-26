@@ -199,6 +199,15 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                             _("It should be noted that the shared folder should be empty when applying the configuration and should not be altered with additional files. The reason for this is that the plugin will copy all files to the shared folder and remove them from the old data location.")
                 }]
             },{
+                xtype      : "checkbox",
+                name       : "disable_aio",
+                fieldLabel : _("Disable AIO"),
+                checked    : false,
+                plugins    : [{
+                    ptype : "fieldinfo",
+                    text  : _("Check this box if database is stored on ZFS filesystem.") 
+                }]
+            },{
                 xtype      : "textarea",
                 name       : "extra_options",
                 fieldLabel : _("Extra options"),
