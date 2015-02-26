@@ -91,6 +91,7 @@ xmlstarlet sel -t -m "${OMV_MYSQL_PLUGIN_XPATH}" \
     -i "port != ''" -v "concat('port = ', port)" -n -b \
     -i "bind_address != ''" -v "concat('bind-address = ', bind_address)" -n -b \
     -o "datadir = ${data_directory}" -n \
+    -i "disable_aio != 1" -o "innodb_use_native_aio=0" -n -b \
     -i "string-length(extra_options) > 0" -v "extra_options" -n -b \
     ${OMV_CONFIG_FILE} | xmlstarlet unesc > ${OMV_MYSQL_PLUGIN_CONFIG}
 
