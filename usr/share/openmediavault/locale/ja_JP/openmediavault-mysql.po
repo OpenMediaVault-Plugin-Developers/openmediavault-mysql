@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Toshihiro Kan <kansuke4649@gmail.com>, 2014
+# Toshihiro Kan <kansuke4649@gmail.com>, 2014-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-02-26 06:32-0600\n"
-"PO-Revision-Date: 2015-02-26 12:35+0000\n"
-"Last-Translator: Aaron Murray <aaron27@ryecoinc.com>\n"
+"PO-Revision-Date: 2015-02-27 05:23+0000\n"
+"Last-Translator: Toshihiro Kan <kansuke4649@gmail.com>\n"
 "Language-Team: Japanese (Japan) (http://www.transifex.com/projects/p/openmediavault-mysql/language/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,7 +25,7 @@ msgid "Bind address"
 msgstr "バインドアドレス"
 
 msgid "Check this box if database is stored on ZFS filesystem."
-msgstr ""
+msgstr "データベースがZFSファイルシステム上に保存されている場合はチェックしてください。"
 
 msgid "Confirmation"
 msgstr "確認"
@@ -34,7 +34,7 @@ msgid "Data directory"
 msgstr "データディレクトリ"
 
 msgid "Disable AIO"
-msgstr ""
+msgstr "AIOを無効化"
 
 msgid "Enable"
 msgstr "有効"
@@ -62,7 +62,7 @@ msgid ""
 msgstr "コンフィギュレーションを適用し、追加ファイルを変更してはいけない時に、共有フォルダが空でなければならないことに注意してください。その理由は、プラグインがすべてのファイルを共有フォルダにコピーし、古いデータ格納場所からそれらを削除するためです。"
 
 msgid "Launch Management Site"
-msgstr ""
+msgstr "管理サイトの起動"
 
 msgid "Management"
 msgstr "管理"
