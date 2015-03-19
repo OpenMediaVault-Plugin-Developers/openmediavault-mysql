@@ -10,7 +10,7 @@ Package: openmediavault-mysql
 Architecture: all
 Depends: openmediavault (>= 1.0),
          dbconfig-common,
-         mysql-server,
+         mysql-server | mariadb-server,
          mywebsql,
          php5-mysqlnd | php5-mysql,
          ${misc:Depends}
