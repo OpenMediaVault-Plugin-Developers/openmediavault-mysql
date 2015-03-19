@@ -133,13 +133,6 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
             "show_tab" => array_boolval($params, "show_tab"),
         );
 
-        if ($object["enable"] && empty($object["data.sharedfolderref"])) {
-            throw new OMVException(
-                OMVErrorMsg::E_CONFIG_OBJECT_INVALID,
-                "No data directory set when the plugin is enabled."
-            );
-        }
-
         // Set configuration object
         if (false === $xmlConfig->replace($this->getXPath(), $object)) {
             throw new OMVException(
@@ -180,7 +173,7 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
             }'
         );
 
-        // Create password for backups
+        // Create password file for backups
         $file = "/root/.my.cnf";
         $contents = sprintf("[mysqldump]\nuser = root\npassword = %s", $params["root_password"]);
         file_put_contents($file, $contents);
