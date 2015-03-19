@@ -108,7 +108,6 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
                     "enable_networking"    : { "type" : "boolean" },
                     "port"                 : { "type" : "integer" },
                     "bind_address"         : { "type" : "string" },
-                    "data.sharedfolderref" : {' . $GLOBALS["OMV_JSONSCHEMA_UUID_NONE"] . '},
                     "disable_aio"          : { "type" : "boolean" },
                     "extra_options"        : { "type" : "string" },
 
@@ -124,7 +123,6 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
             "enable_networking"    => array_boolval($params, "enable_networking"),
             "port"                 => intval($params["port"]),
             "bind_address"         => $params["bind_address"],
-            "data.sharedfolderref" => $params["data.sharedfolderref"],
             "disable_aio"          => array_boolval($params, "disable_aio"),
             "extra_options"        => trim($params["extra_options"]),
 
@@ -182,7 +180,13 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
             }'
         );
 
-        // Create password file
+        // Create password for backups
+        $file = "/root/.my.cnf";
+        $contents = sprintf("[mysqldump]\nuser = root\npassword = %s", $params["root_password"]);
+        file_put_contents($file, $contents);
+        chmod($file, 0600);
+
+        // Create temporary password file for resetting password
         $file = "/tmp/.openmediavault-mysql-reset-pwd";
         file_put_contents($file, $params["root_password"]);
 

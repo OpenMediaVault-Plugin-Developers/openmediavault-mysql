@@ -1,3 +1,9 @@
+openmediavault-mysql (1.1) UNRELEASED; urgency=low
+
+  * Remove data directory setting
+
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Thu, 19 Mar 2015 06:47:11 -0500
+
 openmediavault-mysql (1.0.16) stable; urgency=low
 
   * Add php5-mysql dependency

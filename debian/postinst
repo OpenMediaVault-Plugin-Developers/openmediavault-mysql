@@ -43,6 +43,20 @@ rename_config()
     fi
 }
 
+shared_folder_to_extra_options()
+{
+    data_sharedfolderref=$(omv_config_get "${SERVICE_XPATH}/data.sharedfolderref")
+    data_directory="$(omv_get_sharedfolder_path "${data_sharedfolderref}")"
+    extra_options=$(omv_config_get "${SERVICE_XPATH}/extra_options")
+
+    # Delete unused sharedfolderref entry
+    omv_config_delete "${SERVICE_XPATH}/data.sharedfolderref"
+    
+    # Delete old extra_options and write new with datadir option
+    omv_config_delete "${SERVICE_XPATH}/extra_options"
+    omv_config_add_element "${SERVICE_XPATH}" "extra_options" "datadir = ${data_directory}\n${extra_options}"
+}
+
 case "$1" in
     configure)
         SERVICE_XPATH_NAME="mysql"
@@ -71,6 +85,10 @@ case "$1" in
             rename_config "extraoptions" "extra_options"
             rename_config "enable-management-site" "enable_management_site"
             rename_config "showtab" "show_tab"
+        fi
+
+        if dpkg --compare-versions "${2}" lt-nl "1.0.17"; then
+            shared_folder_to_extra_options
         fi
 
         if ! omv_config_exists "${SERVICE_XPATH}/disable_aio"; then

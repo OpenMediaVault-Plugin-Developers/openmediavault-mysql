@@ -34,18 +34,6 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
         ptype        : "linkedfields",
         correlations : [{
             name : [
-                "data.sharedfolderref"
-            ],
-            conditions : [{
-                name  : "enable",
-                value : true
-            }],
-            properties : [
-                "!allowBlank",
-                "!allowNone"
-            ]
-        },{
-            name : [
                 "port",
                 "bind_address"
             ],
@@ -186,17 +174,6 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                 plugins    : [{
                     ptype : "fieldinfo",
                     text  : _("IP address to listen on. Use 0.0.0.0 for all host IPs.")
-                }]
-            },{
-                xtype      : "sharedfoldercombo",
-                name       : "data.sharedfolderref",
-                fieldLabel : _("Data directory"),
-                allowBlank : true,
-                allowNone  : true,
-                plugins    : [{
-                    ptype : "fieldinfo",
-                    text  : _("The location where MySQL stores its data.") + " " +
-                            _("It should be noted that the shared folder should be empty when applying the configuration and should not be altered with additional files. The reason for this is that the plugin will copy all files to the shared folder and remove them from the old data location.")
                 }]
             },{
                 xtype      : "checkbox",

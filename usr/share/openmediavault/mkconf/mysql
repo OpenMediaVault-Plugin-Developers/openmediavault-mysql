@@ -25,61 +25,9 @@ MYSQL_MY_CONFIG="/etc/mysql/my.cnf"
 OMV_MYSQL_PLUGIN_CONFIG=${OMV_MYSQL_PLUGIN_CONFIG:-"/etc/mysql/conf.d/openmediavault-mysql.cnf"}
 OMV_MYSQL_PLUGIN_XPATH="//services/mysql"
 
-detect_database_files()
-{
-    if [ ! -d "${1}" ]; then
-        echo "Directory ${1} doesn't exist."
-
-        return 1
-    fi
-
-    # Check for MySQL database files
-    if [ ! -e "${1}/ibdata1" ]; then
-        echo "Unable to find any database files in ${1}."
-
-        return 3
-    fi
-
-    return 0
-}
-
-get_data_directory_from_config()
-{
-    cat "${1}" | grep datadir | sed 's/datadir\s\+=\s\+//g'
-}
-
 # Generate configuration only if the service is enabled.
 if [ "$(omv_config_get "${OMV_MYSQL_PLUGIN_XPATH}/enable")" != "1" ]; then
     exit 0
-fi
-
-# Get settings.
-data_sharedfolderref=$(omv_config_get "${OMV_MYSQL_PLUGIN_XPATH}/data.sharedfolderref")
-data_directory="$(omv_get_sharedfolder_path "${data_sharedfolderref}")"
-
-current_data_directory=""
-
-# Get the current database location.
-if [ -e "${OMV_MYSQL_PLUGIN_CONFIG}" ]; then
-    current_data_directory="$(get_data_directory_from_config ${OMV_MYSQL_PLUGIN_CONFIG})"
-else
-    # If no openmediavault-mysql configuration exists, use the standard
-    # MySQL my.cnf file.
-    if [ -e "${MYSQL_MY_CONFIG}" ]; then
-        current_data_directory="$(get_data_directory_from_config ${MYSQL_MY_CONFIG})"
-    else
-        echo "Unable to get current database location."
-        exit 2
-    fi
-fi
-
-# Check if any database files exists in the current data directory.
-if ! detect_database_files "${current_data_directory}" ; then
-    if ! detect_database_files "${data_directory}" ; then
-        exit 3
-    else
-        current_data_directory=${data_directory}
-    fi
 fi
 
 # Generate the MySQL configuration.
@@ -90,27 +38,11 @@ xmlstarlet sel -t -m "${OMV_MYSQL_PLUGIN_XPATH}" \
     -i "enable_networking != 1" -o "skip-networking" -n -b \
     -i "port != ''" -v "concat('port = ', port)" -n -b \
     -i "bind_address != ''" -v "concat('bind-address = ', bind_address)" -n -b \
-    -o "datadir = ${data_directory}" -n \
     -i "disable_aio != 0" -o "innodb_use_native_aio=0" -n -b \
     -i "string-length(extra_options) > 0" -v "extra_options" -n -b \
     ${OMV_CONFIG_FILE} | xmlstarlet unesc > ${OMV_MYSQL_PLUGIN_CONFIG}
 
 # Set permissions on the configuration file.
 chmod 644 ${OMV_MYSQL_PLUGIN_CONFIG}
-
-if [ "${current_data_directory}" != "${data_directory}" ]; then
-    # If the choosen directory already has database files, move the current
-    # ones. Otherwise use the existing files. This is useful if the user has
-    # reinstalled and wants to reuse the old files.
-    if ! detect_database_files "${data_directory}" ; then
-        # Copy current data to the new directory and remove all files from the
-        # old directory (but not the directory itself).
-        cp -rfp ${current_data_directory}/* ${data_directory}/
-        rm -rf ${current_data_directory}/*
-    fi
-
-    # Take ownership of the shared folder.
-    chown -R mysql:mysql "${data_directory}"
-fi
 
 exit 0
