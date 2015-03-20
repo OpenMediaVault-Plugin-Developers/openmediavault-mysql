@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# songming <by@songming.me>, 2013-2014
+# songming <by@songming.me>, 2013-2015
 # Wei Ding <dyw.net@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-02-26 06:32-0600\n"
-"PO-Revision-Date: 2015-02-26 12:35+0000\n"
-"Last-Translator: Aaron Murray <aaron27@ryecoinc.com>\n"
+"PO-Revision-Date: 2015-02-28 02:54+0000\n"
+"Last-Translator: songming <by@songming.me>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/openmediavault-mysql/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,7 +26,7 @@ msgid "Bind address"
 msgstr "绑定地址"
 
 msgid "Check this box if database is stored on ZFS filesystem."
-msgstr ""
+msgstr "如果数据库文件存放在ZFS文件系统请勾选该项。"
 
 msgid "Confirmation"
 msgstr "确认"
@@ -35,7 +35,7 @@ msgid "Data directory"
 msgstr "数据目录"
 
 msgid "Disable AIO"
-msgstr ""
+msgstr "关闭AIO"
 
 msgid "Enable"
 msgstr "启用"
@@ -63,7 +63,7 @@ msgid ""
 msgstr "注意该目录最好使用空文件夹来配置，以避免数据迁移时出错，因为应用设置后插件会拷贝旧数据目录中的文件到该目录，并且删除旧数据目录。"
 
 msgid "Launch Management Site"
-msgstr ""
+msgstr "运行管理后台"
 
 msgid "Management"
 msgstr "管理"

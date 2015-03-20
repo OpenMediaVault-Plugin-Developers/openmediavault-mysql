@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Miguel Anxo Bouzada <mbouzada@gmail.com>, 2013-2014
+# Miguel Anxo Bouzada <mbouzada@gmail.com>, 2013-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-02-26 06:32-0600\n"
-"PO-Revision-Date: 2015-02-26 12:35+0000\n"
-"Last-Translator: Aaron Murray <aaron27@ryecoinc.com>\n"
+"PO-Revision-Date: 2015-03-02 08:11+0000\n"
+"Last-Translator: Miguel Anxo Bouzada <mbouzada@gmail.com>\n"
 "Language-Team: Galician (http://www.transifex.com/projects/p/openmediavault-mysql/language/gl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,7 +25,7 @@ msgid "Bind address"
 msgstr "Enderezo de escoita"
 
 msgid "Check this box if database is stored on ZFS filesystem."
-msgstr ""
+msgstr "Marca esta caixa s a base de datos está almacenada nun sistema de ficheiros ZFS."
 
 msgid "Confirmation"
 msgstr "Confirmación"
@@ -34,7 +34,7 @@ msgid "Data directory"
 msgstr "Directorio de datos"
 
 msgid "Disable AIO"
-msgstr ""
+msgstr "Desactivar AIO"
 
 msgid "Enable"
 msgstr "Activar"
@@ -62,7 +62,7 @@ msgid ""
 msgstr "O cartafol compartido debe estar baleiro cando se lle aplique a configuración e non pode ser alterada posteriormente con ficheiros adicionais. A razón para elo é que este engadido copiará todos os ficheiros ao cartafol compartido e retiraraos da anterior localización."
 
 msgid "Launch Management Site"
-msgstr ""
+msgstr "Iniciar a administración do sitio"
 
 msgid "Management"
 msgstr "Administración"
