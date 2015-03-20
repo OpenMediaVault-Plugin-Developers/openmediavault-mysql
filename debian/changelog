@@ -2,6 +2,7 @@ openmediavault-mysql (1.2) stable; urgency=low
 
   * Remove data directory setting
   * Fix web client button
+  * Update locales
 
  -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Fri, 20 Mar 2015 06:59:49 -0500
 
