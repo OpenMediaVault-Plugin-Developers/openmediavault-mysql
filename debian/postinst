@@ -54,7 +54,10 @@ shared_folder_to_extra_options()
     
     # Delete old extra_options and write new with datadir option
     omv_config_delete "${SERVICE_XPATH}/extra_options"
-    omv_config_add_element "${SERVICE_XPATH}" "extra_options" "datadir = ${data_directory}$'\n'${extra_options}"
+
+    # new line characters are not converted to new lines
+    omv_config_add_element "${SERVICE_XPATH}" "extra_options" "datadir = ${data_directory}
+${extra_options}"
 }
 
 case "$1" in
