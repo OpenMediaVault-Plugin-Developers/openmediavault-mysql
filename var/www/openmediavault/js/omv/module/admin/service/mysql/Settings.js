@@ -1,6 +1,6 @@
 /**
  * Copyright (C) 2010-2012 Ian Moore <imooreyahoo@gmail.com>
- * Copyright (C) 2013-2014 OpenMediaVault Plugin Developers
+ * Copyright (C) 2013-2015 OpenMediaVault Plugin Developers
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -71,10 +71,16 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                 "disabled"
             ]
         },{
-            conditions  : [
-                { name : "enable", value : true },
-                { name : "enable_management_site", value : true }
+            name : [
+                "enable"
             ],
+            conditions  : [{
+                name : "enable",
+                value : true
+            },{
+                name : "enable_management_site",
+                value : true
+            }],
             properties : function(valid, field) {
                 this.setButtonDisabled("management", !valid);
             }
