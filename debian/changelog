@@ -1,8 +1,9 @@
-openmediavault-mysql (1.1) UNRELEASED; urgency=low
+openmediavault-mysql (1.2) stable; urgency=low
 
   * Remove data directory setting
+  * Fix web client button
 
- -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Thu, 19 Mar 2015 06:47:11 -0500
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Fri, 20 Mar 2015 06:59:49 -0500
 
 openmediavault-mysql (1.0.16) stable; urgency=low
 
