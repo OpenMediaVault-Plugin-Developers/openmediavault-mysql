@@ -182,6 +182,7 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
         // Create temporary password file for resetting password
         $file = "/tmp/.openmediavault-mysql-reset-pwd";
         file_put_contents($file, $params["root_password"]);
+        chmod($file, 0600);
 
         $cmd = "/usr/sbin/mysql-password 2>&1";
 
