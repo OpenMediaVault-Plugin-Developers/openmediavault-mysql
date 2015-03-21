@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-26 06:32-0600\n"
-"PO-Revision-Date: 2015-02-27 05:23+0000\n"
-"Last-Translator: Toshihiro Kan <kansuke4649@gmail.com>\n"
+"POT-Creation-Date: 2015-03-21 07:56-0500\n"
+"PO-Revision-Date: 2015-03-21 12:56+0000\n"
+"Last-Translator: Aaron Murray <aaron27@ryecoinc.com>\n"
 "Language-Team: Japanese (Japan) (http://www.transifex.com/projects/p/openmediavault-mysql/language/ja_JP/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,9 +29,6 @@ msgstr "データベースがZFSファイルシステム上に保存されてい
 
 msgid "Confirmation"
 msgstr "確認"
-
-msgid "Data directory"
-msgstr "データディレクトリ"
 
 msgid "Disable AIO"
 msgstr "AIOを無効化"
@@ -53,13 +50,6 @@ msgstr "より高度な使用方法については次を行ってください：
 
 msgid "IP address to listen on. Use 0.0.0.0 for all host IPs."
 msgstr "接続を許可するIPアドレスを設定します。すべてのホストIPから受け付ける場合は0.0.0.0を指定します。"
-
-msgid ""
-"It should be noted that the shared folder should be empty when applying the "
-"configuration and should not be altered with additional files. The reason "
-"for this is that the plugin will copy all files to the shared folder and "
-"remove them from the old data location."
-msgstr "コンフィギュレーションを適用し、追加ファイルを変更してはいけない時に、共有フォルダが空でなければならないことに注意してください。その理由は、プラグインがすべてのファイルを共有フォルダにコピーし、古いデータ格納場所からそれらを削除するためです。"
 
 msgid "Launch Management Site"
 msgstr "管理サイトの起動"
@@ -108,5 +98,7 @@ msgid ""
 "target='_blank'>here</a>."
 msgstr "SQLウェブインタフェースへは <a href='/mysql/' target='_blank'>ここ</a>からアクセスできます。"
 
-msgid "The location where MySQL stores its data."
-msgstr "MySQLがデータを格納する場所。"
+msgid ""
+"This password is stored in /root/.my.cnf for use by mysqldump for backup "
+"purposes.  The file can only be viewed by root user."
+msgstr ""
