@@ -188,7 +188,7 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                 checked    : false,
                 plugins    : [{
                     ptype : "fieldinfo",
-                    text  : _("Check this box if database is stored on ZFS filesystem.") 
+                    text  : _("Check this box if database is stored on ZFS filesystem.")
                 }]
             },{
                 xtype      : "textarea",
@@ -211,7 +211,11 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                 name        : "root_password",
                 fieldLabel  : _("Password"),
                 allowBlank  : true,
-                submitValue : false
+                submitValue : false,
+                plugins    : [{
+                    ptype : "fieldinfo",
+                    text  : _("This password is stored in /root/.my.cnf for use by mysqldump for backup purposes.  The file can only be viewed by root user.")
+                }]
             },{
                 xtype   : "button",
                 name    : "reset_password",
