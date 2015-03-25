@@ -152,6 +152,11 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
 
     /**
      * Reset root password.
+     *
+     * @param array $params
+     * @param array $context
+     *
+     * @return void
      */
     public function resetPassword($params, $context)
     {
@@ -166,27 +171,30 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
         $this->validateMethodParams(
             $params,
             '{
-                "type"       : "object",
-                "properties" : {
-                    "root_password" : { "type" : "string" }
+                "type": "object",
+                "properties": {
+                    "root_password": { "type": "string" }
                 }
             }'
         );
 
-        // Create password file for backups
+        // Create password file for backups.
         $file = "/root/.my.cnf";
         $contents = sprintf("[mysqldump]\nuser = root\npassword = %s", $params["root_password"]);
         file_put_contents($file, $contents);
         chmod($file, 0600);
 
-        // Create temporary password file for resetting password
-        $file = "/tmp/.openmediavault-mysql-reset-pwd";
-        file_put_contents($file, $params["root_password"]);
-        chmod($file, 0600);
+        // Create temporary password file for resetting password.
+        $tempFile = tempnam(sys_get_temp_dir(), "tmp");
+        file_put_contents($tempFile, $params["root_password"]);
 
-        $cmd = "/usr/sbin/mysql-password 2>&1";
+        $cmd = "export LANG=C; omv-mysql-reset-password $tempFile 2>&1";
+        $exitStatus = $this->exec($cmd, $output);
 
-        if (0 !== $this->exec($cmd, $output)) {
+        // Always remove the file containing the password after use.
+        unlink($tempFile);
+
+        if (0 !== $exitStatus) {
             throw new OMVException(
                 OMVErrorMsg::E_EXEC_FAILED,
                 $cmd,
