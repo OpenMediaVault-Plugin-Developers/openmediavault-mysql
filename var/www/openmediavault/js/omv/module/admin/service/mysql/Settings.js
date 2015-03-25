@@ -24,70 +24,70 @@
 // require("js/omv/window/MessageBox.js")
 
 Ext.define("OMV.module.admin.service.mysql.Settings", {
-    extend : "OMV.workspace.form.Panel",
-    uses   : [
+    extend: "OMV.workspace.form.Panel",
+    uses: [
         "OMV.data.Model",
         "OMV.data.Store"
     ],
 
     plugins: [{
-        ptype        : "linkedfields",
-        correlations : [{
-            name : [
+        ptype: "linkedfields",
+        correlations: [{
+            name: [
                 "port",
                 "bind_address"
             ],
-            conditions : [{
-                name  : "enable_networking",
-                value : false
+            conditions: [{
+                name: "enable_networking",
+                value: false
             }],
-            properties : [
+            properties: [
                 "readOnly",
                 "allowBlank"
             ]
-        },{
-            name : [
+        }, {
+            name: [
                 "show_tab"
             ],
-            conditions : [{
-                name  : "enable_management_site",
-                value : true
-            },{
-                name  : "enable",
-                value : true
+            conditions: [{
+                name: "enable_management_site",
+                value: true
+            }, {
+                name: "enable",
+                value: true
             }],
-            properties : [
+            properties: [
                 "enabled"
             ]
-        },{
-            name : [
+        }, {
+            name: [
                 "reset_password"
             ],
-            conditions : [{
-                name  : "enable",
-                value : false
+            conditions: [{
+                name: "enable",
+                value: false
             }],
             properties: [
                 "disabled"
             ]
-        },{
-            name : [
+        }, {
+            name: [
                 "enable"
             ],
-            conditions  : [{
-                name : "enable",
-                value : true
-            },{
-                name : "enable_management_site",
-                value : true
+            conditions: [{
+                name: "enable",
+                value: true
+            }, {
+                name: "enable_management_site",
+                value: true
             }],
-            properties : function(valid, field) {
+            properties: function(valid, field) {
                 this.setButtonDisabled("management", !valid);
             }
         }]
     }],
 
-    initComponent : function () {
+    initComponent: function() {
         this.on("load", function() {
             var checked = this.findField("enable").checked;
             var show_tab = this.findField("show_tab").checked;
@@ -116,147 +116,148 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
         this.callParent(arguments);
     },
 
-    rpcService   : "MySql",
-    rpcGetMethod : "getSettings",
-    rpcSetMethod : "setSettings",
+    rpcService: "MySql",
+    rpcGetMethod: "getSettings",
+    rpcSetMethod: "setSettings",
 
-    getButtonItems : function() {
-        var me = this;
-        var items = me.callParent(arguments);
+    getButtonItems: function() {
+        var items = this.callParent(arguments);
+
         items.push({
-            id       : me.getId() + "-management",
-            xtype    : "button",
-            text     : _("Launch Management Site"),
-            icon     : "images/mysql.png",
-            iconCls  : Ext.baseCSSPrefix + "btn-icon-16x16",
-            disabled : true,
-            scope    : me,
-            handler  : function() {
+            id: this.getId() + "-management",
+            xtype: "button",
+            text: _("Show"),
+            icon: "images/mysql.png",
+            iconCls: Ext.baseCSSPrefix + "btn-icon-16x16",
+            disabled: true,
+            scope: this,
+            handler: function() {
                 window.open("/mysql/", "_blank");
             }
         });
+
         return items;
     },
 
-    getFormItems : function() {
+    getFormItems: function() {
         return [{
-            xtype    : "fieldset",
-            title    : "General settings",
-            defaults : {
-                labelSeparator : ""
+            xtype: "fieldset",
+            title: "General settings",
+            defaults: {
+                labelSeparator: ""
             },
-            items : [{
-                xtype      : "checkbox",
-                name       : "enable",
-                fieldLabel : _("Enable"),
-                checked    : false
-            },{
-                xtype      : "checkbox",
-                name       : "enable_networking",
-                fieldLabel : _("Enable networking"),
-                checked    : false
-            },{
-                xtype         : "numberfield",
-                name          : "port",
-                fieldLabel    : _("Port"),
-                vtype         : "port",
-                minValue      : 0,
-                maxValue      : 65535,
-                allowDecimals : false,
-                allowNegative : false,
-                allowBlank    : false,
-                value         : 3306,
-                plugins    : [{
-                    ptype : "fieldinfo",
-                    text  : _("Port to listen on.")
+            items: [{
+                xtype: "checkbox",
+                name: "enable",
+                fieldLabel: _("Enable"),
+                checked: false
+            }, {
+                xtype: "checkbox",
+                name: "enable_networking",
+                fieldLabel: _("Enable networking"),
+                checked: false
+            }, {
+                xtype: "numberfield",
+                name: "port",
+                fieldLabel: _("Port"),
+                vtype: "port",
+                minValue: 0,
+                maxValue: 65535,
+                allowDecimals: false,
+                allowNegative: false,
+                allowBlank: false,
+                value: 3306,
+                plugins: [{
+                    ptype: "fieldinfo",
+                    text: _("Port to listen on.")
                 }]
-            },{
-                xtype      : "textfield",
-                name       : "bind_address",
-                fieldLabel : _("Bind address"),
-                vtype      : "IPv4Net",
-                allowBlank : false,
-                value      : "127.0.0.1",
-                plugins    : [{
-                    ptype : "fieldinfo",
-                    text  : _("IP address to listen on. Use 0.0.0.0 for all host IPs.")
+            }, {
+                xtype: "textfield",
+                name: "bind_address",
+                fieldLabel: _("Bind address"),
+                vtype: "IPv4Net",
+                allowBlank: false,
+                value: "127.0.0.1",
+                plugins: [{
+                    ptype: "fieldinfo",
+                    text: _("IP address to listen on. Use 0.0.0.0 for all host IPs.")
                 }]
-            },{
-                xtype      : "checkbox",
-                name       : "disable_aio",
-                fieldLabel : _("Disable AIO"),
-                checked    : false,
-                plugins    : [{
-                    ptype : "fieldinfo",
-                    text  : _("Check this box if database is stored on ZFS filesystem.")
+            }, {
+                xtype: "checkbox",
+                name: "disable_aio",
+                fieldLabel: _("Disable AIO"),
+                checked: false,
+                plugins: [{
+                    ptype: "fieldinfo",
+                    text: _("Check this box if database is stored on ZFS filesystem.")
                 }]
-            },{
-                xtype      : "textarea",
-                name       : "extra_options",
-                fieldLabel : _("Extra options"),
-                allowBlank : true,
-                plugins    : [{
-                    ptype : "fieldinfo",
-                    text  : _("Extra options for [mysqld] section of MySQL configuration.")
+            }, {
+                xtype: "textarea",
+                name: "extra_options",
+                fieldLabel: _("Extra options"),
+                allowBlank: true,
+                plugins: [{
+                    ptype: "fieldinfo",
+                    text: _("Extra options for [mysqld] section of MySQL configuration.")
                 }]
             }]
-        },{
-            xtype    : "fieldset",
-            title    : _("Reset MySQL root password"),
-            defaults : {
-                labelSeparator : ""
+        }, {
+            xtype: "fieldset",
+            title: _("Reset MySQL root password"),
+            defaults: {
+                labelSeparator: ""
             },
-            items : [{
-                xtype       : "passwordfield",
-                name        : "root_password",
-                fieldLabel  : _("Password"),
-                allowBlank  : true,
-                submitValue : false,
-                plugins    : [{
-                    ptype : "fieldinfo",
-                    text  : _("This password is stored in /root/.my.cnf for use by mysqldump for backup purposes.  The file can only be viewed by root user.")
+            items: [{
+                xtype: "passwordfield",
+                name: "root_password",
+                fieldLabel: _("Password"),
+                allowBlank: true,
+                submitValue: false,
+                plugins: [{
+                    ptype: "fieldinfo",
+                    text: _("This password is stored in /root/.my.cnf for use by mysqldump for backup purposes.  The file can only be viewed by root user.")
                 }]
-            },{
-                xtype   : "button",
-                name    : "reset_password",
-                text    : _("Reset Password"),
-                scope   : this,
-                handler : Ext.Function.bind(this.doResetPassword, this, [ this ]),
-                margin  : "5 0 8 0"
+            }, {
+                xtype: "button",
+                name: "reset_password",
+                text: _("Reset Password"),
+                scope: this,
+                handler: Ext.Function.bind(this.doResetPassword, this, [this]),
+                margin: "5 0 8 0"
             }]
-        },{
-            xtype    : "fieldset",
-            title    : _("SQL management site"),
-            defaults : {
-                labelSeparator : ""
+        }, {
+            xtype: "fieldset",
+            title: _("SQL management site"),
+            defaults: {
+                labelSeparator: ""
             },
-            items : [{
-                xtype      : "checkbox",
-                name       : "enable_management_site",
-                fieldLabel : _("Enable"),
-                boxLabel   : _("SQL management site."),
-                checked    : false,
-                plugins    : [{
-                    ptype : "fieldinfo",
-                    text  : _("The SQL web interface can be accessed <a href='/mysql/' target='_blank'>here</a>.") + " " +
-                            _("For more advanced usage try: ") + "<a href='http://www.mysql.com/products/workbench/'>" + _("MySQL Workbench") + "</a>"
+            items: [{
+                xtype: "checkbox",
+                name: "enable_management_site",
+                fieldLabel: _("Enable"),
+                boxLabel: _("SQL management site."),
+                checked: false,
+                plugins: [{
+                    ptype: "fieldinfo",
+                    text: _("The SQL web interface can be accessed <a href='/mysql/' target='_blank'>here</a>.") + " " +
+                        _("For more advanced usage try: ") + "<a href='http://www.mysql.com/products/workbench/'>" + _("MySQL Workbench") + "</a>"
                 }]
-            },{
-                xtype      : "checkbox",
-                name       : "show_tab",
-                fieldLabel : _("Enable"),
-                boxLabel   : _("Show tab containing Management frame."),
-                checked    : false
+            }, {
+                xtype: "checkbox",
+                name: "show_tab",
+                fieldLabel: _("Enable"),
+                boxLabel: _("Show tab containing Management frame."),
+                checked: false
             }]
         }];
     },
 
-    doResetPassword : function() {
+    doResetPassword: function() {
         OMV.MessageBox.show({
-            title   : _("Confirmation"),
-            msg     : _("Are you sure you want to reset the root password?"),
-            buttons : Ext.Msg.YESNO,
-            fn      : function(answer) {
+            title: _("Confirmation"),
+            msg: _("Are you sure you want to reset the root password?"),
+            buttons: Ext.Msg.YESNO,
+            fn: function(answer) {
                 if (answer !== "yes") {
                     return;
                 }
@@ -266,31 +267,31 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                 OMV.MessageBox.wait(null, _("Resetting MySQL root password."));
 
                 OMV.Rpc.request({
-                    scope       : this,
-                    relayErrors : false,
-                    rpcData     : {
-                        service : "MySql",
-                        method  : "resetPassword",
-                        params  : {
-                            root_password : rootPassword
+                    scope: this,
+                    relayErrors: false,
+                    rpcData: {
+                        service: "MySql",
+                        method: "resetPassword",
+                        params: {
+                            root_password: rootPassword
                         }
                     },
-                    success : function(id, success, response) {
+                    success: function(id, success, response) {
                         this.doReload();
                         OMV.MessageBox.hide();
                     }
                 });
             },
-            icon  : Ext.Msg.QUESTION,
-            scope : this
+            icon: Ext.Msg.QUESTION,
+            scope: this
         });
     }
 });
 
 OMV.WorkspaceManager.registerPanel({
-    id        : "settings",
-    path      : "/service/mysql",
-    text      : _("Settings"),
-    position  : 10,
-    className : "OMV.module.admin.service.mysql.Settings"
+    id: "settings",
+    path: "/service/mysql",
+    text: _("Settings"),
+    position: 10,
+    className: "OMV.module.admin.service.mysql.Settings"
 });
