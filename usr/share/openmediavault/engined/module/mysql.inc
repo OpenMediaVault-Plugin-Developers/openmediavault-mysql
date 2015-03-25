@@ -24,7 +24,7 @@ require_once "openmediavault/initscript.inc";
 require_once "openmediavault/module.inc";
 require_once "openmediavault/util.inc";
 
-class OMVModuleMySQL extends OMVModuleServiceAbstract implements
+class OMVModuleMySql extends OMVModuleServiceAbstract implements
     OMVINotifyListener,
     OMVIModuleServiceStatus
 {
@@ -161,4 +161,4 @@ class OMVModuleMySQL extends OMVModuleServiceAbstract implements
 
 // Register module
 $moduleMgr = &OMVModuleMgr::getInstance();
-$moduleMgr->registerModule(new OMVModuleMySQL());
+$moduleMgr->registerModule(new OMVModuleMySql());

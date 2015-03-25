@@ -25,7 +25,7 @@ require_once "openmediavault/object.inc";
 require_once "openmediavault/rpcservice.inc";
 require_once "openmediavault/util.inc";
 
-class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
+class OMVRpcServiceMySql extends OMVRpcServiceAbstract
 {
     private function getEventMessagePath()
     {
@@ -229,4 +229,4 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
 
 // Register the RPC service.
 $rpcServiceMgr = &OMVRpcServiceMgr::getInstance();
-$rpcServiceMgr->registerService(new OMVRpcServiceMySQL());
+$rpcServiceMgr->registerService(new OMVRpcServiceMySql());
