@@ -179,10 +179,7 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
         );
 
         // Create password file for backups.
-        $file = "/root/.my.cnf";
-        $contents = sprintf("[mysqldump]\nuser = root\npassword = %s", $params["root_password"]);
-        file_put_contents($file, $contents);
-        chmod($file, 0600);
+        $this->createRootPasswordConfigurationFile($params["root_password"]);
 
         // Create temporary password file for resetting password.
         $tempFile = tempnam(sys_get_temp_dir(), "tmp");
@@ -201,6 +198,25 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
                 implode("\n", $output)
             );
         }
+    }
+
+    /**
+     * Creates a configuration file for MySQL containing the root password.
+     * Used for things like automatic backup.
+     *
+     * @param string $password
+     *
+     * @return void
+     */
+    private function createRootPasswordConfigurationFile($password)
+    {
+        $file = new SplFileObject("/root/.my.cnf", "w+");
+
+        chmod($file->getRealPath(), 0600);
+
+        $file->fwrite("[mysqldump]" . PHP_EOL);
+        $file->fwrite("user = root" . PHP_EOL);
+        $file->fwrite("password = $password" . PHP_EOL);
     }
 }
 
