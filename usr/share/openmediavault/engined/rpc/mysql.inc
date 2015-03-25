@@ -21,9 +21,7 @@
 require_once "openmediavault/config.inc";
 require_once "openmediavault/error.inc";
 require_once "openmediavault/notify.inc";
-require_once "openmediavault/object.inc";
 require_once "openmediavault/rpcservice.inc";
-require_once "openmediavault/util.inc";
 
 class OMVRpcServiceMySql extends OMVRpcServiceAbstract
 {
@@ -32,16 +30,26 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
         return "org.openmediavault.services.mysql";
     }
 
-    private function getXPath()
+    private function getXpath()
     {
-        return "//services/mysql";
+        return "/config/services/mysql";
     }
 
+    /**
+     * Get the name of the RPC service.
+     *
+     * @return string
+     */
     public function getName()
     {
         return "MySQL";
     }
 
+    /**
+     * Initialize the RPC service.
+     *
+     * @return void
+     */
     public function initialize()
     {
         $this->registerMethod("getSettings");
@@ -51,6 +59,11 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
 
     /**
      * Get main settings.
+     *
+     * @param array $params
+     * @param array $context
+     *
+     * @return array
      */
     public function getSettings($params, $context)
     {
@@ -62,32 +75,34 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
         ));
 
         // Get configuration object
-        $object = $xmlConfig->get($this->getXPath());
+        $object = $xmlConfig->get($this->getXpath());
 
         if (is_null($object)) {
             throw new OMVException(
                 OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED,
-                $this->getXPath()
+                $this->getXpath()
             );
         }
 
-        // Get actual mysql status
-        $initd = new OMVSysVInitScript("mysql");
-
         // Modify result data
-        $object["enable"]            = intval($object["enable"]);
-        $object["port"]              = intval($object["port"]);
+        $object["enable"] = intval($object["enable"]);
+        $object["port"] = intval($object["port"]);
         $object["enable_networking"] = boolval($object["enable_networking"]);
-        $object["disable_aio"]       = boolval($object["disable_aio"]);
+        $object["disable_aio"] = boolval($object["disable_aio"]);
 
         $object["enable_management_site"] = boolval($object["enable_management_site"]);
-        $object["show_tab"]               = boolval($object["show_tab"]);
+        $object["show_tab"] = boolval($object["show_tab"]);
 
         return $object;
     }
 
     /**
      * Set main settings.
+     *
+     * @param array $params
+     * @param array $context
+     *
+     * @return array
      */
     public function setSettings($params, $context)
     {
@@ -102,46 +117,45 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
         $this->validateMethodParams(
             $params,
             '{
-                "type"       : "object",
-                "properties" : {
-                    "enable"               : { "type" : "boolean" },
-                    "enable_networking"    : { "type" : "boolean" },
-                    "port"                 : { "type" : "integer" },
-                    "bind_address"         : { "type" : "string" },
-                    "disable_aio"          : { "type" : "boolean" },
-                    "extra_options"        : { "type" : "string" },
-
-                    "enable_management_site" : { "type" : "boolean" },
-                    "show_tab"               : { "type" : "boolean", "optional" : true }
+                "type": "object",
+                "properties": {
+                    "enable": { "type": "boolean" },
+                    "enable_networking": { "type": "boolean" },
+                    "port": { "type": "integer" },
+                    "bind_address": { "type": "string" },
+                    "disable_aio": { "type": "boolean" },
+                    "extra_options": { "type": "string" },
+                    "enable_management_site": { "type": "boolean" },
+                    "show_tab": { "type": "boolean", "optional": true }
                 }
             }'
         );
 
-        // Prepare configuration data
+        // Prepare configuration data.
         $object = array(
-            "enable"               => array_boolval($params, "enable"),
-            "enable_networking"    => array_boolval($params, "enable_networking"),
-            "port"                 => intval($params["port"]),
-            "bind_address"         => $params["bind_address"],
-            "disable_aio"          => array_boolval($params, "disable_aio"),
-            "extra_options"        => trim($params["extra_options"]),
+            "enable" => boolval($params["enable"]),
+            "enable_networking" => boolval($params["enable_networking"]),
+            "port" => intval($params["port"]),
+            "bind_address" => $params["bind_address"],
+            "disable_aio" => boolval($params["disable_aio"]),
+            "extra_options" => trim($params["extra_options"]),
 
             "enable_management_site" => (
-                array_boolval($params, "enable_management_site") &&
-                array_boolval($params, "enable")
+                boolval($params["enable_management_site"]) &&
+                boolval($params["enable"])
             ),
-            "show_tab" => array_boolval($params, "show_tab"),
+            "show_tab" => boolval($params["show_tab"]),
         );
 
-        // Set configuration object
-        if (false === $xmlConfig->replace($this->getXPath(), $object)) {
+        // Set configuration object.
+        if (false === $xmlConfig->replace($this->getXpath(), $object)) {
             throw new OMVException(
                 OMVErrorMsg::E_CONFIG_SET_OBJECT_FAILED,
-                $this->getXPath()
+                $this->getXpath()
             );
         }
 
-        // Notify configuration changes
+        // Notify configuration changes.
         $dispatcher = &OMVNotifyDispatcher::getInstance();
         $dispatcher->notify(
             OMV_NOTIFY_MODIFY,
