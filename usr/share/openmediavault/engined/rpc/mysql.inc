@@ -178,7 +178,6 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
             }'
         );
 
-        // Create password file for backups.
         $this->createRootPasswordConfigurationFile($params["root_password"]);
 
         // Create temporary password file for resetting password.
@@ -193,7 +192,7 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
             "export LANG=C; omv-mysql-reset-password %s 2>&1",
             $file->getRealPath()
         );
-        
+
         $exitStatus = $this->exec($cmd, $output);
 
         // Always remove the file containing the password after use.
