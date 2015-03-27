@@ -192,8 +192,6 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
             }'
         );
 
-        $this->createRootPasswordConfigurationFile($params["root_password"]);
-
         // Create temporary password file for resetting password.
         $file = new SplFileObject(
             tempnam(sys_get_temp_dir(), "tmp"),
@@ -219,6 +217,8 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
                 implode("\n", $output)
             );
         }
+
+        $this->createRootPasswordConfigurationFile($params["root_password"]);
     }
 
     /**
