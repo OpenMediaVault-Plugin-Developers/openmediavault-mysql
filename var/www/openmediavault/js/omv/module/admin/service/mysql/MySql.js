@@ -1,6 +1,6 @@
 /**
  * Copyright (C) 2010-2012 Ian Moore <imooreyahoo@gmail.com>
- * Copyright (C) 2013-2014 OpenMediaVault Plugin Developers
+ * Copyright (C) 2013-2015 OpenMediaVault Plugin Developers
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,9 +19,9 @@
 // require("js/omv/WorkspaceManager.js")
 
 OMV.WorkspaceManager.registerNode({
-    id      : "mysql",
-    path    : "/service",
-    text    : _("MySQL"),
-    icon16  : "images/mysql.png",
-    iconSvg : "images/mysql.svg"
+    id: "mysql",
+    path: "/service",
+    text: _("MySQL"),
+    icon16: "images/mysql.png",
+    iconSvg: "images/mysql.svg"
 });

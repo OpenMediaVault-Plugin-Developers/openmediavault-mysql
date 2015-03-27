@@ -2,7 +2,7 @@
 
 /**
  * Copyright (C) 2010-2012 Ian Moore <imooreyahoo@gmail.com>
- * Copyright (C) 2013-2014 OpenMediaVault Plugin Developers
+ * Copyright (C) 2013-2015 OpenMediaVault Plugin Developers
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,27 +21,35 @@
 require_once "openmediavault/config.inc";
 require_once "openmediavault/error.inc";
 require_once "openmediavault/notify.inc";
-require_once "openmediavault/object.inc";
 require_once "openmediavault/rpcservice.inc";
-require_once "openmediavault/util.inc";
 
-class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
+class OMVRpcServiceMySql extends OMVRpcServiceAbstract
 {
     private function getEventMessagePath()
     {
         return "org.openmediavault.services.mysql";
     }
 
-    private function getXPath()
+    private function getXpath()
     {
-        return "//services/mysql";
+        return "/config/services/mysql";
     }
 
+    /**
+     * Get the name of the RPC service.
+     *
+     * @return string
+     */
     public function getName()
     {
         return "MySQL";
     }
 
+    /**
+     * Initialize the RPC service.
+     *
+     * @return void
+     */
     public function initialize()
     {
         $this->registerMethod("getSettings");
@@ -51,6 +59,11 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
 
     /**
      * Get main settings.
+     *
+     * @param array $params
+     * @param array $context
+     *
+     * @return array
      */
     public function getSettings($params, $context)
     {
@@ -62,32 +75,34 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
         ));
 
         // Get configuration object
-        $object = $xmlConfig->get($this->getXPath());
+        $object = $xmlConfig->get($this->getXpath());
 
         if (is_null($object)) {
             throw new OMVException(
                 OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED,
-                $this->getXPath()
+                $this->getXpath()
             );
         }
 
-        // Get actual mysql status
-        $initd = new OMVSysVInitScript("mysql");
-
         // Modify result data
-        $object["enable"]            = intval($object["enable"]);
-        $object["port"]              = intval($object["port"]);
+        $object["enable"] = intval($object["enable"]);
+        $object["port"] = intval($object["port"]);
         $object["enable_networking"] = boolval($object["enable_networking"]);
-        $object["disable_aio"]       = boolval($object["disable_aio"]);
+        $object["disable_aio"] = boolval($object["disable_aio"]);
 
         $object["enable_management_site"] = boolval($object["enable_management_site"]);
-        $object["show_tab"]               = boolval($object["show_tab"]);
+        $object["show_tab"] = boolval($object["show_tab"]);
 
         return $object;
     }
 
     /**
      * Set main settings.
+     *
+     * @param array $params
+     * @param array $context
+     *
+     * @return array
      */
     public function setSettings($params, $context)
     {
@@ -102,46 +117,45 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
         $this->validateMethodParams(
             $params,
             '{
-                "type"       : "object",
-                "properties" : {
-                    "enable"               : { "type" : "boolean" },
-                    "enable_networking"    : { "type" : "boolean" },
-                    "port"                 : { "type" : "integer" },
-                    "bind_address"         : { "type" : "string" },
-                    "disable_aio"          : { "type" : "boolean" },
-                    "extra_options"        : { "type" : "string" },
-
-                    "enable_management_site" : { "type" : "boolean" },
-                    "show_tab"               : { "type" : "boolean", "optional" : true }
+                "type": "object",
+                "properties": {
+                    "enable": { "type": "boolean" },
+                    "enable_networking": { "type": "boolean" },
+                    "port": { "type": "integer" },
+                    "bind_address": { "type": "string" },
+                    "disable_aio": { "type": "boolean" },
+                    "extra_options": { "type": "string" },
+                    "enable_management_site": { "type": "boolean" },
+                    "show_tab": { "type": "boolean", "optional": true }
                 }
             }'
         );
 
-        // Prepare configuration data
+        // Prepare configuration data.
         $object = array(
-            "enable"               => array_boolval($params, "enable"),
-            "enable_networking"    => array_boolval($params, "enable_networking"),
-            "port"                 => intval($params["port"]),
-            "bind_address"         => $params["bind_address"],
-            "disable_aio"          => array_boolval($params, "disable_aio"),
-            "extra_options"        => trim($params["extra_options"]),
+            "enable" => boolval($params["enable"]),
+            "enable_networking" => boolval($params["enable_networking"]),
+            "port" => intval($params["port"]),
+            "bind_address" => $params["bind_address"],
+            "disable_aio" => boolval($params["disable_aio"]),
+            "extra_options" => trim($params["extra_options"]),
 
             "enable_management_site" => (
-                array_boolval($params, "enable_management_site") &&
-                array_boolval($params, "enable")
+                boolval($params["enable_management_site"]) &&
+                boolval($params["enable"])
             ),
-            "show_tab" => array_boolval($params, "show_tab"),
+            "show_tab" => boolval($params["show_tab"]),
         );
 
-        // Set configuration object
-        if (false === $xmlConfig->replace($this->getXPath(), $object)) {
+        // Set configuration object.
+        if (false === $xmlConfig->replace($this->getXpath(), $object)) {
             throw new OMVException(
                 OMVErrorMsg::E_CONFIG_SET_OBJECT_FAILED,
-                $this->getXPath()
+                $this->getXpath()
             );
         }
 
-        // Notify configuration changes
+        // Notify configuration changes.
         $dispatcher = &OMVNotifyDispatcher::getInstance();
         $dispatcher->notify(
             OMV_NOTIFY_MODIFY,
@@ -152,6 +166,11 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
 
     /**
      * Reset root password.
+     *
+     * @param array $params
+     * @param array $context
+     *
+     * @return void
      */
     public function resetPassword($params, $context)
     {
@@ -166,36 +185,62 @@ class OMVRpcServiceMySQL extends OMVRpcServiceAbstract
         $this->validateMethodParams(
             $params,
             '{
-                "type"       : "object",
-                "properties" : {
-                    "root_password" : { "type" : "string" }
+                "type": "object",
+                "properties": {
+                    "root_password": { "type": "string" }
                 }
             }'
         );
 
-        // Create password file for backups
-        $file = "/root/.my.cnf";
-        $contents = sprintf("[mysqldump]\nuser = root\npassword = %s", $params["root_password"]);
-        file_put_contents($file, $contents);
-        chmod($file, 0600);
+        // Create temporary password file for resetting password.
+        $file = new SplFileObject(
+            tempnam(sys_get_temp_dir(), "tmp"),
+            "w+"
+        );
 
-        // Create temporary password file for resetting password
-        $file = "/tmp/.openmediavault-mysql-reset-pwd";
-        file_put_contents($file, $params["root_password"]);
-        chmod($file, 0600);
+        $file->fwrite($params["root_password"] . PHP_EOL);
 
-        $cmd = "/usr/sbin/mysql-password 2>&1";
+        $cmd = sprintf(
+            "export LANG=C; omv-mysql-reset-password %s 2>&1",
+            $file->getRealPath()
+        );
 
-        if (0 !== $this->exec($cmd, $output)) {
+        $exitStatus = $this->exec($cmd, $output);
+
+        // Always remove the file containing the password after use.
+        unlink($file->getRealPath());
+
+        if (0 !== $exitStatus) {
             throw new OMVException(
                 OMVErrorMsg::E_EXEC_FAILED,
                 $cmd,
                 implode("\n", $output)
             );
         }
+
+        $this->createRootPasswordConfigurationFile($params["root_password"]);
+    }
+
+    /**
+     * Creates a configuration file for MySQL containing the root password.
+     * Used for things like automatic backup.
+     *
+     * @param string $password
+     *
+     * @return void
+     */
+    private function createRootPasswordConfigurationFile($password)
+    {
+        $file = new SplFileObject("/root/.my.cnf", "w+");
+
+        chmod($file->getRealPath(), 0600);
+
+        $file->fwrite("[mysqldump]" . PHP_EOL);
+        $file->fwrite("user = root" . PHP_EOL);
+        $file->fwrite("password = $password" . PHP_EOL);
     }
 }
 
 // Register the RPC service.
 $rpcServiceMgr = &OMVRpcServiceMgr::getInstance();
-$rpcServiceMgr->registerService(new OMVRpcServiceMySQL());
+$rpcServiceMgr->registerService(new OMVRpcServiceMySql());

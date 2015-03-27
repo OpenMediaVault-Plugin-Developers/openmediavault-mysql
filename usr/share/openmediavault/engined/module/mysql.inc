@@ -2,7 +2,7 @@
 
 /**
  * Copyright (C) 2010-2012 Ian Moore <imooreyahoo@gmail.com>
- * Copyright (C) 2013-2014 OpenMediaVault Plugin Developers
+ * Copyright (C) 2013-2015 OpenMediaVault Plugin Developers
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,11 +22,10 @@ require_once "openmediavault/config.inc";
 require_once "openmediavault/error.inc";
 require_once "openmediavault/initscript.inc";
 require_once "openmediavault/module.inc";
-require_once "openmediavault/util.inc";
 
-class OMVModuleMySQL extends OMVModuleServiceAbstract implements
-    OMVINotifyListener,
-    OMVIModuleServiceStatus
+class OMVModuleMySql extends OMVModuleServiceAbstract implements
+    OMVIModuleServiceStatus,
+    OMVINotifyListener
 {
     private function getEventMessagePath()
     {
@@ -38,13 +37,15 @@ class OMVModuleMySQL extends OMVModuleServiceAbstract implements
         return "org.openmediavault.system.shares.sharedfolder";
     }
 
-    private function getXPath()
+    private function getXpath()
     {
-        return "//services/mysql";
+        return "/config/services/mysql";
     }
 
     /**
      * Get the module name.
+     *
+     * @return string
      */
     public function getName()
     {
@@ -52,37 +53,41 @@ class OMVModuleMySQL extends OMVModuleServiceAbstract implements
     }
 
     /**
-     * Get the module status.
+     * Get the status of the managed service.
+     *
+     * @return array
      */
     public function getStatus()
     {
         global $xmlConfig;
 
-        $object = $xmlConfig->get($this->getXPath());
+        $object = $xmlConfig->get($this->getXpath());
 
         if (is_null($object)) {
             throw new OMVException(
                 OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED,
-                $this->getXPath()
+                $this->getXpath()
             );
         }
 
         $initd = new OMVSysVInitScript($this->getName());
 
         return array(
-            "name"    => $this->getName(),
-            "title"   => gettext("MySQL"),
+            "name" => $this->getName(),
+            "title" => gettext("MySQL"),
             "enabled" => boolval($object["enable"]),
             "running" => $initd->status() == 0
         );
     }
 
     /**
-     * Create and update the configuration.
+     * Generate the configuration.
+     *
+     * @return void
      */
     public function applyConfig()
     {
-        $cmd = sprintf("omv-mkconf %s 2>&1", $this->getName());
+        $cmd = sprintf("export LANG=C; omv-mkconf %s 2>&1", $this->getName());
 
         if (0 !== $this->exec($cmd, $output)) {
             throw new OMVException(
@@ -95,17 +100,19 @@ class OMVModuleMySQL extends OMVModuleServiceAbstract implements
 
     /**
      * Start the managed service.
+     *
+     * @return void
      */
     public function startService()
     {
         global $xmlConfig;
 
-        $object = $xmlConfig->get($this->getXPath());
+        $object = $xmlConfig->get($this->getXpath());
 
         if (is_null($object)) {
             throw new OMVException(
                 OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED,
-                $this->getXPath()
+                $this->getXpath()
             );
         }
 
@@ -119,6 +126,8 @@ class OMVModuleMySQL extends OMVModuleServiceAbstract implements
 
     /**
      * Stop the managed service.
+     *
+     * @return void
      */
     public function stopService()
     {
@@ -128,6 +137,10 @@ class OMVModuleMySQL extends OMVModuleServiceAbstract implements
 
     /**
      * Bind listeners.
+     *
+     * @param OMVNotifyDispatcher $dispatcher The dispatcher object.
+     *
+     * @return void
      */
     public function bindListeners(OMVNotifyDispatcher $dispatcher)
     {
@@ -161,4 +174,4 @@ class OMVModuleMySQL extends OMVModuleServiceAbstract implements
 
 // Register module
 $moduleMgr = &OMVModuleMgr::getInstance();
-$moduleMgr->registerModule(new OMVModuleMySQL());
+$moduleMgr->registerModule(new OMVModuleMySql());
