@@ -51,7 +51,7 @@ shared_folder_to_extra_options()
 
     # Delete unused sharedfolderref entry
     omv_config_delete "${SERVICE_XPATH}/data.sharedfolderref"
-    
+
     # Delete old extra_options and write new with datadir option
     omv_config_delete "${SERVICE_XPATH}/extra_options"
 
@@ -62,22 +62,23 @@ ${extra_options}"
 
 case "$1" in
     configure)
+        # Configuration.
         SERVICE_XPATH_NAME="mysql"
         SERVICE_XPATH="/config/services/${SERVICE_XPATH_NAME}"
 
-        # Add the default configuration
         if ! omv_config_exists "${SERVICE_XPATH}"; then
             omv_config_add_element "/config/services" "${SERVICE_XPATH_NAME}"
             omv_config_add_element "${SERVICE_XPATH}" "enable" "0"
             omv_config_add_element "${SERVICE_XPATH}" "enable_networking" "1"
             omv_config_add_element "${SERVICE_XPATH}" "port" "3306"
             omv_config_add_element "${SERVICE_XPATH}" "bind_address" "127.0.0.1"
-            omv_config_add_element "${SERVICE_XPATH}" "data.sharedfolderref"
+            omv_config_add_element "${SERVICE_XPATH}" "disable_aio" "0"
             omv_config_add_element "${SERVICE_XPATH}" "extra_options" ""
             omv_config_add_element "${SERVICE_XPATH}" "enable_management_site" "0"
             omv_config_add_element "${SERVICE_XPATH}" "show_tab" "0"
         fi
 
+        # Migrations.
         if dpkg --compare-versions "${2}" lt-nl "1.0.7"; then
             data_drive_to_shared_folder
         fi
@@ -90,12 +91,12 @@ case "$1" in
             rename_config "showtab" "show_tab"
         fi
 
-        if dpkg --compare-versions "${2}" lt-nl "1.0.17"; then
-            shared_folder_to_extra_options
+        if dpkg --compare-versions "${2}" lt-nl "1.0.14"; then
+            omv_config_add_element "${SERVICE_XPATH}" "disable_aio" "0"
         fi
 
-        if ! omv_config_exists "${SERVICE_XPATH}/disable_aio"; then
-            omv_config_add_element "${SERVICE_XPATH}" "disable_aio" "0"
+        if dpkg --compare-versions "${2}" lt-nl "1.0.17"; then
+            shared_folder_to_extra_options
         fi
 
         # Activate package triggers. These triggers are only set during the
