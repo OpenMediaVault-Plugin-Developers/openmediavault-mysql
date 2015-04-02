@@ -12,7 +12,6 @@ Depends: openmediavault (>= 1.0),
          dbconfig-common,
          mysql-server | mariadb-server,
          mywebsql,
-         php5-mysqlnd | php5-mysql,
          ${misc:Depends}
 Description: MySQL plugin for OpenMediaVault.
  MySQL is an open source database server. The plugin allows you to
