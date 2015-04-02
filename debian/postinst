@@ -62,6 +62,13 @@ ${extra_options}"
 
 case "$1" in
     configure)
+        # Set the default settings of the service package to those expected
+        # by OpenMediaVault.
+        if [ -z "${2}" ]; then
+            invoke-rc.d --force mysql stop
+            update-rc.d mysql disable >/dev/null
+        fi
+
         # Configuration.
         SERVICE_XPATH_NAME="mysql"
         SERVICE_XPATH="/config/services/${SERVICE_XPATH_NAME}"
