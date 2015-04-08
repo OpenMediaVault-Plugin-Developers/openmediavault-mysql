@@ -82,7 +82,6 @@ case "$1" in
             omv_config_add_element "${SERVICE_XPATH}" "disable_aio" "0"
             omv_config_add_element "${SERVICE_XPATH}" "extra_options" ""
             omv_config_add_element "${SERVICE_XPATH}" "enable_management_site" "0"
-            omv_config_add_element "${SERVICE_XPATH}" "show_tab" "0"
         fi
 
         # Migrations.
@@ -95,7 +94,6 @@ case "$1" in
             rename_config "bindaddress" "bind_address"
             rename_config "extraoptions" "extra_options"
             rename_config "enable-management-site" "enable_management_site"
-            rename_config "showtab" "show_tab"
         fi
 
         if dpkg --compare-versions "${2}" lt-nl "1.0.14"; then

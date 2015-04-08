@@ -89,9 +89,7 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
         $object["port"] = intval($object["port"]);
         $object["enable_networking"] = boolval($object["enable_networking"]);
         $object["disable_aio"] = boolval($object["disable_aio"]);
-
         $object["enable_management_site"] = boolval($object["enable_management_site"]);
-        $object["show_tab"] = boolval($object["show_tab"]);
 
         return $object;
     }
@@ -125,8 +123,7 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
                     "bind_address": { "type": "string" },
                     "disable_aio": { "type": "boolean" },
                     "extra_options": { "type": "string" },
-                    "enable_management_site": { "type": "boolean" },
-                    "show_tab": { "type": "boolean", "optional": true }
+                    "enable_management_site": { "type": "boolean" }
                 }
             }'
         );
@@ -139,12 +136,10 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
             "bind_address" => $params["bind_address"],
             "disable_aio" => boolval($params["disable_aio"]),
             "extra_options" => trim($params["extra_options"]),
-
             "enable_management_site" => (
                 boolval($params["enable_management_site"]) &&
                 boolval($params["enable"])
             ),
-            "show_tab" => boolval($params["show_tab"]),
         );
 
         // Set configuration object.

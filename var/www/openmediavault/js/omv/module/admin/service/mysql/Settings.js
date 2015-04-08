@@ -47,20 +47,6 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
             ]
         }, {
             name: [
-                "show_tab"
-            ],
-            conditions: [{
-                name: "enable_management_site",
-                value: true
-            }, {
-                name: "enable",
-                value: true
-            }],
-            properties: [
-                "enabled"
-            ]
-        }, {
-            name: [
                 "reset_password"
             ],
             conditions: [{
@@ -71,9 +57,6 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                 "disabled"
             ]
         }, {
-            name: [
-                "enable"
-            ],
             conditions: [{
                 name: "enable",
                 value: true
@@ -82,39 +65,10 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                 value: true
             }],
             properties: function(valid, field) {
-                this.setButtonDisabled("management", !valid);
+                this.setButtonDisabled("show", !valid);
             }
         }]
     }],
-
-    initComponent: function() {
-        this.on("load", function() {
-            var checked = this.findField("enable").checked;
-            var show_tab = this.findField("show_tab").checked;
-            var parent = this.up("tabpanel");
-
-            if (!parent)
-                return;
-
-            var managementPanel = parent.down("panel[title=" + _("Management") + "]");
-
-            if (managementPanel) {
-                if (checked) {
-                    managementPanel.enable();
-                } else {
-                    managementPanel.disable();
-                }
-
-                if (show_tab) {
-                    managementPanel.tab.show();
-                } else {
-                    managementPanel.tab.hide();
-                }
-            }
-        }, this);
-
-        this.callParent(arguments);
-    },
 
     rpcService: "MySql",
     rpcGetMethod: "getSettings",
@@ -124,7 +78,7 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
         var items = this.callParent(arguments);
 
         items.push({
-            id: this.getId() + "-management",
+            id: this.getId() + "-show",
             xtype: "button",
             text: _("Show"),
             icon: "images/mysql.png",
@@ -236,17 +190,6 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                 name: "enable_management_site",
                 fieldLabel: _("Enable"),
                 boxLabel: _("SQL management site."),
-                checked: false,
-                plugins: [{
-                    ptype: "fieldinfo",
-                    text: _("The SQL web interface can be accessed <a href='/mysql/' target='_blank'>here</a>.") + " " +
-                        _("For more advanced usage try: ") + "<a href='http://www.mysql.com/products/workbench/'>" + _("MySQL Workbench") + "</a>"
-                }]
-            }, {
-                xtype: "checkbox",
-                name: "show_tab",
-                fieldLabel: _("Enable"),
-                boxLabel: _("Show tab containing Management frame."),
                 checked: false
             }]
         }];
