@@ -56,6 +56,8 @@ class OMVModuleMySql extends OMVModuleServiceAbstract implements
      * Get the status of the managed service.
      *
      * @return array
+     *
+     * @throws OMVException
      */
     public function getStatus()
     {
@@ -84,12 +86,14 @@ class OMVModuleMySql extends OMVModuleServiceAbstract implements
      * Generate the configuration.
      *
      * @return void
+     *
+     * @throws OMVException
      */
     public function applyConfig()
     {
         $cmd = sprintf("export LANG=C; omv-mkconf %s 2>&1", $this->getName());
 
-        if (0 !== $this->exec($cmd, $output)) {
+        if ($this->exec($cmd, $output) !== 0) {
             throw new OMVException(
                 OMVErrorMsg::E_EXEC_FAILED,
                 $cmd,
@@ -102,6 +106,8 @@ class OMVModuleMySql extends OMVModuleServiceAbstract implements
      * Start the managed service.
      *
      * @return void
+     *
+     * @throws OMVException
      */
     public function startService()
     {
@@ -139,7 +145,6 @@ class OMVModuleMySql extends OMVModuleServiceAbstract implements
      * Bind listeners.
      *
      * @param OMVNotifyDispatcher $dispatcher The dispatcher object.
-     *
      * @return void
      */
     public function bindListeners(OMVNotifyDispatcher $dispatcher)

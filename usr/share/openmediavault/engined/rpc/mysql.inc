@@ -25,6 +25,8 @@ require_once "openmediavault/rpcservice.inc";
 
 class OMVRpcServiceMySql extends OMVRpcServiceAbstract
 {
+    private $mysqlPasswordConfPath = "/root/.my.cnf";
+
     private function getEventMessagePath()
     {
         return "org.openmediavault.services.mysql";
@@ -54,6 +56,8 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
     {
         $this->registerMethod("getSettings");
         $this->registerMethod("setSettings");
+        $this->registerMethod("downloadBackup");
+        $this->registerMethod("uploadBackup");
         $this->registerMethod("resetPassword");
     }
 
@@ -62,8 +66,9 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
      *
      * @param array $params
      * @param array $context
-     *
      * @return array
+     *
+     * @throws OMVException
      */
     public function getSettings($params, $context)
     {
@@ -99,8 +104,9 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
      *
      * @param array $params
      * @param array $context
-     *
      * @return array
+     *
+     * @throws OMVException
      */
     public function setSettings($params, $context)
     {
@@ -143,7 +149,7 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
         );
 
         // Set configuration object.
-        if (false === $xmlConfig->replace($this->getXpath(), $object)) {
+        if ($xmlConfig->replace($this->getXpath(), $object) === false) {
             throw new OMVException(
                 OMVErrorMsg::E_CONFIG_SET_OBJECT_FAILED,
                 $this->getXpath()
@@ -160,12 +166,69 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
     }
 
     /**
+     * Download a backup of the database.
+     *
+     * @param array $params
+     * @param array $context
+     * @return array
+     */
+    public function downloadBackup($params, $context)
+    {
+        // Validate the RPC caller context.
+        $this->validateMethodContext($context, array(
+            "role" => OMV_ROLE_ADMINISTRATOR
+        ));
+
+        $sqlFile = tempnam(system_get_temp_dir(), "mysql");
+        $this->dumpDatabase($sqlDump);
+
+        $now = new DateTime();
+        $time = $now->format(DateTime::ISO8601);
+
+        return array(
+            "contenttype" => "application/sql",
+            "filename" => "mysql-$time.sql",
+            "filepath" => $sqlDump,
+        );
+    }
+
+    /**
+     * Upload and restore a backup of the database.
+     *
+     * @param array $params
+     * @param array $context
+     * @return void
+     */
+    public function uploadBackup($params, $context)
+    {
+        // Validate the RPC caller context.
+        $this->validateMethodContext($context, array(
+            "role" => OMV_ROLE_ADMINISTRATOR
+        ));
+
+        // Validate the parameters of the RPC service method.
+        $this->validateMethodParams(
+            $params,
+            '{
+                "type": "object",
+                "properties": {
+                    "filename": { "type": "string" },
+                    "filepath": { "type": "string" }
+                }
+            }'
+        );
+
+        $this->restoreDatabaseDump($params["filepath"]);
+    }
+
+    /**
      * Reset root password.
      *
      * @param array $params
      * @param array $context
-     *
      * @return void
+     *
+     * @throws OMVException
      */
     public function resetPassword($params, $context)
     {
@@ -188,10 +251,7 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
         );
 
         // Create temporary password file for resetting password.
-        $file = new SplFileObject(
-            tempnam(sys_get_temp_dir(), "tmp"),
-            "w+"
-        );
+        $file = new SplFileObject(tempnam(sys_get_temp_dir(), "tmp"), "w+");
 
         $file->fwrite($params["root_password"] . PHP_EOL);
 
@@ -205,7 +265,7 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
         // Always remove the file containing the password after use.
         unlink($file->getRealPath());
 
-        if (0 !== $exitStatus) {
+        if ($exitStatus !== 0) {
             throw new OMVException(
                 OMVErrorMsg::E_EXEC_FAILED,
                 $cmd,
@@ -221,18 +281,69 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
      * Used for things like automatic backup.
      *
      * @param string $password
-     *
      * @return void
      */
     private function createRootPasswordConfigurationFile($password)
     {
-        $file = new SplFileObject("/root/.my.cnf", "w+");
+        $file = new SplFileObject($this->mysqlPasswordConfPath, "w+");
 
         chmod($file->getRealPath(), 0600);
 
         $file->fwrite("[mysqldump]" . PHP_EOL);
         $file->fwrite("user = root" . PHP_EOL);
         $file->fwrite("password = $password" . PHP_EOL);
+    }
+
+    /**
+     * Dumps the database with the help of mysqldump.
+     *
+     * @param string $dumpFile Which file to dump the data in.
+     * @return void
+     *
+     * @throws OMVException
+     */
+    private function dumpDatabase($dumpFile)
+    {
+        $cmd = sprintf(
+            "export LANG=C; mysqldump --all-databases --defaults-extra-file=~%s --result-file=%s",
+            $this->mysqlPasswordConfPath,
+            $dumpFile
+        );
+
+        if ($this->exec($cmd, $output) !== 0) {
+            unlink($dumpFile);
+
+            throw new OMVException(
+                OMVErrorMsg::E_EXEC_FAILED,
+                $cmd,
+                implode("\n", $output)
+            );
+        }
+    }
+
+    /**
+     * Restore the database from a SQL dump.
+     *
+     * @param $dumpFile The SQL dump.
+     * @return void
+     *
+     * @throws OMVException
+     */
+    public function restoreDatabaseDump($dumpFile)
+    {
+        $cmd = sprintf(
+            "export LANG=C; mysql --defaults-extra-file=~%s < %s",
+            $this->mysqlPasswordConfPath,
+            $dumpFile
+        );
+
+        if ($this->exec($cmd, $output) !== 0) {
+            throw new OMVException(
+                OMVErrorMsg::E_EXEC_FAILED,
+                $cmd,
+                implode("\n", $output)
+            );
+        }
     }
 }
 
