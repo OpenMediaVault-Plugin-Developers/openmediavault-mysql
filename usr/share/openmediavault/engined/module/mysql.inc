@@ -163,12 +163,6 @@ class OMVModuleMySql extends OMVModuleServiceAbstract implements
             $this->getEventMessagePath(),
             array($moduleMgr->getModule("webserver"), "setDirty")
         );
-
-        $dispatcher->addListener(
-            OMV_NOTIFY_MODIFY,
-            $this->getSharedFolderEventMessagePath(),
-            array($this, "setDirty")
-        );
     }
 }
 
