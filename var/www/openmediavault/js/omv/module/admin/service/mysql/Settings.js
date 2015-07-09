@@ -88,6 +88,22 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
             handler: function() {
                 window.open("/mysql/", "_blank");
             }
+        }, {
+            id: this.getId() + "-backup",
+            xtype: "button",
+            text: _("Backup"),
+            icon: "images/wrench.png",
+            iconCls: Ext.baseCSSPrefix + "btn-icon-16x16",
+            scope: this,
+            handler: Ext.Function.bind(this.onBackupButton, this)
+        }, {
+            id: this.getId() + "-restore",
+            xtype: "button",
+            text: _("Restore"),
+            icon: "images/wrench.png",
+            iconCls: Ext.baseCSSPrefix + "btn-icon-16x16",
+            scope: this,
+            handler: Ext.Function.bind(this.onRestoreButton, this),
         });
 
         return items;
@@ -228,6 +244,24 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
             icon: Ext.Msg.QUESTION,
             scope: this
         });
+    },
+
+    onBackupButton: function() {
+        OMV.Download.request("MySql", "downloadBackup");
+    },
+
+    onRestoreButton: function() {
+        Ext.create("OMV.window.Upload", {
+            title: _("Upload backup"),
+            service: "MySql",
+            method: "uploadBackup",
+            listeners: {
+                scope: this,
+                success: function(wnd, response) {
+                    OMV.MessageBox.info(_("Restored backup"), _("Backup was successfully restored."));
+                }
+            }
+        }).show();
     }
 });
 
