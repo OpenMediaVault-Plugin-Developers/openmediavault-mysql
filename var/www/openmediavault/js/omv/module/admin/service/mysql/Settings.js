@@ -22,6 +22,7 @@
 // require("js/omv/data/Model.js")
 // require("js/omv/form/plugin/LinkedFields.js")
 // require("js/omv/window/MessageBox.js")
+// require("js/omv/Rpc.js")
 
 Ext.define("OMV.module.admin.service.mysql.Settings", {
     extend: "OMV.workspace.form.Panel",

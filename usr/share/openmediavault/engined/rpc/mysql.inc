@@ -179,7 +179,7 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
             "role" => OMV_ROLE_ADMINISTRATOR
         ));
 
-        $sqlFile = tempnam(system_get_temp_dir(), "mysql");
+        $sqlDump = tempnam(sys_get_temp_dir(), "mysql");
         $this->dumpDatabase($sqlDump);
 
         $now = new DateTime();
@@ -305,7 +305,7 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
     private function dumpDatabase($dumpFile)
     {
         $cmd = sprintf(
-            "export LANG=C; mysqldump --all-databases --defaults-extra-file=~%s --result-file=%s",
+            "export LANG=C; mysqldump --defaults-extra-file=%s --all-databases --result-file=%s",
             $this->mysqlPasswordConfPath,
             $dumpFile
         );
