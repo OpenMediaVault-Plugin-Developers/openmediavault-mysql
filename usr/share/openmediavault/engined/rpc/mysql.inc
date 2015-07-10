@@ -291,7 +291,10 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
 
         $file->fwrite("[mysqldump]" . PHP_EOL);
         $file->fwrite("user = root" . PHP_EOL);
-        $file->fwrite("password = $password" . PHP_EOL);
+        $file->fwrite("password = $password" . PHP_EOL . PHP_EOL);
+        $file->fwrite("[mysql]" . PHP_EOL);
+        $file->fwrite("user = root" . PHP_EOL);
+        $file->fwrite("password = $password" . PHP_EOL);        
     }
 
     /**
@@ -334,7 +337,7 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
     public function restoreDatabaseDump($dumpFile)
     {
         $cmd = sprintf(
-            "export LANG=C; mysql --defaults-extra-file=~%s < %s",
+            "export LANG=C; mysql --defaults-extra-file=%s < %s",
             $this->mysqlPasswordConfPath,
             $dumpFile
         );
