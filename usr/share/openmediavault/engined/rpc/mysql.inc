@@ -319,6 +319,8 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
                 implode("\n", $output)
             );
         }
+
+        chmod($dumpFile, 644);
     }
 
     /**
