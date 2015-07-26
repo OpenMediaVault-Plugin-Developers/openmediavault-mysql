@@ -224,14 +224,14 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
                 "properties": {
                     "filename": { "type": "string" },
                     "filepath": { "type": "string" },
-                    "root_password": { "type": "string" }
+                    "password": { "type": "string" }
                 }
             }'
         );
 
         $this->createRootPasswordConfigurationFile(
             $this->mysqlConfigurationFile,
-            $params["root_password"],
+            $params["password"],
             false
         );
 
@@ -267,7 +267,7 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
             '{
                 "type": "object",
                 "properties": {
-                    "root_password": { "type": "string" }
+                    "password": { "type": "string" }
                 }
             }'
         );
@@ -275,7 +275,7 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
         // Create temporary password file for resetting password.
         $file = new SplFileObject(tempnam(sys_get_temp_dir(), "tmp"), "w+");
 
-        $file->fwrite($params["root_password"] . PHP_EOL);
+        $file->fwrite($params["password"] . PHP_EOL);
 
         $cmd = sprintf(
             "export LANG=C; omv-mysql-reset-password %s 2>&1",
@@ -297,7 +297,7 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
 
         $this->createRootPasswordConfigurationFile(
             $this->mysqldumpConfigurationFile,
-            $params["root_password"]
+            $params["password"]
         );
     }
 

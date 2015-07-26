@@ -23,9 +23,13 @@
 // require("js/omv/form/plugin/LinkedFields.js")
 // require("js/omv/window/MessageBox.js")
 // require("js/omv/Rpc.js")
+// require("js/omv/module/admin/service/mysql/Password.js")
 
 Ext.define("OMV.module.admin.service.mysql.Settings", {
     extend: "OMV.workspace.form.Panel",
+    requires: [
+        "OMV.module.admin.service.mysql.Password"
+    ],
     uses: [
         "OMV.data.Model",
         "OMV.data.Store"
@@ -180,7 +184,7 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
             },
             items: [{
                 xtype: "passwordfield",
-                name: "root_password",
+                name: "password",
                 fieldLabel: _("Password"),
                 allowBlank: true,
                 submitValue: false,
@@ -252,14 +256,23 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
     },
 
     onRestoreButton: function() {
-        Ext.create("OMV.window.Upload", {
-            title: _("Upload backup"),
-            service: "MySql",
-            method: "uploadBackup",
+        Ext.create("OMV.module.admin.service.mysql.Password", {
+            title: _("Provide root password to restore dump."),
             listeners: {
                 scope: this,
-                success: function(wnd, response) {
-                    OMV.MessageBox.info(_("Restored backup"), _("Backup was successfully restored."));
+                submit: function(wnd, params) {
+                    Ext.create("OMV.window.Upload", {
+                        title: _("Upload backup"),
+                        service: "MySql",
+                        method: "uploadBackup",
+                        params: params,
+                        listeners: {
+                            scope: this,
+                            success: function(wnd, response) {
+                                OMV.MessageBox.info(_("Restored backup"), _("Backup was successfully restored."));
+                            }
+                        }
+                    }).show();
                 }
             }
         }).show();
