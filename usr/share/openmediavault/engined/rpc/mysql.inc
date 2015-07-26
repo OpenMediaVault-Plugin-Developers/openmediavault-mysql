@@ -223,15 +223,24 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
                 "type": "object",
                 "properties": {
                     "filename": { "type": "string" },
-                    "filepath": { "type": "string" }
+                    "filepath": { "type": "string" },
+                    "root_password": { "type": "string" }
                 }
             }'
+        );
+
+        $this->createRootPasswordConfigurationFile(
+            $this->mysqlConfigurationFile,
+            $params["root_password"],
+            false
         );
 
         $this->restoreDatabaseDump(
             $params["filepath"],
             $this->mysqlConfigurationFile
         );
+
+        unlink($this->mysqlConfigurationFile);
     }
 
     /**
@@ -289,12 +298,6 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
         $this->createRootPasswordConfigurationFile(
             $this->mysqldumpConfigurationFile,
             $params["root_password"]
-        );
-        // TODO: Prompt user for password when restoring.
-        $this->createRootPasswordConfigurationFile(
-            $this->mysqlConfigurationFile,
-            $params["root_password"],
-            false
         );
     }
 
