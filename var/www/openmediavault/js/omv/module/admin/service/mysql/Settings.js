@@ -183,16 +183,6 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                 labelSeparator: ""
             },
             items: [{
-                xtype: "passwordfield",
-                name: "password",
-                fieldLabel: _("Password"),
-                allowBlank: true,
-                submitValue: false,
-                plugins: [{
-                    ptype: "fieldinfo",
-                    text: _("This password is stored in /root/.my.cnf for use by mysqldump for backup purposes.  The file can only be viewed by root user.")
-                }]
-            }, {
                 xtype: "button",
                 name: "reset_password",
                 text: _("Reset Password"),
@@ -217,38 +207,12 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
     },
 
     doResetPassword: function() {
-        OMV.MessageBox.show({
-            title: _("Confirmation"),
-            msg: _("Are you sure you want to reset the root password?"),
-            buttons: Ext.Msg.YESNO,
-            fn: function(answer) {
-                if (answer !== "yes") {
-                    return;
-                }
-
-                var rootPassword = this.getForm().findField("root_password").getValue();
-
-                OMV.MessageBox.wait(null, _("Resetting MySQL root password."));
-
-                OMV.Rpc.request({
-                    scope: this,
-                    relayErrors: false,
-                    rpcData: {
-                        service: "MySql",
-                        method: "resetPassword",
-                        params: {
-                            root_password: rootPassword
-                        }
-                    },
-                    success: function(id, success, response) {
-                        this.doReload();
-                        OMV.MessageBox.hide();
-                    }
-                });
-            },
-            icon: Ext.Msg.QUESTION,
-            scope: this
-        });
+        Ext.create("OMV.module.admin.service.mysql.Password", {
+            title: _("Reset MySQL root password."),
+            mode: "remote",
+            rpcService: "MySql",
+            rpcSetMethod: "resetPassword"
+        }).show();
     },
 
     onBackupButton: function() {
@@ -257,7 +221,7 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
 
     onRestoreButton: function() {
         Ext.create("OMV.module.admin.service.mysql.Password", {
-            title: _("Provide root password to restore dump."),
+            title: _("Provide MySQL root password to restore dump."),
             listeners: {
                 scope: this,
                 submit: function(wnd, params) {
