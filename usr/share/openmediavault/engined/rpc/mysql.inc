@@ -25,7 +25,8 @@ require_once "openmediavault/rpcservice.inc";
 
 class OMVRpcServiceMySql extends OMVRpcServiceAbstract
 {
-    private $mysqlPasswordConfPath = "/root/.my.cnf";
+    private $mysqldumpConfigurationFile = "/etc/openmediavault/mysqldump.cnf";
+    private $mysqlConfigurationFile = "/etc/openmediavault/mysql.cnf";
 
     private function getEventMessagePath()
     {
@@ -180,7 +181,16 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
         ));
 
         $sqlDump = tempnam(sys_get_temp_dir(), "mysql");
-        $this->dumpDatabase($sqlDump);
+        chmod($sqlDump, 644);
+
+        try {
+            $this->dumpDatabase($sqlDump, $this->mysqldumpConfigurationFile);
+        } catch (Exception $e) {
+            // Clean up files.
+            unlink($sqlDump);
+
+            throw $e;
+        }
 
         $now = new DateTime();
         $time = $now->format(DateTime::ISO8601);
@@ -218,7 +228,10 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
             }'
         );
 
-        $this->restoreDatabaseDump($params["filepath"]);
+        $this->restoreDatabaseDump(
+            $params["filepath"],
+            $this->mysqlConfigurationFile
+        );
     }
 
     /**
@@ -269,27 +282,45 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
             throw new OMVException(
                 OMVErrorMsg::E_EXEC_FAILED,
                 $cmd,
-                implode("\n", $output)
+                implode(PHP_EOL, $output)
             );
         }
 
-        $this->createRootPasswordConfigurationFile($params["root_password"]);
+        $this->createRootPasswordConfigurationFile(
+            $this->mysqldumpConfigurationFile,
+            $params["root_password"]
+        );
+        // TODO: Prompt user for password when restoring.
+        $this->createRootPasswordConfigurationFile(
+            $this->mysqlConfigurationFile,
+            $params["root_password"],
+            false
+        );
     }
 
     /**
      * Creates a configuration file for MySQL containing the root password.
      * Used for things like automatic backup.
      *
+     * @param string $file Where to store the configuration file.
      * @param string $password
+     * @param bool $mysqlDump Wether to create a file for mysqldump or MySQL.
+     * Defaults to true for mysqldump otherwise MySQL.
      * @return void
      */
-    private function createRootPasswordConfigurationFile($password)
+    private function createRootPasswordConfigurationFile($path, $password, $mysqlDump = true)
     {
-        $file = new SplFileObject($this->mysqlPasswordConfPath, "w+");
+        $configGroup = "mysqldump";
+        $file = new SplFileObject($path, "w+");
 
+        // Make sure only the owner can read the file.
         chmod($file->getRealPath(), 0600);
 
-        $file->fwrite("[mysqldump]" . PHP_EOL);
+        if (!$mysqlDump) {
+            $configGroup = "mysql";
+        }
+
+        $file->fwrite("[$configGroup]" . PHP_EOL);
         $file->fwrite("user = root" . PHP_EOL);
         $file->fwrite("password = $password" . PHP_EOL);
     }
@@ -298,44 +329,44 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
      * Dumps the database with the help of mysqldump.
      *
      * @param string $dumpFile Which file to dump the data in.
+     * @param string $mysqldumpConfigurationFile Path to the configuration file
+     * for mysqldump.
      * @return void
      *
      * @throws OMVException
      */
-    private function dumpDatabase($dumpFile)
+    private function dumpDatabase($dumpFile, $mysqldumpConfigurationFile)
     {
         $cmd = sprintf(
             "export LANG=C; mysqldump --defaults-extra-file=%s --all-databases --result-file=%s",
-            $this->mysqlPasswordConfPath,
+            $mysqldumpConfigurationFile,
             $dumpFile
         );
 
         if ($this->exec($cmd, $output) !== 0) {
-            unlink($dumpFile);
-
             throw new OMVException(
                 OMVErrorMsg::E_EXEC_FAILED,
                 $cmd,
-                implode("\n", $output)
+                implode(PHP_EOL, $output)
             );
         }
-
-        chmod($dumpFile, 644);
     }
 
     /**
      * Restore the database from a SQL dump.
      *
-     * @param $dumpFile The SQL dump.
+     * @param string $dumpFile Path to the SQL file.
+     * @param string $mysqlConfigurationFile Path to the configuration file for
+     * MySQL.
      * @return void
      *
      * @throws OMVException
      */
-    public function restoreDatabaseDump($dumpFile)
+    public function restoreDatabaseDump($dumpFile, $mysqlConfigurationFile)
     {
         $cmd = sprintf(
-            "export LANG=C; mysql --defaults-extra-file=~%s < %s",
-            $this->mysqlPasswordConfPath,
+            "export LANG=C; mysql --defaults-extra-file=%s < %s",
+            $mysqlConfigurationFile,
             $dumpFile
         );
 
@@ -343,7 +374,7 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
             throw new OMVException(
                 OMVErrorMsg::E_EXEC_FAILED,
                 $cmd,
-                implode("\n", $output)
+                implode(PHP_EOL, $output)
             );
         }
     }
