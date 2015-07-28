@@ -58,6 +58,7 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
         $this->registerMethod("getSettings");
         $this->registerMethod("setSettings");
         $this->registerMethod("downloadBackup");
+        $this->registerMethod("dumpDatabaseToSharedFolder");
         $this->registerMethod("uploadBackup");
         $this->registerMethod("resetPassword");
     }
@@ -200,6 +201,49 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
             "filename" => "mysql-$time.sql",
             "filepath" => $sqlDump,
         );
+    }
+
+    /**
+     * Dump the database to a shared folder.
+     *
+     * @param array $params
+     * @param array $context
+     * @return void
+     *
+     * @throws Exception
+     */
+    public function dumpDatabaseToSharedFolder($params, $context)
+    {
+        // Validate the RPC caller context.
+        $this->validateMethodContext($context, array(
+            "role" => OMV_ROLE_ADMINISTRATOR
+        ));
+
+        // Validate the parameters of the RPC service method.
+        $this->validateMethodParams(
+            $params,
+            '{
+                "type": "object",
+                "properties": {
+                    "uuid": {' . $GLOBALS["OMV_JSONSCHEMA_UUID"] . '}
+                }
+            }'
+        );
+
+        $shareMgmt = &OMVRpcServiceMgr::getInstance()->getService("ShareMgmt");
+        $directory = $shareMgmt->callMethod("getPath", $params, $this->getAdminContext());
+
+        // Construct the new filename.
+        $now = new DateTime();
+        $time = $now->format(DateTime::ISO8601);
+        $sqlDump = $directory . DIRECTORY_SEPARATOR . "mysql-" . $time . ".sql";
+
+        // Make sure we're not overwriting existing files.
+        if (file_exists($sqlDump)) {
+            throw new Exception("A file in the given location already exists.");
+        }
+
+        $this->dumpDatabase($sqlDump, $this->mysqldumpConfigurationFile);
     }
 
     /**
