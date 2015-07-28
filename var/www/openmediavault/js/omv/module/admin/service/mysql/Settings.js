@@ -18,26 +18,32 @@
 
 // require("js/omv/WorkspaceManager.js")
 // require("js/omv/workspace/form/Panel.js")
-// require("js/omv/data/Store.js")
-// require("js/omv/data/Model.js")
-// require("js/omv/form/plugin/LinkedFields.js")
 // require("js/omv/window/MessageBox.js")
-// require("js/omv/Rpc.js")
+// require("js/omv/form/plugin/LinkedFields.js")
 // require("js/omv/module/admin/service/mysql/Password.js")
+// require("js/omv/module/admin/service/mysql/ScheduledBackup.js")
 
 Ext.define("OMV.module.admin.service.mysql.Settings", {
     extend: "OMV.workspace.form.Panel",
     requires: [
-        "OMV.module.admin.service.mysql.Password"
-    ],
-    uses: [
-        "OMV.data.Model",
-        "OMV.data.Store"
+        "OMV.module.admin.service.mysql.Password",
+        "OMV.module.admin.service.mysql.ScheduledBackup"
     ],
 
     plugins: [{
         ptype: "linkedfields",
         correlations: [{
+            conditions: [{
+                name: "enable",
+                value: true
+            }],
+            properties: function(valid, field) {
+                this.setButtonDisabled("reset-password", !valid);
+                this.setButtonDisabled("backup", !valid);
+                this.setButtonDisabled("scheduled-backup", !valid);
+                this.setButtonDisabled("restore", !valid);
+            }
+        }, {
             name: [
                 "port",
                 "bind_address"
@@ -49,17 +55,6 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
             properties: [
                 "readOnly",
                 "allowBlank"
-            ]
-        }, {
-            name: [
-                "reset_password"
-            ],
-            conditions: [{
-                name: "enable",
-                value: false
-            }],
-            properties: [
-                "disabled"
             ]
         }, {
             conditions: [{
@@ -94,6 +89,14 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                 window.open("/mysql/", "_blank");
             }
         }, {
+            id: this.getId() + "-reset-password",
+            xtype: "button",
+            text: _("Reset Password"),
+            icon: "images/wrench.png",
+            iconCls: Ext.baseCSSPrefix + "btn-icon-16x16",
+            scope: this,
+            handler: Ext.Function.bind(this.onResetPasswordButton, this)
+        }, {
             id: this.getId() + "-backup",
             xtype: "button",
             text: _("Backup"),
@@ -101,6 +104,14 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
             iconCls: Ext.baseCSSPrefix + "btn-icon-16x16",
             scope: this,
             handler: Ext.Function.bind(this.onBackupButton, this)
+        }, {
+            id: this.getId() + "-scheduled-backup",
+            xtype: "button",
+            text: _("Scheduled backup"),
+            icon: "images/wrench.png",
+            iconCls: Ext.baseCSSPrefix + "btn-icon-16x16",
+            scope: this,
+            handler: Ext.Function.bind(this.onScheduledBackupButton, this)
         }, {
             id: this.getId() + "-restore",
             xtype: "button",
@@ -178,20 +189,6 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
             }]
         }, {
             xtype: "fieldset",
-            title: _("Reset MySQL root password"),
-            defaults: {
-                labelSeparator: ""
-            },
-            items: [{
-                xtype: "button",
-                name: "reset_password",
-                text: _("Reset Password"),
-                scope: this,
-                handler: Ext.Function.bind(this.doResetPassword, this, [this]),
-                margin: "5 0 8 0"
-            }]
-        }, {
-            xtype: "fieldset",
             title: _("SQL management site"),
             defaults: {
                 labelSeparator: ""
@@ -206,7 +203,7 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
         }];
     },
 
-    doResetPassword: function() {
+    onResetPasswordButton: function() {
         Ext.create("OMV.module.admin.service.mysql.Password", {
             title: _("Reset MySQL root password."),
             mode: "remote",
@@ -217,6 +214,12 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
 
     onBackupButton: function() {
         OMV.Download.request("MySql", "downloadBackup");
+    },
+
+    onScheduledBackupButton: function() {
+        Ext.create("OMV.module.admin.service.mysql.ScheduledBackup", {
+            uuid: OMV.UUID_UNDEFINED
+        }).show();
     },
 
     onRestoreButton: function() {
