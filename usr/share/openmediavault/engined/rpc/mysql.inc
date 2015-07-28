@@ -365,7 +365,7 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
      *
      * @throws OMVException
      */
-    public function restoreDatabaseDump($dumpFile, $mysqlConfigurationFile)
+    private function restoreDatabaseDump($dumpFile, $mysqlConfigurationFile)
     {
         $cmd = sprintf(
             "export LANG=C; mysql --defaults-extra-file=%s < %s",
