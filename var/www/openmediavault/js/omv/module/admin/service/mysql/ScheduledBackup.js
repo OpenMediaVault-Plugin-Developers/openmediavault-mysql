@@ -22,9 +22,8 @@ Ext.define("OMV.module.admin.service.mysql.ScheduledBackup", {
     extend: "OMV.module.admin.system.cron.Job",
 
     title: _("Create scheduled backup job"),
-    height: 300,
+    height: 310,
     hideResetButton: true,
-    uuid: OMV.UUID_UNDEFINED,
 
     initComponent: function() {
         this.callParent(arguments);
