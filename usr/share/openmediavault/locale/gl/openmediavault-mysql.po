@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-21 07:56-0500\n"
-"PO-Revision-Date: 2015-03-21 12:56+0000\n"
+"POT-Creation-Date: 2015-07-29 07:08-0500\n"
+"PO-Revision-Date: 2015-07-29 12:08+0000\n"
 "Last-Translator: Aaron Murray <aaron27@ryecoinc.com>\n"
 "Language-Team: Galician (http://www.transifex.com/projects/p/openmediavault-mysql/language/gl/)\n"
 "MIME-Version: 1.0\n"
@@ -18,8 +18,11 @@ msgstr ""
 "Language: gl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Are you sure you want to reset the root password?"
-msgstr "Confirma que quere restabelecer o contrasinal de administrador (root)?"
+msgid "Backup"
+msgstr ""
+
+msgid "Backup was successfully restored."
+msgstr ""
 
 msgid "Bind address"
 msgstr "Enderezo de escoita"
@@ -27,8 +30,8 @@ msgstr "Enderezo de escoita"
 msgid "Check this box if database is stored on ZFS filesystem."
 msgstr "Marca esta caixa s a base de datos está almacenada nun sistema de ficheiros ZFS."
 
-msgid "Confirmation"
-msgstr "Confirmación"
+msgid "Create scheduled backup job"
+msgstr ""
 
 msgid "Disable AIO"
 msgstr "Desactivar AIO"
@@ -45,23 +48,14 @@ msgstr "Opcións adicionais"
 msgid "Extra options for [mysqld] section of MySQL configuration."
 msgstr "Opcións adicionais para a sección [mysqld] da configuración de MySQL."
 
-msgid "For more advanced usage try: "
-msgstr "Para un uso avanzado, probar: "
-
 msgid "IP address to listen on. Use 0.0.0.0 for all host IPs."
 msgstr "Enderezo IP a escoitar. Usar 0.0.0.0 para todos os IP de máquinas."
 
-msgid "Launch Management Site"
-msgstr "Iniciar a administración do sitio"
-
-msgid "Management"
-msgstr "Administración"
+msgid "Location"
+msgstr ""
 
 msgid "MySQL"
 msgstr "MySQL"
-
-msgid "MySQL Workbench"
-msgstr "Espazo de traballo MySQL"
 
 msgid "Password"
 msgstr "Contrasinal"
@@ -72,14 +66,20 @@ msgstr "Porto"
 msgid "Port to listen on."
 msgstr "Porto á escoita."
 
-msgid "Reset MySQL root password"
-msgstr "Restabelecer o contrasinal de administrador do MySQL"
+msgid "Provide MySQL root password to restore dump."
+msgstr ""
+
+msgid "Reset MySQL root password."
+msgstr ""
 
 msgid "Reset Password"
 msgstr "Restabelecer o contrasinal"
 
-msgid "Resetting MySQL root password."
-msgstr "Restabelecendo o contrasinal de administrador do MySQL."
+msgid "Restore"
+msgstr ""
+
+msgid "Restored backup"
+msgstr ""
 
 msgid "SQL management site"
 msgstr "Sitio de administración SQL"
@@ -87,18 +87,14 @@ msgstr "Sitio de administración SQL"
 msgid "SQL management site."
 msgstr "Sitio de administración SQL."
 
+msgid "Scheduled backup"
+msgstr ""
+
 msgid "Settings"
 msgstr "Axustes"
 
-msgid "Show tab containing Management frame."
-msgstr "Amosar a lapela que conten o marco de administración."
+msgid "Show"
+msgstr ""
 
-msgid ""
-"The SQL web interface can be accessed <a href='/mysql/' "
-"target='_blank'>here</a>."
-msgstr "Pode acceder á interface web SQL desde <a href='/mysql/' target='_blank'>aquí</a>."
-
-msgid ""
-"This password is stored in /root/.my.cnf for use by mysqldump for backup "
-"purposes.  The file can only be viewed by root user."
+msgid "Upload backup"
 msgstr ""

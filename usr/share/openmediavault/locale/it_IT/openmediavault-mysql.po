@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-21 07:56-0500\n"
-"PO-Revision-Date: 2015-03-21 12:56+0000\n"
+"POT-Creation-Date: 2015-07-29 07:08-0500\n"
+"PO-Revision-Date: 2015-07-29 12:08+0000\n"
 "Last-Translator: Aaron Murray <aaron27@ryecoinc.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/openmediavault-mysql/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -20,8 +20,11 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Are you sure you want to reset the root password?"
-msgstr "Sei sicuro di voler ripristinare la password di root?"
+msgid "Backup"
+msgstr ""
+
+msgid "Backup was successfully restored."
+msgstr ""
 
 msgid "Bind address"
 msgstr "Associa indirizzo"
@@ -29,8 +32,8 @@ msgstr "Associa indirizzo"
 msgid "Check this box if database is stored on ZFS filesystem."
 msgstr ""
 
-msgid "Confirmation"
-msgstr "Conferma"
+msgid "Create scheduled backup job"
+msgstr ""
 
 msgid "Disable AIO"
 msgstr ""
@@ -47,23 +50,14 @@ msgstr "Opzioni extra"
 msgid "Extra options for [mysqld] section of MySQL configuration."
 msgstr "Opzioni extra per la sezione [mysqld] della configurazione MySQL."
 
-msgid "For more advanced usage try: "
-msgstr "Per un utilizzo più avanzato prova:"
-
 msgid "IP address to listen on. Use 0.0.0.0 for all host IPs."
 msgstr "Indirizzo IP da mettere in ascolto. Utilizza 0.0.0.0 per tutti gli IP."
 
-msgid "Launch Management Site"
+msgid "Location"
 msgstr ""
-
-msgid "Management"
-msgstr "Gestione"
 
 msgid "MySQL"
 msgstr "MySQL"
-
-msgid "MySQL Workbench"
-msgstr "MySQL Workbench"
 
 msgid "Password"
 msgstr "Password"
@@ -74,14 +68,20 @@ msgstr "Porta"
 msgid "Port to listen on."
 msgstr "Porta in ascolto."
 
-msgid "Reset MySQL root password"
-msgstr "Ripristina password root MySQL."
+msgid "Provide MySQL root password to restore dump."
+msgstr ""
+
+msgid "Reset MySQL root password."
+msgstr ""
 
 msgid "Reset Password"
 msgstr "Ripristina Password"
 
-msgid "Resetting MySQL root password."
-msgstr "Ripristino in corso della password root MySQL."
+msgid "Restore"
+msgstr ""
+
+msgid "Restored backup"
+msgstr ""
 
 msgid "SQL management site"
 msgstr "Sito per la gestione SQL"
@@ -89,18 +89,14 @@ msgstr "Sito per la gestione SQL"
 msgid "SQL management site."
 msgstr "Sito per la gestione SQL."
 
+msgid "Scheduled backup"
+msgstr ""
+
 msgid "Settings"
 msgstr "Impostazioni"
 
-msgid "Show tab containing Management frame."
-msgstr "Mostra scheda contenente frame di gestione."
+msgid "Show"
+msgstr ""
 
-msgid ""
-"The SQL web interface can be accessed <a href='/mysql/' "
-"target='_blank'>here</a>."
-msgstr "Si può accedere all'interfaccia web SQL da <a href='/mysql/' target='_blank'>qui</a>."
-
-msgid ""
-"This password is stored in /root/.my.cnf for use by mysqldump for backup "
-"purposes.  The file can only be viewed by root user."
+msgid "Upload backup"
 msgstr ""

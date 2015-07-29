@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Christophe Lherieau <skimpax@gmail.com>, 2015
 # Zacharie ARNAISE <spacebrain.damage@gmail.com>, 2013-2014
 msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-21 07:56-0500\n"
-"PO-Revision-Date: 2015-03-21 12:56+0000\n"
+"POT-Creation-Date: 2015-07-29 07:08-0500\n"
+"PO-Revision-Date: 2015-07-29 12:08+0000\n"
 "Last-Translator: Aaron Murray <aaron27@ryecoinc.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/openmediavault-mysql/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -18,20 +19,23 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-msgid "Are you sure you want to reset the root password?"
-msgstr "Êtes-vous sûr de vouloir réinitialiser le mot de passe root ? "
+msgid "Backup"
+msgstr ""
+
+msgid "Backup was successfully restored."
+msgstr ""
 
 msgid "Bind address"
 msgstr "Adresse liée"
 
 msgid "Check this box if database is stored on ZFS filesystem."
-msgstr ""
+msgstr "Cocher si la base de données est stockée sur un système de fichiers ZFS."
 
-msgid "Confirmation"
-msgstr "Confirmation"
+msgid "Create scheduled backup job"
+msgstr ""
 
 msgid "Disable AIO"
-msgstr ""
+msgstr "Désactiver AIO"
 
 msgid "Enable"
 msgstr "Activer"
@@ -45,26 +49,17 @@ msgstr "Options supplémentaires"
 msgid "Extra options for [mysqld] section of MySQL configuration."
 msgstr "Options supplémentaires pour la configuration de la section [mysqld] de MySQL"
 
-msgid "For more advanced usage try: "
-msgstr ""
-
 msgid "IP address to listen on. Use 0.0.0.0 for all host IPs."
 msgstr "Adresse IP d'écoute. Utilisez 0.0.0.0 pour écouter sur toutes les adresses IPs de l'hôte."
 
-msgid "Launch Management Site"
+msgid "Location"
 msgstr ""
-
-msgid "Management"
-msgstr "Gestion"
 
 msgid "MySQL"
 msgstr "MySQL"
 
-msgid "MySQL Workbench"
-msgstr "Workbench MySQL"
-
 msgid "Password"
-msgstr ""
+msgstr "Mot de passe"
 
 msgid "Port"
 msgstr "Port"
@@ -72,33 +67,35 @@ msgstr "Port"
 msgid "Port to listen on."
 msgstr "Port d'écoute."
 
-msgid "Reset MySQL root password"
-msgstr "Réinitialiser le mot de passe root de MySQL"
+msgid "Provide MySQL root password to restore dump."
+msgstr ""
+
+msgid "Reset MySQL root password."
+msgstr ""
 
 msgid "Reset Password"
 msgstr "Réinitialiser le mot de passe"
 
-msgid "Resetting MySQL root password."
+msgid "Restore"
+msgstr ""
+
+msgid "Restored backup"
 msgstr ""
 
 msgid "SQL management site"
 msgstr "Site de gestion SQL"
 
 msgid "SQL management site."
+msgstr "Site de gestion SQL."
+
+msgid "Scheduled backup"
 msgstr ""
 
 msgid "Settings"
 msgstr "Paramètres"
 
-msgid "Show tab containing Management frame."
+msgid "Show"
 msgstr ""
 
-msgid ""
-"The SQL web interface can be accessed <a href='/mysql/' "
-"target='_blank'>here</a>."
-msgstr ""
-
-msgid ""
-"This password is stored in /root/.my.cnf for use by mysqldump for backup "
-"purposes.  The file can only be viewed by root user."
+msgid "Upload backup"
 msgstr ""

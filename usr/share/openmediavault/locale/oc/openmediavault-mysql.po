@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-21 07:56-0500\n"
-"PO-Revision-Date: 2015-03-21 12:56+0000\n"
+"POT-Creation-Date: 2015-07-29 07:08-0500\n"
+"PO-Revision-Date: 2015-07-29 12:08+0000\n"
 "Last-Translator: Aaron Murray <aaron27@ryecoinc.com>\n"
 "Language-Team: Occitan (post 1500) (http://www.transifex.com/projects/p/openmediavault-mysql/language/oc/)\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,10 @@ msgstr ""
 "Language: oc\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-msgid "Are you sure you want to reset the root password?"
+msgid "Backup"
+msgstr ""
+
+msgid "Backup was successfully restored."
 msgstr ""
 
 msgid "Bind address"
@@ -26,7 +29,7 @@ msgstr ""
 msgid "Check this box if database is stored on ZFS filesystem."
 msgstr ""
 
-msgid "Confirmation"
+msgid "Create scheduled backup job"
 msgstr ""
 
 msgid "Disable AIO"
@@ -44,22 +47,13 @@ msgstr ""
 msgid "Extra options for [mysqld] section of MySQL configuration."
 msgstr ""
 
-msgid "For more advanced usage try: "
-msgstr ""
-
 msgid "IP address to listen on. Use 0.0.0.0 for all host IPs."
 msgstr ""
 
-msgid "Launch Management Site"
-msgstr ""
-
-msgid "Management"
+msgid "Location"
 msgstr ""
 
 msgid "MySQL"
-msgstr ""
-
-msgid "MySQL Workbench"
 msgstr ""
 
 msgid "Password"
@@ -71,13 +65,19 @@ msgstr ""
 msgid "Port to listen on."
 msgstr ""
 
-msgid "Reset MySQL root password"
+msgid "Provide MySQL root password to restore dump."
+msgstr ""
+
+msgid "Reset MySQL root password."
 msgstr ""
 
 msgid "Reset Password"
 msgstr ""
 
-msgid "Resetting MySQL root password."
+msgid "Restore"
+msgstr ""
+
+msgid "Restored backup"
 msgstr ""
 
 msgid "SQL management site"
@@ -86,18 +86,14 @@ msgstr ""
 msgid "SQL management site."
 msgstr ""
 
+msgid "Scheduled backup"
+msgstr ""
+
 msgid "Settings"
 msgstr ""
 
-msgid "Show tab containing Management frame."
+msgid "Show"
 msgstr ""
 
-msgid ""
-"The SQL web interface can be accessed <a href='/mysql/' "
-"target='_blank'>here</a>."
-msgstr ""
-
-msgid ""
-"This password is stored in /root/.my.cnf for use by mysqldump for backup "
-"purposes.  The file can only be viewed by root user."
+msgid "Upload backup"
 msgstr ""

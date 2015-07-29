@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-21 07:56-0500\n"
-"PO-Revision-Date: 2015-03-21 12:56+0000\n"
+"POT-Creation-Date: 2015-07-29 07:08-0500\n"
+"PO-Revision-Date: 2015-07-29 12:08+0000\n"
 "Last-Translator: Aaron Murray <aaron27@ryecoinc.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/openmediavault-mysql/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -19,8 +19,11 @@ msgstr ""
 "Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-msgid "Are you sure you want to reset the root password?"
-msgstr "确定要重设 root 账户密码吗？"
+msgid "Backup"
+msgstr ""
+
+msgid "Backup was successfully restored."
+msgstr ""
 
 msgid "Bind address"
 msgstr "绑定地址"
@@ -28,8 +31,8 @@ msgstr "绑定地址"
 msgid "Check this box if database is stored on ZFS filesystem."
 msgstr "如果数据库文件存放在ZFS文件系统请勾选该项。"
 
-msgid "Confirmation"
-msgstr "确认"
+msgid "Create scheduled backup job"
+msgstr ""
 
 msgid "Disable AIO"
 msgstr "关闭AIO"
@@ -46,23 +49,14 @@ msgstr "扩展选项"
 msgid "Extra options for [mysqld] section of MySQL configuration."
 msgstr "MySQL配置的 [mysqld] 扩展选项"
 
-msgid "For more advanced usage try: "
-msgstr "更多高级用法见："
-
 msgid "IP address to listen on. Use 0.0.0.0 for all host IPs."
 msgstr "地址监听 IP 地址，用 0.0.0.0 表示所有 IP。"
 
-msgid "Launch Management Site"
-msgstr "运行管理后台"
-
-msgid "Management"
-msgstr "管理"
+msgid "Location"
+msgstr ""
 
 msgid "MySQL"
 msgstr "MySQL"
-
-msgid "MySQL Workbench"
-msgstr "MySQL 工作台"
 
 msgid "Password"
 msgstr "密码"
@@ -73,14 +67,20 @@ msgstr "端口"
 msgid "Port to listen on."
 msgstr "监听端口。"
 
-msgid "Reset MySQL root password"
-msgstr "重设 MySQL root 账户密码"
+msgid "Provide MySQL root password to restore dump."
+msgstr ""
+
+msgid "Reset MySQL root password."
+msgstr ""
 
 msgid "Reset Password"
 msgstr "重设密码"
 
-msgid "Resetting MySQL root password."
-msgstr "重置  MySQL root 密码中。"
+msgid "Restore"
+msgstr ""
+
+msgid "Restored backup"
+msgstr ""
 
 msgid "SQL management site"
 msgstr "SQL 管理后台"
@@ -88,18 +88,14 @@ msgstr "SQL 管理后台"
 msgid "SQL management site."
 msgstr "SQL 管理后台。"
 
+msgid "Scheduled backup"
+msgstr ""
+
 msgid "Settings"
 msgstr "设置"
 
-msgid "Show tab containing Management frame."
-msgstr "在标签页显示管理后台。"
+msgid "Show"
+msgstr ""
 
-msgid ""
-"The SQL web interface can be accessed <a href='/mysql/' "
-"target='_blank'>here</a>."
-msgstr "SQL Web界面可以点击<a href='/mysql/' target='_blank'>这里</a>访问了。"
-
-msgid ""
-"This password is stored in /root/.my.cnf for use by mysqldump for backup "
-"purposes.  The file can only be viewed by root user."
+msgid "Upload backup"
 msgstr ""

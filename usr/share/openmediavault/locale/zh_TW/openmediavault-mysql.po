@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-21 07:56-0500\n"
-"PO-Revision-Date: 2015-03-21 12:56+0000\n"
+"POT-Creation-Date: 2015-07-29 07:08-0500\n"
+"PO-Revision-Date: 2015-07-29 12:08+0000\n"
 "Last-Translator: Aaron Murray <aaron27@ryecoinc.com>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/projects/p/openmediavault-mysql/language/zh_TW/)\n"
 "MIME-Version: 1.0\n"
@@ -18,8 +18,11 @@ msgstr ""
 "Language: zh_TW\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-msgid "Are you sure you want to reset the root password?"
-msgstr "您確定要重設 root 密碼嗎？"
+msgid "Backup"
+msgstr "備份"
+
+msgid "Backup was successfully restored."
+msgstr "備份被成功地復原。"
 
 msgid "Bind address"
 msgstr "綁定地址"
@@ -27,8 +30,8 @@ msgstr "綁定地址"
 msgid "Check this box if database is stored on ZFS filesystem."
 msgstr "勾選此框，如果資料庫是儲存於 ZFS 檔案系統上。"
 
-msgid "Confirmation"
-msgstr "確認"
+msgid "Create scheduled backup job"
+msgstr ""
 
 msgid "Disable AIO"
 msgstr "停用非同步 I/O"
@@ -45,23 +48,14 @@ msgstr "額外選項"
 msgid "Extra options for [mysqld] section of MySQL configuration."
 msgstr "MySQL 設置中 [mysqld] 分節的額外選項。"
 
-msgid "For more advanced usage try: "
-msgstr "要做更進階的使用，請試試："
-
 msgid "IP address to listen on. Use 0.0.0.0 for all host IPs."
 msgstr "要監聽的 IP 地址。使用 0.0.0.0 表示主機所有的 IPs。"
 
-msgid "Launch Management Site"
-msgstr "啟動管理網站"
-
-msgid "Management"
-msgstr "管理"
+msgid "Location"
+msgstr ""
 
 msgid "MySQL"
 msgstr "MySQL"
-
-msgid "MySQL Workbench"
-msgstr "MySQL Workbench"
 
 msgid "Password"
 msgstr "密碼"
@@ -72,14 +66,20 @@ msgstr "通訊埠"
 msgid "Port to listen on."
 msgstr "要監聽的通訊埠。"
 
-msgid "Reset MySQL root password"
-msgstr "重設 MySQL root 密碼"
+msgid "Provide MySQL root password to restore dump."
+msgstr ""
+
+msgid "Reset MySQL root password."
+msgstr ""
 
 msgid "Reset Password"
 msgstr "重設密碼"
 
-msgid "Resetting MySQL root password."
-msgstr "重新設定 MySQL 的 root 密碼中。"
+msgid "Restore"
+msgstr "復原"
+
+msgid "Restored backup"
+msgstr "已復原的備份"
 
 msgid "SQL management site"
 msgstr "SQL 管理網站"
@@ -87,18 +87,14 @@ msgstr "SQL 管理網站"
 msgid "SQL management site."
 msgstr "SQL 管理網站。"
 
+msgid "Scheduled backup"
+msgstr ""
+
 msgid "Settings"
 msgstr "設定"
 
-msgid "Show tab containing Management frame."
-msgstr "顯示含有 管理 瀏覽框的分頁"
+msgid "Show"
+msgstr "顯示"
 
-msgid ""
-"The SQL web interface can be accessed <a href='/mysql/' "
-"target='_blank'>here</a>."
-msgstr "SQL 網站介面可在 <a href='/mysql/' target='_blank'>這裡</a> 存取。"
-
-msgid ""
-"This password is stored in /root/.my.cnf for use by mysqldump for backup "
-"purposes.  The file can only be viewed by root user."
-msgstr ""
+msgid "Upload backup"
+msgstr "上傳備份"

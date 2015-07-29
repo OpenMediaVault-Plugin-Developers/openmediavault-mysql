@@ -10,18 +10,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-21 07:56-0500\n"
-"PO-Revision-Date: 2015-03-21 12:56+0000\n"
+"POT-Creation-Date: 2015-07-29 07:08-0500\n"
+"PO-Revision-Date: 2015-07-29 12:08+0000\n"
 "Last-Translator: Aaron Murray <aaron27@ryecoinc.com>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/openmediavault-mysql/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-msgid "Are you sure you want to reset the root password?"
-msgstr "Вы уверены, что хотите сбросить пароль администратора?"
+msgid "Backup"
+msgstr ""
+
+msgid "Backup was successfully restored."
+msgstr ""
 
 msgid "Bind address"
 msgstr "Привязка адресов"
@@ -29,8 +32,8 @@ msgstr "Привязка адресов"
 msgid "Check this box if database is stored on ZFS filesystem."
 msgstr ""
 
-msgid "Confirmation"
-msgstr "Подтверждение"
+msgid "Create scheduled backup job"
+msgstr ""
 
 msgid "Disable AIO"
 msgstr ""
@@ -47,23 +50,14 @@ msgstr "Расширенные опции"
 msgid "Extra options for [mysqld] section of MySQL configuration."
 msgstr "Дополнительные опции для [mysqld] раздел конфигурации MySQL."
 
-msgid "For more advanced usage try: "
-msgstr "Для более продвинутых использования:"
-
 msgid "IP address to listen on. Use 0.0.0.0 for all host IPs."
 msgstr "IP-адрес для прослушивания. Используйте 0.0.0.0 для всех хостов IP-адресов."
 
-msgid "Launch Management Site"
+msgid "Location"
 msgstr ""
-
-msgid "Management"
-msgstr "Управление"
 
 msgid "MySQL"
 msgstr "MySQL"
-
-msgid "MySQL Workbench"
-msgstr "MySQL Workbench"
 
 msgid "Password"
 msgstr "Пароль"
@@ -74,14 +68,20 @@ msgstr "Порт"
 msgid "Port to listen on."
 msgstr "Порт для прослушивания."
 
-msgid "Reset MySQL root password"
-msgstr "Сбросить MySQL root пароль"
+msgid "Provide MySQL root password to restore dump."
+msgstr ""
+
+msgid "Reset MySQL root password."
+msgstr ""
 
 msgid "Reset Password"
 msgstr "Сбросить пароль"
 
-msgid "Resetting MySQL root password."
-msgstr "Сброс пароля root MySQL."
+msgid "Restore"
+msgstr ""
+
+msgid "Restored backup"
+msgstr ""
 
 msgid "SQL management site"
 msgstr "SQL сайт управления"
@@ -89,18 +89,14 @@ msgstr "SQL сайт управления"
 msgid "SQL management site."
 msgstr "SQL сайт управления"
 
+msgid "Scheduled backup"
+msgstr ""
+
 msgid "Settings"
 msgstr "Настройки"
 
-msgid "Show tab containing Management frame."
-msgstr "Показать вкладку содержащую менеджер управления."
-
-msgid ""
-"The SQL web interface can be accessed <a href='/mysql/' "
-"target='_blank'>here</a>."
+msgid "Show"
 msgstr ""
 
-msgid ""
-"This password is stored in /root/.my.cnf for use by mysqldump for backup "
-"purposes.  The file can only be viewed by root user."
+msgid "Upload backup"
 msgstr ""

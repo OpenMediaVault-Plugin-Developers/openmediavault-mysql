@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-21 07:56-0500\n"
-"PO-Revision-Date: 2015-03-21 12:56+0000\n"
+"POT-Creation-Date: 2015-07-29 07:08-0500\n"
+"PO-Revision-Date: 2015-07-29 12:08+0000\n"
 "Last-Translator: Aaron Murray <aaron27@ryecoinc.com>\n"
 "Language-Team: Danish (http://www.transifex.com/projects/p/openmediavault-mysql/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -18,8 +18,11 @@ msgstr ""
 "Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Are you sure you want to reset the root password?"
-msgstr "Er du sikker på, at du vil nulstille rod adgangskoden?"
+msgid "Backup"
+msgstr "Backup"
+
+msgid "Backup was successfully restored."
+msgstr "Backup genskabt med succes."
 
 msgid "Bind address"
 msgstr "Bind adresse"
@@ -27,8 +30,8 @@ msgstr "Bind adresse"
 msgid "Check this box if database is stored on ZFS filesystem."
 msgstr "Sæt flueben i denne boks, hvis databasen er gemt på ZFS filsystem."
 
-msgid "Confirmation"
-msgstr "Bekræftelse"
+msgid "Create scheduled backup job"
+msgstr ""
 
 msgid "Disable AIO"
 msgstr "Deaktiver AIO"
@@ -45,23 +48,14 @@ msgstr "Ekstra valgmuligheder"
 msgid "Extra options for [mysqld] section of MySQL configuration."
 msgstr "Ekstra valgmuligheder for [mysqld] sektionen af MySQL konfiguration."
 
-msgid "For more advanced usage try: "
-msgstr "For mere avanceret brug så prøv:"
-
 msgid "IP address to listen on. Use 0.0.0.0 for all host IPs."
 msgstr "IP adresse, der skal lyttes på. Brug 0.0.0.0 til alle værts IPer."
 
-msgid "Launch Management Site"
-msgstr "Start Håndterings Side"
-
-msgid "Management"
-msgstr "Håndtering"
+msgid "Location"
+msgstr ""
 
 msgid "MySQL"
 msgstr "MySQL"
-
-msgid "MySQL Workbench"
-msgstr "MySQL Arbejdsbord"
 
 msgid "Password"
 msgstr "Adgangskode"
@@ -72,14 +66,20 @@ msgstr "Port"
 msgid "Port to listen on."
 msgstr "Port, der skal lyttes på."
 
-msgid "Reset MySQL root password"
-msgstr "Nulstil MySQL rod adgangskode"
+msgid "Provide MySQL root password to restore dump."
+msgstr ""
+
+msgid "Reset MySQL root password."
+msgstr ""
 
 msgid "Reset Password"
 msgstr "Nulstil Adgangskode"
 
-msgid "Resetting MySQL root password."
-msgstr "Nulstiller MySQL rod adgangskode"
+msgid "Restore"
+msgstr "Genskab"
+
+msgid "Restored backup"
+msgstr "Genskab backup"
 
 msgid "SQL management site"
 msgstr "SQL håndterings side"
@@ -87,18 +87,14 @@ msgstr "SQL håndterings side"
 msgid "SQL management site."
 msgstr "SQL håndterings side"
 
+msgid "Scheduled backup"
+msgstr ""
+
 msgid "Settings"
 msgstr "Indstillinger"
 
-msgid "Show tab containing Management frame."
-msgstr "Vis fane indeholdende Håndterings ramme."
+msgid "Show"
+msgstr "Vis"
 
-msgid ""
-"The SQL web interface can be accessed <a href='/mysql/' "
-"target='_blank'>here</a>."
-msgstr "SQL web interface kan tilgås  <a href='/mysql/' target='_blank'>her</a>."
-
-msgid ""
-"This password is stored in /root/.my.cnf for use by mysqldump for backup "
-"purposes.  The file can only be viewed by root user."
-msgstr ""
+msgid "Upload backup"
+msgstr "Upload backup"

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-21 07:56-0500\n"
-"PO-Revision-Date: 2015-03-21 12:56+0000\n"
+"POT-Creation-Date: 2015-07-29 07:08-0500\n"
+"PO-Revision-Date: 2015-07-29 12:08+0000\n"
 "Last-Translator: Aaron Murray <aaron27@ryecoinc.com>\n"
 "Language-Team: Japanese (Japan) (http://www.transifex.com/projects/p/openmediavault-mysql/language/ja_JP/)\n"
 "MIME-Version: 1.0\n"
@@ -18,8 +18,11 @@ msgstr ""
 "Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-msgid "Are you sure you want to reset the root password?"
-msgstr "rootのパスワードをリセットしてもよろしいですか？"
+msgid "Backup"
+msgstr "バックアップ"
+
+msgid "Backup was successfully restored."
+msgstr "バックアップが正常にリストアされました。"
 
 msgid "Bind address"
 msgstr "バインドアドレス"
@@ -27,8 +30,8 @@ msgstr "バインドアドレス"
 msgid "Check this box if database is stored on ZFS filesystem."
 msgstr "データベースがZFSファイルシステム上に保存されている場合はチェックしてください。"
 
-msgid "Confirmation"
-msgstr "確認"
+msgid "Create scheduled backup job"
+msgstr ""
 
 msgid "Disable AIO"
 msgstr "AIOを無効化"
@@ -45,23 +48,14 @@ msgstr "その他のオプション"
 msgid "Extra options for [mysqld] section of MySQL configuration."
 msgstr "MySQLの設定内の[mysqld]セクションに関する追加のオプション。"
 
-msgid "For more advanced usage try: "
-msgstr "より高度な使用方法については次を行ってください："
-
 msgid "IP address to listen on. Use 0.0.0.0 for all host IPs."
 msgstr "接続を許可するIPアドレスを設定します。すべてのホストIPから受け付ける場合は0.0.0.0を指定します。"
 
-msgid "Launch Management Site"
-msgstr "管理サイトの起動"
-
-msgid "Management"
-msgstr "管理"
+msgid "Location"
+msgstr ""
 
 msgid "MySQL"
 msgstr "MySQL"
-
-msgid "MySQL Workbench"
-msgstr "MySQL Workbench"
 
 msgid "Password"
 msgstr "パスワード"
@@ -72,14 +66,20 @@ msgstr "ポート"
 msgid "Port to listen on."
 msgstr "待ち受けポート。"
 
-msgid "Reset MySQL root password"
-msgstr "MySQL rootパスワードのリセット"
+msgid "Provide MySQL root password to restore dump."
+msgstr ""
+
+msgid "Reset MySQL root password."
+msgstr ""
 
 msgid "Reset Password"
 msgstr "パスワードのリセット"
 
-msgid "Resetting MySQL root password."
-msgstr "MySQL rootパスワードをリセットしました。"
+msgid "Restore"
+msgstr "リストア"
+
+msgid "Restored backup"
+msgstr "リストアされたバックアップ"
 
 msgid "SQL management site"
 msgstr "SQL管理サイト"
@@ -87,18 +87,14 @@ msgstr "SQL管理サイト"
 msgid "SQL management site."
 msgstr "SQL管理サイト。"
 
+msgid "Scheduled backup"
+msgstr ""
+
 msgid "Settings"
 msgstr "設定"
 
-msgid "Show tab containing Management frame."
-msgstr "管理フレームを含むタブを表示します。"
+msgid "Show"
+msgstr "表示"
 
-msgid ""
-"The SQL web interface can be accessed <a href='/mysql/' "
-"target='_blank'>here</a>."
-msgstr "SQLウェブインタフェースへは <a href='/mysql/' target='_blank'>ここ</a>からアクセスできます。"
-
-msgid ""
-"This password is stored in /root/.my.cnf for use by mysqldump for backup "
-"purposes.  The file can only be viewed by root user."
-msgstr ""
+msgid "Upload backup"
+msgstr "バックアップのアップロード"

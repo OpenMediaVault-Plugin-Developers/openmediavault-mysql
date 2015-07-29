@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-21 07:56-0500\n"
-"PO-Revision-Date: 2015-03-21 12:56+0000\n"
+"POT-Creation-Date: 2015-07-29 07:08-0500\n"
+"PO-Revision-Date: 2015-07-29 12:08+0000\n"
 "Last-Translator: Aaron Murray <aaron27@ryecoinc.com>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/projects/p/openmediavault-mysql/language/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
@@ -19,8 +19,11 @@ msgstr ""
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-msgid "Are you sure you want to reset the root password?"
-msgstr "Opravdu chcete obnovit heslo uživatele root ?"
+msgid "Backup"
+msgstr ""
+
+msgid "Backup was successfully restored."
+msgstr ""
 
 msgid "Bind address"
 msgstr "Bind address"
@@ -28,8 +31,8 @@ msgstr "Bind address"
 msgid "Check this box if database is stored on ZFS filesystem."
 msgstr ""
 
-msgid "Confirmation"
-msgstr "Potvrzení"
+msgid "Create scheduled backup job"
+msgstr ""
 
 msgid "Disable AIO"
 msgstr ""
@@ -46,23 +49,14 @@ msgstr "Další nastavení"
 msgid "Extra options for [mysqld] section of MySQL configuration."
 msgstr "Další nastavení pro [mysqld] sekci v konfiguraci MySQL"
 
-msgid "For more advanced usage try: "
-msgstr "Pro pokročilejší použití zkuste:"
-
 msgid "IP address to listen on. Use 0.0.0.0 for all host IPs."
 msgstr "IP adresa na které databáze naslouchá. Pro všechny IP adresy použíjte 0.0.0.0"
 
-msgid "Launch Management Site"
+msgid "Location"
 msgstr ""
-
-msgid "Management"
-msgstr "Správa"
 
 msgid "MySQL"
 msgstr "MySQL"
-
-msgid "MySQL Workbench"
-msgstr "MySQL Workbench"
 
 msgid "Password"
 msgstr "Heslo"
@@ -73,14 +67,20 @@ msgstr "Port"
 msgid "Port to listen on."
 msgstr "Port na kterém databáze naslouchá"
 
-msgid "Reset MySQL root password"
-msgstr "Obnova hesla uživatele root"
+msgid "Provide MySQL root password to restore dump."
+msgstr ""
+
+msgid "Reset MySQL root password."
+msgstr ""
 
 msgid "Reset Password"
 msgstr "Resetovat heslo"
 
-msgid "Resetting MySQL root password."
-msgstr "Obnova MySQL root hesla"
+msgid "Restore"
+msgstr ""
+
+msgid "Restored backup"
+msgstr ""
 
 msgid "SQL management site"
 msgstr "Stránka se správou SQL"
@@ -88,18 +88,14 @@ msgstr "Stránka se správou SQL"
 msgid "SQL management site."
 msgstr "Stránka se správou SQL"
 
+msgid "Scheduled backup"
+msgstr ""
+
 msgid "Settings"
 msgstr "Nastavení"
 
-msgid "Show tab containing Management frame."
-msgstr "Zobrazit záložku obsahující stránku se správou"
-
-msgid ""
-"The SQL web interface can be accessed <a href='/mysql/' "
-"target='_blank'>here</a>."
+msgid "Show"
 msgstr ""
 
-msgid ""
-"This password is stored in /root/.my.cnf for use by mysqldump for backup "
-"purposes.  The file can only be viewed by root user."
+msgid "Upload backup"
 msgstr ""

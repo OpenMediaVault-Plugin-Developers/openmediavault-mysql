@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openmediavault-mysql\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-21 07:56-0500\n"
-"PO-Revision-Date: 2015-03-21 12:56+0000\n"
+"POT-Creation-Date: 2015-07-29 07:08-0500\n"
+"PO-Revision-Date: 2015-07-29 12:08+0000\n"
 "Last-Translator: Aaron Murray <aaron27@ryecoinc.com>\n"
 "Language-Team: Korean (Korea) (http://www.transifex.com/projects/p/openmediavault-mysql/language/ko_KR/)\n"
 "MIME-Version: 1.0\n"
@@ -18,8 +18,11 @@ msgstr ""
 "Language: ko_KR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-msgid "Are you sure you want to reset the root password?"
-msgstr "정말로 root 암호를 재설정 하시겠습니까?"
+msgid "Backup"
+msgstr "백업"
+
+msgid "Backup was successfully restored."
+msgstr "백업이 성공적으로 복원되었습니다."
 
 msgid "Bind address"
 msgstr "결합 주소"
@@ -27,8 +30,8 @@ msgstr "결합 주소"
 msgid "Check this box if database is stored on ZFS filesystem."
 msgstr "데이터베이스가 ZFS 파일 시스템에 저장된다면 선택."
 
-msgid "Confirmation"
-msgstr "확인"
+msgid "Create scheduled backup job"
+msgstr ""
 
 msgid "Disable AIO"
 msgstr "AIO（비동기 입출력） 비활성화"
@@ -45,23 +48,14 @@ msgstr "추가 선택 사항"
 msgid "Extra options for [mysqld] section of MySQL configuration."
 msgstr "MySQL 구성의 [mysqld] 부문에 추가 선택 사항을 제공합니다."
 
-msgid "For more advanced usage try: "
-msgstr "고급 사용에 대한 자세한 내용: "
-
 msgid "IP address to listen on. Use 0.0.0.0 for all host IPs."
 msgstr "수신 대기 IP 주소. 모든 호스트 IP에 적용할 경우 0.0.0.0 사용."
 
-msgid "Launch Management Site"
-msgstr "관리 Site 시작"
-
-msgid "Management"
-msgstr "관리"
+msgid "Location"
+msgstr ""
 
 msgid "MySQL"
 msgstr "MySQL"
-
-msgid "MySQL Workbench"
-msgstr "MySQL Workbench"
 
 msgid "Password"
 msgstr "암호"
@@ -72,14 +66,20 @@ msgstr "포트"
 msgid "Port to listen on."
 msgstr "수신 대기 포트."
 
-msgid "Reset MySQL root password"
-msgstr "MySQL root 암호 재설정"
+msgid "Provide MySQL root password to restore dump."
+msgstr ""
+
+msgid "Reset MySQL root password."
+msgstr ""
 
 msgid "Reset Password"
 msgstr "암호 재설정"
 
-msgid "Resetting MySQL root password."
-msgstr "MySQL root 암호 재설정 중."
+msgid "Restore"
+msgstr "복원"
+
+msgid "Restored backup"
+msgstr "복원된 백업"
 
 msgid "SQL management site"
 msgstr "SQL 관리 사이트"
@@ -87,18 +87,14 @@ msgstr "SQL 관리 사이트"
 msgid "SQL management site."
 msgstr "SQL 관리 사이트."
 
+msgid "Scheduled backup"
+msgstr ""
+
 msgid "Settings"
 msgstr "환경"
 
-msgid "Show tab containing Management frame."
-msgstr "관리 틀을 포함하는 탭 보이기."
+msgid "Show"
+msgstr "보이기"
 
-msgid ""
-"The SQL web interface can be accessed <a href='/mysql/' "
-"target='_blank'>here</a>."
-msgstr "SQL 웹 인터페이스는 <a href='/mysql/' target='_blank'>여기</a>에서 접근할 수 있습니다.<br/>"
-
-msgid ""
-"This password is stored in /root/.my.cnf for use by mysqldump for backup "
-"purposes.  The file can only be viewed by root user."
-msgstr ""
+msgid "Upload backup"
+msgstr "백업 올려주기"
