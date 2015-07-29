@@ -6,7 +6,8 @@ set -e
 . /usr/share/openmediavault/scripts/helper-functions
 
 OMV_MYSQL_CONF="/etc/mysql/conf.d/openmediavault-mysql.cnf"
-OMV_MYSQL_PASSWD="/etc/openmediavault/mysqldump.cnf"
+OMV_MYSQL_PASSWD="/etc/openmediavault/mysql.cnf"
+OMV_MYSQLDUMP_PASSWD="/etc/openmediavault/mysqldump.cnf"
 SQL_MANAGEMENT_SITE_CONF="/etc/nginx/openmediavault-webgui.d/openmediavault-mysql-management-site.conf"
 SQL_MANAGEMENT_POOL_CONF="/etc/php5/fpm/pool.d/openmediavault-mysql-management-site.conf"
 
@@ -20,6 +21,10 @@ case "$1" in
 
         if [ -e "${OMV_MYSQL_PASSWD}" ]; then
             rm -f "${OMV_MYSQL_PASSWD}"
+        fi
+
+        if [ -e "${OMV_MYSQLDUMP_PASSWD}" ]; then
+            rm -f "${OMV_MYSQLDUMP_PASSWD}"
         fi
     ;;
 
