@@ -20,23 +20,21 @@
 
 require_once "openmediavault/config.inc";
 require_once "openmediavault/error.inc";
-require_once "openmediavault/initscript.inc";
 require_once "openmediavault/module.inc";
+require_once "openmediavault/notify.inc";
+require_once "openmediavault/systemctl.inc";
 
 class OMVModuleMySql extends OMVModuleServiceAbstract implements
     OMVIModuleServiceStatus,
     OMVINotifyListener
 {
-    private function getEventMessagePath()
-    {
-        return "org.openmediavault.services.mysql";
-    }
+    private $eventMessagePath = "org.openmediavault.services.mysql";
 
-    private function getSharedFolderEventMessagePath()
-    {
-        return "org.openmediavault.system.shares.sharedfolder";
-    }
-
+    /**
+     * Get the service configuration XPath.
+     *
+     * @return string
+     */
     private function getXpath()
     {
         return "/config/services/mysql";
@@ -72,14 +70,14 @@ class OMVModuleMySql extends OMVModuleServiceAbstract implements
             );
         }
 
-        $initd = new OMVSysVInitScript($this->getName());
+        $systemCtl = new OMVSystemCtl($this->getName());
 
-        return array(
+        return [
             "name" => $this->getName(),
             "title" => gettext("MySQL"),
             "enabled" => boolval($object["enable"]),
-            "running" => $initd->status() == 0
-        );
+            "running" => $systemCtl->isActive()
+        ];
     }
 
     /**
@@ -97,7 +95,7 @@ class OMVModuleMySql extends OMVModuleServiceAbstract implements
             throw new OMVException(
                 OMVErrorMsg::E_EXEC_FAILED,
                 $cmd,
-                implode("\n", $output)
+                implode(PHP_EOL, $output)
             );
         }
     }
@@ -126,8 +124,8 @@ class OMVModuleMySql extends OMVModuleServiceAbstract implements
             return;
         }
 
-        $initd = new OMVSysVInitScript($this->getName(), true);
-        $initd->exec();
+        $systemCtl = new OMVSystemCtl($this->getName());
+        $systemCtl->enable(true);
     }
 
     /**
@@ -137,8 +135,8 @@ class OMVModuleMySql extends OMVModuleServiceAbstract implements
      */
     public function stopService()
     {
-        $initd = new OMVSysVInitScript($this->getName());
-        $initd->exec();
+        $systemCtl = new OMVSystemCtl($this->getName());
+        $systemCtl->disable(true);
     }
 
     /**
@@ -153,20 +151,20 @@ class OMVModuleMySql extends OMVModuleServiceAbstract implements
 
         $dispatcher->addListener(
             OMV_NOTIFY_MODIFY,
-            $this->getEventMessagePath(),
-            array($this, "setDirty")
+            $this->eventMessagePath,
+            [$this, "setDirty"]
         );
 
         $dispatcher->addListener(
             OMV_NOTIFY_MODIFY,
-            $this->getEventMessagePath(),
-            array($moduleMgr->getModule("php5fpm"), "setDirty")
+            $this->eventMessagePath,
+            [$moduleMgr->getModule("php5fpm"), "setDirty"]
         );
 
         $dispatcher->addListener(
             OMV_NOTIFY_MODIFY,
-            $this->getEventMessagePath(),
-            array($moduleMgr->getModule("webserver"), "setDirty")
+            $this->eventMessagePath,
+            [$moduleMgr->getModule("webserver"), "setDirty"]
         );
     }
 }

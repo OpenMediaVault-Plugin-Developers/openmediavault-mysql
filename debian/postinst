@@ -5,68 +5,13 @@ set -e
 . /etc/default/openmediavault
 . /usr/share/openmediavault/scripts/helper-functions
 
-data_drive_to_shared_folder()
-{
-    local name="MySqlData"
-    local comment="MySQL data location"
-    local mntentref=$(omv_config_get "//services/mysql/mntentref")
-    local reldirpath="mysql-data"
-
-    # Delete old config option
-    omv_config_delete "//services/mysql/mntentref"
-
-    if [ -z "${mntentref}" ]; then
-        omv_config_add_element "/config/services/mysql" "data.sharedfolderref"
-
-        return 0
-    fi
-
-    # Prepare JSON data.
-    local json="{ \"uuid\": \"undefined\", \"name\": \"${name}\", \"comment\": \"${comment}\", \"mntentref\": \"${mntentref}\", \"reldirpath\": \"${reldirpath}\" }"
-
-    # Call omv-rcp and create the shared folder and then filter out the
-    # uuid of the new shared folder.
-    local uuid=$(omv-rpc ShareMgmt set "${json}" | grep -Po '(?<="uuid":")[^"]*')
-
-    # Add the shared folder to the plugin config.
-    omv_config_add_element "/config/services/mysql" "data.sharedfolderref" $uuid
-}
-
-rename_config()
-{
-    local base_xpath="/config/services/mysql"
-
-    if omv_config_exists "${base_xpath}/${1}"; then
-        local value=$(omv_config_get "${base_xpath}/${1}")
-        omv_config_add_element "${base_xpath}" "${2}" "${value}"
-        omv_config_delete "${base_xpath}/${1}"
-    fi
-}
-
-shared_folder_to_extra_options()
-{
-    data_sharedfolderref=$(omv_config_get "${SERVICE_XPATH}/data.sharedfolderref")
-    data_directory="$(omv_get_sharedfolder_path "${data_sharedfolderref}")"
-    extra_options=$(omv_config_get "${SERVICE_XPATH}/extra_options")
-
-    # Delete unused sharedfolderref entry
-    omv_config_delete "${SERVICE_XPATH}/data.sharedfolderref"
-
-    # Delete old extra_options and write new with datadir option
-    omv_config_delete "${SERVICE_XPATH}/extra_options"
-
-    # new line characters are not converted to new lines
-    omv_config_add_element "${SERVICE_XPATH}" "extra_options" "datadir = ${data_directory}
-${extra_options}"
-}
-
 case "$1" in
     configure)
-        # Set the default settings of the service package to those expected
-        # by OpenMediaVault.
+        # Set the default settings of the service package to those expected by
+        # OpenMediaVault.
         if [ -z "${2}" ]; then
-            invoke-rc.d --force mysql stop
-            update-rc.d mysql disable >/dev/null
+            systemctl stop mysql.service
+            systemctl disable mysql.service
         fi
 
         # Configuration.
@@ -82,26 +27,6 @@ case "$1" in
             omv_config_add_element "${SERVICE_XPATH}" "disable_aio" "0"
             omv_config_add_element "${SERVICE_XPATH}" "extra_options" ""
             omv_config_add_element "${SERVICE_XPATH}" "enable_management_site" "0"
-        fi
-
-        # Migrations.
-        if dpkg --compare-versions "${2}" lt-nl "1.0.7"; then
-            data_drive_to_shared_folder
-        fi
-
-        if dpkg --compare-versions "${2}" lt-nl "1.0.8"; then
-            rename_config "enable-networking" "enable_networking"
-            rename_config "bindaddress" "bind_address"
-            rename_config "extraoptions" "extra_options"
-            rename_config "enable-management-site" "enable_management_site"
-        fi
-
-        if dpkg --compare-versions "${2}" lt-nl "1.0.14"; then
-            omv_config_add_element "${SERVICE_XPATH}" "disable_aio" "0"
-        fi
-
-        if dpkg --compare-versions "${2}" lt-nl "1.0.17"; then
-            shared_folder_to_extra_options
         fi
 
         # Activate package triggers. These triggers are only set during the
