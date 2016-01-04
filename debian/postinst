@@ -10,8 +10,8 @@ case "$1" in
         # Set the default settings of the service package to those expected by
         # OpenMediaVault.
         if [ -z "${2}" ]; then
-            systemctl stop mysql.service
-            systemctl disable mysql.service
+            deb-systemd-helper disable mysql.service >/dev/null || true
+            deb-systemd-invoke stop mysql.service >/dev/null || true
         fi
 
         # Configuration.
