@@ -18,25 +18,42 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-require_once 'openmediavault/config.inc';
-require_once 'openmediavault/error.inc';
-require_once 'openmediavault/notify.inc';
-require_once 'openmediavault/rpcservice.inc';
+ namespace OMV\Engined\Rpc;
 
-class OMVRpcServiceMySql extends OMVRpcServiceAbstract
+use DateTime;
+use Exception;
+use SplFileObject;
+
+use OMV\Config\Database;
+use OMV\Engine\Notify\Dispatcher;
+use OMV\Rpc\ServiceAbstract;
+use OMV\Rpc\ServiceManager as RpcServiceManager;
+use OMV\System\Process;
+
+class MySql extends ServiceAbstract
 {
+    /** @var Database */
+    private $database;
+
+    /** @var string */
+    private $dataModelPath = 'conf.service.mysql';
+
+    /** @var Dispatcher */
+    private $dispatcher;
+
+    /** @var string */
     private $eventMessagePath = 'org.openmediavault.services.mysql';
+
+    /** @var string */
     private $mysqldumpConfigurationFile = '/etc/openmediavault/mysqldump.cnf';
+
+    /** @var string */
     private $mysqlConfigurationFile = '/etc/openmediavault/mysql.cnf';
 
-    /**
-     * Get the service configuration XPath.
-     *
-     * @return string
-     */
-    private function getXpath()
+    public function __construct(Database $database = null, Dispatcher $dispatcher = null)
     {
-        return '/config/services/mysql';
+        $this->database = $database ? $database : Database::getInstance();
+        $this->dispatcher = $dispatcher ? $dispatcher : Dispatcher::getInstance();
     }
 
     /**
@@ -70,36 +87,14 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
      * @param array $params
      * @param array $context
      * @return array
-     *
-     * @throws OMVException
      */
     public function getSettings($params, $context)
     {
-        global $xmlConfig;
+        $this->validateMethodContext($context, ['role' => OMV_ROLE_ADMINISTRATOR]);
 
-        // Validate the RPC caller context.
-        $this->validateMethodContext($context, [
-            'role' => OMV_ROLE_ADMINISTRATOR
-        ]);
+        $object = $this->database->get($this->dataModelPath);
 
-        // Get the configuration object.
-        $object = $xmlConfig->get($this->getXpath());
-
-        if (is_null($object)) {
-            throw new OMVException(
-                OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED,
-                $this->getXpath()
-            );
-        }
-
-        // Modify the result data.
-        $object['enable'] = intval($object['enable']);
-        $object['port'] = intval($object['port']);
-        $object['enable_networking'] = boolval($object['enable_networking']);
-        $object['disable_aio'] = boolval($object['disable_aio']);
-        $object['enable_management_site'] = boolval($object['enable_management_site']);
-
-        return $object;
+        return $object->getAssoc();
     }
 
     /**
@@ -108,64 +103,19 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
      * @param array $params
      * @param array $context
      * @return array
-     *
-     * @throws OMVException
      */
     public function setSettings($params, $context)
     {
-        global $xmlConfig;
+        $this->validateMethodContext($context, ['role' => OMV_ROLE_ADMINISTRATOR]);
+        $this->validateMethodParams($params, 'rpc.mysql.setsettings');
 
-        // Validate the RPC caller context.
-        $this->validateMethodContext($context, [
-            'role' => OMV_ROLE_ADMINISTRATOR
-        ]);
+        $object = $this->database->get($this->dataModelPath);
+        $object->setAssoc($params);
 
-        // Validate the parameters of the RPC service method.
-        $this->validateMethodParams(
-            $params,
-            '{
-                "type": "object",
-                "properties": {
-                    "enable": { "type": "boolean" },
-                    "enable_networking": { "type": "boolean" },
-                    "port": { "type": "integer" },
-                    "bind_address": { "type": "string" },
-                    "disable_aio": { "type": "boolean" },
-                    "extra_options": { "type": "string" },
-                    "enable_management_site": { "type": "boolean" }
-                }
-            }'
-        );
+        $this->database->set($object);
+        $this->dispatcher->notify(OMV_NOTIFY_MODIFY, $this->eventMessagePath, $object);
 
-        // Prepare the configuration data.
-        $object = [
-            'enable' => boolval($params['enable']),
-            'enable_networking' => boolval($params['enable_networking']),
-            'port' => intval($params['port']),
-            'bind_address' => $params['bind_address'],
-            'disable_aio' => boolval($params['disable_aio']),
-            'extra_options' => trim($params['extra_options']),
-            'enable_management_site' => (
-                boolval($params['enable_management_site']) &&
-                boolval($params['enable'])
-            ),
-        ];
-
-        // Set the configuration object.
-        if ($xmlConfig->replace($this->getXpath(), $object) === false) {
-            throw new OMVException(
-                OMVErrorMsg::E_CONFIG_SET_OBJECT_FAILED,
-                $this->getXpath()
-            );
-        }
-
-        // Notify about the configuration changes.
-        $dispatcher = &OMVNotifyDispatcher::getInstance();
-        $dispatcher->notify(
-            OMV_NOTIFY_MODIFY,
-            $this->eventMessagePath,
-            $object
-        );
+        return $object->getAssoc();
     }
 
     /**
@@ -177,10 +127,7 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
      */
     public function downloadBackup($params, $context)
     {
-        // Validate the RPC caller context.
-        $this->validateMethodContext($context, [
-            'role' => OMV_ROLE_ADMINISTRATOR
-        ]);
+        $this->validateMethodContext($context, ['role' => OMV_ROLE_ADMINISTRATOR]);
 
         $sqlDump = tempnam(sys_get_temp_dir(), 'mysql');
         chmod($sqlDump, 644);
@@ -215,23 +162,10 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
      */
     public function dumpDatabaseToSharedFolder($params, $context)
     {
-        // Validate the RPC caller context.
-        $this->validateMethodContext($context, [
-            'role' => OMV_ROLE_ADMINISTRATOR
-        ]);
+        $this->validateMethodContext($context, ['role' => OMV_ROLE_ADMINISTRATOR]);
+        $this->validateMethodParams($params, 'rpc.mysql.dumpdatabasetosharedfolder');
 
-        // Validate the parameters of the RPC service method.
-        $this->validateMethodParams(
-            $params,
-            '{
-                "type": "object",
-                "properties": {
-                    "uuid": {' . $GLOBALS['OMV_JSONSCHEMA_UUID'] . '}
-                }
-            }'
-        );
-
-        $shareMgmt = &OMVRpcServiceMgr::getInstance()->getService('ShareMgmt');
+        $shareMgmt = RpcServiceManager::getInstance()->getService('ShareMgmt');
         $directory = $shareMgmt->callMethod('getPath', $params, $this->getAdminContext());
 
         // Construct the new filename.
@@ -256,34 +190,15 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
      */
     public function uploadBackup($params, $context)
     {
-        // Validate the RPC caller context.
-        $this->validateMethodContext($context, [
-            'role' => OMV_ROLE_ADMINISTRATOR
-        ]);
-
-        // Validate the parameters of the RPC service method.
-        $this->validateMethodParams(
-            $params,
-            '{
-                "type": "object",
-                "properties": {
-                    "filename": { "type": "string" },
-                    "filepath": { "type": "string" },
-                    "password": { "type": "string" }
-                }
-            }'
-        );
+        $this->validateMethodContext($context, ['role' => OMV_ROLE_ADMINISTRATOR]);
+        $this->validateMethodParams($params, 'rpc.mysql.uploadbackup');
 
         $this->createRootPasswordConfigurationFile(
             $this->mysqlConfigurationFile,
             $params['password'],
             false
         );
-
-        $this->restoreDatabaseDump(
-            $params['filepath'],
-            $this->mysqlConfigurationFile
-        );
+        $this->restoreDatabaseDump($params['filepath'], $this->mysqlConfigurationFile);
 
         unlink($this->mysqlConfigurationFile);
     }
@@ -294,50 +209,28 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
      * @param array $params
      * @param array $context
      * @return void
-     *
-     * @throws OMVException
      */
     public function resetPassword($params, $context)
     {
-        global $xmlConfig;
-
-        // Validate the RPC caller context.
-        $this->validateMethodContext($context, [
-            'role' => OMV_ROLE_ADMINISTRATOR
-        ]);
-
-        // Validate the parameters of the RPC service method.
-        $this->validateMethodParams(
-            $params,
-            '{
-                "type": "object",
-                "properties": {
-                    "password": { "type": "string" }
-                }
-            }'
-        );
+        $this->validateMethodContext($context, ['role' => OMV_ROLE_ADMINISTRATOR]);
+        $this->validateMethodParams($params, 'rpc.mysql.resetpassword');
 
         // Create temporary password file for resetting password.
         $file = new SplFileObject(tempnam(sys_get_temp_dir(), 'tmp'), 'w+');
 
         $file->fwrite($params['password'] . PHP_EOL);
 
-        $cmd = sprintf(
-            'export LANG=C; omv-mysql-reset-password %s 2>&1',
-            $file->getRealPath()
+        $cmd = new Process(
+            'omv-mysql-reset-password',
+            escapeshellarg($file->getRealPath())
         );
+        $cmd->setRedirect2to1(true);
 
-        $exitStatus = $this->exec($cmd, $output);
-
-        // Always remove the file containing the password after use.
-        unlink($file->getRealPath());
-
-        if ($exitStatus !== 0) {
-            throw new OMVException(
-                OMVErrorMsg::E_EXEC_FAILED,
-                $cmd,
-                implode(PHP_EOL, $output)
-            );
+        try {
+            $cmd->execute();
+        } finally {
+            // Always remove the file containing the password after use.
+            unlink($file->getRealPath());
         }
 
         $this->createRootPasswordConfigurationFile(
@@ -380,24 +273,17 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
      * @param string $mysqldumpConfigurationFile Path to the configuration file
      * for mysqldump.
      * @return void
-     *
-     * @throws OMVException
      */
     private function dumpDatabase($dumpFile, $mysqldumpConfigurationFile)
     {
-        $cmd = sprintf(
-            'export LANG=C; mysqldump --defaults-extra-file=%s --all-databases --result-file=%s',
-            $mysqldumpConfigurationFile,
-            $dumpFile
+        $cmd = new Process(
+            'mysqldump',
+            sprintf('--defaults-extra-file=%s', escapeshellarg($mysqldumpConfigurationFile)),
+            '--all-databases',
+            sprintf('--result-file=%s', $dumpFile)
         );
 
-        if ($this->exec($cmd, $output) !== 0) {
-            throw new OMVException(
-                OMVErrorMsg::E_EXEC_FAILED,
-                $cmd,
-                implode(PHP_EOL, $output)
-            );
-        }
+        $cmd->execute();
     }
 
     /**
@@ -407,27 +293,16 @@ class OMVRpcServiceMySql extends OMVRpcServiceAbstract
      * @param string $mysqlConfigurationFile Path to the configuration file for
      * MySQL.
      * @return void
-     *
-     * @throws OMVException
      */
     private function restoreDatabaseDump($dumpFile, $mysqlConfigurationFile)
     {
-        $cmd = sprintf(
-            'export LANG=C; mysql --defaults-extra-file=%s < %s',
-            $mysqlConfigurationFile,
-            $dumpFile
+        $cmd = new Process(
+            'mysql',
+            sprintf('--defaults-extra-file=%s', escapeshellarg($mysqlConfigurationFile)),
+            '<',
+            escapeshellarg($dumpFile)
         );
 
-        if ($this->exec($cmd, $output) !== 0) {
-            throw new OMVException(
-                OMVErrorMsg::E_EXEC_FAILED,
-                $cmd,
-                implode(PHP_EOL, $output)
-            );
-        }
+        $cmd->execute();
     }
 }
-
-// Register the RPC service.
-$rpcServiceMgr = &OMVRpcServiceMgr::getInstance();
-$rpcServiceMgr->registerService(new OMVRpcServiceMySql());

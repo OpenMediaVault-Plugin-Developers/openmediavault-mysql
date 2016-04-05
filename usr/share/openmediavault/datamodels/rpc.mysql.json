@@ -1,0 +1,82 @@
+[{
+    "type": "rpc",
+    "id": "rpc.mysql.setsettings",
+    "params": {
+        "type": "object",
+        "properties": {
+            "enable": {
+                "type": "boolean",
+                "required": true
+            },
+            "enable_networking": {
+                "type": "boolean",
+                "required": true
+            },
+            "port": {
+                "type": "integer",
+                "required": true
+            },
+            "bind_address": {
+                "type": "string",
+                "required": true
+            },
+            "disable_aio": {
+                "type": "boolean",
+                "required": true
+            },
+            "extra_options": {
+                "type": "string",
+                "required": true
+            },
+            "enable_management_site": {
+                "type": "boolean",
+                "required": true
+            }
+        }
+    }
+}, {
+    "type": "rpc",
+    "id": "rpc.mysql.dumpdatabasetosharedfolder",
+    "params": {
+        "type": "object",
+        "properties": {
+            "uuid": {
+                "type": "string",
+                "format": "uuidv4",
+                "required": true
+            }
+        }
+    }
+}, {
+    "type": "rpc",
+    "id": "rpc.mysql.uploadbackup",
+    "params": {
+        "type": "object",
+        "properties": {
+            "filename": {
+                "type": "string",
+                "required": true
+            },
+            "filepath": {
+                "type": "string",
+                "required": true
+            },
+            "password": {
+                "type": "string",
+                "required": true
+            }
+        }
+    }
+}, {
+    "type": "rpc",
+    "id": "rpc.mysql.resetpassword",
+    "params": {
+        "type": "object",
+        "properties": {
+            "password": {
+                "type": "string",
+                "required": true
+            }
+        }
+    }
+}]

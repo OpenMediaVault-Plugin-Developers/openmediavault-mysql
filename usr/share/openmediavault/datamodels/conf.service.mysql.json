@@ -1,0 +1,38 @@
+{
+    "type": "config",
+    "id": "conf.service.mysql",
+    "title": "MySQL",
+    "queryinfo": {
+        "xpath": "/config/services/mysql",
+        "iterable": false
+    },
+    "properties": {
+        "enable": {
+            "type": "boolean",
+            "default": false
+        },
+        "enable_networking": {
+            "type": "boolean",
+            "default": true
+        },
+        "port": {
+            "type": "integer",
+            "default": 3306
+        },
+        "bind_address": {
+            "type": "string",
+            "default": "127.0.0.1"
+        },
+        "disable_aio": {
+            "type": "boolean",
+            "default": false
+        },
+        "extra_options": {
+            "type": "string"
+        },
+        "enable_management_site": {
+            "type": "boolean",
+            "default": false
+        }
+    }
+}

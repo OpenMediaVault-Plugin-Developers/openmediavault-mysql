@@ -18,26 +18,39 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-require_once 'openmediavault/config.inc';
-require_once 'openmediavault/error.inc';
-require_once 'openmediavault/module.inc';
-require_once 'openmediavault/notify.inc';
-require_once 'openmediavault/systemctl.inc';
+namespace OMV\Engined\Module;
 
-class OMVModuleMySql extends OMVModuleServiceAbstract implements
-    OMVIModuleServiceStatus,
-    OMVINotifyListener
+use OMV\Config\Database;
+use OMV\Engine\Module\IServiceStatus;
+use OMV\Engine\Module\Manager as ModuleManager;
+use OMV\Engine\Module\ServiceAbstract;
+use OMV\Engine\Notify\Dispatcher;
+use OMV\Engine\Notify\IListener;
+use OMV\System\Process;
+use OMV\System\SystemCtl;
+
+class MySql extends ServiceAbstract implements
+    IListener,
+    IServiceStatus
 {
+    /** @var Database */
+    private $database;
+
+    /** @var string */
+    private $dataModelPath = 'conf.service.mysql';
+
+    /** @var string */
     private $eventMessagePath = 'org.openmediavault.services.mysql';
 
-    /**
-     * Get the service configuration XPath.
-     *
-     * @return string
-     */
-    private function getXpath()
+    /** @var ModuleManager */
+    private $moduleManager;
+
+    /** @var string */
+    private $serviceName = 'mysql.service';
+
+    public function __construct(Database $database = null)
     {
-        return '/config/services/mysql';
+        $this->database = $database ? $database : Database::getInstance();
     }
 
     /**
@@ -54,28 +67,16 @@ class OMVModuleMySql extends OMVModuleServiceAbstract implements
      * Get the status of the managed service.
      *
      * @return array
-     *
-     * @throws OMVException
      */
     public function getStatus()
     {
-        global $xmlConfig;
-
-        $object = $xmlConfig->get($this->getXpath());
-
-        if (is_null($object)) {
-            throw new OMVException(
-                OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED,
-                $this->getXpath()
-            );
-        }
-
-        $systemCtl = new OMVSystemCtl($this->getName());
+        $object = $this->database->get($this->dataModelPath);
+        $systemCtl = new SystemCtl($this->serviceName);
 
         return [
             'name' => $this->getName(),
             'title' => gettext('MySQL'),
-            'enabled' => boolval($object['enable']),
+            'enabled' => $object->get('enable'),
             'running' => $systemCtl->isActive()
         ];
     }
@@ -84,48 +85,27 @@ class OMVModuleMySql extends OMVModuleServiceAbstract implements
      * Generate the configuration.
      *
      * @return void
-     *
-     * @throws OMVException
      */
     public function applyConfig()
     {
-        $cmd = sprintf('export LANG=C; omv-mkconf %s 2>&1', $this->getName());
-
-        if ($this->exec($cmd, $output) !== 0) {
-            throw new OMVException(
-                OMVErrorMsg::E_EXEC_FAILED,
-                $cmd,
-                implode(PHP_EOL, $output)
-            );
-        }
+        $cmd = new Process('omv-mkconf', $this->getName());
+        $cmd->setRedirect2to1(true);
+        $cmd->execute();
     }
 
     /**
      * Start the managed service.
      *
      * @return void
-     *
-     * @throws OMVException
      */
     public function startService()
     {
-        global $xmlConfig;
+        $object = $this->database->get($this->dataModelPath);
 
-        $object = $xmlConfig->get($this->getXpath());
-
-        if (is_null($object)) {
-            throw new OMVException(
-                OMVErrorMsg::E_CONFIG_GET_OBJECT_FAILED,
-                $this->getXpath()
-            );
+        if ($object->get('enable')) {
+            $systemCtl = new SystemCtl($this->serviceName);
+            $systemCtl->enable(true);
         }
-
-        if (!boolval($object['enable'])) {
-            return;
-        }
-
-        $systemCtl = new OMVSystemCtl($this->getName());
-        $systemCtl->enable(true);
     }
 
     /**
@@ -135,19 +115,19 @@ class OMVModuleMySql extends OMVModuleServiceAbstract implements
      */
     public function stopService()
     {
-        $systemCtl = new OMVSystemCtl($this->getName());
+        $systemCtl = new SystemCtl($this->serviceName);
         $systemCtl->disable(true);
     }
 
     /**
      * Bind listeners.
      *
-     * @param OMVNotifyDispatcher $dispatcher The dispatcher object.
+     * @param Dispatcher $dispatcher The dispatcher object.
      * @return void
      */
-    public function bindListeners(OMVNotifyDispatcher $dispatcher)
+    public function bindListeners(Dispatcher $dispatcher)
     {
-        $moduleMgr = &OMVModuleMgr::getInstance();
+        $moduleManager = ModuleManager::getInstance();
 
         $dispatcher->addListener(
             OMV_NOTIFY_MODIFY,
@@ -158,17 +138,13 @@ class OMVModuleMySql extends OMVModuleServiceAbstract implements
         $dispatcher->addListener(
             OMV_NOTIFY_MODIFY,
             $this->eventMessagePath,
-            [$moduleMgr->getModule('php5fpm'), 'setDirty']
+            [$moduleManager->getModule('php5fpm'), 'setDirty']
         );
 
         $dispatcher->addListener(
             OMV_NOTIFY_MODIFY,
             $this->eventMessagePath,
-            [$moduleMgr->getModule('webserver'), 'setDirty']
+            [$moduleManager->getModule('webserver'), 'setDirty']
         );
     }
 }
-
-// Register module
-$moduleMgr = &OMVModuleMgr::getInstance();
-$moduleMgr->registerModule(new OMVModuleMySql());
