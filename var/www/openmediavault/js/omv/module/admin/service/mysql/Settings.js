@@ -23,101 +23,101 @@
 // require("js/omv/module/admin/service/mysql/Password.js")
 // require("js/omv/module/admin/service/mysql/ScheduledBackup.js")
 
-Ext.define("OMV.module.admin.service.mysql.Settings", {
-    extend: "OMV.workspace.form.Panel",
+Ext.define('OMV.module.admin.service.mysql.Settings', {
+    extend: 'OMV.workspace.form.Panel',
     requires: [
-        "OMV.module.admin.service.mysql.Password",
-        "OMV.module.admin.service.mysql.ScheduledBackup"
+        'OMV.module.admin.service.mysql.Password',
+        'OMV.module.admin.service.mysql.ScheduledBackup'
     ],
 
     plugins: [{
-        ptype: "linkedfields",
+        ptype: 'linkedfields',
         correlations: [{
             conditions: [{
-                name: "enable",
+                name: 'enable',
                 value: true
             }],
             properties: function(valid, field) {
-                this.setButtonDisabled("reset-password", !valid);
-                this.setButtonDisabled("backup", !valid);
-                this.setButtonDisabled("scheduled-backup", !valid);
-                this.setButtonDisabled("restore", !valid);
+                this.setButtonDisabled('reset-password', !valid);
+                this.setButtonDisabled('backup', !valid);
+                this.setButtonDisabled('scheduled-backup', !valid);
+                this.setButtonDisabled('restore', !valid);
             }
         }, {
             name: [
-                "port",
-                "bind_address"
+                'port',
+                'bind_address'
             ],
             conditions: [{
-                name: "enable_networking",
+                name: 'enable_networking',
                 value: false
             }],
             properties: [
-                "readOnly",
-                "allowBlank"
+                'readOnly',
+                'allowBlank'
             ]
         }, {
             conditions: [{
-                name: "enable",
+                name: 'enable',
                 value: true
             }, {
-                name: "enable_management_site",
+                name: 'enable_management_site',
                 value: true
             }],
             properties: function(valid, field) {
-                this.setButtonDisabled("show", !valid);
+                this.setButtonDisabled('show', !valid);
             }
         }]
     }],
 
-    rpcService: "MySql",
-    rpcGetMethod: "getSettings",
-    rpcSetMethod: "setSettings",
+    rpcService: 'MySql',
+    rpcGetMethod: 'getSettings',
+    rpcSetMethod: 'setSettings',
 
     getButtonItems: function() {
         var items = this.callParent(arguments);
 
         items.push({
-            id: this.getId() + "-show",
-            xtype: "button",
-            text: _("Show"),
-            icon: "images/mysql.png",
-            iconCls: Ext.baseCSSPrefix + "btn-icon-16x16",
+            id: this.getId() + '-show',
+            xtype: 'button',
+            text: _('Show'),
+            icon: 'images/mysql.png',
+            iconCls: Ext.baseCSSPrefix + 'btn-icon-16x16',
             disabled: true,
             scope: this,
             handler: function() {
-                window.open("/mysql/", "_blank");
+                window.open('/mysql/', '_blank');
             }
         }, {
-            id: this.getId() + "-reset-password",
-            xtype: "button",
-            text: _("Reset Password"),
-            icon: "images/wrench.png",
-            iconCls: Ext.baseCSSPrefix + "btn-icon-16x16",
+            id: this.getId() + '-reset-password',
+            xtype: 'button',
+            text: _('Reset Password'),
+            icon: 'images/wrench.png',
+            iconCls: Ext.baseCSSPrefix + 'btn-icon-16x16',
             scope: this,
             handler: Ext.Function.bind(this.onResetPasswordButton, this)
         }, {
-            id: this.getId() + "-backup",
-            xtype: "button",
-            text: _("Backup"),
-            icon: "images/wrench.png",
-            iconCls: Ext.baseCSSPrefix + "btn-icon-16x16",
+            id: this.getId() + '-backup',
+            xtype: 'button',
+            text: _('Backup'),
+            icon: 'images/wrench.png',
+            iconCls: Ext.baseCSSPrefix + 'btn-icon-16x16',
             scope: this,
             handler: Ext.Function.bind(this.onBackupButton, this)
         }, {
-            id: this.getId() + "-scheduled-backup",
-            xtype: "button",
-            text: _("Scheduled backup"),
-            icon: "images/wrench.png",
-            iconCls: Ext.baseCSSPrefix + "btn-icon-16x16",
+            id: this.getId() + '-scheduled-backup',
+            xtype: 'button',
+            text: _('Scheduled backup'),
+            icon: 'images/wrench.png',
+            iconCls: Ext.baseCSSPrefix + 'btn-icon-16x16',
             scope: this,
             handler: Ext.Function.bind(this.onScheduledBackupButton, this)
         }, {
-            id: this.getId() + "-restore",
-            xtype: "button",
-            text: _("Restore"),
-            icon: "images/wrench.png",
-            iconCls: Ext.baseCSSPrefix + "btn-icon-16x16",
+            id: this.getId() + '-restore',
+            xtype: 'button',
+            text: _('Restore'),
+            icon: 'images/wrench.png',
+            iconCls: Ext.baseCSSPrefix + 'btn-icon-16x16',
             scope: this,
             handler: Ext.Function.bind(this.onRestoreButton, this),
         });
@@ -127,26 +127,26 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
 
     getFormItems: function() {
         return [{
-            xtype: "fieldset",
-            title: "General settings",
+            xtype: 'fieldset',
+            title: 'General settings',
             defaults: {
-                labelSeparator: ""
+                labelSeparator: ''
             },
             items: [{
-                xtype: "checkbox",
-                name: "enable",
-                fieldLabel: _("Enable"),
+                xtype: 'checkbox',
+                name: 'enable',
+                fieldLabel: _('Enable'),
                 checked: false
             }, {
-                xtype: "checkbox",
-                name: "enable_networking",
-                fieldLabel: _("Enable networking"),
+                xtype: 'checkbox',
+                name: 'enable_networking',
+                fieldLabel: _('Enable networking'),
                 checked: false
             }, {
-                xtype: "numberfield",
-                name: "port",
-                fieldLabel: _("Port"),
-                vtype: "port",
+                xtype: 'numberfield',
+                name: 'port',
+                fieldLabel: _('Port'),
+                vtype: 'port',
                 minValue: 0,
                 maxValue: 65535,
                 allowDecimals: false,
@@ -154,89 +154,89 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
                 allowBlank: false,
                 value: 3306,
                 plugins: [{
-                    ptype: "fieldinfo",
-                    text: _("Port to listen on.")
+                    ptype: 'fieldinfo',
+                    text: _('Port to listen on.')
                 }]
             }, {
-                xtype: "textfield",
-                name: "bind_address",
-                fieldLabel: _("Bind address"),
-                vtype: "IPv4Net",
+                xtype: 'textfield',
+                name: 'bind_address',
+                fieldLabel: _('Bind address'),
+                vtype: 'IPv4Net',
                 allowBlank: false,
-                value: "127.0.0.1",
+                value: '127.0.0.1',
                 plugins: [{
-                    ptype: "fieldinfo",
-                    text: _("IP address to listen on. Use 0.0.0.0 for all host IPs.")
+                    ptype: 'fieldinfo',
+                    text: _('IP address to listen on. Use 0.0.0.0 for all host IPs.')
                 }]
             }, {
-                xtype: "checkbox",
-                name: "disable_aio",
-                fieldLabel: _("Disable AIO"),
+                xtype: 'checkbox',
+                name: 'disable_aio',
+                fieldLabel: _('Disable AIO'),
                 checked: false,
                 plugins: [{
-                    ptype: "fieldinfo",
-                    text: _("Check this box if database is stored on ZFS filesystem.")
+                    ptype: 'fieldinfo',
+                    text: _('Check this box if database is stored on ZFS filesystem.')
                 }]
             }, {
-                xtype: "textarea",
-                name: "extra_options",
-                fieldLabel: _("Extra options"),
+                xtype: 'textarea',
+                name: 'extra_options',
+                fieldLabel: _('Extra options'),
                 allowBlank: true,
                 plugins: [{
-                    ptype: "fieldinfo",
-                    text: _("Extra options for [mysqld] section of MySQL configuration.")
+                    ptype: 'fieldinfo',
+                    text: _('Extra options for [mysqld] section of MySQL configuration.')
                 }]
             }]
         }, {
-            xtype: "fieldset",
-            title: _("SQL management site"),
+            xtype: 'fieldset',
+            title: _('SQL management site'),
             defaults: {
-                labelSeparator: ""
+                labelSeparator: ''
             },
             items: [{
-                xtype: "checkbox",
-                name: "enable_management_site",
-                fieldLabel: _("Enable"),
-                boxLabel: _("SQL management site."),
+                xtype: 'checkbox',
+                name: 'enable_management_site',
+                fieldLabel: _('Enable'),
+                boxLabel: _('SQL management site.'),
                 checked: false
             }]
         }];
     },
 
     onResetPasswordButton: function() {
-        Ext.create("OMV.module.admin.service.mysql.Password", {
-            title: _("Reset MySQL root password."),
-            mode: "remote",
-            rpcService: "MySql",
-            rpcSetMethod: "resetPassword"
+        Ext.create('OMV.module.admin.service.mysql.Password', {
+            title: _('Reset MySQL root password.'),
+            mode: 'remote',
+            rpcService: 'MySql',
+            rpcSetMethod: 'resetPassword'
         }).show();
     },
 
     onBackupButton: function() {
-        OMV.Download.request("MySql", "downloadBackup");
+        OMV.Download.request('MySql', 'downloadBackup');
     },
 
     onScheduledBackupButton: function() {
-        Ext.create("OMV.module.admin.service.mysql.ScheduledBackup", {
+        Ext.create('OMV.module.admin.service.mysql.ScheduledBackup', {
             uuid: OMV.UUID_UNDEFINED
         }).show();
     },
 
     onRestoreButton: function() {
-        Ext.create("OMV.module.admin.service.mysql.Password", {
-            title: _("Provide MySQL root password to restore dump."),
+        Ext.create('OMV.module.admin.service.mysql.Password', {
+            title: _('Provide MySQL root password to restore dump.'),
             listeners: {
                 scope: this,
                 submit: function(wnd, params) {
-                    Ext.create("OMV.window.Upload", {
-                        title: _("Upload backup"),
-                        service: "MySql",
-                        method: "uploadBackup",
+                    Ext.create('OMV.window.Upload', {
+                        title: _('Upload backup'),
+                        service: 'MySql',
+                        method: 'uploadBackup',
                         params: params,
                         listeners: {
                             scope: this,
                             success: function(wnd, response) {
-                                OMV.MessageBox.info(_("Restored backup"), _("Backup was successfully restored."));
+                                OMV.MessageBox.info(_('Restored backup'), _('Backup was successfully restored.'));
                             }
                         }
                     }).show();
@@ -247,9 +247,9 @@ Ext.define("OMV.module.admin.service.mysql.Settings", {
 });
 
 OMV.WorkspaceManager.registerPanel({
-    id: "settings",
-    path: "/service/mysql",
-    text: _("Settings"),
+    id: 'settings',
+    path: '/service/mysql',
+    text: _('Settings'),
     position: 10,
-    className: "OMV.module.admin.service.mysql.Settings"
+    className: 'OMV.module.admin.service.mysql.Settings'
 });

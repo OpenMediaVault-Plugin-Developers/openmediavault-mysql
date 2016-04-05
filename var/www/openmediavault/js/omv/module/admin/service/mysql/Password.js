@@ -18,17 +18,17 @@
 // require("js/omv/WorkspaceManager.js")
 // require("js/omv/workspace/window/Form.js")
 
-Ext.define("OMV.module.admin.service.mysql.Password", {
-    extend: "OMV.workspace.window.Form",
+Ext.define('OMV.module.admin.service.mysql.Password', {
+    extend: 'OMV.workspace.window.Form',
 
     hideResetButton: true,
-    mode: "local",
+    mode: 'local',
 
     getFormItems: function() {
         return [{
-            xtype: "passwordfield",
-            name: "password",
-            fieldLabel: _("Password"),
+            xtype: 'passwordfield',
+            name: 'password',
+            fieldLabel: _('Password'),
             allowBlank: false
         }];
     }

@@ -18,20 +18,20 @@
 // require("js/omv/WorkspaceManager.js")
 // require("js/omv/module/admin/system/cron/Cron.js")
 
-Ext.define("OMV.module.admin.service.mysql.ScheduledBackup", {
-    extend: "OMV.module.admin.system.cron.Job",
+Ext.define('OMV.module.admin.service.mysql.ScheduledBackup', {
+    extend: 'OMV.module.admin.system.cron.Job',
 
-    title: _("Create scheduled backup job"),
+    title: _('Create scheduled backup job'),
     height: 310,
     hideResetButton: true,
 
     initComponent: function() {
         this.callParent(arguments);
 
-        var enable = this.findField("enable");
-        var username = this.findField("username");
-        var command = this.findField("command");
-        var comment = this.findField("comment");
+        var enable = this.findField('enable');
+        var username = this.findField('username');
+        var command = this.findField('command');
+        var comment = this.findField('comment');
 
         enable.hide();
         username.hide();
@@ -39,28 +39,28 @@ Ext.define("OMV.module.admin.service.mysql.ScheduledBackup", {
         comment.hide();
 
         enable.setValue(true);
-        username.setValue("root");
-        comment.setValue("MySQL - Scheduled backup.");
+        username.setValue('root');
+        comment.setValue('MySQL - Scheduled backup.');
     },
 
     getFormItems: function() {
         var prependItems = [{
-            xtype: "sharedfoldercombo",
-            name: "sharedfolderref",
-            fieldLabel: _("Location"),
+            xtype: 'sharedfoldercombo',
+            name: 'sharedfolderref',
+            fieldLabel: _('Location'),
             allowBlank: true,
             allowNone: false,
             submitValue: false,
             listeners: {
                 scope: this,
                 change: function(combo, newValue) {
-                    var command = this.findField("command");
+                    var command = this.findField('command');
 
                     var jsonData = JSON.stringify({
                         uuid: newValue
                     });
 
-                    command.setValue("omv-rpc MySql dumpDatabaseToSharedFolder '" + jsonData + "'");
+                    command.setValue('omv-rpc MySql dumpDatabaseToSharedFolder \'' + jsonData + '\'');
                 }
             }
         }];

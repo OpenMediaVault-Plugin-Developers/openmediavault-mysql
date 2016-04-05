@@ -18,17 +18,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-require_once "openmediavault/config.inc";
-require_once "openmediavault/error.inc";
-require_once "openmediavault/module.inc";
-require_once "openmediavault/notify.inc";
-require_once "openmediavault/systemctl.inc";
+require_once 'openmediavault/config.inc';
+require_once 'openmediavault/error.inc';
+require_once 'openmediavault/module.inc';
+require_once 'openmediavault/notify.inc';
+require_once 'openmediavault/systemctl.inc';
 
 class OMVModuleMySql extends OMVModuleServiceAbstract implements
     OMVIModuleServiceStatus,
     OMVINotifyListener
 {
-    private $eventMessagePath = "org.openmediavault.services.mysql";
+    private $eventMessagePath = 'org.openmediavault.services.mysql';
 
     /**
      * Get the service configuration XPath.
@@ -37,7 +37,7 @@ class OMVModuleMySql extends OMVModuleServiceAbstract implements
      */
     private function getXpath()
     {
-        return "/config/services/mysql";
+        return '/config/services/mysql';
     }
 
     /**
@@ -47,7 +47,7 @@ class OMVModuleMySql extends OMVModuleServiceAbstract implements
      */
     public function getName()
     {
-        return "mysql";
+        return 'mysql';
     }
 
     /**
@@ -73,10 +73,10 @@ class OMVModuleMySql extends OMVModuleServiceAbstract implements
         $systemCtl = new OMVSystemCtl($this->getName());
 
         return [
-            "name" => $this->getName(),
-            "title" => gettext("MySQL"),
-            "enabled" => boolval($object["enable"]),
-            "running" => $systemCtl->isActive()
+            'name' => $this->getName(),
+            'title' => gettext('MySQL'),
+            'enabled' => boolval($object['enable']),
+            'running' => $systemCtl->isActive()
         ];
     }
 
@@ -89,7 +89,7 @@ class OMVModuleMySql extends OMVModuleServiceAbstract implements
      */
     public function applyConfig()
     {
-        $cmd = sprintf("export LANG=C; omv-mkconf %s 2>&1", $this->getName());
+        $cmd = sprintf('export LANG=C; omv-mkconf %s 2>&1', $this->getName());
 
         if ($this->exec($cmd, $output) !== 0) {
             throw new OMVException(
@@ -120,7 +120,7 @@ class OMVModuleMySql extends OMVModuleServiceAbstract implements
             );
         }
 
-        if (!boolval($object["enable"])) {
+        if (!boolval($object['enable'])) {
             return;
         }
 
@@ -152,19 +152,19 @@ class OMVModuleMySql extends OMVModuleServiceAbstract implements
         $dispatcher->addListener(
             OMV_NOTIFY_MODIFY,
             $this->eventMessagePath,
-            [$this, "setDirty"]
+            [$this, 'setDirty']
         );
 
         $dispatcher->addListener(
             OMV_NOTIFY_MODIFY,
             $this->eventMessagePath,
-            [$moduleMgr->getModule("php5fpm"), "setDirty"]
+            [$moduleMgr->getModule('php5fpm'), 'setDirty']
         );
 
         $dispatcher->addListener(
             OMV_NOTIFY_MODIFY,
             $this->eventMessagePath,
-            [$moduleMgr->getModule("webserver"), "setDirty"]
+            [$moduleMgr->getModule('webserver'), 'setDirty']
         );
     }
 }

@@ -19,9 +19,9 @@
 // require("js/omv/WorkspaceManager.js")
 
 OMV.WorkspaceManager.registerNode({
-    id: "mysql",
-    path: "/service",
-    text: _("MySQL"),
-    icon16: "images/mysql.png",
-    iconSvg: "images/mysql.svg"
+    id: 'mysql',
+    path: '/service',
+    text: _('MySQL'),
+    icon16: 'images/mysql.png',
+    iconSvg: 'images/mysql.svg'
 });
