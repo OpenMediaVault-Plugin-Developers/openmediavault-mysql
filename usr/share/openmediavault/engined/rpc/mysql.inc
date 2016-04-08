@@ -2,7 +2,7 @@
 
 /**
  * Copyright (C) 2010-2012 Ian Moore <imooreyahoo@gmail.com>
- * Copyright (C) 2013-2015 OpenMediaVault Plugin Developers
+ * Copyright (C) 2013-2015 OpenMediaVault Plugin Developers.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,17 +18,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
- namespace OMV\Engined\Rpc;
+namespace OMV\Engined\Rpc;
 
 use DateTime;
 use Exception;
-use SplFileObject;
-
 use OMV\Config\Database;
 use OMV\Engine\Notify\Dispatcher;
 use OMV\Rpc\ServiceAbstract;
 use OMV\Rpc\ServiceManager as RpcServiceManager;
 use OMV\System\Process;
+use SplFileObject;
 
 class MySql extends ServiceAbstract
 {
@@ -52,8 +51,8 @@ class MySql extends ServiceAbstract
 
     public function __construct(Database $database = null, Dispatcher $dispatcher = null)
     {
-        $this->database = $database ? $database : Database::getInstance();
-        $this->dispatcher = $dispatcher ? $dispatcher : Dispatcher::getInstance();
+        $this->database = $database ?: Database::getInstance();
+        $this->dispatcher = $dispatcher ?: Dispatcher::getInstance();
     }
 
     /**
@@ -86,6 +85,7 @@ class MySql extends ServiceAbstract
      *
      * @param array $params
      * @param array $context
+     *
      * @return array
      */
     public function getSettings($params, $context)
@@ -102,6 +102,7 @@ class MySql extends ServiceAbstract
      *
      * @param array $params
      * @param array $context
+     *
      * @return array
      */
     public function setSettings($params, $context)
@@ -123,6 +124,7 @@ class MySql extends ServiceAbstract
      *
      * @param array $params
      * @param array $context
+     *
      * @return array
      */
     public function downloadBackup($params, $context)
@@ -156,6 +158,7 @@ class MySql extends ServiceAbstract
      *
      * @param array $params
      * @param array $context
+     *
      * @return void
      *
      * @throws Exception
@@ -171,7 +174,7 @@ class MySql extends ServiceAbstract
         // Construct the new filename.
         $now = new DateTime();
         $time = $now->format(DateTime::ISO8601);
-        $sqlDump = $directory . DIRECTORY_SEPARATOR . 'mysql-' . $time . '.sql';
+        $sqlDump = $directory.DIRECTORY_SEPARATOR.'mysql-'.$time.'.sql';
 
         // Make sure we're not overwriting existing files.
         if (file_exists($sqlDump)) {
@@ -186,6 +189,7 @@ class MySql extends ServiceAbstract
      *
      * @param array $params
      * @param array $context
+     *
      * @return void
      */
     public function uploadBackup($params, $context)
@@ -208,6 +212,7 @@ class MySql extends ServiceAbstract
      *
      * @param array $params
      * @param array $context
+     *
      * @return void
      */
     public function resetPassword($params, $context)
@@ -218,7 +223,7 @@ class MySql extends ServiceAbstract
         // Create temporary password file for resetting password.
         $file = new SplFileObject(tempnam(sys_get_temp_dir(), 'tmp'), 'w+');
 
-        $file->fwrite($params['password'] . PHP_EOL);
+        $file->fwrite($params['password'].PHP_EOL);
 
         $cmd = new Process(
             'omv-mysql-reset-password',
@@ -243,10 +248,11 @@ class MySql extends ServiceAbstract
      * Creates a configuration file for MySQL containing the root password.
      * Used for things like automatic backup.
      *
-     * @param string $file Where to store the configuration file.
+     * @param string $file      Where to store the configuration file.
      * @param string $password
-     * @param bool $mysqlDump Wether to create a file for mysqldump or MySQL.
-     * Defaults to true for mysqldump otherwise MySQL.
+     * @param bool   $mysqlDump Wether to create a file for mysqldump or MySQL.
+     *                          Defaults to true for mysqldump otherwise MySQL.
+     *
      * @return void
      */
     private function createRootPasswordConfigurationFile($path, $password, $mysqlDump = true)
@@ -261,17 +267,18 @@ class MySql extends ServiceAbstract
             $configGroup = 'mysql';
         }
 
-        $file->fwrite('[' . $configGroup . ']' . PHP_EOL);
-        $file->fwrite('user = root' . PHP_EOL);
-        $file->fwrite('password = ' . $password . PHP_EOL);
+        $file->fwrite('['.$configGroup.']'.PHP_EOL);
+        $file->fwrite('user = root'.PHP_EOL);
+        $file->fwrite('password = '.$password.PHP_EOL);
     }
 
     /**
      * Dumps the database with the help of mysqldump.
      *
-     * @param string $dumpFile Which file to dump the data in.
+     * @param string $dumpFile                   Which file to dump the data in.
      * @param string $mysqldumpConfigurationFile Path to the configuration file
-     * for mysqldump.
+     *                                           for mysqldump.
+     *
      * @return void
      */
     private function dumpDatabase($dumpFile, $mysqldumpConfigurationFile)
@@ -289,9 +296,10 @@ class MySql extends ServiceAbstract
     /**
      * Restore the database from a SQL dump.
      *
-     * @param string $dumpFile Path to the SQL file.
+     * @param string $dumpFile               Path to the SQL file.
      * @param string $mysqlConfigurationFile Path to the configuration file for
-     * MySQL.
+     *                                       MySQL.
+     *
      * @return void
      */
     private function restoreDatabaseDump($dumpFile, $mysqlConfigurationFile)

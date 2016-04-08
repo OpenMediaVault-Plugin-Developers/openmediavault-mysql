@@ -2,7 +2,7 @@
 
 /**
  * Copyright (C) 2010-2012 Ian Moore <imooreyahoo@gmail.com>
- * Copyright (C) 2013-2015 OpenMediaVault Plugin Developers
+ * Copyright (C) 2013-2015 OpenMediaVault Plugin Developers.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -50,7 +50,7 @@ class MySql extends ServiceAbstract implements
 
     public function __construct(Database $database = null)
     {
-        $this->database = $database ? $database : Database::getInstance();
+        $this->database = $database ?: Database::getInstance();
     }
 
     /**
@@ -77,7 +77,7 @@ class MySql extends ServiceAbstract implements
             'name' => $this->getName(),
             'title' => gettext('MySQL'),
             'enabled' => $object->get('enable'),
-            'running' => $systemCtl->isActive()
+            'running' => $systemCtl->isActive(),
         ];
     }
 
@@ -123,6 +123,7 @@ class MySql extends ServiceAbstract implements
      * Bind listeners.
      *
      * @param Dispatcher $dispatcher The dispatcher object.
+     *
      * @return void
      */
     public function bindListeners(Dispatcher $dispatcher)
