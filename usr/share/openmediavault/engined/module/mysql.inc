@@ -40,7 +40,7 @@ class MySql extends ServiceAbstract implements
     private $dataModelPath = 'conf.service.mysql';
 
     /** @var string */
-    private $eventMessagePath = 'org.openmediavault.services.mysql';
+    private $eventMessagePath = 'org.openmediavault.conf.service.mysql';
 
     /** @var ModuleManager */
     private $moduleManager;
@@ -89,7 +89,7 @@ class MySql extends ServiceAbstract implements
     public function applyConfig()
     {
         $cmd = new Process('omv-mkconf', $this->getName());
-        $cmd->setRedirect2to1(true);
+        $cmd->setRedirect2to1();
         $cmd->execute();
     }
 

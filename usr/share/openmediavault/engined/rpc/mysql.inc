@@ -41,7 +41,7 @@ class MySql extends ServiceAbstract
     private $dispatcher;
 
     /** @var string */
-    private $eventMessagePath = 'org.openmediavault.services.mysql';
+    private $eventMessagePath = 'org.openmediavault.conf.service.mysql';
 
     /** @var string */
     private $mysqldumpConfigurationFile = '/etc/openmediavault/mysqldump.cnf';
@@ -174,7 +174,7 @@ class MySql extends ServiceAbstract
         // Construct the new filename.
         $now = new DateTime();
         $time = $now->format(DateTime::ISO8601);
-        $sqlDump = $directory.DIRECTORY_SEPARATOR.'mysql-'.$time.'.sql';
+        $sqlDump = $directory . DIRECTORY_SEPARATOR . 'mysql-' . $time . '.sql';
 
         // Make sure we're not overwriting existing files.
         if (file_exists($sqlDump)) {
@@ -223,13 +223,13 @@ class MySql extends ServiceAbstract
         // Create temporary password file for resetting password.
         $file = new SplFileObject(tempnam(sys_get_temp_dir(), 'tmp'), 'w+');
 
-        $file->fwrite($params['password'].PHP_EOL);
+        $file->fwrite($params['password'] . PHP_EOL);
 
         $cmd = new Process(
             'omv-mysql-reset-password',
             escapeshellarg($file->getRealPath())
         );
-        $cmd->setRedirect2to1(true);
+        $cmd->setRedirect2to1();
 
         try {
             $cmd->execute();
@@ -267,9 +267,9 @@ class MySql extends ServiceAbstract
             $configGroup = 'mysql';
         }
 
-        $file->fwrite('['.$configGroup.']'.PHP_EOL);
-        $file->fwrite('user = root'.PHP_EOL);
-        $file->fwrite('password = '.$password.PHP_EOL);
+        $file->fwrite('[' . $configGroup . ']' . PHP_EOL);
+        $file->fwrite('user = root' . PHP_EOL);
+        $file->fwrite('password = ' . $password . PHP_EOL);
     }
 
     /**
