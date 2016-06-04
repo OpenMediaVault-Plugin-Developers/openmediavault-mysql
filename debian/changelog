@@ -1,3 +1,9 @@
+openmediavault-mysql (3.0.3) stable; urgency=medium
+
+  * OMV 3.0.21 compatibility.
+
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Sat, 04 Jun 2016 18:35:13 +0200
+
 openmediavault-mysql (3.0.2) stable; urgency=medium
 
   * OMV 3.0.15 compatibility. 
