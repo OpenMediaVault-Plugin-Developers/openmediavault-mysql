@@ -15,4 +15,4 @@ Depends: dbconfig-common,
          ${misc:Depends}
 Description: MySQL plugin for OpenMediaVault.
  MySQL is an open source database server. The plugin allows you to
- specify a share for databases and reset the MySQL root password.
+ reset the MySQL root password.
