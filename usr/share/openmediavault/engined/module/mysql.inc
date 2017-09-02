@@ -139,7 +139,7 @@ class MySql extends ServiceAbstract implements
         $dispatcher->addListener(
             OMV_NOTIFY_MODIFY,
             $this->eventMessagePath,
-            [$moduleManager->getModule('php5fpm'), 'setDirty']
+            [$moduleManager->getModule('phpfpm'), 'setDirty']
         );
 
         $dispatcher->addListener(

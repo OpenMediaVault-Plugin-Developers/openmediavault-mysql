@@ -38,7 +38,7 @@ case "$1" in
         fi
 
         deb-systemd-invoke reload nginx.service >/dev/null || true
-        deb-systemd-invoke reload php5-fpm.service >/dev/null || true
+        deb-systemd-invoke reload php7.0-fpm.service >/dev/null || true
     ;;
 
     upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
