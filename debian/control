@@ -9,7 +9,7 @@ XB-Plugin-Section: network
 Package: openmediavault-mysql
 Architecture: all
 Depends: dbconfig-common,
-         openmediavault (>= 3.0.40),
+         openmediavault (>= 4.0.4),
          mariadb-server | mysql-server,
          mywebsql,
          ${misc:Depends}
