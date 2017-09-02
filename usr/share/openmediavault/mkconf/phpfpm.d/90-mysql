@@ -21,7 +21,7 @@ set -e
 . /etc/default/openmediavault
 . /usr/share/openmediavault/scripts/helper-functions
 
-PHP_FPM_POOL_DIR=/etc/php5/fpm/pool.d
+PHP_FPM_POOL_DIR=/etc/php/7.0/fpm/pool.d
 
 SQL_MANAGEMENT_POOL_CONF="${PHP_FPM_POOL_DIR}/openmediavault-mysql-management-site.conf"
 
@@ -35,7 +35,7 @@ fi
 
 cat <<EOF > "${SQL_MANAGEMENT_POOL_CONF}"
 [openmediavault-mysql]
-listen = /var/run/php5-fpm-openmediavault-mysql.sock
+listen = /var/run/php-fpm-openmediavault-mysql.sock
 listen.owner = www-data
 listen.group = www-data
 listen.mode = 0600

@@ -42,7 +42,7 @@ location /mysql {
         include fastcgi.conf;
         fastcgi_index index.php;
         fastcgi_param SCRIPT_FILENAME \$request_filename;
-        fastcgi_pass unix:/var/run/php5-fpm-openmediavault-mysql.sock;
+        fastcgi_pass unix:/var/run/php-fpm-openmediavault-mysql.sock;
     }
 
     location = /mysql/favicon.ico {

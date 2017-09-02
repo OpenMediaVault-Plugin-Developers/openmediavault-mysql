@@ -10,7 +10,7 @@ Package: openmediavault-mysql
 Architecture: all
 Depends: dbconfig-common,
          openmediavault (>= 3.0.40),
-         mysql-server | mariadb-server,
+         mariadb-server | mysql-server,
          mywebsql,
          ${misc:Depends}
 Description: MySQL plugin for OpenMediaVault.
