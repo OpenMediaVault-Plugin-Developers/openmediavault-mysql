@@ -5,6 +5,7 @@ set -e
 . /etc/default/openmediavault
 . /usr/share/openmediavault/scripts/helper-functions
 
+OMV_MARIADB_CONF="/etc/mysql/mariadb.conf.d/openmediavault-mysql.cnf"
 OMV_MYSQL_CONF="/etc/mysql/conf.d/openmediavault-mysql.cnf"
 OMV_MYSQL_PASSWD="/etc/openmediavault/mysql.cnf"
 OMV_MYSQLDUMP_PASSWD="/etc/openmediavault/mysqldump.cnf"
@@ -13,6 +14,10 @@ SQL_MANAGEMENT_POOL_CONF="/etc/php5/fpm/pool.d/openmediavault-mysql-management-s
 
 case "$1" in
     purge)
+        if [ -e "${OMV_MARIADB_CONF}" ]; then
+            rm -f "${OMV_MARIADB_CONF}"
+        fi
+
         if [ -e "${OMV_MYSQL_CONF}" ]; then
             rm -f "${OMV_MYSQL_CONF}"
         fi
