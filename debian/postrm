@@ -13,8 +13,6 @@ SQL_MANAGEMENT_POOL_CONF="/etc/php5/fpm/pool.d/openmediavault-mysql-management-s
 
 case "$1" in
     purge)
-        omv_config_delete "/config/services/mysql"
-
         if [ -e "${OMV_MYSQL_CONF}" ]; then
             rm -f "${OMV_MYSQL_CONF}"
         fi

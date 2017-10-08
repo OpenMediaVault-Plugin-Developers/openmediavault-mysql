@@ -1,6 +1,6 @@
 /**
  * Copyright (C) 2010-2012 Ian Moore <imooreyahoo@gmail.com>
- * Copyright (C) 2013-2015 OpenMediaVault Plugin Developers
+ * Copyright (C) 2013-2017 OpenMediaVault Plugin Developers
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -198,14 +198,19 @@ Ext.define('OMV.module.admin.service.mysql.Settings', {
                 name: 'enable_management_site',
                 fieldLabel: _('Enable'),
                 boxLabel: _('SQL management site.'),
-                checked: false
+                checked: false,
+                plugins: [{
+                    ptype: 'fieldinfo',
+                    text: _('Click Reset Password to create omvadmin user and set password to allow management site login.') +
+                          _('omvadmin is also used for backups/restores.')
+                }]
             }]
         }];
     },
 
     onResetPasswordButton: function() {
         Ext.create('OMV.module.admin.service.mysql.Password', {
-            title: _('Reset MySQL root password.'),
+            title: _('Reset MySQL omvadmin password.'),
             mode: 'remote',
             rpcService: 'MySql',
             rpcSetMethod: 'resetPassword'
@@ -224,7 +229,7 @@ Ext.define('OMV.module.admin.service.mysql.Settings', {
 
     onRestoreButton: function() {
         Ext.create('OMV.module.admin.service.mysql.Password', {
-            title: _('Provide MySQL root password to restore dump.'),
+            title: _('Provide MySQL omvadmin password to restore dump.'),
             listeners: {
                 scope: this,
                 submit: function(wnd, params) {

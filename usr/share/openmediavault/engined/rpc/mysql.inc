@@ -2,7 +2,7 @@
 
 /**
  * Copyright (C) 2010-2012 Ian Moore <imooreyahoo@gmail.com>
- * Copyright (C) 2013-2015 OpenMediaVault Plugin Developers.
+ * Copyright (C) 2013-2017 OpenMediaVault Plugin Developers.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -188,7 +188,7 @@ class MySql extends ServiceAbstract
         $this->validateMethodContext($context, ['role' => OMV_ROLE_ADMINISTRATOR]);
         $this->validateMethodParams($params, 'rpc.mysql.uploadbackup');
 
-        $this->createRootPasswordConfigurationFile(
+        $this->createOmvadminPasswordConfigFile(
             $this->mysqlConfigurationFile,
             $params['password'],
             false
@@ -211,32 +211,25 @@ class MySql extends ServiceAbstract
         $this->validateMethodContext($context, ['role' => OMV_ROLE_ADMINISTRATOR]);
         $this->validateMethodParams($params, 'rpc.mysql.resetpassword');
 
-        // Create temporary password file for resetting password.
-        $file = new SplFileObject(tempnam(sys_get_temp_dir(), 'tmp'), 'w+');
+        $cmdArgs = [];
+        $cmdArgs[] = '-u root';
+        $cmdArgs[] = '-e';
+        $cmdArgs[] = '"';
+        $cmdArgs[] = sprintf('CREATE USER IF NOT EXISTS \'omvadmin\'@\'localhost\' IDENTIFIED BY \'%s\';', $params['password']);
+        $cmdArgs[] = sprintf('GRANT ALL PRIVILEGES ON *.* TO \'omvadmin\'@\'localhost\' IDENTIFIED BY \'%s\' WITH GRANT OPTION;', $params['password']);
+        $cmdArgs[] = 'FLUSH PRIVILEGES;';
+        $cmdArgs[] = '"';
+        $cmd = new Process('sudo mysql', $cmdArgs);
+        $cmd->execute();
 
-        $file->fwrite($params['password'] . PHP_EOL);
-
-        $cmd = new Process(
-            'omv-mysql-reset-password',
-            escapeshellarg($file->getRealPath())
-        );
-        $cmd->setRedirect2to1();
-
-        try {
-            $cmd->execute();
-        } finally {
-            // Always remove the file containing the password after use.
-            unlink($file->getRealPath());
-        }
-
-        $this->createRootPasswordConfigurationFile(
+        $this->createOmvadminPasswordConfigFile(
             $this->mysqldumpConfigurationFile,
             $params['password']
         );
     }
 
     /**
-     * Creates a configuration file for MySQL containing the root password.
+     * Creates a configuration file for MySQL containing the omvadmin password.
      * Used for things like automatic backup.
      *
      * @param string $file      Where to store the configuration file.
@@ -246,7 +239,7 @@ class MySql extends ServiceAbstract
      *
      * @return void
      */
-    private function createRootPasswordConfigurationFile($path, $password, $mysqlDump = true)
+    private function createOmvadminPasswordConfigFile($path, $password, $mysqlDump = true)
     {
         $configGroup = 'mysqldump';
         $file = new SplFileObject($path, 'w+');
@@ -259,7 +252,7 @@ class MySql extends ServiceAbstract
         }
 
         $file->fwrite('[' . $configGroup . ']' . PHP_EOL);
-        $file->fwrite('user = root' . PHP_EOL);
+        $file->fwrite('user = omvadmin' . PHP_EOL);
         $file->fwrite('password = ' . $password . PHP_EOL);
     }
 
