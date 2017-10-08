@@ -1,3 +1,9 @@
+openmediavault-mysql (4.1.1) stable; urgency=low
+
+  * Use mariadb conf directory if exists
+
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Sun, 08 Oct 2017 15:16:22 -0500
+
 openmediavault-mysql (4.1) stable; urgency=low
 
   * Use omvadmin instead of root. omvadmin is created when password is

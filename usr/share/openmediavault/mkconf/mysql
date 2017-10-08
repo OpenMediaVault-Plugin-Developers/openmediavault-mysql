@@ -22,12 +22,20 @@ set -e
 . /usr/share/openmediavault/scripts/helper-functions
 
 MYSQL_MY_CONFIG="/etc/mysql/my.cnf"
-OMV_MYSQL_PLUGIN_CONFIG=${OMV_MYSQL_PLUGIN_CONFIG:-"/etc/mysql/conf.d/openmediavault-mysql.cnf"}
+OMV_MYSQL_PLUGIN_MARIADB_CONFIG_DIR=${OMV_MYSQL_PLUGIN_MYSQL_CONFIG_DIR:-"/etc/mysql/mariadb.conf.d"}
+OMV_MYSQL_PLUGIN_MYSQL_CONFIG_DIR=${OMV_MYSQL_PLUGIN_MYSQL_CONFIG_DIR:-"/etc/mysql/conf.d"}
+OMV_MYSQL_PLUGIN_CONFIG=${OMV_MYSQL_PLUGIN_CONFIG:-"openmediavault-mysql.cnf"}
 OMV_MYSQL_PLUGIN_XPATH="/config/services/mysql"
 
 # Generate configuration only if the service is enabled.
 if [ "$(omv_config_get "${OMV_MYSQL_PLUGIN_XPATH}/enable")" != "1" ]; then
     exit 0
+fi
+
+if [ -d "${OMV_MYSQL_PLUGIN_MARIADB_CONFIG_DIR}" ]; then
+    conf="${OMV_MYSQL_PLUGIN_MARIADB_CONFIG_DIR}/${OMV_MYSQL_PLUGIN_CONFIG}"
+else
+    conf="${OMV_MYSQL_PLUGIN_MYSQL_CONFIG_DIR}/${OMV_MYSQL_PLUGIN_CONFIG}"
 fi
 
 # Generate the MySQL configuration.
@@ -40,9 +48,9 @@ xmlstarlet sel -t -m "${OMV_MYSQL_PLUGIN_XPATH}" \
     -i "bind_address != ''" -v "concat('bind-address = ', bind_address)" -n -b \
     -i "disable_aio != 0" -o "innodb_use_native_aio=0" -n -b \
     -i "string-length(extra_options) > 0" -v "extra_options" -n -b \
-    ${OMV_CONFIG_FILE} | xmlstarlet unesc > ${OMV_MYSQL_PLUGIN_CONFIG}
+    ${OMV_CONFIG_FILE} | xmlstarlet unesc > "${conf}"
 
 # Set permissions on the configuration file.
-chmod 644 ${OMV_MYSQL_PLUGIN_CONFIG}
+chmod 644 "${conf}"
 
 exit 0
