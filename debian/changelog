@@ -1,3 +1,9 @@
+openmediavault-mysql (4.1.2) stable; urgency=low
+
+  * Update for mariadb
+
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Sun, 13 May 2018 07:57:50 -0500
+
 openmediavault-mysql (4.1.1) stable; urgency=low
 
   * Use mariadb conf directory if exists
